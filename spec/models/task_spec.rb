@@ -50,4 +50,26 @@ describe Task do
     end
   end
 
+  describe "Doneを指定してタスクを取り出す場合" do
+    before do
+      @tasks = Task.done_by_name("volpe")
+    end
+    subject{@tasks}
+
+    it "タスクを取得すること" do
+      subject.size.should >= 1
+    end
+
+    it "指定ユーザ名のタスクである" do
+      subject.each{|t|
+        t.name.should == "volpe"
+      }
+    end
+
+    it "done のタスクである" do
+      subject.each{|t|
+        t.status_sym.should == :done
+      }
+    end
+  end
 end
