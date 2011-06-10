@@ -1,7 +1,9 @@
 class CreateTasks < ActiveRecord::Migration
   def self.up
     create_table :tasks do |t|
-
+      t.string :name
+      t.string :msg
+      t.date :doing_at
       t.timestamps
     end
   end

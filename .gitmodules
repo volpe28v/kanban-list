@@ -1,0 +1,3 @@
+[submodule "vim/bundle/vim-l9"]
+	path = vim/bundle/vim-l9
+	url = https://github.com/clones/vim-l9.git
