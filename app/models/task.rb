@@ -20,6 +20,16 @@ class Task < ActiveRecord::Base
     where(:status => StatusTable[:done], :name => name).order('updated_at DESC')
   }
 
+  scope :done, where(:status => StatusTable[:done]).order('updated_at DESC')
+
+  scope :doing_by_name, lambda {|name|
+    where(:status => StatusTable[:doing], :name => name).order('updated_at DESC')
+  }
+
+  scope :today_done_by_name, lambda {|name|
+    where("status = ? and name = ? and updated_at LIKE ?", StatusTable[:done], name, "#{Time.now.strftime("%Y-%m-%d")}%").order('updated_at DESC' )
+  }
+
   def status_sym
     StatusTable.each_key {|key| return key if StatusTable[key] == self.status }
   end

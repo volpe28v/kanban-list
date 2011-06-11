@@ -50,7 +50,7 @@ describe Task do
     end
   end
 
-  describe "Doneを指定してタスクを取り出す場合" do
+  describe "Doneと名前を指定してタスクを取り出す場合" do
     before do
       @tasks = Task.done_by_name("volpe")
     end
@@ -67,6 +67,63 @@ describe Task do
     end
 
     it "done のタスクである" do
+      subject.each{|t|
+        t.status_sym.should == :done
+      }
+    end
+  end
+
+  describe "Doneを指定してタスクを取り出す場合" do
+    before do
+      @tasks = Task.done
+    end
+    subject{@tasks}
+
+    it "タスクを取得すること" do
+      subject.size.should >= 1
+    end
+
+    it "done のタスクである" do
+      subject.each{|t|
+        t.status_sym.should == :done
+      }
+    end
+  end
+
+  describe "Doingと名前を指定してタスクを取り出す場合" do
+    before do
+      @tasks = Task.doing_by_name("volpe")
+    end
+    subject{@tasks}
+
+    it "タスクを取得すること" do
+      subject.size.should >= 1
+    end
+
+    it "指定ユーザ名のタスクである" do
+      subject.each{|t|
+        t.name.should == "volpe"
+      }
+    end
+
+    it "doing のタスクである" do
+      subject.each{|t|
+        t.status_sym.should == :doing
+      }
+    end
+  end
+
+  describe "本日のDoneと名前を指定してタスクを取り出す場合" do
+    before do
+      @task = Task.today_done_by_name("volpe")
+    end
+    subject{@task}
+
+    it "タスクを取得すること" do
+      subject.size.should >= 1
+    end
+
+    it "doneのタスクである" do
       subject.each{|t|
         t.status_sym.should == :done
       }
