@@ -46,4 +46,50 @@ describe User do
       it { subject.should == nil }
     end
   end
+
+  describe "全てのユーザを取得する" do
+    before do
+      @users = User.all_user
+    end
+
+    subject{@users}
+    it { subject.size.should >= 1 }
+  end
+
+  describe "指定ユーザの背景画像名を取得する" do
+    before do
+      @bg_img_name = User.bg_img_by_name("volpe")
+    end
+    subject{@bg_img_name}
+    it { subject.should == BASE_BG_PATH + "hoge.jpg" }
+  end
+
+  describe "指定ユーザに背景画像を設定する" do
+    before do
+      User.set_bg_img("volpe","firenze.jpg")
+    end
+    it { User.bg_img_by_name("volpe").should == BASE_BG_PATH + "firenze.jpg" }
+  end
+
+  describe "指定ユーザのレイアウト名を取得する" do
+    before do
+      @layout_name = User.layout_by_name("volpe")
+    end
+    subject{@layout_name}
+    it { subject.should == BASE_LAYOUT_PATH + "landscape.tmpl" }
+  end
+
+  describe "指定ユーザにレイアウトを設定する" do
+    before do
+      User.set_layout("volpe","normal.tmpl")
+    end
+    it { User.layout_by_name("volpe").should == BASE_LAYOUT_PATH + "normal.tmpl" }
+  end
+
+  describe "ポモドーロ回数をインクリメントする" do
+    before do
+      User.inc_pomo("volpe")
+    end
+    it { User.by_name("volpe").pomo.should == 10 }
+  end
 end
