@@ -1,5 +1,6 @@
 Todolist::Application.routes.draw do
 #  get "kanbanlist/index"
+  post "kanbanlist/new_user"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
