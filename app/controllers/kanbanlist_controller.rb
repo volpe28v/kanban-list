@@ -4,12 +4,12 @@ class KanbanlistController < ApplicationController
   end
 
   def new_user
-
-    redirect_to :action => "user"
+    User.add_user(params[:user])
+    redirect_to :action => "user",:user => params[:user]
   end
 
   def user
-
+    @user_name = params[:user]
   end
 
 end

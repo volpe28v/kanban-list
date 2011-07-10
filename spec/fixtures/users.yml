@@ -2,19 +2,19 @@
   name: volpe
   pass:
   bg_img: hoge.jpg
-  layout: landscape.tmpl
+  layout: landscape
   pomo: 9
 
 2:
   name: baggio
   pass:
   bg_img: fuga.jpg
-  layout: portlate.tmpl
+  layout: portlate
   pomo: 10
 
 3:
   name: zola
   pass:
   bg_img: parma.jpg
-  layout: new_face.tmpl
+  layout: new_faec
   pomo: 10

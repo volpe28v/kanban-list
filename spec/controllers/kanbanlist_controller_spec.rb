@@ -21,7 +21,7 @@ describe KanbanlistController do
 
   describe "POST 'new_user'" do
     before do
-      post :new_user,{ :name => "zidane" }
+      post :new_user,{ :user => "messi" }
     end
 
     it 'リダイレクトすること' do
@@ -29,16 +29,25 @@ describe KanbanlistController do
     end
 
     it 'タスク一覧画面を表示すること' do
-      response.should redirect_to(:action => 'user')
+      response.should redirect_to(:action => 'user', :user => "messi")
     end
 
     it '新規ユーザが登録されること' do
-      User.find_by_name("zidane").should_not be_nil
+      User.find_by_name("messi").should_not be_nil
+    end
+  end
+
+  describe "POST 'user'" do
+    before do
+      post :user,{ :user => "baggio" }
     end
 
-    it '新規ユーザの情報が正しいこと' do
-      User.find_by_name("zidane").name.should == "zidane"
+    it "レスポンスが正常であること" do
+      response.should be_success
     end
 
+    it 'タスク一覧画面を表示すること' do
+      response.should render_template("kanbanlist/user")
+    end
   end
 end

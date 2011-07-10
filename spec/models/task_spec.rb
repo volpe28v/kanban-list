@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Task do
-  fixtures :tasks
+  fixtures :tasks, :users
 
   describe "初期設定されているタスクを読み出す場合" do
     it "全て読み出すことができる" do

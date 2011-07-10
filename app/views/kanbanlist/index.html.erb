@@ -1,10 +1,48 @@
+<div id="wrapper">
+ 
+<table>
+<tr><td id="main">
+<h3 class="title">TodoList について</h3>
+<ul>
+<li>本TodoListはWeb上で比較的お手軽にTodo管理を行うためのWebアプリです。
+<li>Agile界隈で話題になっている「ソフトウェアかんばん」をイメージして作りました。
+<li>タスク状態の変更をマウスのドラッグ＆ドロップで容易に行えます。
+</ul>
 
+<h3 class="title">使い方</h3>
+<ul>
+<li>新規でTodoList を利用したい場合は「ユーザ登録」から任意のユーザ名でログインしてください(特に断らなくてもいいです)
+<li>既存ユーザの方は「ユーザ選択」から自分のユーザ名を選択しログインしてください
+<li>操作の基本は「タスクを追加」「ドラッグ＆ドロップで状態変更」「チェックでDone」です。
+<li>細かな操作方法は説明しませんが、雰囲気で触ってみてください。
+<li>ポモドーロテクニックを実践するためのタイマー機能もあります。<image src="/images/tomato.gif"> を探してみてください。
+</ul>
+
+
+<h3 class="title">その他注意事項</h3>
+<ul>
+<li>ブラウザは IE6 ですと表示が崩れたり処理が重い場合があります。GoogleChrome Safari Firefox 等でのご利用をお薦めします。
+</ul>
+
+<div id="generatedby">Created by Naoki Kodama. </div> 
+</td><td id="side_bar">
+
+<div class="menu">ユーザ登録</div>
 <% form_tag :action => "new_user" do %>
   <%= text_field_tag 'user' %>
   <%= submit_tag "NewUser" %>
 <% end %>
-
+<br>
+<div class="menu">ユーザ選択</div>
 <% form_tag :action => "user" do %>
-  <%= select_tag "select_user", raw("<option id=0>** select user **</option>") + options_from_collection_for_select(@all_user, "id", "name") %>
+  <%= select_tag "user", raw("<option id=0>** select user **</option>") + options_from_collection_for_select(@all_user, "name", "name"),:onchange => 'submit();' %>
 <% end %>
+
+
+<hr>
+</td></tr>
+</table>
+
+
+</div>
 

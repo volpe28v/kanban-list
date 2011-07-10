@@ -1,0 +1,12 @@
+development:
+  default_bg_image: "viola.jpg"
+  default_layout:   "landscape"
+
+test:
+  default_bg_image: "viola.jpg"
+  default_layout:   "landscape"
+
+production:
+  default_bg_image: "viola.jpg"
+  default_layout:   "landscape"
+
