@@ -1,10 +1,10 @@
 
-<% form_tag :action => "new", :id => "user_new_form" do %>
+<% form_tag :action => "new_user" do %>
   <%= text_field_tag 'user' %>
   <%= submit_tag "NewUser" %>
 <% end %>
 
-<% form_tag :action => "user", :id => "select_user_form" do %>
+<% form_tag :action => "user" do %>
   <%= select_tag "select_user", raw("<option id=0>** select user **</option>") + options_from_collection_for_select(@all_user, "id", "name") %>
 <% end %>
 
