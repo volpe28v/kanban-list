@@ -10,7 +10,13 @@
   <%= csrf_meta_tag %>
 
 </head>
-<body>
+<body style="
+ background-image: url( <%= @bg_img_name %> );
+ background-attachment: fixed;
+ background-position: center top;
+ background-repeat:  repeat
+"> 
+
 
 <%= yield %>
 

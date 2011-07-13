@@ -1,12 +1,15 @@
 development:
   default_bg_image: "viola.jpg"
   default_layout:   "landscape"
+  base_bg_path:     "/images/bg_img/"
 
 test:
   default_bg_image: "viola.jpg"
   default_layout:   "landscape"
+  base_bg_path:     "/images/bg_img/"
 
 production:
   default_bg_image: "viola.jpg"
   default_layout:   "landscape"
+  base_bg_path:     "/images/bg_img/"
 

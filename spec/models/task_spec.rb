@@ -129,4 +129,20 @@ describe Task do
       }
     end
   end
+
+  describe "各状態のタスク数を取り出す場合" do
+    before do
+      @task_counts = Task.all_counts_by_name("volpe")
+    end
+    subject{@task_counts}
+
+    it "タスク数が正しいこと" do
+      subject[:todo_h].should >= 1
+      subject[:todo_m].should >= 1
+      subject[:todo_l].should >= 1
+      subject[:doing].should >= 1
+      subject[:waiting].should >= 1
+      subject[:done].should >= 2
+    end
+  end
 end
