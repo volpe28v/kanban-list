@@ -10,6 +10,7 @@ class KanbanlistController < ApplicationController
 
   def user
     @user_name = params[:user]
+    @todo_high_tasks = Task.by_name_and_status(@user_name,:todo_h)
   end
 
 end

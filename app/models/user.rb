@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def self.bg_img_by_name(name)
-    BASE_BG_PATH + where(:name => name).first.bg_img
+    AppConfig[:default_bg_image] + where(:name => name).first.bg_img
   end
 
   def self.set_bg_img(name, bg_img)
@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def self.layout_by_name(name)
-    BASE_LAYOUT_PATH + where(:name => name).first.layout
+    AppConfig[:default_layout] + where(:name => name).first.layout
   end
 
   def self.set_layout(name, layout)

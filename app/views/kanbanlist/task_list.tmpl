@@ -1,0 +1,52 @@
+<table width="100%" border="0">
+<tr><td valign="top" width="50%">
+
+
+<h2 id="doing_bj" class="doing">Doing</h2>
+<ul id="doing" class="droptrue"> 
+DOING_LI_PLACE
+</ul> 
+
+<h2 id="todo_h_bj" class="todo_high">ToDo - High -</h2>
+<ul id="todo_high" class="droptrue">
+TODO_HIGH_LI_PLACE
+</ul>
+
+<h2 id="todo_bj" class="todo">ToDo</h2>
+<div id="add_todo_button" style="display:block">
+  <input type="button" value="AddToDo" style="font-size:12px" onclick="toggleDisplay('add_todo_button','add_todo_form');$('#add_todo_form_msg').get(0).focus();return false;"\/> 
+</div>
+<div id="add_todo_form" style="display:none">
+  <form method="post" style="display:inline" onsubmit="addTodoAjax($('#add_todo_form_msg').get(0).value);$('#add_todo_form_msg').get(0).value='';return false;">
+    <input type="text" id="add_todo_form_msg" name="ttl" value="" size="64" style="font-weight:normal;padding:2px" onfocus="this.style.background='#ffc';"/>
+    <input type="submit" value="Add" style="font-size:10px" />
+    <a href="#" onclick="toggleDisplay('add_todo_form','add_todo_button');return false;">[cancel]</a>
+  </form>
+</div>
+
+<ul id="todo" class="droptrue">
+TODO_LI_PLACE
+</ul>
+
+
+<h2 id="todo_l_bj" class="todo_low">ToDo - Low -</h2>
+<ul id="todo_low" class="droptrue">
+TODO_LOW_LI_PLACE
+</ul>
+
+</td>
+<td valign="top" width="50%">
+
+<h2 id="waiting_bj" class="waiting">Waiting</h2>
+<ul id="waiting" class="droptrue">
+WAITING_LI_PLACE
+</ul>
+
+<h2 id="done_bj" class="done">Done - Recent RECENT_NUM - </h2>
+<ul id="done"> 
+DONE_LI_PLACE
+</ul> 
+
+</td></tr>
+</table>
+

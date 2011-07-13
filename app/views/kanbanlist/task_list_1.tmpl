@@ -1,10 +1,9 @@
 <table width="100%" border="0">
-<tr><td colspan=3>
-
+<tr><td colspan=2>
 <table><tr><td>
 <div class="add_form">
   <div id="add_todo_form" style="display:block">
-    <form method="post" style="display:inline" onsubmit="addTodoWithPrefix($('#prefix').get(0).value ,$('#add_todo_form_msg').get(0).value);$('#add_todo_form_msg').get(0).value='';return false;">
+    <form method="post" style="display:inline" onsubmit="addTodoWithPrefix($('#prefix').get(0).value , $('#add_todo_form_msg').get(0).value);$('#add_todo_form_msg').get(0).value='';return false;">
       <input type="submit" value="Add" style="font-size:10px" />
       <input type="text" id="prefix" name="prefix" value="" size="6" style="font-weight:normal;padding:2px; background:#ff9" />
       <input type="text" id="add_todo_form_msg" name="ttl" value="" size="64" style="font-weight:normal;padding:2px; background:#ffc"/>
@@ -13,9 +12,9 @@
   </div>
 </div>
 </td></tr></table>
-
 </td></tr>
-<tr><td valign="top" width="35%">
+
+<tr><td valign="top" width="50%">
 
 <div class="memitem">
 <div class="memproto">
@@ -26,9 +25,7 @@
 </div>
 <div class="memdoc_todo_high">
 <ul id="todo_high" class="droptrue">
-  <% @todo_high_tasks.each do |task| %>
-    <%= render "task", {:task => task } %>
-  <% end %>
+TODO_HIGH_LI_PLACE
 </ul>
 </div>
 <div class="memproto_mid">
@@ -52,7 +49,7 @@ TODO_LOW_LI_PLACE
 
 
 </td>
-<td valign="top" width="35%">
+<td valign="top" width="50%">
 
 <div class="memitem">
 <div class="memproto">
@@ -75,9 +72,6 @@ WAITING_LI_PLACE
 </ul>
 </div>
 </div>
-
-</td>
-<td valign="top" width="30%">
 
 <div class="memitem">
 <div class="memproto">

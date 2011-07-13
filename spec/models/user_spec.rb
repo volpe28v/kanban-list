@@ -99,14 +99,14 @@ describe User do
       @bg_img_name = User.bg_img_by_name("volpe")
     end
     subject{@bg_img_name}
-    it { subject.should == BASE_BG_PATH + "hoge.jpg" }
+    it { subject.should == AppConfig[:default_bg_image] + "hoge.jpg" }
   end
 
   describe "指定ユーザに背景画像を設定する" do
     before do
       User.set_bg_img("volpe","firenze.jpg")
     end
-    it { User.bg_img_by_name("volpe").should == BASE_BG_PATH + "firenze.jpg" }
+    it { User.bg_img_by_name("volpe").should == AppConfig[:default_bg_image] + "firenze.jpg" }
   end
 
   describe "指定ユーザのレイアウト名を取得する" do
@@ -114,14 +114,14 @@ describe User do
       @layout_name = User.layout_by_name("volpe")
     end
     subject{@layout_name}
-    it { subject.should == BASE_LAYOUT_PATH + "landscape" }
+    it { subject.should == AppConfig[:default_layout] + "landscape" }
   end
 
   describe "指定ユーザにレイアウトを設定する" do
     before do
       User.set_layout("volpe","normal.tmpl")
     end
-    it { User.layout_by_name("volpe").should == BASE_LAYOUT_PATH + "normal.tmpl" }
+    it { User.layout_by_name("volpe").should == AppConfig[:default_layout] + "normal.tmpl" }
   end
 
   describe "ポモドーロ回数をインクリメントする" do

@@ -1,0 +1,716 @@
+#doing   { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
+  width: 99%; 
+  min-height: 30px; 
+  height: auto !important;
+  height: 30px;
+}
+#waiting { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
+  width: 99%; 
+  min-height: 30px; 
+  height: auto !important;
+  height: 30px;
+}
+#todo    { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
+  width: 99%; 
+  min-height: 30px; 
+  height: auto !important;
+  height: 30px;
+}
+#todo_low { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
+  width: 99%; 
+  min-height: 30px; 
+  height: auto !important;
+  height: 30px;
+}
+#todo_high { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
+  width: 99%; 
+  min-height: 30px; 
+  height: auto !important;
+  height: 30px;
+}
+#done    {
+  list-style-type: none;
+  margin: 0px 0px 0px 0px;
+  padding: 2px;
+  border : 0px solid #aaaaaa;
+  width:  99%;
+  border-top:0px solid #888;
+  border-right:0px solid #333;
+  border-bottom:0px solid #333;
+  border-left:0px solid #888;
+  color: #111;
+  min-height: 30px; 
+  height: auto !important;
+  height: 30px;
+}
+
+
+.doinglist   { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; width: 98%; }
+.donelist    {
+  list-style-type: none;
+  margin: 2px 20px 0px 4px;
+  padding: 2px;
+  border : 0px solid #aaaaaa;
+  width:  96%;
+  border-top:1px solid #888;
+  border-right:2px solid #333;
+  border-bottom:2px solid #333;
+  border-left:1px solid #888;
+  background: #ddd;
+  color: #111;
+}
+
+
+#donelist    {
+  list-style-type: none;
+  margin: 2px 20px 0px 4px;
+  padding: 2px;
+  border : 0px solid #aaaaaa;
+  width:  96%;
+  border-top:1px solid #888;
+  border-right:2px solid #333;
+  border-bottom:2px solid #333;
+  border-left:1px solid #888;
+  background: #ddd;
+  color: #111;
+}
+
+li {
+        /* firefox specific markup */
+        -moz-border-radius-topleft: 6px;
+        -moz-border-radius-topright: 6px;
+        -moz-border-radius-bottomleft: 6px;
+        -moz-border-radius-bottomright: 6px;
+        /* webkit specific markup */
+        -webkit-border-top-left-radius: 6px;
+        -webkit-border-top-right-radius: 6px;
+        -webkit-border-bottom-left-radius: 6px;
+        -webkit-border-bottom-right-radius: 6px;
+}
+
+#doing   li { 
+  margin: 0px 2px 1px 2px; 
+  padding: 1px; 
+  font-weight: bold; 
+  font-size: 12px; 
+  text-decoration:none;
+  border-top:1px solid #88A;
+  border-right:2px solid #557;
+  border-bottom:2px solid #557;
+  border-left:1px solid #88A;
+  background-image: url("/images/doing_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#cde), to(#74b9ff));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #cde, #74b9ff);
+
+  color: #358;
+  cursor: pointer;
+}
+
+#waiting li { 
+  margin: 0px 2px 1px 2px; padding: 1px; 
+  font-weight: bold; 
+  font-size: 12px; 
+  text-decoration:none;
+  border-top:1px solid #aa6;
+  border-right:2px solid #773;
+  border-bottom:2px solid #773;
+  border-left:1px solid #aa6;
+  background-image: url("/images/waiting_gra.jpg"); 
+  background-position: center bottom;
+  background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#eec), to(#ee5));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #eec, #ee5);
+
+  color: #551;
+  cursor: pointer;
+}
+
+#todo    li { 
+  margin: 0px 2px 1px 2px; 
+  padding: 1px; 
+  border : 1px solid #34f; 
+  font-weight: bold; 
+  font-size: 12px; 
+  text-decoration:none;
+  border-top:1px solid #6b7;
+  border-right:2px solid #384;
+  border-bottom:2px solid #384;
+  border-left:1px solid #6b7;
+  background-image: url("/images/todo_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#beb), to(#7CFC00));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #beb, #7CFC00);
+
+  color: #152;
+  cursor: pointer;
+}
+
+#todo_low li { 
+  margin: 0px 2px 1px 2px; 
+  padding: 1px; 
+  border : 1px solid #34f; 
+  font-weight: bold; 
+  font-size: 12px; 
+  text-decoration:none;
+  border-top:1px solid #bc9;
+  border-right:2px solid #896;
+  border-bottom:2px solid #896;
+  border-left:1px solid #bc9;
+  background-image: url("/images/todo_l_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#df7), to(#ADFF2F));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #df7, #ADFF2F);
+
+  color: #352;
+  cursor: pointer;
+}
+
+#todo_high li {
+  margin: 0px 2px 1px 2px;
+  padding: 1px;
+  font-weight: bold;
+  font-size: 12px;
+  text-decoration:none;
+  border-top:1px solid #399;
+  border-right:2px solid #066;
+  border-bottom:2px solid #066;
+  border-left:1px solid #399;
+  background-image: url("/images/todo_h_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#cec), to(#40cF40));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #cec, #40cF40);
+
+  color: #155;
+  cursor: pointer;
+}
+
+#done li {
+  margin: 0px 2px 1px 2px;
+  padding: 1px;
+  font-size: 11px;
+  text-decoration:none;
+  border-top:0px solid #666;
+  border-right:1px solid #222;
+  border-bottom:1px solid #222;
+  border-left:0px solid #666;
+  background-image: url("/images/done_gra.jpg");
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#aaa));
+  /* For Mozilla/Gecko (Firefox etc) */ 
+  background: -moz-linear-gradient(top, #cdc, #00FF00);
+
+  color: #444;
+}
+
+#donelist    li {
+  margin: 0px 2px 1px 2px;
+  padding: 1px;
+  border : 0px solid #34f;
+  background: #fff;
+  font-size: 14px;
+  color: #000;
+}
+
+.doinglist   li {
+  margin: 0px 2px 1px 2px;
+  padding: 1px;
+  font-weight: bold;
+  font-size: 12px;
+  text-decoration:none;
+  border-top:1px solid #88A;
+  border-right:2px solid #557;
+  border-bottom:2px solid #557;
+  border-left:1px solid #88A;
+  background-image: url("/images/doing_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#cde), to(#74b9ff));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #cde, #74b9ff);
+
+  color: #358;
+}
+
+.donelist    li {
+  margin: 0px 2px 1px 2px;
+  padding: 0px;
+  border : 0px solid #34f;
+  background: #efefef;
+  font-size: 11px;
+
+  color: #444;
+}
+
+.ui-state-highlight { height: 1.5em; border-style : dashed; }
+
+a { text-decoration: none; color: #8B0000; }
+
+#serverMsg{
+  margin: 0 0 0 20px;
+  width             : 97%   ;
+  height            :  8px    ;
+  padding           : 10px    ;
+  z-index:100;
+}
+
+th.doing{ 
+    padding: 4px;
+    border: #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
+    font-weight: bold;
+    line-height: 100%;
+    text-align: center;
+    background-image: url("/images/doing_gra.jpg");
+    background-position: center bottom;
+    background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#cde), to(#74b9ff));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #cde, #74b9ff);
+
+}
+
+th.todo_h{
+    padding: 4px;
+    border: #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
+    font-weight: bold;
+    line-height: 100%;
+    text-align: center;
+    background-image: url("/images/todo_h_gra.jpg");
+    background-position: center bottom;
+    background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#cec), to(#40cF40));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #cec, #40cF40);
+
+}
+
+th.todo{
+    padding: 4px;
+    border: #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
+    font-weight: bold;
+    line-height: 100%;
+    text-align: center;
+    background-image: url("/images/todo_gra.jpg");
+    background-position: center bottom;
+    background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#beb), to(#7CFC00));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #beb, #7CFC00);
+
+
+}
+
+th.todo_l{
+    padding: 4px;
+    border: #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
+    font-weight: bold;
+    line-height: 100%;
+    text-align: center;
+    background-image: url("/images/todo_l_gra.jpg");
+    background-position: center bottom;
+    background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#df7), to(#ADFF2F));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #df7, #ADFF2F);
+
+}
+
+th.waiting{
+    padding: 4px;
+    border: #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
+    font-weight: bold;
+    line-height: 100%;
+    text-align: center;
+    background-image: url("/images/waiting_gra.jpg");
+    background-position: center bottom;
+    background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#eec), to(#ee5));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #eec, #ee5);
+
+}
+
+th.done{
+    padding: 4px;
+    border: #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
+    font-weight: bold;
+    line-height: 100%;
+    text-align: center;
+    background-image: url("/images/done_gra.jpg");
+    background-position: center bottom;
+    background-repeat:  repeat;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#aaa));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #cdc, #00FF00);
+
+
+}
+
+h1,h2{
+        color: #eeeeee;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+        font-family: cursive;
+
+}
+
+h2.doing{
+        margin: 0.5em 2% 0.0em 5px;
+        padding: 0.3em 0.5em 0.2em 0.5em;
+        border-style: solid;
+        border-width: 0 0 2px 25px;
+        border-color: #BFEFDF;
+        font-size: 18px;
+}
+
+h2.waiting{
+        margin: 0.5em 2% 0.0em 5px;
+        padding: 0.3em 0.5em 0.2em 0.5em;
+        border-style: solid;
+        border-width: 0 0 2px 25px;
+        border-color: #EfEfAb; 
+        font-size: 18px;
+}
+
+h2.todo{
+        margin: 0.5em 2% 0.0em 5px;
+        padding: 0.3em 0.5em 0.2em 0.5em;
+        border-style: solid;
+        border-width: 0 0 2px 25px;
+        border-color: #9DE0AD;
+        font-size: 18px;
+}
+
+h2.todo_low{
+        margin: 0.5em 2% 0.0em 5px;
+        padding: 0.3em 0.5em 0.2em 0.5em;
+        border-style: solid;
+        border-width: 0 0 2px 25px;
+        border-color: #E5FCC2;
+        font-size: 18px;
+}
+
+h2.todo_high{
+        margin: 0.5em 2% 0.0em 5px;
+        padding: 0.3em 0.5em 0.2em 0.5em;
+        border-style: solid;
+        border-width: 0 0 2px 25px;
+        border-color: #75dDd8;
+        font-size: 18px;
+}
+
+h2.done{
+        margin: 0.5em 2% 0.0em 5px;
+        padding: 0.3em 0.5em 0.2em 0.5em;
+        border-style: solid;
+        border-width: 0 0 2px 25px;
+        border-color: #dfdfdf;
+        font-size: 18px;
+}
+
+
+table#table-01 {
+    margin: 0 0 0 20px;
+    border: 1px #999999 solid;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table#table-01 th {
+    padding: 4px;
+    border: 1px #999999 solid;
+    border-width: 0 0 1px 1px;
+}
+
+table#table-01 td {
+    padding: 4px;
+    border: 1px #bbbbbb solid;
+    background: #F5F5F5;
+    border-width: 0 0 1px 1px;
+    text-align: center;
+}
+
+table#table-02 {
+    margin: 0 0 0 2px;
+    border: 1px #999999 solid;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table#table-02 th {
+    padding: 4px;
+    border: 1px #999999 solid;
+    border-width: 0 0 1px 1px; 
+}
+
+table#table-02 td {
+    padding: 4px;
+    border: 1px #bbbbbb solid;
+    background: #F5F5F5;
+    border-width: 0 0 1px 1px;
+    text-align: center;
+}
+
+#info_msg {
+    width:  94%; 
+    height: 50px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+  font-size: 12px;
+  list-style-type: none;
+  margin: 0px 0px 0px 10px;
+  padding: 2px;
+  border : 0px solid #aaaaaa;
+  border-top:1px solid #888;
+  border-right:2px solid #333;
+  border-bottom:2px solid #333;
+  border-left:1px solid #888;
+  background: #ddd;
+  color: #111;
+
+        /* firefox specific markup */
+        -moz-border-radius-topleft: 10px;
+        -moz-border-radius-topright: 10px;
+        -moz-border-radius-bottomleft: 10px;
+        -moz-border-radius-bottomright: 10px;
+        /* webkit specific markup */
+        -webkit-border-top-left-radius: 10px;
+        -webkit-border-top-right-radius: 10px;
+        -webkit-border-bottom-left-radius: 10px;
+        -webkit-border-bottom-right-radius: 10px;
+
+}
+
+#info_msg li {
+    margin: 0px 0px 0px 4px;
+}
+
+.refresh_alert_msg {
+        white-space: nowrap;
+        font-weight: bold;
+        font-size:  10pt;
+        text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
+        margin-left: 10px;
+        color: #FFFF55;
+}
+
+
+.name_list    {
+  list-style-type: none;
+  margin: 10px 10px 0px 10px;
+  padding: 5px;
+  border : 0px solid #aaaaaa;
+/*  width:  96%; */
+  border-top:1px solid #888;
+  border-right:2px solid #333;
+  border-bottom:2px solid #333;
+  border-left:1px solid #888;
+  background: #eee;
+  color: #111;
+}
+
+.counts {
+        color: black;
+        font-size: 12pt;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
+}
+
+.memitem {
+        padding: 0;
+        margin-right:  2px;
+        margin-left:  2px;
+        margin-top: 2px;
+        margin-bottom: 14px;
+}
+
+.memname {
+        white-space: nowrap;
+        font-weight: bold;
+        margin-left: 15px;
+}
+
+.memname_doing {
+        color: #000066;
+}
+
+.memdoc_doing {
+        border-bottom: 2px solid #A8B8D9;
+        border-left: 2px solid #A8B8D9;
+        border-right: 2px solid #A8B8D9;
+        padding: 2px 0px;
+        border-top-width: 0;
+        /* firefox specific markup */
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        /* webkit specific markup */
+        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        -webkit-border-bottom-right-radius: 8px;
+        -webkit-border-bottom-left-radius: 8px;
+}
+
+.memname_todo_high {
+        color: #006600;
+}
+
+.memdoc_todo_high {
+        border-bottom: 0px solid #A8B8D9;
+        border-left: 2px solid #A8B8D9;
+        border-right: 2px solid #A8B8D9;
+        padding: 2px 0px;
+        border-top-width: 0;
+        /* firefox specific markup */
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        /* webkit specific markup */
+        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+//        -webkit-border-bottom-right-radius: 8px;
+//        -webkit-border-bottom-left-radius: 8px;
+
+}
+
+.memproto {
+        border-top: 1px solid #A8B8D9;
+        border-left: 1px solid #A8B8D9;
+        border-right: 1px solid #A8B8D9;
+        font-size: 16pt;
+        font-weight: bold;
+        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+        /* firefox specific markup */
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        /* webkit specific markup */
+        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        background-image:url('/images/nav_f.png');
+        background-repeat:repeat-x;
+        background-color: #E2E8F2;
+        -webkit-border-top-right-radius: 8px;
+        -webkit-border-top-left-radius: 8px;
+
+}
+
+.memname_mid {
+        color: #224422;
+}
+
+.memproto_mid {
+        border-top: 1px solid #A8B8D9;
+        border-left: 1px solid #A8B8D9;
+        border-right: 1px solid #A8B8D9;
+        font-size: 10pt;
+        font-weight: bold;
+        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+        /* firefox specific markup */
+//        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        /* webkit specific markup */
+//        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        background-image:url('/images/nav_f.png');
+        background-repeat:repeat-x;
+        background-color: #E2E8F2;
+
+}
+
+.memdoc_todo_low {
+        border-bottom: 2px solid #A8B8D9;
+        border-left: 2px solid #A8B8D9;
+        border-right: 2px solid #A8B8D9;
+        padding: 2px 0px;
+        border-top-width: 0;
+        /* firefox specific markup */
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        /* webkit specific markup */
+        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        -webkit-border-bottom-right-radius: 8px;
+        -webkit-border-bottom-left-radius: 8px;
+
+}
+
+.memname_waiting {
+        color: #888800;
+}
+
+.memdoc_waiting {
+        border-bottom: 2px solid #A8B8D9;
+        border-left: 2px solid #A8B8D9;
+        border-right: 2px solid #A8B8D9;
+        padding: 2px 0px;
+        border-top-width: 0;
+        /* firefox specific markup */
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        /* webkit specific markup */
+        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        -webkit-border-bottom-right-radius: 8px;
+        -webkit-border-bottom-left-radius: 8px;
+}
+
+.memname_done {
+        color: #555;
+}
+
+.memdoc_done {
+        border-bottom: 2px solid #A8B8D9;
+        border-left: 2px solid #A8B8D9;
+        border-right: 2px solid #A8B8D9;
+        padding: 2px 0px;
+        border-top-width: 0;
+        /* firefox specific markup */
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        /* webkit specific markup */
+        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        -webkit-border-bottom-right-radius: 8px;
+        -webkit-border-bottom-left-radius: 8px;
+}
+
+.add_form {
+        border-top: 1px solid #A8B8D9;
+        border-left: 1px solid #A8B8D9;
+        border-right: 1px solid #A8B8D9;
+        font-size: 16pt;
+        font-weight: bold;
+        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+        /* firefox specific markup */
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        /* webkit specific markup */
+        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        background-image:url('/images/nav_f.png');
+        background-repeat:repeat-x;
+        background-color: #E2E8F2;
+        -webkit-border-radius: 8px;
+}
