@@ -6,15 +6,9 @@
 $(function(){
     initForTaskList();
 
-    $('#filter_str').get(0).focus();
+//    $('#filter_str').get(0).focus();
 
-    $(".task_elem").hover(function(){
-//        $(this).css("background","#ffff66");
-    },function(){
-
-    });
-
-    touch_init();
+//    touch_init();
 
     return;
 });

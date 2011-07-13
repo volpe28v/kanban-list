@@ -36,7 +36,9 @@
 </div>
 <div class="memdoc_todo_high">
 <ul id="todo" class="droptrue">
-TODO_LI_PLACE
+  <% @todo_mid_tasks.each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
 </ul>
 </div>
 <div class="memproto_mid">
@@ -44,7 +46,9 @@ TODO_LI_PLACE
 </div>
 <div class="memdoc_todo_low">
 <ul id="todo_low" class="droptrue">
-TODO_LOW_LI_PLACE
+  <% @todo_low_tasks.each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
 </ul>
 
 </div>
@@ -60,7 +64,9 @@ TODO_LOW_LI_PLACE
 </div>
 <div class="memdoc_doing">
 <ul id="doing" class="droptrue">
-DOING_LI_PLACE
+  <% @doing_tasks.each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
 </ul>
 </div>
 </div>
@@ -71,7 +77,9 @@ DOING_LI_PLACE
 </div>
 <div class="memdoc_waiting">
 <ul id="waiting" class="droptrue">
-WAITING_LI_PLACE
+  <% @waiting_tasks.each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
 </ul>
 </div>
 </div>
@@ -81,11 +89,13 @@ WAITING_LI_PLACE
 
 <div class="memitem">
 <div class="memproto">
-<div class="memname_done"><center>Done - Recent RECENT_NUM - </center></div>
+  <div class="memname_done"><center>Done - Recent <%= @recent_done_num %> - </center></div>
 </div>
 <div class="memdoc_done">
 <ul id="done" class="droptrue">
-DONE_LI_PLACE
+  <% @done_tasks.each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
 </ul>
 </div>
 </div>

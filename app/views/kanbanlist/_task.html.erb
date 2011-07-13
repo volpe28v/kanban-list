@@ -1,53 +1,37 @@
-# li 要素を生成するメソッド
-def getTodoHtml( id_num, msg, active_no, update_time , first_hide = false)
-  disp_str = ["none","none","none"]
-  disp_li_str = "block"
-  disp_str[active_no] = "block";
-  
-  disp_li_str = "none" if first_hide == true
-
-  id = id_num.to_s
-
-  if update_time == nil
-    update_time = "0000-00-00 0 "
-  end
- 
-  show_time = "#{update_time.split(" ")[0].split("-")[1]}/#{update_time.split(" ")[0].split("-")[2]}"
-
-<li id="id_#{task.id}" class="task_elem" style="display:block">
-<div class="sorttime" alt="task.updated_at" id="ms_notyet_#{task.id}">
+<li id="id_<%= task.id %>" class="task_elem" style="display:block">
+<div class="sorttime" alt="<%= task.updated_at %>" id="ms_notyet_<%= task.id %>">
     <div class="citem_editable">
-      <div id="edit_link_ms_#{task.id}" style="display:block">
+      <div id="edit_link_ms_<%= task.id %>" style="display:block">
         <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="left" width="20px">
-              <input type="checkbox" onclick="moveToDone('#id_#{task.id}');return false;"/>
+              <input type="checkbox" onclick="moveToDone('#id_<%= task.id %>');return false;"/>
         </td><td class="taskLabel" align="left">
-        <font color="#00008B" style="font-size:10px;font-weight:normal;" ><div id="edit_link_time_#{task.id}" style="display:inline;">[#{task.updated_at}]</div></font>&nbsp;
-        <div id="msg_#{task.id}" style="display:inline;">#{task.msg}</div>&nbsp;
+        <font color="#00008B" style="font-size:10px;font-weight:normal;" ><div id="edit_link_time_<%= task.id %>" style="display:inline;">[<%= task.updated_at.strftime("%m-%d") %>]</div></font>&nbsp;
+        <div id="msg_<%= task.id %>" style="display:inline;"><%= task.msg %></div>&nbsp;
         </td><td align="right" width="40px">
-        <div id="ms_#{task.id}_menu" style="display:inline;">
+        <div id="ms_<%= task.id %>_menu" style="display:inline;">
           <span class="s12">
-            <input type="image" src="images/pencil.gif" OnMouseOver="$(this).get(0).src = 'images/pencil_over.gif'" OnMouseOut="$(this).get(0).src = 'images/pencil.gif'" onclick="$('#id_#{task.id}').parent().sortable('destroy');$('#ms_#{task.id}_edit').text($('#msg_#{task.id}').html());toggleDisplay(\'edit_link_ms_#{task.id}','edit_form_ms_#{task.id}');$('#ms_#{task.id}_edit').get(0).focus();return false;"/>
-            <input type="image" src="images/cross.gif" OnMouseOver="$(this).get(0).src = 'images/cross_over.gif'" OnMouseOut="$(this).get(0).src = 'images/cross.gif'" onclick="deleteTodo('#id_#{task.id}');return false;"/>
+            <input type="image" src="/images/pencil.gif" OnMouseOver="$(this).get(0).src = '/images/pencil_over.gif'" OnMouseOut="$(this).get(0).src = '/images/pencil.gif'" onclick="$('#id_<%= task.id %>').parent().sortable('destroy');$('#ms_<%= task.id %>_edit').text($('#msg_<%= task.id %>').html());toggleDisplay(\'edit_link_ms_<%= task.id %>','edit_form_ms_<%= task.id %>');$('#ms_<%= task.id %>_edit').get(0).focus();return false;"/>
+            <input type="image" src="/images/cross.gif" OnMouseOver="$(this).get(0).src = '/images/cross_over.gif'" OnMouseOut="$(this).get(0).src = '/images/cross.gif'" onclick="deleteTodo('#id_<%= task.id %>');return false;"/>
           </span>
         </div>
         </td></tr></table>
       </div>
-      <div id="edit_form_ms_#{task.id}" style="display:none">
-        <form method="post" style="display:inline" onsubmit="$('#id_#{task.id}').parent().sortable(option);updateToDoMsg('#ms_#{task.id}_edit', '#msg_#{task.id}');toggleDisplay('edit_form_ms_#{id}','edit_link_ms_#{id}');return false;">
+      <div id="edit_form_ms_<%= task.id %>" style="display:none">
+        <form method="post" style="display:inline" onsubmit="$('#id_<%= task.id %>').parent().sortable(option);updateToDoMsg('#ms_<%= task.id %>_edit', '#msg_<%= task.id %>');toggleDisplay('edit_form_ms_<%= task.id %>','edit_link_ms_<%= task.id %>');return false;">
         <textarea id="ms_' + id + '_edit" name="ttl" cols=80 rows=4 style="font-weight:normal;padding:2px;overflow:auto" onfocus="this.style.background='#ffc';"/></textarea>
           <input type="submit" value="Update" style="font-size:10px" />
           <span class="s12">
-            <a href="#" onclick="$('#id_#{task.id}').parent().sortable(option);toggleDisplay('edit_form_ms_#{task.id}','edit_link_ms_#{task.id}');return false;">[cancel]</a>
+            <a href="#" onclick="$('#id_<%= task.id %>').parent().sortable(option);toggleDisplay('edit_form_ms_<%= task.id %>','edit_link_ms_<%= task.id %>');return false;">[cancel]</a>
           </span>
         </form>
       </div>
-      <div id="fixed_#{task.id}" style="display:none">
+      <div id="fixed_<%= task.id %>" style="display:none">
         <table width="100%"><tr><td align="left">
-              <font color="#00008B"><div id="fixed_time_#{task.id}" style="display:inline;">[#{task.updated_at}]</div></font>&nbsp;
-              <div id="fixed_msg_#{task.id}" style="display:inline;">#{task.msg}</div>
+              <font color="#00008B"><div id="fixed_time_<%= task.id %>" style="display:inline;">[<%= task.updated_at %>]</div></font>&nbsp;
+              <div id="fixed_msg_<%= task.id %>" style="display:inline;"><%= task.msg %></div>
         </td><td align="right" width="40px">
-        <a href="#" onclick="returnToTodo('#id_#{task.id}');return false;">&nbsp;[<]</a>
-        <a href="#" onclick="deleteTodo('#id_#{task.id}');return false;">&nbsp;[x]</a>
+        <a href="#" onclick="returnToTodo('#id_<%= task.id %>');return false;">&nbsp;[<]</a>
+        <a href="#" onclick="deleteTodo('#id_<%= task.id %>');return false;">&nbsp;[x]</a>
         </td></tr></table>
       </div>
     </div>

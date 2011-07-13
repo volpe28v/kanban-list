@@ -25,4 +25,10 @@
 #    t.datetime "updated_at"
 #  end
 
+[0,1,2,3,4,5].each{|num|
+  Task.create(:name => "baggio",:msg => "hello kanban#{num}", :status => num)
+}
 
+[0,1,2,3,4,5].each{|num|
+  Task.create(:name => "naoki",:msg => "日本語タスク　#{num}", :status => num)
+}
