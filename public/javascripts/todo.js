@@ -100,7 +100,7 @@ function initForTaskList(){
 
 // ドラッグ＆ドロップ可能にする
 function setSortableList(){
-    $("#doing, #waiting, #todo, #todo_low, #todo_high" ).sortable(option).enableSelection();
+    $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
 }
 
 // 本日のDone 要素にマーカーをつける
@@ -160,30 +160,13 @@ function sendCurrentTodo(id, status, msg) {
 
   markTodayEditById( id );
 
-  var status_str = status;
-  var status_num = 0;
-
-  if ( status_str == "doing" ){
-    status_num = 2;
-  }else if ( status_str == "waiting" ){
-    status_num = 1;
-  }else if ( status_str == "done" ){
-    status_num = 3;
-  }else if ( status_str == "todo_low" ){
-    status_num = 4;
-  }else if ( status_str == "todo_high" ){
-    status_num = 5;
-  }else{
-    status_num = 0;
-  }
-
-  var request_str = "mode=update&name=" + CurrentUser + "&id=" + id + "&status=" + status_num + "&msg=" + msg;
+  var request_str = "id=" + id + "&status=" + status + "&msg=" + msg;
 //  $('#viewSortlist').html(request_str);
 
    $.ajax({
      type: "POST",
      cache: false,
-     url: "todo.cgi",
+     url: "/kanbanlist/update",
      data: request_str,
      success: function(result){
        $('#viewSortlist').html("Updated Todo : " + result );

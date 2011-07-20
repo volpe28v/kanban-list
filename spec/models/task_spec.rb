@@ -145,4 +145,17 @@ describe Task do
       subject[:done].should >= 2
     end
   end
+
+  describe "ステータスを更新する場合" do
+    before do
+      task = Task.find(6)
+      task.update_status("todo_m")
+      task.save
+    end
+
+    it "ステータスが数値で格納されること" do
+      Task.find(6).status.should == StatusTable[:todo_m]
+    end
+  end
+
 end

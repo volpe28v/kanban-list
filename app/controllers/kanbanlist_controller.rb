@@ -21,7 +21,16 @@ class KanbanlistController < ApplicationController
       :done_tasks      => Task.by_name_and_status(@user_name,:done),
     }
 
+    session[:user] = @user_name
+
     @recent_done_num = 15
+  end
+
+  def update
+    task = Task.find(params[:id])
+    task.update_status(params[:status])
+    task.save
+    render :text => "updated"
   end
 
 end

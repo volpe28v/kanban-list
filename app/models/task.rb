@@ -41,4 +41,8 @@ class Task < ActiveRecord::Base
   def status_sym
     StatusTable.each_key {|key| return key if StatusTable[key] == self.status }
   end
+
+  def update_status( status )
+    self.status = StatusTable[status.to_sym]
+  end
 end

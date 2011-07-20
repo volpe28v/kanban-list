@@ -10,19 +10,19 @@
   height: auto !important;
   height: 30px;
 }
-#todo    { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
+#todo_m    { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
   width: 99%; 
   min-height: 30px; 
   height: auto !important;
   height: 30px;
 }
-#todo_low { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
+#todo_l { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
   width: 99%; 
   min-height: 30px; 
   height: auto !important;
   height: 30px;
 }
-#todo_high { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
+#todo_h { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
   width: 99%; 
   min-height: 30px; 
   height: auto !important;
@@ -133,7 +133,7 @@ li {
   cursor: pointer;
 }
 
-#todo    li { 
+#todo_m    li { 
   margin: 0px 2px 1px 2px; 
   padding: 1px; 
   border : 1px solid #34f; 
@@ -157,7 +157,7 @@ li {
   cursor: pointer;
 }
 
-#todo_low li { 
+#todo_l li { 
   margin: 0px 2px 1px 2px; 
   padding: 1px; 
   border : 1px solid #34f; 
@@ -181,7 +181,7 @@ li {
   cursor: pointer;
 }
 
-#todo_high li {
+#todo_h li {
   margin: 0px 2px 1px 2px;
   padding: 1px;
   font-weight: bold;
@@ -411,7 +411,7 @@ h2.waiting{
         font-size: 18px;
 }
 
-h2.todo{
+h2.todo_m{
         margin: 0.5em 2% 0.0em 5px;
         padding: 0.3em 0.5em 0.2em 0.5em;
         border-style: solid;
@@ -420,7 +420,7 @@ h2.todo{
         font-size: 18px;
 }
 
-h2.todo_low{
+h2.todo_l{
         margin: 0.5em 2% 0.0em 5px;
         padding: 0.3em 0.5em 0.2em 0.5em;
         border-style: solid;
@@ -429,7 +429,7 @@ h2.todo_low{
         font-size: 18px;
 }
 
-h2.todo_high{
+h2.todo_h{
         margin: 0.5em 2% 0.0em 5px;
         padding: 0.3em 0.5em 0.2em 0.5em;
         border-style: solid;
@@ -588,11 +588,11 @@ table#table-02 td {
         -webkit-border-bottom-left-radius: 8px;
 }
 
-.memname_todo_high {
+.memname_todo_h {
         color: #006600;
 }
 
-.memdoc_todo_high {
+.memdoc_todo_h {
         border-bottom: 0px solid #A8B8D9;
         border-left: 2px solid #A8B8D9;
         border-right: 2px solid #A8B8D9;
@@ -626,11 +626,11 @@ table#table-02 td {
 
 }
 
-.memname_mid {
+.memname_todo_m {
         color: #224422;
 }
 
-.memproto_mid {
+.memproto_todo_m {
         border-top: 1px solid #A8B8D9;
         border-left: 1px solid #A8B8D9;
         border-right: 1px solid #A8B8D9;
@@ -647,7 +647,7 @@ table#table-02 td {
 
 }
 
-.memdoc_todo_low {
+.memdoc_todo_l {
         border-bottom: 2px solid #A8B8D9;
         border-left: 2px solid #A8B8D9;
         border-right: 2px solid #A8B8D9;
