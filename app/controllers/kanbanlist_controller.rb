@@ -29,6 +29,7 @@ class KanbanlistController < ApplicationController
   def update
     task = Task.find(params[:id])
     task.update_status(params[:status])
+    task.msg = params[:msg]
     task.save
     render :text => "updated"
   end

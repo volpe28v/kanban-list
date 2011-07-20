@@ -10,7 +10,7 @@
         </td><td align="right" width="40px">
         <div id="ms_<%= task.id %>_menu" style="display:inline;">
           <span class="s12">
-            <input type="image" src="/images/pencil.gif" OnMouseOver="$(this).get(0).src = '/images/pencil_over.gif'" OnMouseOut="$(this).get(0).src = '/images/pencil.gif'" onclick="$('#id_<%= task.id %>').parent().sortable('destroy');$('#ms_<%= task.id %>_edit').text($('#msg_<%= task.id %>').html());toggleDisplay(\'edit_link_ms_<%= task.id %>','edit_form_ms_<%= task.id %>');$('#ms_<%= task.id %>_edit').get(0).focus();return false;"/>
+            <input type="image" src="/images/pencil.gif" OnMouseOver="$(this).get(0).src = '/images/pencil_over.gif'" OnMouseOut="$(this).get(0).src = '/images/pencil.gif'" onclick="$('#id_<%= task.id %>').parent().sortable('destroy');$('#ms_<%= task.id %>_edit').text($('#msg_<%= task.id %>').html());toggleDisplay('edit_link_ms_<%= task.id %>','edit_form_ms_<%= task.id %>');$('#ms_<%= task.id %>_edit').get(0).focus();return false;"/>
             <input type="image" src="/images/cross.gif" OnMouseOver="$(this).get(0).src = '/images/cross_over.gif'" OnMouseOut="$(this).get(0).src = '/images/cross.gif'" onclick="deleteTodo('#id_<%= task.id %>');return false;"/>
           </span>
         </div>
@@ -18,7 +18,7 @@
       </div>
       <div id="edit_form_ms_<%= task.id %>" style="display:none">
         <form method="post" style="display:inline" onsubmit="$('#id_<%= task.id %>').parent().sortable(option);updateToDoMsg('#ms_<%= task.id %>_edit', '#msg_<%= task.id %>');toggleDisplay('edit_form_ms_<%= task.id %>','edit_link_ms_<%= task.id %>');return false;">
-        <textarea id="ms_' + id + '_edit" name="ttl" cols=80 rows=4 style="font-weight:normal;padding:2px;overflow:auto" onfocus="this.style.background='#ffc';"/></textarea>
+          <textarea id="ms_<%= task.id %>_edit" name="ttl" cols=80 rows=4 style="font-weight:normal;padding:2px;overflow:auto" onfocus="this.style.background='#ffc';"/></textarea>
           <input type="submit" value="Update" style="font-size:10px" />
           <span class="s12">
             <a href="#" onclick="$('#id_<%= task.id %>').parent().sortable(option);toggleDisplay('edit_form_ms_<%= task.id %>','edit_link_ms_<%= task.id %>');return false;">[cancel]</a>

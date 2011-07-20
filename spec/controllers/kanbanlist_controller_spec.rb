@@ -68,6 +68,10 @@ describe KanbanlistController do
     it "状態を更新すること" do
       Task.find(6).status.should == 3
     end
+
+    it "メッセージを更新すること" do
+      Task.find(6).msg.should == "updated"
+    end
   end
 
 end
