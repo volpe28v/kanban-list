@@ -16,7 +16,9 @@
  background-position: center top;
  background-repeat:  repeat
 "> 
-
+<%= link_to('Sign out', [ :destroy, :user_session ], :class => 'signOut') if current_user %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
 <%= yield %>
 

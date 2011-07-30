@@ -7,6 +7,8 @@ gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'jquery-rails', '>= 0.2.6'
+gem 'devise'
+gem 'rake', '>= 0.9.2'
 
 group :development do
   gem 'rspec-rails', '2.5.0'

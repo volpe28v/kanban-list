@@ -1,0 +1,106 @@
+<table width="100%" border="0">
+<tr><td colspan=3>
+
+<table><tr><td>
+<div class="add_form">
+  <div id="add_todo_form" style="display:block">
+    <form method="post" style="display:inline" onsubmit="addTodoWithPrefix($('#prefix').get(0).value ,$('#add_todo_form_msg').get(0).value);$('#add_todo_form_msg').get(0).value='';return false;">
+      <input type="submit" value="Add" style="font-size:10px" />
+      <input type="text" id="prefix" name="prefix" value="" size="6" style="font-weight:normal;padding:2px; background:#ff9" />
+      <input type="text" id="add_todo_form_msg" name="ttl" value="" size="64" style="font-weight:normal;padding:2px; background:#ffc"/>
+      <input type="submit" value="Add" style="font-size:10px" />
+    </form>
+  </div>
+</div>
+</td></tr></table>
+
+</td></tr>
+<tr><td valign="top" width="35%">
+
+<div class="memitem">
+<div class="memproto">
+<div class="memname_todo_high"><center>Todo</center></div>
+</div>
+<div class="memproto_todo_m">
+<div class="memname_todo_m"><center>High</center></div>
+</div>
+<div class="memdoc_todo_h">
+<ul id="todo_h" class="droptrue">
+  <% tasks[:todo_high_tasks].each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
+</ul>
+</div>
+<div class="memproto_todo_m">
+<div class="memname_todo_m"><center>Middle</center></div>
+</div>
+<div class="memdoc_todo_h">
+<ul id="todo_m" class="droptrue">
+  <% tasks[:todo_mid_tasks].each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
+</ul>
+</div>
+<div class="memproto_todo_m">
+<div class="memname_todo_m"><center>Low</center></div>
+</div>
+<div class="memdoc_todo_l">
+<ul id="todo_l" class="droptrue">
+  <% tasks[:todo_low_tasks].each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
+</ul>
+
+</div>
+</div>
+
+
+</td>
+<td valign="top" width="35%">
+
+<div class="memitem">
+<div class="memproto">
+<div class="memname_doing"><center>Doing</center></div>
+</div>
+<div class="memdoc_doing">
+<ul id="doing" class="droptrue">
+  <% tasks[:doing_tasks].each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
+</ul>
+</div>
+</div>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memname_waiting"><center>Waiting</center></div>
+</div>
+<div class="memdoc_waiting">
+<ul id="waiting" class="droptrue">
+  <% tasks[:waiting_tasks].each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
+</ul>
+</div>
+</div>
+
+</td>
+<td valign="top" width="30%">
+
+<div class="memitem">
+<div class="memproto">
+  <div class="memname_done"><center>Done - Recent <%= @recent_done_num %> - </center></div>
+</div>
+<div class="memdoc_done">
+<ul id="done" class="droptrue">
+  <% tasks[:done_tasks].each do |task| %>
+    <%= render "task", {:task => task } %>
+  <% end %>
+</ul>
+</div>
+</div>
+
+
+</td></tr>
+</table>
+

@@ -27,16 +27,9 @@
 <div id="generatedby">Created by Naoki Kodama. </div> 
 </td><td id="side_bar">
 
-<div class="menu">ユーザ登録</div>
-<% form_tag :action => "new_user" do %>
-  <%= text_field_tag 'user' %>
-  <%= submit_tag "NewUser" %>
-<% end %>
-<br>
-<div class="menu">ユーザ選択</div>
-<% form_tag :action => "user" do %>
-  <%= select_tag "user", raw("<option id=0>** select user **</option>") + options_from_collection_for_select(@all_user, "name", "name"),:onchange => 'submit();' %>
-<% end %>
+<p><%= link_to 'ログイン', [ :new, :user_session ]  %></p>
+<p><%= link_to 'ユーザー登録', [ :new, :user_registration ]  %></p>
+<p><%= link_to 'パスワード再発行', [ :new, :user_password ]  %></p>
 
 
 <hr>

@@ -1,5 +1,6 @@
 1:
   name: volpe
+  email: volpe@com
   pass:
   bg_img: hoge.jpg
   layout: landscape
@@ -7,6 +8,7 @@
 
 2:
   name: baggio
+  email: baggio@com
   pass:
   bg_img: fuga.jpg
   layout: portlate
@@ -14,6 +16,7 @@
 
 3:
   name: zola
+  email: zola@com
   pass:
   bg_img: parma.jpg
   layout: new_faec

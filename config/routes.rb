@@ -1,7 +1,17 @@
 Todolist::Application.routes.draw do
-#  get "kanbanlist/index"
-  post "kanbanlist/new_user"
-  post "kanbanlist/update"
+  get "tasks/index"
+
+  root :to => "kanbanlist#index"
+
+  devise_for :users
+  get 'tasks', :to => 'tasks#index', :as => :user_root
+
+  get "kanbanlist/index"
+
+  resources :tasks
+#  get "kanbanlist/user"
+#  post "kanbanlist/new_user"
+#  post "kanbanlist/update"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,5 +68,5 @@ Todolist::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match ':controller(/:action(/:id(.:format)))'
+  #match ':controller(/:action(/:id(.:format)))'
 end
