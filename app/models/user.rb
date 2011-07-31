@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :bg_img, :layout, :pomo
 
   scope :all_user, order('name')
 
@@ -33,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def self.bg_img_by_name(name)
-    AppConfig[:default_bg_image] + where(:name => name).first.bg_img
+    AppConfig[:base_bg_path] + where(:name => name).first.bg_img
   end
 
   def self.set_bg_img(name, bg_img)
@@ -41,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def self.layout_by_name(name)
-    AppConfig[:default_layout] + where(:name => name).first.layout
+    where(:name => name).first.layout
   end
 
   def self.set_layout(name, layout)
