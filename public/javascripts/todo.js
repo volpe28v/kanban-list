@@ -242,7 +242,7 @@ function moveToDone(move_id) {
 }
 
 function returnToTodo(ret_id){
-  var to_status = "todo";
+  var to_status = "todo_m";
   var id = ret_id.slice(4);
 
   $("#edit_link_ms_" + id ).css("display","block");
@@ -271,16 +271,9 @@ function deleteTodo( delete_id ) {
     if(r){
     var id = delete_id.slice(4);
     $.ajax({
-      type: "POST",
+      type: "DELETE",
       cache: false,
-      url: "todo.cgi",
-      data: "mode=delete&name=" + CurrentUser + "&id=" + id,
-      success: function(result){
-        var todo_info = result.split(",");
-        $('#viewSortlist').html("Deleted todo id: " + todo_info[0] );
-//        $('#viewSortlist').html(result );
-        updateCounts( todo_info.slice(1) );
-      }
+      url: "/tasks/" + id
     });
 
     $(delete_id).fadeOut("normal",function(){ $(delete_id).remove(); });

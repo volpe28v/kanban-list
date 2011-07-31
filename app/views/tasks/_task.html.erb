@@ -1,12 +1,13 @@
-<li id="id_<%= task.id %>" class="task_elem" style="display:block">
+<% done ||= false %>
+<li id="id_<%= task.id %>" class="task_elem" style="display:<%= display %>">
 <div class="sorttime" alt="<%= task.updated_at %>" id="ms_notyet_<%= task.id %>">
     <div class="citem_editable">
-      <div id="edit_link_ms_<%= task.id %>" style="display:block">
+      <div id="edit_link_ms_<%= task.id %>" style="display:<%= done == false ? "block" : "none" %>">
         <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="left" width="20px">
               <input type="checkbox" onclick="moveToDone('#id_<%= task.id %>');return false;"/>
         </td><td class="taskLabel" align="left">
-        <font color="#00008B" style="font-size:10px;font-weight:normal;" ><div id="edit_link_time_<%= task.id %>" style="display:inline;">[<%= task.updated_at.strftime("%m-%d") %>]</div></font>&nbsp;
-        <div id="msg_<%= task.id %>" style="display:inline;"><%= task.msg %></div>&nbsp;
+          <font color="#00008B" style="font-size:10px;font-weight:normal;" ><div id="edit_link_time_<%= task.id %>" style="display:inline;">[<%= task.updated_at.strftime("%m-%d") %>]</div></font>&nbsp;
+          <div id="msg_<%= task.id %>" style="display:inline;"><%= task.msg %></div>&nbsp;
         </td><td align="right" width="40px">
         <div id="ms_<%= task.id %>_menu" style="display:inline;">
           <span class="s12">
@@ -25,9 +26,9 @@
           </span>
         </form>
       </div>
-      <div id="fixed_<%= task.id %>" style="display:none">
+      <div id="fixed_<%= task.id %>" style="display:<%= done == false ? "none" : "block" %>">
         <table width="100%"><tr><td align="left">
-              <font color="#00008B"><div id="fixed_time_<%= task.id %>" style="display:inline;">[<%= task.updated_at %>]</div></font>&nbsp;
+              <font color="#00008B"><div id="fixed_time_<%= task.id %>" style="display:inline;">[<%= task.updated_at.strftime("%m-%d") %>]</div></font>&nbsp;
               <div id="fixed_msg_<%= task.id %>" style="display:inline;"><%= task.msg %></div>
         </td><td align="right" width="40px">
         <a href="#" onclick="returnToTodo('#id_<%= task.id %>');return false;">&nbsp;[<]</a>

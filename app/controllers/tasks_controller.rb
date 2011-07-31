@@ -37,4 +37,11 @@ class TasksController < ApplicationController
 
     @counts = Task.all_counts_by_name(current_user.name)
   end
+
+  def destroy
+    task = Task.find(params[:id])
+    task.delete
+
+    @counts = Task.all_counts_by_name(current_user.name)
+  end
 end

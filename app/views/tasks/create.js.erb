@@ -1,5 +1,5 @@
 var id = <%= @task.id %>;
-var li_html = '<%= (render "task", {:task => @task }).gsub(/'/,"\\\\'").gsub(/\n/,"\\\n") %>';
+var li_html = '<%= (render "task", {:task => @task, :display => "none" }).gsub(/'/,"\\\\'").gsub(/\n/,"\\\n") %>';
 var id_str = '#id_' + id;
 <%= (render "update_task_counts", {:counts => @counts}) %>
 
