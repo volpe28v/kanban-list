@@ -20,13 +20,21 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new
-    @task.msg = params[:add_todo_form_msg]
+    @task.msg = params[:msg]
     @task.name = current_user.name
     @task.user = current_user
     @task.status = StatusTable[:todo_m]
     @task.save
 
     @counts = Task.all_counts_by_name(current_user.name)
+  end
 
+  def update
+    task = Task.find(params[:id])
+    task.update_status(params[:status])
+    task.msg = params[:msg]
+    task.save
+
+    @counts = Task.all_counts_by_name(current_user.name)
   end
 end

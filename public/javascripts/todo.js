@@ -160,20 +160,13 @@ function sendCurrentTodo(id, status, msg) {
 
   markTodayEditById( id );
 
-  var request_str = "id=" + id + "&status=" + status + "&msg=" + msg;
-//  $('#viewSortlist').html(request_str);
+  var request_str = "status=" + status + "&msg=" + msg;
 
    $.ajax({
-     type: "POST",
+     type: "PUT",
      cache: false,
-     url: "/kanbanlist/update",
-     data: request_str,
-     success: function(result){
-       $('#viewSortlist').html("Updated Todo : " + result );
-       var todo_info = result.split(",");
-       $('#viewSortlist').html("Updated Todo : id " + todo_info[0] + " : st " + todo_info[1] + " : " + decodeURI(todo_info[2]) );
-       updateCounts( todo_info.slice(4) );  
-     }
+     url: "/tasks/" + id,
+     data: request_str
    });
 
 }
@@ -318,12 +311,7 @@ function addTodoAjax(msg) {
     type: "POST",
     cache: false,
     url: "/tasks",
-    data: "msg=" + msg,
-    success: function(html_elem){
-      eval(html_elem)
-//      addTodo(html_elem);
-//     alert( "Todo create: " + msg );
-    }
+    data: "msg=" + msg
  });
 
 }

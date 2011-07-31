@@ -3,7 +3,6 @@ var li_html = '<%= (render "task", {:task => @task }).gsub(/'/,"\\\\'").gsub(/\n
 var id_str = '#id_' + id;
 <%= (render "update_task_counts", {:counts => @counts}) %>
 
-$('#add_todo_form_msg').get(0).value='';
 $('#todo_m').prepend(li_html);
 
 markTodayEditById( id );
