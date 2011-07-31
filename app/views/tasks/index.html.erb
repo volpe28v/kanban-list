@@ -1,26 +1,5 @@
 <h1 id="title_bj">ToDo List for <%= @user_name %> </h1> 
 
-<table width="100%" border="0">
-<tr><td valign="top" width="50%">
-<table id="table-01" >
-<tr>
-<th class="doing"  >Doing</th>
-<th class="todo_h" >High</th>
-<th class="todo"   >Middle</th>
-<th class="todo_l" >Low</th>
-<th class="waiting">Waiting</th>
-<th class="done"   >Done</th>
-</tr>
-<tr>
-  <td><div id="doing_num"   class="counts"><%= @counts[:doing] %></div></td>
-  <td><div id="todo_h_num"  class="counts"><%= @counts[:todo_h] %></div></td>
-  <td><div id="todo_num"    class="counts"><%= @counts[:todo_m] %></div></td>
-  <td><div id="todo_l_num"  class="counts"><%= @counts[:todo_l] %></div></td>
-  <td><div id="waiting_num" class="counts"><%= @counts[:waiting] %></div></td>
-  <td><div id="done_num"    class="counts"><%= @counts[:done] %></div></td>
-</tr>
-</table>
-
 <table><tr>
 <!-- フィルタ入力フォーム -->
 <td>
@@ -46,14 +25,30 @@
 <!-- ポモドーロタイマ -->
 </tr></table>
 
-</td></tr>
-</table>
-
 <!-- ここから全要素を動的に更新可能なように別テンプレートとする -->
 <div id="task_list">
   <%= render "tasklist", {:tasks => @tasks}%>
 </div>
 <!-- ここまで動的更新できる範囲 -->
+
+<table id="table-01" >
+<tr>
+<th class="doing"  >Doing</th>
+<th class="todo_h" >High</th>
+<th class="todo"   >Middle</th>
+<th class="todo_l" >Low</th>
+<th class="waiting">Waiting</th>
+<th class="done"   >Done</th>
+</tr>
+<tr>
+  <td><div id="doing_num"   class="counts"><%= @counts[:doing] %></div></td>
+  <td><div id="todo_h_num"  class="counts"><%= @counts[:todo_h] %></div></td>
+  <td><div id="todo_num"    class="counts"><%= @counts[:todo_m] %></div></td>
+  <td><div id="todo_l_num"  class="counts"><%= @counts[:todo_l] %></div></td>
+  <td><div id="waiting_num" class="counts"><%= @counts[:waiting] %></div></td>
+  <td><div id="done_num"    class="counts"><%= @counts[:done] %></div></td>
+</tr>
+</table>
 
 <div id="serverMsg"><b>ServerMsg to USER_NAME : </b>
   <div id="viewSortlist" style="display:inline;">Let's Todo!</div>
