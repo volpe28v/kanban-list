@@ -714,3 +714,10 @@ table#table-02 td {
         background-color: #E2E8F2;
         -webkit-border-radius: 8px;
 }
+
+#prefix,#add_todo_form_msg  {
+  font-weight:normal;
+  padding:2px; 
+  background-color: #ff9;
+}
+

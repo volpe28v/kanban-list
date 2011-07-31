@@ -4,12 +4,12 @@
 <table><tr><td>
 <div class="add_form">
   <div id="add_todo_form" style="display:block">
-    <form method="post" style="display:inline" onsubmit="addTodoWithPrefix($('#prefix').get(0).value ,$('#add_todo_form_msg').get(0).value);$('#add_todo_form_msg').get(0).value='';return false;">
-      <input type="submit" value="Add" style="font-size:10px" />
-      <input type="text" id="prefix" name="prefix" value="" size="6" style="font-weight:normal;padding:2px; background:#ff9" />
-      <input type="text" id="add_todo_form_msg" name="ttl" value="" size="64" style="font-weight:normal;padding:2px; background:#ffc"/>
-      <input type="submit" value="Add" style="font-size:10px" />
-    </form>
+    <%= form_tag({ :action => 'create' },{ :style => "display:inline", :remote => true }) do %>
+      <%= submit_tag 'Add' %>
+      <%= text_field_tag 'prefix', '', :size => 6 %>
+      <%= text_field_tag 'add_todo_form_msg', '', :size => 64 %>
+      <%= submit_tag 'Add' %>
+    <% end %>
   </div>
 </div>
 </td></tr></table>

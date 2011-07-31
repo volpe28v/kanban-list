@@ -3,9 +3,9 @@ class TasksController < ApplicationController
 
   def index
     @user_name = current_user.name
-    @counts = Task.all_counts_by_name(@user_name)
-#    @bg_img_name = AppConfig[:base_bg_path] + User.by_name(@user_name).bg_img == nil ? AppConfig[:default_bg_image] : User.by_name(@user_name).bg_img
-    @bg_img_name = AppConfig[:base_bg_path] + AppConfig[:default_bg_image]
+    @counts = Task.all_counts_by_name(current_user.name)
+    @bg_img_name = current_user.bg_img_path
+
     @tasks = {
       :todo_high_tasks => Task.by_name_and_status(@user_name,:todo_h),
       :todo_mid_tasks  => Task.by_name_and_status(@user_name,:todo_m),
@@ -15,9 +15,18 @@ class TasksController < ApplicationController
       :done_tasks      => Task.by_name_and_status(@user_name,:done),
     }
 
-    session[:user] = @user_name
-
     @recent_done_num = 15
   end
 
+  def create
+    @task = Task.new
+    @task.msg = params[:add_todo_form_msg]
+    @task.name = current_user.name
+    @task.user = current_user
+    @task.status = StatusTable[:todo_m]
+    @task.save
+
+    @counts = Task.all_counts_by_name(current_user.name)
+
+  end
 end

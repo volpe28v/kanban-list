@@ -8,6 +8,8 @@ StatusTable = {
 }
 
 class Task < ActiveRecord::Base
+  belongs_to :user
+
   scope :by_name_and_status, lambda {|name,status|
     where(:name => name, :status => StatusTable[status])
   }

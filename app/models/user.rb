@@ -8,7 +8,13 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name, :bg_img, :layout, :pomo
 
+  has_many :tasks
+
   scope :all_user, order('name')
+
+  def bg_img_path
+    AppConfig[:base_bg_path] + (self.bg_img == nil ? AppConfig[:default_bg_image] : self.bg_img)
+  end
 
   def self.add_user(name)
     if exist?(name) 

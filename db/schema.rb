@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110730045348) do
+ActiveRecord::Schema.define(:version => 20110731011704) do
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110730045348) do
     t.datetime "updated_at"
     t.integer  "status"
     t.integer  "pomo",       :default => 0
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

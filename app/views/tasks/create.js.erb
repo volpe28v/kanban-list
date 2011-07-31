@@ -1,0 +1,19 @@
+var id = <%= @task.id %>;
+var li_html = '<%= (render "task", {:task => @task }).gsub(/'/,"\\\\'").gsub(/\n/,"\\\n") %>';
+var id_str = '#id_' + id;
+<%= (render "update_task_counts", {:counts => @counts}) %>
+
+$('#add_todo_form_msg').get(0).value='';
+$('#todo_m').prepend(li_html);
+
+markTodayEditById( id );
+
+  //IE の場合はタッチイベントを設定しない
+//  var userAgent = window.navigator.userAgent.toLowerCase();
+//  if (userAgent.indexOf("msie") <= -1) {
+//  var label_elemens = $(id_str).get(0).getElementsByClassName("taskLabel");
+//  addMouseEventListener(label_elemens[0]);
+//  }
+
+$(id_str).fadeIn();
+

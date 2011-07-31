@@ -185,12 +185,12 @@ function updateCounts( counts_array ){
     }
 
     var state_ids = [
-                      ['#doing_num',   counts_array[2]],
-                      ['#todo_h_num',  counts_array[5]],
-                      ['#todo_num',    counts_array[0]],
-                      ['#todo_l_num',  counts_array[4]],
-                      ['#waiting_num', counts_array[1]],
-                      ['#done_num',    counts_array[3]]
+                      ['#todo_h_num',  counts_array[0]],
+                      ['#todo_num',    counts_array[1]],
+                      ['#todo_l_num',  counts_array[2]],
+                      ['#doing_num',   counts_array[3]],
+                      ['#waiting_num', counts_array[4]],
+                      ['#done_num',    counts_array[5]]
                     ];
 
     for(var i = 0; i < state_ids.length; i++ ){ 
@@ -317,10 +317,11 @@ function addTodoAjax(msg) {
   $.ajax({
     type: "POST",
     cache: false,
-    url: "todo.cgi",
-    data: "mode=create&name=" + CurrentUser + "&msg=" + msg,
+    url: "/tasks",
+    data: "msg=" + msg,
     success: function(html_elem){
-      addTodo(html_elem);
+      eval(html_elem)
+//      addTodo(html_elem);
 //     alert( "Todo create: " + msg );
     }
  });
@@ -340,11 +341,11 @@ function addTodo(msg) {
   markTodayEditById( id );
 
   //IE の場合はタッチイベントを設定しない
-  var userAgent = window.navigator.userAgent.toLowerCase();
-  if (userAgent.indexOf("msie") <= -1) {
-	var label_elemens = $(id_str).get(0).getElementsByClassName("taskLabel");
-	addMouseEventListener(label_elemens[0]);
-  }
+//  var userAgent = window.navigator.userAgent.toLowerCase();
+//  if (userAgent.indexOf("msie") <= -1) {
+//	var label_elemens = $(id_str).get(0).getElementsByClassName("taskLabel");
+//	addMouseEventListener(label_elemens[0]);
+//  }
 
   $(id_str).fadeIn();
 }
