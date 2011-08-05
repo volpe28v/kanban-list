@@ -50,6 +50,8 @@ class TasksController < ApplicationController
     @counts = Task.all_counts_by_name(current_user.name)
     @bg_img_name = current_user.bg_img_path
 
+
+    if params[:filter] != ""
     @tasks = {
       :todo_high_tasks => Task.by_name_and_status_filtered(@user_name,:todo_h, params[:filter]),
       :todo_mid_tasks  => Task.by_name_and_status(@user_name,:todo_m),
@@ -58,8 +60,18 @@ class TasksController < ApplicationController
       :waiting_tasks   => Task.by_name_and_status(@user_name,:waiting),
       :done_tasks      => Task.by_name_and_status(@user_name,:done),
     }
+    else
+    @tasks = {
+      :todo_high_tasks => Task.by_name_and_status(@user_name,:todo_h),
+      :todo_mid_tasks  => Task.by_name_and_status(@user_name,:todo_m),
+      :todo_low_tasks  => Task.by_name_and_status(@user_name,:todo_l),
+      :doing_tasks     => Task.by_name_and_status(@user_name,:doing),
+      :waiting_tasks   => Task.by_name_and_status(@user_name,:waiting),
+      :done_tasks      => Task.by_name_and_status(@user_name,:done),
+    }
+    end
 
     @recent_done_num = 15
-    render :layout => false
+    render :partial => 'tasklist',  :locals => {:tasks => @tasks}
   end
 end

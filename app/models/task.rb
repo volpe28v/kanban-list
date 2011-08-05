@@ -15,8 +15,7 @@ class Task < ActiveRecord::Base
   }
 
   scope :by_name_and_status_filtered, lambda {|name,status,filter|
-#    where("name = ? and status = ? and msg LIKE ?", name , StatusTable[status] , "%#{URI.encode(filter.toutf8)}%").order('updated_at DESC')
-    where("name = ? and status = ? and msg LIKE ?", name , StatusTable[status] , filter).order('updated_at DESC')
+    where("name = ? and status = ? and msg LIKE ?", name , StatusTable[status] , "%#{URI.encode(filter)}%").order('updated_at DESC')
   }
 
   scope :filterd, lambda {|name, filter|
