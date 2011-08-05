@@ -1,12 +1,11 @@
 Todolist::Application.routes.draw do
-  get "tasks/index"
-
   root :to => "kanbanlist#index"
 
   devise_for :users
   get 'tasks', :to => 'tasks#index', :as => :user_root
 
   get "kanbanlist/index"
+  post "tasks/filter_or_update"
 
   resources :tasks
 #  get "kanbanlist/user"

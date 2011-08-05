@@ -721,3 +721,8 @@ table#table-02 td {
   background-color: #ff9;
 }
 
+#filter_str {
+  font-weight:normal;
+  padding:2px;
+  background-color: #ffc;
+}

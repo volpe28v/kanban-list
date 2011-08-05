@@ -376,14 +376,14 @@ function goUserPage( url_name, user_name ) {
 }
 
 function filterTask(filter_str){
-  var request_str = "mode=filter&name=" + CurrentUser + "&filter=" + filter_str;
+  var request_str = "filter=" + filter_str;
 
   $('#task_list').fadeOut();
 
   $.ajax({
      type: "POST",
      cache: false,
-     url: "todo.cgi",
+     url: "tasks/filter_or_update",
      data: request_str,
      success: function(result){
        $('#task_list').html(result);

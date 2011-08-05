@@ -3,10 +3,10 @@
 <table><tr>
 <!-- フィルタ入力フォーム -->
 <td>
-<form method="post" style="display:inline" onsubmit="filterTask( $('#filter_str').get(0).value );return false;">
-  <input type="submit" value="フィルタ / 更新" style="font-size:12px" />
-  <input type="text" id="filter_str" name="ttl" value="" size="10" style="font-weight:normal;padding:2px" onfocus="this.style.background='#ffc';"/>
-</form>
+  <form method="post" style="display:inline" onsubmit="filterTask( $('#filter_str').get(0).value );return false;">
+    <input type="submit" value="フィルタ / 更新" style="font-size:12px" />
+    <input type="text" id="filter_str" name="ttl" value="" size="10" style="font-weight:normal;padding:2px" onfocus="this.style.background='#ffc';"/>
+  </form>
 </td>
 
 <!-- ポモドーロタイマ -->
@@ -33,12 +33,12 @@
 
 <table id="table-01" >
 <tr>
-<th class="doing"  >Doing</th>
-<th class="todo_h" >High</th>
-<th class="todo"   >Middle</th>
-<th class="todo_l" >Low</th>
-<th class="waiting">Waiting</th>
-<th class="done"   >Done</th>
+<th class="doing"  >D</th>
+<th class="todo_h" >H</th>
+<th class="todo"   >M</th>
+<th class="todo_l" >L</th>
+<th class="waiting">W</th>
+<th class="done"   >D</th>
 </tr>
 <tr>
   <td><div id="doing_num"   class="counts"><%= @counts[:doing] %></div></td>
