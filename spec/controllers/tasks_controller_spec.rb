@@ -3,7 +3,6 @@ require 'spec_helper'
 describe TasksController do
   fixtures :users,:tasks
 
-
   describe "GET 'index'" do
     it "should be successful" do
       get 'index'
