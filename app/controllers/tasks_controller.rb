@@ -28,6 +28,7 @@ class TasksController < ApplicationController
     task.save
 
     @counts = Task.all_counts_by_name(current_user.name)
+    render :json => @counts, :callback => 'updateCountsJson'
   end
 
   def destroy

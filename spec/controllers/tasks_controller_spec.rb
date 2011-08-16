@@ -4,7 +4,8 @@ describe TasksController do
   fixtures :users,:tasks
 
   describe "GET 'index'" do
-    it "should be successful" do
+    it "レスポンスが正常であること" do
+      sign_in User.first
       get 'index'
       response.should be_success
     end

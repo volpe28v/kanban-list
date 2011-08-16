@@ -198,6 +198,11 @@ function updateCounts( counts_array ){
     }
 }
 
+function updateCountsJson( counts ){
+  alert("updateCountsJson");
+
+}
+
 function toggleDisplay(id1,id2) {
 //  $("#" + id1).toggle();
 //  $("#" + id2).toggle();
