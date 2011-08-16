@@ -166,7 +166,8 @@ function sendCurrentTodo(id, status, msg) {
      type: "PUT",
      cache: false,
      url: "/tasks/" + id,
-     data: request_str
+     data: request_str,
+     dataType: "jsonp"
    });
 
 }
@@ -198,9 +199,26 @@ function updateCounts( counts_array ){
     }
 }
 
-function updateCountsJson( counts ){
-  alert("updateCountsJson");
+function updateCountsJson( counts_json ){
+  var state_ids = [
+                    ['#todo_h_num',  counts_json.todo_h],
+                    ['#todo_num',    counts_json.todo_m],
+                    ['#todo_l_num',  counts_json.todo_l],
+                    ['#doing_num',   counts_json.doing],
+                    ['#waiting_num', counts_json.waiting],
+                    ['#done_num',    counts_json.done]
+                  ];
 
+  for(var i = 0; i < state_ids.length; i++ ){ 
+    var state_name = state_ids[i][0];
+    var count_num  = state_ids[i][1];
+    if ( $(state_name).html() != count_num ){
+      $(state_name).hide();
+      $(state_name).css("color","red");
+      $(state_name).html(count_num);
+      $(state_name).fadeIn("normal",function(){ $(this).css("color","black");});
+    }
+  }
 }
 
 function toggleDisplay(id1,id2) {
@@ -278,7 +296,8 @@ function deleteTodo( delete_id ) {
     $.ajax({
       type: "DELETE",
       cache: false,
-      url: "/tasks/" + id
+      url: "/tasks/" + id,
+      dataType: "jsonp"
     });
 
     $(delete_id).fadeOut("normal",function(){ $(delete_id).remove(); });

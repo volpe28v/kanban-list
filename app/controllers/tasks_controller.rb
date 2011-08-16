@@ -36,6 +36,7 @@ class TasksController < ApplicationController
     task.delete
 
     @counts = Task.all_counts_by_name(current_user.name)
+    render :json => @counts, :callback => 'updateCountsJson'
   end
 
   def filter_or_update
