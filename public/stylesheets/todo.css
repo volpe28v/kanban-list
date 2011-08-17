@@ -386,11 +386,12 @@ th.done{
 
 }
 
-h1,h2{
-        color: #eeeeee;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
-        font-family: cursive;
-
+#title{
+  color: #eeeeee;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+//  font-family: cursive;
+  font-size: 20pt;
 }
 
 h2.doing{
@@ -453,6 +454,7 @@ table#table-01 {
     border: 1px #999999 solid;
     border-collapse: collapse;
     border-spacing: 0;
+    font-size: 8px;
 }
 
 table#table-01 th {
@@ -462,27 +464,6 @@ table#table-01 th {
 }
 
 table#table-01 td {
-    padding: 4px;
-    border: 1px #bbbbbb solid;
-    background: #F5F5F5;
-    border-width: 0 0 1px 1px;
-    text-align: center;
-}
-
-table#table-02 {
-    margin: 0 0 0 2px;
-    border: 1px #999999 solid;
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-table#table-02 th {
-    padding: 4px;
-    border: 1px #999999 solid;
-    border-width: 0 0 1px 1px; 
-}
-
-table#table-02 td {
     padding: 4px;
     border: 1px #bbbbbb solid;
     background: #F5F5F5;
@@ -551,7 +532,7 @@ table#table-02 td {
 
 .counts {
         color: black;
-        font-size: 12pt;
+        font-size: 8pt;
         font-weight: bold;
         text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
 }
@@ -611,7 +592,7 @@ table#table-02 td {
         border-top: 1px solid #A8B8D9;
         border-left: 1px solid #A8B8D9;
         border-right: 1px solid #A8B8D9;
-        font-size: 16pt;
+        font-size: 12pt;
         font-weight: bold;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
         /* firefox specific markup */
@@ -634,7 +615,7 @@ table#table-02 td {
         border-top: 1px solid #A8B8D9;
         border-left: 1px solid #A8B8D9;
         border-right: 1px solid #A8B8D9;
-        font-size: 10pt;
+        font-size: 8pt;
         font-weight: bold;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
         /* firefox specific markup */
@@ -702,7 +683,7 @@ table#table-02 td {
         border-top: 1px solid #A8B8D9;
         border-left: 1px solid #A8B8D9;
         border-right: 1px solid #A8B8D9;
-        font-size: 16pt;
+        font-size: 12pt;
         font-weight: bold;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
         /* firefox specific markup */
@@ -726,3 +707,10 @@ table#table-02 td {
   padding:2px;
   background-color: #ffc;
 }
+
+.sign {
+  font-weight: bold;
+  font-size: 10pt;
+  color: #55f;
+}
+

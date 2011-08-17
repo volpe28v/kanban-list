@@ -17,11 +17,12 @@
  background-position: center top;
  background-repeat:  repeat
 "> 
-<%= link_to('Sign out', [ :destroy, :user_session ], :method => :delete ,:class => 'signOut') if current_user %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div id="title">かんばんりすと <%= " - " + current_user.name + " - " if current_user%> </div> 
 
 <%= yield %>
 
+<%= link_to('ログアウト', [ :destroy, :user_session ], :method => :delete ,:class => 'sign signOut') if current_user %>
+<span class="notice"><%= notice %></span>
+<span class="alert"><%= alert %></span>
 </body>
 </html>

@@ -10,6 +10,7 @@ div#wrapper {
 }
 
 #side_bar {
+  width: 100px;
   padding: 10px;
   vertical-align: top;
 }
@@ -40,5 +41,14 @@ div#wrapper {
 li {
   font-family: verdana, arial, helvetica, sans-serif;
   font: 14px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
+}
+
+ul.sign_menu {
+  padding-left:0;
+  margin-left:0;
+}
+
+ul.sign_menu li {
+  list-style:none;
 }
 

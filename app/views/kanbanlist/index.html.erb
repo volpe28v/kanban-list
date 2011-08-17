@@ -27,9 +27,11 @@
 <div id="generatedby">Created by Naoki Kodama. </div> 
 </td><td id="side_bar">
 
-<p><%= link_to 'ログイン', [ :new, :user_session ]  %></p>
-<p><%= link_to 'ユーザー登録', [ :new, :user_registration ]  %></p>
-<p><%= link_to 'パスワード再発行', [ :new, :user_password ]  %></p>
+<ul class="sign_menu">
+  <li><%= link_to 'ログイン', [ :new, :user_session ],:class => 'sign'  %></li>
+  <li><%= link_to 'ユーザー登録', [ :new, :user_registration ] ,:class => 'sign' %></li>
+</ul>
+<!-- <p><%= link_to 'パスワード再発行', [ :new, :user_password ] ,:class => 'sign' %></p> -->
 
 
 <hr>
