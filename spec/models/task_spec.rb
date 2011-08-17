@@ -10,9 +10,10 @@ describe Task do
     end
   end
 
-  describe "名前と状態を指定してタスクを取り出す場合" do
+  describe "特定ユーザと状態を指定してタスクを取り出す場合" do
     before do
-      @tasks = Task.by_name_and_status("volpe",:todo_m)
+      user = User.by_name("volpe")
+      @tasks = user.tasks.by_status(:todo_m)
     end
     subject{@tasks}
 

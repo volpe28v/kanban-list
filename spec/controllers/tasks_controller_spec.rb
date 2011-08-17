@@ -13,7 +13,8 @@ describe TasksController do
 
   describe "get tasks" do
     before do
-      post :user,{ :user => "baggio" }
+      sign_in User.first
+      get :index,{ :user => "baggio" }
     end
 
     it "レスポンスが正常であること" do
@@ -21,17 +22,15 @@ describe TasksController do
     end
 
     it 'タスク一覧画面を表示すること' do
-      response.should render_template("task/index")
+      response.should render_template("layouts/application", "tasks/index")
     end
 
-    it 'user をセッションスコープに保存すること' do
-      session[:user].should == Task.by_name("baggio").id
-    end
   end
 
   describe "POST 'update'" do
     before do
-      post :update,{ :id => "6" , :status => "doing" }
+      sign_in User.first
+      post :update,{ :id => "6" , :status => "doing", :msg => "updated" }
     end
 
     it "レスポンスが正常であること" do

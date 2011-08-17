@@ -15,7 +15,7 @@ class Task < ActiveRecord::Base
   }
 
   scope :by_status, lambda {|status|
-    where(:status => StatusTable[status])
+    where(:status => StatusTable[status]).order("updated_at DESC")
   }
 
   scope :by_status_and_filter, lambda {|status,filter|
