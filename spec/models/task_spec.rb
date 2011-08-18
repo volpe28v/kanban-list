@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Task do
-  fixtures :tasks, :users
+#  fixtures :tasks, :users
 
   describe "初期設定されているタスクを読み出す場合" do
     it "全て読み出すことができる" do
@@ -12,19 +12,14 @@ describe Task do
 
   describe "特定ユーザと状態を指定してタスクを取り出す場合" do
     before do
-      user = User.by_name("volpe")
-      @tasks = user.tasks.by_status(:todo_m)
+      @user = Factory.create(:volpe)
+      @tasks = @user.tasks.by_status(:todo_m)
     end
     subject{@tasks}
 
     it "タスクを取得すること" do
+      @user.should have(2).tasks
       subject.size.should >= 1
-    end
-
-    it "タスクが指定した名前である" do
-      subject.each{|t|
-        t.name.should == "volpe"
-      }
     end
 
     it "タスクが指定した状態である" do
@@ -36,7 +31,7 @@ describe Task do
 
   describe "フィルタを指定してタスクを取り出す場合" do
     before do
-      @tasks = Task.filterd("volpe", "italia")
+      @tasks = Task.filtered("volpe", "italia")
     end
     subject{@tasks}
 

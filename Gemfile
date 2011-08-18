@@ -10,6 +10,7 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'devise'
 gem 'rake', '>= 0.9.2'
 gem 'factory_girl'
+gem 'factory_girl_rails'
 
 group :development do
   gem 'rspec-rails', '2.5.0'

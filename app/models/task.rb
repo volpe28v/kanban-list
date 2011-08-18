@@ -22,7 +22,7 @@ class Task < ActiveRecord::Base
     where("status = ? and msg LIKE ?", StatusTable[status] , "%#{URI.decode(filter)}%").order('updated_at DESC')
   }
 
-  scope :filterd, lambda {|name, filter|
+  scope :filtered, lambda {|name, filter|
     where("name = ? and msg LIKE ?", name ,"%#{URI.encode(filter)}%").order('updated_at DESC')
   }
 
