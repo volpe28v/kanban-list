@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 describe TasksController do
-  fixtures :users,:tasks
 
   describe "GET 'index'" do
     it "レスポンスが正常であること" do
-      sign_in User.first
+      sign_in Factory.create(:volpe)
       get 'index'
       response.should be_success
     end
@@ -13,8 +12,8 @@ describe TasksController do
 
   describe "get tasks" do
     before do
-      sign_in User.first
-      get :index,{ :user => "baggio" }
+      sign_in Factory.create(:volpe)
+      get :index,{ :user => "volpe" }
     end
 
     it "レスポンスが正常であること" do
@@ -29,7 +28,7 @@ describe TasksController do
 
   describe "POST 'update'" do
     before do
-      sign_in User.first
+      sign_in Factory.create(:volpe)
       post :update,{ :id => "6" , :status => "doing", :msg => "updated" }
     end
 
@@ -46,4 +45,29 @@ describe TasksController do
     end
   end
 
+  describe "task destroy" do
+    before do
+      sign_in Factory.create(:volpe)
+      delete :destroy,{ :id => "1" }
+    end
+
+    it "レスポンスが正常であること" do
+      response.should be_success
+    end
+
+    it "タスクが削除されること" do
+      Task.exists?(1).should be_false
+    end
+  end
+
+  describe "task filter_or_filter" do
+    before do
+      sign_in Factory.create(:volpe)
+      post :filter_or_update,{ :filter => "todo_m" }
+    end
+
+    it "レスポンスが正常であること" do
+      response.should be_success
+    end
+  end
 end

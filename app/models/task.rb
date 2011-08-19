@@ -26,24 +26,16 @@ class Task < ActiveRecord::Base
     where("name = ? and msg LIKE ?", name ,"%#{URI.encode(filter)}%").order('updated_at DESC')
   }
 
-  scope :done_by_name, lambda {|name|
-    where(:status => StatusTable[:done], :name => name).order('updated_at DESC')
-  }
-
   scope :done, where(:status => StatusTable[:done]).order('updated_at DESC')
 
-  scope :doing_by_name, lambda {|name|
-    where(:status => StatusTable[:doing], :name => name).order('updated_at DESC')
-  }
+  scope :doing, where(:status => StatusTable[:doing]).order('updated_at DESC')
 
-  scope :today_done_by_name, lambda {|name|
-    where("status = ? and name = ? and updated_at LIKE ?", StatusTable[:done], name, "#{Time.now.strftime("%Y-%m-%d")}%").order('updated_at DESC' )
-  }
+  scope :today_done, where("status = ? and updated_at LIKE ?", StatusTable[:done], "#{Time.now.strftime("%Y-%m-%d")}%").order('updated_at DESC' )
 
-  def self.all_counts_by_name(name)
+  def self.all_counts
     counts = {}
     StatusTable.each_key{|key|
-      counts[key.to_sym] = self.by_name_and_status(name,key.to_sym).count
+      counts[key.to_sym] = self.by_status(key.to_sym).count
     }
     counts
   end

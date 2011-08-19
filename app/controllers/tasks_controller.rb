@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @user_name = current_user.name
-    @counts = Task.all_counts_by_name(current_user.name)
+    @counts = current_user.tasks.all_counts
     @bg_img_name = current_user.bg_img_path
 
     @tasks = get_tasks_by( current_user )
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     task.msg = params[:msg]
     task.save
 
-    @counts = Task.all_counts_by_name(current_user.name)
+    @counts = current_user.tasks.all_counts
     render :json => @counts, :callback => 'updateCountsJson'
   end
 
@@ -35,13 +35,13 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     task.delete
 
-    @counts = Task.all_counts_by_name(current_user.name)
+    @counts = current_user.tasks.all_counts
     render :json => @counts, :callback => 'updateCountsJson'
   end
 
   def filter_or_update
     @user_name = current_user.name
-    @counts = Task.all_counts_by_name(current_user.name)
+    @counts = current_user.tasks.all_counts
     @bg_img_name = current_user.bg_img_path
 
     if params[:filter] != ""

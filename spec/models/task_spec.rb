@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Task do
-#  fixtures :tasks, :users
 
   describe "初期設定されているタスクを読み出す場合" do
     it "全て読み出すことができる" do
@@ -18,8 +17,13 @@ describe Task do
     subject{@tasks}
 
     it "タスクを取得すること" do
-      @user.should have(2).tasks
       subject.size.should >= 1
+    end
+
+    it "指定ユーザ名のタスクである" do
+      subject.each{|t|
+        t.user.name.should == "volpe"
+      }
     end
 
     it "タスクが指定した状態である" do
@@ -48,7 +52,8 @@ describe Task do
 
   describe "Doneと名前を指定してタスクを取り出す場合" do
     before do
-      @tasks = Task.done_by_name("volpe")
+      user = Factory.create(:volpe)
+      @tasks = user.tasks.done
     end
     subject{@tasks}
 
@@ -58,7 +63,7 @@ describe Task do
 
     it "指定ユーザ名のタスクである" do
       subject.each{|t|
-        t.name.should == "volpe"
+        t.user.name.should == "volpe"
       }
     end
 
@@ -88,7 +93,8 @@ describe Task do
 
   describe "Doingと名前を指定してタスクを取り出す場合" do
     before do
-      @tasks = Task.doing_by_name("volpe")
+      user = Factory.create(:volpe)
+      @tasks = user.tasks.doing
     end
     subject{@tasks}
 
@@ -98,7 +104,7 @@ describe Task do
 
     it "指定ユーザ名のタスクである" do
       subject.each{|t|
-        t.name.should == "volpe"
+        t.user.name.should == "volpe"
       }
     end
 
@@ -111,7 +117,8 @@ describe Task do
 
   describe "本日のDoneと名前を指定してタスクを取り出す場合" do
     before do
-      @task = Task.today_done_by_name("volpe")
+      user = Factory.create(:volpe)
+      @task = user.tasks.today_done
     end
     subject{@task}
 
@@ -128,7 +135,8 @@ describe Task do
 
   describe "各状態のタスク数を取り出す場合" do
     before do
-      @task_counts = Task.all_counts_by_name("volpe")
+      user = Factory.create(:volpe)
+      @task_counts = user.tasks.all_counts
     end
     subject{@task_counts}
 
