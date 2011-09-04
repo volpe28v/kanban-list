@@ -320,7 +320,24 @@ function addTodoAjax(msg) {
     url: "/tasks",
     data: "msg=" + msg
  });
+}
 
+function addTodoResponse(id, li_html, counts_json){
+  var id_str = '#id_' + id;
+
+  $('#todo_m').prepend(li_html);
+
+  markTodayEditById( id );
+  updateCountsJson(counts_json)
+
+  //IE の場合はタッチイベントを設定しない
+  var userAgent = window.navigator.userAgent.toLowerCase();
+  if (userAgent.indexOf("msie") <= -1) {
+    var label_elemens = $(id_str).get(0).getElementsByClassName("taskLabel");
+    addMouseEventListener(label_elemens[0]);
+  }
+
+  $(id_str).fadeIn();
 }
 
 function changeBgImg(img_name) {
@@ -360,11 +377,6 @@ function newUser( url_name , user_name ) {
   }else{
     alert("Please input new user name!");
   }
-}
-
-
-function goUserPage( url_name, user_name ) {
-  location.href = url_name + '/todo.cgi?mode=user&name=' + user_name;
 }
 
 function filterTask(filter_str){
