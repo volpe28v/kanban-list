@@ -334,7 +334,11 @@ function addTodoResponse(id, li_html, counts_json){
   var userAgent = window.navigator.userAgent.toLowerCase();
   if (userAgent.indexOf("msie") <= -1) {
     var label_elemens = $(id_str).get(0).getElementsByClassName("taskLabel");
-    addMouseEventListener(label_elemens[0]);
+
+	var i = 0;
+	for(i=0;i < label_elemens.length;i++){
+		addMouseEventListener(label_elemens[i]);
+	}
   }
 
   $(id_str).fadeIn();
