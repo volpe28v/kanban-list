@@ -3,7 +3,7 @@
  * created by Naoki Kodama
  */
 
-$(function(){
+$(document).ready(function(){ 
     initForTaskList();
 
     $('#filter_str').get(0).focus();
@@ -124,15 +124,6 @@ function markTodayEditById( id ){
 
 function markTodayEditWithElem( mark_obj ){
     mark_obj.css("background","#FFC0CB");
-}
-
-function focusEffect(){
-    // タスクフォーカス時のエフェクト（試し中)
-    $(".task_elem").hover(function(){
-//        $(this).css("background","#ffff66");
-    },function(){
-
-    });
 }
 
 function getTodayStr(){
@@ -331,28 +322,6 @@ function addTodoAjax(msg) {
     data: "msg=" + msg
  });
 
-}
-
-function addTodo(msg) {
-  var id = msg.split("!")[0];
-  var li_html = msg.split("!")[1];
-  var todo_counts = msg.split("!")[2].split(",");
-  var id_str = '#id_' + id;
-
-  updateCounts( todo_counts.slice(0) );
-
-  $('#todo').prepend(li_html);
-
-  markTodayEditById( id );
-
-  //IE の場合はタッチイベントを設定しない
-//  var userAgent = window.navigator.userAgent.toLowerCase();
-//  if (userAgent.indexOf("msie") <= -1) {
-//	var label_elemens = $(id_str).get(0).getElementsByClassName("taskLabel");
-//	addMouseEventListener(label_elemens[0]);
-//  }
-
-  $(id_str).fadeIn();
 }
 
 function changeBgImg(img_name) {

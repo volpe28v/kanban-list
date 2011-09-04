@@ -18,7 +18,8 @@ class TasksController < ApplicationController
     @task.update_status(:todo_m)
     @task.save
 
-    @counts = Task.all_counts_by_name(current_user.name)
+    #@counts = Task.all_counts_by_name(current_user.name)
+    @counts = current_user.tasks.all_counts
   end
 
   def update

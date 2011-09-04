@@ -1,11 +1,11 @@
 var id = <%= @task.id %>;
 var li_html = '<%= (render "task", {:task => @task, :display => "none" }).gsub(/'/,"\\\\'").gsub(/\n/,"\\\n") %>';
 var id_str = '#id_' + id;
-<%= (render "update_task_counts", {:counts => @counts}) %>
 
 $('#todo_m').prepend(li_html);
 
 markTodayEditById( id );
+updateCountsJson(<%= raw(@counts.to_json) %>)
 
   //IE の場合はタッチイベントを設定しない
 //  var userAgent = window.navigator.userAgent.toLowerCase();
