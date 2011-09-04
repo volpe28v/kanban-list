@@ -16,12 +16,15 @@
 
 </head>
 <body style="
- background-image: url( <%= @bg_img_name %> );
+ background-color: white;
  background-attachment: fixed;
  background-position: center top;
  background-repeat:  repeat
 "> 
-<div id="title">かんばんりすと <%= " - " + current_user.name + " - " if current_user%> </div> 
+<header>
+<%= image_tag "title.png" %>
+<%= " for " + current_user.name  if current_user%> 
+</header>
 
 <%= yield %>
 
