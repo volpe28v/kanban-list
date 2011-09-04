@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     $('#filter_str').get(0).focus();
 
-//    touch_init();
+    touch_init();
 
     return;
 });
@@ -16,6 +16,8 @@ $(document).ready(function(){
 function touchHandler(event)
 {
 //	$('#eventLog').html("Event : " + event.type );
+	if (event.touches.length > 1){return;} //マルチタッチを無効化
+
 	var touches = event.changedTouches;
 	event.preventDefault();        
     var first = touches[0];
@@ -60,7 +62,6 @@ function touch_init()
 	for(i=0;i < label_elemens.length;i++){
 		addMouseEventListener(label_elemens[i]);
 	}
-	
 }
 
 function addMouseEventListener(element){
@@ -69,8 +70,6 @@ function addMouseEventListener(element){
 	element.addEventListener("touchend",    touchHandler, true);
 	element.addEventListener("touchcancel", touchHandler, true);    
 }
-
-
 
 function initForTaskList(){
     setSortableList();
