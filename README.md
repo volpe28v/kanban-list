@@ -12,11 +12,11 @@ $ rake db:migrate
 $ rails s
 ```
 
-## Usage
-
-ブラウザから上記サーバにアクセスしてください。
-
 ## Demo
-
 http://freezing-dawn-432.heroku.com/
 
+```
+サンプルアカウント
+ mail: sample@kanban.list
+ pass: sample
+```
