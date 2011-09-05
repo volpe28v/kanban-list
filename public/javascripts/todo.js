@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     $('#filter_str').get(0).focus();
 
-    touch_init();
+//    touch_init();
 
     return;
 });
@@ -77,11 +77,17 @@ function initForTaskList(){
     markTodayEdit();
 }
 
-    var option={
-//        start  : function(event,ui){ ui.helper.css("font-style", "italic"); },
-//        stop   : function(event,ui){ ui.helper.css("font-style", "normal"); },
+var option={
+        start  : function(event, ui){
+          var update_id = ui.item.attr("id").slice(3);
+          //$("#msg_" + update_id).css("color","red");
+        },
+        stop   : function(event, ui){
+          var update_id = ui.item.attr("id").slice(3);
+          //$("#msg_" + update_id).css("color","#222");           
+        },
+
         receive: function(event, ui){
-            //$('#viewSortlist').html($(this).get(0).id).css("background-color","#eee");
             var update_id = ui.item.attr("id").slice(3);
 
             sendCurrentTodo( update_id,
@@ -95,7 +101,7 @@ function initForTaskList(){
         scroll: false,
         tolerance: 'pointer',
         revert: true
-    };
+};
 
 // ドラッグ＆ドロップ可能にする
 function setSortableList(){
