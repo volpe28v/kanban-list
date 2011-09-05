@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     $('#filter_str').get(0).focus();
 
-//    touch_init();
+    touch_init();
 
     return;
 });
