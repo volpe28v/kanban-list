@@ -76,16 +76,16 @@
 }
 
 li {
-        /* firefox specific markup */
-        -moz-border-radius-topleft: 6px;
-        -moz-border-radius-topright: 6px;
-        -moz-border-radius-bottomleft: 6px;
-        -moz-border-radius-bottomright: 6px;
-        /* webkit specific markup */
-        -webkit-border-top-left-radius: 6px;
-        -webkit-border-top-right-radius: 6px;
-        -webkit-border-bottom-left-radius: 6px;
-        -webkit-border-bottom-right-radius: 6px;
+  /* firefox specific markup */
+  -moz-border-radius-topleft: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  -moz-border-radius-bottomright: 6px;
+  /* webkit specific markup */
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
 }
 
 #doing   li { 
@@ -277,15 +277,15 @@ a { text-decoration: none; color: #8B0000; }
 }
 
 th.doing{ 
-    padding: 4px;
-    border: #E3E3E3 solid;
-    border-width: 0 0 1px 1px;
-    font-weight: bold;
-    line-height: 100%;
-    text-align: center;
-    background-image: url("/images/doing_gra.jpg");
-    background-position: center bottom;
-    background-repeat:  repeat;
+  padding: 4px;
+  border: #E3E3E3 solid;
+  border-width: 0 0 1px 1px;
+  font-weight: bold;
+  line-height: 100%;
+  text-align: center;
+  background-image: url("/images/doing_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#cde), to(#74b9ff));
@@ -295,15 +295,15 @@ th.doing{
 }
 
 th.todo_h{
-    padding: 4px;
-    border: #E3E3E3 solid;
-    border-width: 0 0 1px 1px;
-    font-weight: bold;
-    line-height: 100%;
-    text-align: center;
-    background-image: url("/images/todo_h_gra.jpg");
-    background-position: center bottom;
-    background-repeat:  repeat;
+  padding: 4px;
+  border: #E3E3E3 solid;
+  border-width: 0 0 1px 1px;
+  font-weight: bold;
+  line-height: 100%;
+  text-align: center;
+  background-image: url("/images/todo_h_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#cec), to(#40cF40));
@@ -313,15 +313,15 @@ th.todo_h{
 }
 
 th.todo{
-    padding: 4px;
-    border: #E3E3E3 solid;
-    border-width: 0 0 1px 1px;
-    font-weight: bold;
-    line-height: 100%;
-    text-align: center;
-    background-image: url("/images/todo_gra.jpg");
-    background-position: center bottom;
-    background-repeat:  repeat;
+  padding: 4px;
+  border: #E3E3E3 solid;
+  border-width: 0 0 1px 1px;
+  font-weight: bold;
+  line-height: 100%;
+  text-align: center;
+  background-image: url("/images/todo_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#beb), to(#7CFC00));
@@ -332,15 +332,15 @@ th.todo{
 }
 
 th.todo_l{
-    padding: 4px;
-    border: #E3E3E3 solid;
-    border-width: 0 0 1px 1px;
-    font-weight: bold;
-    line-height: 100%;
-    text-align: center;
-    background-image: url("/images/todo_l_gra.jpg");
-    background-position: center bottom;
-    background-repeat:  repeat;
+  padding: 4px;
+  border: #E3E3E3 solid;
+  border-width: 0 0 1px 1px;
+  font-weight: bold;
+  line-height: 100%;
+  text-align: center;
+  background-image: url("/images/todo_l_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#df7), to(#ADFF2F));
@@ -350,15 +350,15 @@ th.todo_l{
 }
 
 th.waiting{
-    padding: 4px;
-    border: #E3E3E3 solid;
-    border-width: 0 0 1px 1px;
-    font-weight: bold;
-    line-height: 100%;
-    text-align: center;
-    background-image: url("/images/waiting_gra.jpg");
-    background-position: center bottom;
-    background-repeat:  repeat;
+  padding: 4px;
+  border: #E3E3E3 solid;
+  border-width: 0 0 1px 1px;
+  font-weight: bold;
+  line-height: 100%;
+  text-align: center;
+  background-image: url("/images/waiting_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#eec), to(#ee5));
@@ -368,15 +368,15 @@ th.waiting{
 }
 
 th.done{
-    padding: 4px;
-    border: #E3E3E3 solid;
-    border-width: 0 0 1px 1px;
-    font-weight: bold;
-    line-height: 100%;
-    text-align: center;
-    background-image: url("/images/done_gra.jpg");
-    background-position: center bottom;
-    background-repeat:  repeat;
+  padding: 4px;
+  border: #E3E3E3 solid;
+  border-width: 0 0 1px 1px;
+  font-weight: bold;
+  line-height: 100%;
+  text-align: center;
+  background-image: url("/images/done_gra.jpg");
+  background-position: center bottom;
+  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#aaa));
@@ -596,9 +596,9 @@ table#table-01 td {
         font-weight: bold;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
         /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 0px 5px;
         /* webkit specific markup */
-        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.15);
         background-image:url('/images/nav_f.png');
         background-repeat:repeat-x;
         background-color: #E2E8F2;
@@ -619,13 +619,12 @@ table#table-01 td {
         font-weight: bold;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
         /* firefox specific markup */
-//        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 0px 5px;
         /* webkit specific markup */
-//        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.15);
         background-image:url('/images/nav_f.png');
         background-repeat:repeat-x;
         background-color: #E2E8F2;
-
 }
 
 .memdoc_todo_l {
