@@ -5,7 +5,7 @@
 <div class="donenote">
   <ul class="note">
   <% @tasks.each do |task| %>
-    <li><%= task.updated_at.strftime("%m/%d") %> <%= task.msg %></li>
+    <li><%= task.updated_at.strftime("%Y年%m月%d日") %> <%= task.msg %></li>
   <% end %>
   </ul>
 </div>
