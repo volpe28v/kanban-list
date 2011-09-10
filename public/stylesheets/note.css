@@ -1,0 +1,14 @@
+.donenote ul {
+    width: 90%;
+    text-align: left;
+    font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",/*"メイリオ",Meiryo,*/"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+    margin: 0 auto 0 10px;
+    list-style: none;
+}
+.note li{
+    background: url(/images/line.gif) repeat top left;
+    font-size: 12px;
+    line-height: 30px;
+    padding: 0 15px 0 25px;
+}
+

@@ -1,0 +1,15 @@
+<center>
+<%= link_to "リストへ", tasks_path %>
+</center>
+
+<div class="donenote">
+  <ul class="note">
+  <% @tasks.each do |task| %>
+    <li><%= task.updated_at.strftime("%m/%d") %> <%= task.msg %></li>
+  <% end %>
+  </ul>
+</div>
+
+
+<%= will_paginate(@tasks) %>
+

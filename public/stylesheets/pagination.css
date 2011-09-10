@@ -1,0 +1,22 @@
+div.pagination {
+  text-align: center;
+  padding: 5px;
+}
+
+div.pagination a {
+  background-color: #666;
+  color: #fff;
+  padding: 5px;
+} 
+div.pagination em {
+  background-color: #ccc;
+  font-weight: bold;
+  font-style: normal;
+  padding: 5px;
+}
+
+div.pagination span.disabled {
+  background-color: #ccc;
+  padding: 5px;
+}
+

@@ -6,8 +6,8 @@ class TasksController < ApplicationController
     @counts = current_user.tasks.all_counts
     @bg_img_name = current_user.bg_img_path
 
-    @tasks = get_tasks_by( current_user )
-    @recent_done_num = 15
+    @recent_done_num = 10
+    @tasks = get_tasks_by( current_user, @recent_done_num )
   end
 
   def create
@@ -54,15 +54,19 @@ class TasksController < ApplicationController
     render :partial => 'tasklist',  :locals => {:tasks => @tasks}
   end
 
+  def donelist
+    @tasks = current_user.tasks.by_status(:done).paginate(:page => params[:page], :per_page => 15)
+  end
+
   private
-  def get_tasks_by( user )
+  def get_tasks_by( user ,done_num = 10)
       tasks = {
         :todo_high_tasks => user.tasks.by_status(:todo_h),
         :todo_mid_tasks  => user.tasks.by_status(:todo_m),
         :todo_low_tasks  => user.tasks.by_status(:todo_l),
         :doing_tasks     => user.tasks.by_status(:doing),
         :waiting_tasks   => user.tasks.by_status(:waiting),
-        :done_tasks      => user.tasks.by_status(:done),
+        :done_tasks      => user.tasks.by_status(:done).limit(done_num),
       }
   end
 
