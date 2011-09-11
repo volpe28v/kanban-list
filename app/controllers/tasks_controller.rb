@@ -51,7 +51,7 @@ class TasksController < ApplicationController
     end
 
     @recent_done_num = 15
-    render :partial => 'tasklist',  :locals => {:tasks => @tasks}
+    render :partial => 'tasklist'
   end
 
   def donelist
