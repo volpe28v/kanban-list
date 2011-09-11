@@ -5,6 +5,7 @@
     margin: 0 auto 0 10px;
     list-style: none;
 }
+
 .note li{
     background: url(/images/line.gif) repeat top left;
     font-size: 12px;

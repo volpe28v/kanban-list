@@ -3,11 +3,23 @@
 </center>
 
 <div class="donenote">
-  <ul class="note">
-  <% @tasks.each do |task| %>
-    <li><%= task.updated_at.strftime("%Y年%m月%d日") %> <%= task.msg %></li>
-  <% end %>
-  </ul>
+<table>
+  <tr><td valign="top">
+    <ul>
+      <li>2011年5月</li>
+      <li>2011年6月</li>
+      <li>2011年7月</li>
+      <li>2011年8月</li>
+      <li>2011年9月</li>
+    </ul>
+  </td><td width="100%">
+    <ul class="note">
+    <% @tasks.each do |task| %>
+      <li><%= task.updated_at.strftime("%d日") %> <%= task.msg %></li>
+    <% end %>
+    </ul>
+  </td></tr>
+</table>
 </div>
 
 
