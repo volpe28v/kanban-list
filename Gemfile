@@ -33,6 +33,12 @@ group :test do
   gem 'rspec'
 end
 
+group :production do
+  gem 'pg'
+  gem 'execjs'
+  gem 'therubyracer'
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
