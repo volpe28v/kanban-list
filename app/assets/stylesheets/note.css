@@ -7,7 +7,7 @@
 }
 
 .note li{
-    background: url(/images/line.gif) repeat top left;
+    background: image-url(line.gif) repeat top left;
     font-size: 12px;
     line-height: 30px;
     padding: 0 15px 0 25px;

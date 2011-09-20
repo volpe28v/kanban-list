@@ -351,7 +351,7 @@ function addTodoResponse(id, li_html, counts_json){
 }
 
 function changeBgImg(img_name) {
-  document.body.style.backgroundImage = 'url(./images/bg_img/' + img_name + ')';
+  document.body.style.backgroundImage = 'url(/bg_img/' + img_name + ')';
 
   $.ajax({
     type: "POST",
