@@ -7,6 +7,7 @@ StatusTable = {
   :done    => 5
 }
 
+
 class Task < ActiveRecord::Base
   belongs_to :user
 
