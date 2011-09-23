@@ -5,8 +5,7 @@ describe Task do
   describe "初期設定されているタスクを読み出す場合" do
     it "全て読み出すことができる" do
       Task.find(:all).should_not be_nil
-      #Task.find(:all).size.should >= 1
-      Task.find(:all).size.should >= 10
+      Task.find(:all).size.should >= 1
     end
   end
 
