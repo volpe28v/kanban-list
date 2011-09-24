@@ -5,18 +5,21 @@
 <div class="donenote">
 <table>
   <tr><td valign="top">
-    <ul>
-      <li>2011年5月</li>
-      <li>2011年6月</li>
-      <li>2011年7月</li>
-      <li>2011年8月</li>
-      <li>2011年9月</li>
-    </ul>
   </td><td width="100%">
     <ul class="note">
+    <% latest_mon = nil %>
     <% @tasks.each do |task| %>
-      <li><%= task.updated_at.strftime("%d日") %> <%= task.msg %></li>
+      <% current_mon = @tasks.first.updated_at.strftime("%Y/%m") %>
+      <% if latest_mon == nil %>
+        <% latest_mon = current_mon %>
+        <li><%= current_mon %></li><ul>
+      <% elsif latest_mon != current_mon %>
+        <% latest_mon = current_mon %>
+        </ul><li><%= current_mon %></li><ul>
+      <% end %>
+      <li><%= task.updated_at.strftime("%d日 %2H:%2S ") %> <%= task.msg %></li>
     <% end %>
+    </ul>
     </ul>
   </td></tr>
 </table>
