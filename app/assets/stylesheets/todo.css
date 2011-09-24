@@ -98,7 +98,7 @@ li {
   border-right:2px solid #557;
   border-bottom:2px solid #557;
   border-left:1px solid #88A;
-  background-image: url("/images/doing_gra.jpg");
+  background-image: image-url("doing_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -120,7 +120,7 @@ li {
   border-right:2px solid #773;
   border-bottom:2px solid #773;
   border-left:1px solid #aa6;
-  background-image: url("/images/waiting_gra.jpg"); 
+  background-image: image-url("waiting_gra.jpg"); 
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -144,7 +144,7 @@ li {
   border-right:2px solid #384;
   border-bottom:2px solid #384;
   border-left:1px solid #6b7;
-  background-image: url("/images/todo_gra.jpg");
+  background-image: image-url("todo_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -168,7 +168,7 @@ li {
   border-right:2px solid #896;
   border-bottom:2px solid #896;
   border-left:1px solid #bc9;
-  background-image: url("/images/todo_l_gra.jpg");
+  background-image: image-url("todo_l_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -191,7 +191,7 @@ li {
   border-right:2px solid #066;
   border-bottom:2px solid #066;
   border-left:1px solid #399;
-  background-image: url("/images/todo_h_gra.jpg");
+  background-image: image-url("todo_h_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -213,7 +213,7 @@ li {
   border-right:1px solid #222;
   border-bottom:1px solid #222;
   border-left:0px solid #666;
-  background-image: url("/images/done_gra.jpg");
+  background-image: image-url("done_gra.jpg");
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#aaa));
@@ -242,7 +242,7 @@ li {
   border-right:2px solid #557;
   border-bottom:2px solid #557;
   border-left:1px solid #88A;
-  background-image: url("/images/doing_gra.jpg");
+  background-image: image-url("doing_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -283,7 +283,7 @@ th.doing{
   font-weight: bold;
   line-height: 100%;
   text-align: center;
-  background-image: url("/images/doing_gra.jpg");
+  background-image: image-url("doing_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -301,7 +301,7 @@ th.todo_h{
   font-weight: bold;
   line-height: 100%;
   text-align: center;
-  background-image: url("/images/todo_h_gra.jpg");
+  background-image: image-url("todo_h_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -319,7 +319,7 @@ th.todo{
   font-weight: bold;
   line-height: 100%;
   text-align: center;
-  background-image: url("/images/todo_gra.jpg");
+  background-image: image-url("todo_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -338,7 +338,7 @@ th.todo_l{
   font-weight: bold;
   line-height: 100%;
   text-align: center;
-  background-image: url("/images/todo_l_gra.jpg");
+  background-image: image-url("todo_l_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -356,7 +356,7 @@ th.waiting{
   font-weight: bold;
   line-height: 100%;
   text-align: center;
-  background-image: url("/images/waiting_gra.jpg");
+  background-image: image-url("waiting_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -374,7 +374,7 @@ th.done{
   font-weight: bold;
   line-height: 100%;
   text-align: center;
-  background-image: url("/images/done_gra.jpg");
+  background-image: image-url("done_gra.jpg");
   background-position: center bottom;
   background-repeat:  repeat;
 
@@ -591,7 +591,7 @@ table#table-01 td {
         -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 0px 5px;
         /* webkit specific markup */
         -webkit-box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.15);
-        background-image:url('/images/nav_f.png');
+        background-image: image-url('nav_f.png');
         background-repeat:repeat-x;
         background-color: #E2E8F2;
         -webkit-border-top-right-radius: 8px;
@@ -614,7 +614,7 @@ table#table-01 td {
         -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 0px 5px;
         /* webkit specific markup */
         -webkit-box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.15);
-        background-image:url('/images/nav_f.png');
+        background-image: image-url('nav_f.png');
         background-repeat:repeat-x;
         background-color: #E2E8F2;
 }
@@ -681,7 +681,7 @@ table#table-01 td {
         -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
         /* webkit specific markup */
         -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
-        background-image:url('/images/nav_f.png');
+        background-image: image-url('nav_f.png');
         background-repeat:repeat-x;
         background-color: #E2E8F2;
         -webkit-border-radius: 8px;
