@@ -5,19 +5,26 @@
 <div class="donenote">
 <table>
   <tr><td valign="top">
+  <ul>
+    <% while @from_month <= @to_month do %>
+      <li><%= link_to @to_month.strftime("%Y-%m"), :year => @to_month.year ,:month => @to_month.mon  %></li>
+      <% @to_month -= 1.month %>
+    <% end %>
+  </ul>
   </td><td width="100%">
     <ul class="note">
-    <% latest_mon = nil %>
+      <%# TODO ここはロジック多すぎる。UIが固まったらロジックを controller や model に移動するべき。 %>
+    <% latest_day = nil %>
     <% @tasks.each do |task| %>
-      <% current_mon = @tasks.first.updated_at.strftime("%Y/%m") %>
-      <% if latest_mon == nil %>
-        <% latest_mon = current_mon %>
-        <li><%= current_mon %></li><ul>
-      <% elsif latest_mon != current_mon %>
-        <% latest_mon = current_mon %>
-        </ul><li><%= current_mon %></li><ul>
+      <% current_day = task.updated_at.strftime("%Y-%m-%d") %>
+      <% if latest_day == nil %>
+        <% latest_day = current_day %>
+        <li><%= current_day %></li><ul>
+      <% elsif latest_day != current_day %>
+        <% latest_day = current_day %>
+        </ul><li><%= current_day %></li><ul>
       <% end %>
-      <li><%= task.updated_at.strftime("%d日 %2H:%2S ") %> <%= task.msg %></li>
+      <li><span class="done_time"><%= task.updated_at.strftime("%2H:%2S ") %></span> <%= task.msg %></li>
     <% end %>
     </ul>
     </ul>

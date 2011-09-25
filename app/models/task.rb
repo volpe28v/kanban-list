@@ -33,12 +33,26 @@ class Task < ActiveRecord::Base
 
   scope :today_done, where("status = ? and updated_at LIKE ?", StatusTable[:done], "#{Time.now.strftime("%Y-%m-%d")}%").order('updated_at DESC' )
 
+  scope :select_month, lambda {|select_mon|
+    where(" updated_at >= ? and updated_at < ? ", select_mon, select_mon + 1.month )
+  }
+
   def self.all_counts
     counts = {}
     StatusTable.each_key{|key|
       counts[key.to_sym] = self.by_status(key.to_sym).count
     }
     counts
+  end
+
+  def self.from_done_month
+    from_time = self.by_status(:done).last.updated_at
+    Time.new(from_time.year, from_time.mon)
+  end
+
+  def self.to_done_month
+    to_time = self.by_status(:done).first.updated_at
+    Time.new(to_time.year, to_time.mon)
   end
 
   def status_sym
