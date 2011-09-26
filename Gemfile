@@ -20,17 +20,16 @@ gem 'jquery-rails'
 gem 'will_paginate'
 gem 'devise'
 gem 'rake'
-gem 'factory_girl'
-gem 'factory_girl_rails'
 
-group :development do
+group :development, :test do
+  gem 'rspec'
   gem 'rspec-rails'
   gem 'guard'
   gem 'growl'
-end
-
-group :test do
-  gem 'rspec'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'rcov'
+  gem 'ci_reporter'
 end
 
 group :production do
