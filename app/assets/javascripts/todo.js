@@ -10,6 +10,9 @@ $(document).ready(function(){
 
     touch_init();
 
+    $("#filter_form input:submit").button();
+    $(".p_buttons").buttonset();
+
     return;
 });
 
@@ -72,6 +75,7 @@ function addMouseEventListener(element){
 }
 
 function initForTaskList(){
+    $("#add_todo_form input:submit").button();
     setSortableList();
     markTodayDone();
     markTodayEdit();

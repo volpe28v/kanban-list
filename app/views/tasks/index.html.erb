@@ -1,10 +1,12 @@
 <table><tr>
 <!-- フィルタ入力フォーム -->
 <td>
+  <div id="filter_form">
   <form method="post" style="display:inline" onsubmit="filterTask( $('#filter_str').get(0).value );return false;">
-    <input type="submit" value="フィルタ / 更新" style="font-size:12px" />
+    <input type="submit" value="Filter" style="font-size:12px" />
     <input type="text" id="filter_str" name="ttl" value="" size="10" style="font-weight:normal;padding:2px" onfocus="this.style.background='#ffc';"/>
   </form>
+  </div>
 </td>
 
 <!-- ポモドーロタイマ -->
@@ -14,7 +16,9 @@
 <div id="p_timer_body" style="display:none">
 <table><tr><td>
 <div id="p_timer_form" class="add_form" >
-<button id="p_start" style="font-size:10px" onclick="Start()">Start</button><button id="p_pause" style="font-size:10px" onclick="Pause()">Pause</button><button id="p_clear" style="font-size:10px" onclick="Clear()">Reset</button>
+<span class="p_buttons">
+<button id="p_start" style="margin-left: 4px;font-size:12px" onclick="Start()">Start</button><button id="p_pause" style="font-size:12px" onclick="Pause()">Pause</button><button id="p_clear" style="font-size:12px" onclick="Clear()">Reset</button>
+</span>
 <span id="p_min">25</span>:<span id="p_sec">00</span>&nbsp;
 </div>
 </td></tr></table>

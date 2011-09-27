@@ -3,7 +3,7 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 spec/**/*.swp
-app/**/*.swp
+app/**/**/*.swp
 coverage/*
 spec/reports/*
 
