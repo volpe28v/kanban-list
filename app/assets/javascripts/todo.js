@@ -165,7 +165,7 @@ function sendCurrentTodo(id, status, msg) {
    $.ajax({
      type: "PUT",
      cache: false,
-     url: "/tasks/" + id,
+     url: "tasks/" + id,
      data: request_str,
      dataType: "jsonp"
    });
@@ -296,7 +296,7 @@ function deleteTodo( delete_id ) {
     $.ajax({
       type: "DELETE",
       cache: false,
-      url: "/tasks/" + id,
+      url: "tasks/" + id,
       dataType: "jsonp"
     });
 
@@ -327,7 +327,7 @@ function addTodoAjax(msg) {
   $.ajax({
     type: "POST",
     cache: false,
-    url: "/tasks",
+    url: "tasks",
     data: "msg=" + msg
  });
 }
