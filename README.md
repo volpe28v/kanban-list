@@ -13,7 +13,7 @@ $ rails s
 ```
 
 ## Demo
-http://freezing-dawn-432.heroku.com/
+http://kanban-list.heroku.com/
 
 ```
 サンプルアカウント
