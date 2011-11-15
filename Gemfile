@@ -19,6 +19,7 @@ gem 'jquery-rails'
 
 gem 'will_paginate'
 gem 'devise'
+gem 'rails_autolink'
 gem 'rake'
 
 group :development, :test do
