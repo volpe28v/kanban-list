@@ -1,13 +1,15 @@
 <div class="donenote">
-<table>
-  <tr><td valign="top">
-  <ul>
+<div class="row-fluid">
+  <div class="span2">
+  <ul class="nav nav-list">
     <% while @from_month <= @to_month do %>
       <li><%= link_to @to_month.strftime("%Y-%m"), :year => @to_month.year ,:month => @to_month.mon  %></li>
       <% @to_month -= 1.month %>
     <% end %>
   </ul>
-  </td><td width="100%">
+  </div>
+
+  <div class="span10">
     <ul class="note">
       <%# TODO ここはロジック多すぎる。UIが固まったらロジックを controller や model に移動するべき。 %>
     <% latest_day = nil %>
@@ -15,7 +17,7 @@
       <% current_day = task.updated_at.strftime("%Y-%m-%d") %>
       <% if latest_day == nil %>
         <% latest_day = current_day %>
-        <li><%= current_day %></li><ul>
+        <li><span class="label label-info"><%= current_day %></span></li><ul>
       <% elsif latest_day != current_day %>
         <% latest_day = current_day %>
         </ul><li><%= current_day %></li><ul>
@@ -23,11 +25,9 @@
       <li><span class="done_time"><%= task.updated_at.strftime("%2H:%2S ") %></span> <%= task.msg %></li>
     <% end %>
     </ul>
-    </ul>
-  </td></tr>
-</table>
+  </div>
 </div>
-
+</div>
 
 <%= will_paginate(@tasks) %>
 

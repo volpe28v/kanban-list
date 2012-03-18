@@ -7,3 +7,4 @@ app/**/**/*.swp
 coverage/*
 spec/reports/*
 *.swp
+*.swo
