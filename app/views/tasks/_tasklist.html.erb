@@ -1,8 +1,9 @@
 <div class="row-fluid">
+  <div class="span2"></div>
   <div class="span6">
     <form method="post" class="form-inline" onsubmit="addTodoWithPrefix($('#prefix').get(0).value , $('#add_todo_form_msg').get(0).value);$('#add_todo_form_msg').get(0).value='';return false;">
-      <input type="text" id="prefix" class="span1" name="prefix" value="" placeholder="Tag"/>
-      <input type="text" id="add_todo_form_msg" class="span5" value="" placeholder="Task Name"/>
+      <input type="text" id="prefix" class="span1" name="prefix" value="" placeholder="Prefix"/>
+      <input type="text" id="add_todo_form_msg" class="span5" value="" placeholder="Task"/>
       <input type="submit" value="Add" class="btn" />
     </form>
   </div>

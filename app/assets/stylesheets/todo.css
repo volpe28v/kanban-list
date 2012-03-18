@@ -531,6 +531,14 @@ table#table-01 td {
         margin-left:  2px;
         margin-top: 2px;
         margin-bottom: 14px;
+        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+
+        /* firefox specific markup */
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        /* webkit specific markup */
+        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        -webkit-border-bottom-right-radius: 8px;
+        -webkit-border-bottom-left-radius: 8px;
 }
 
 .memname {
@@ -549,10 +557,6 @@ table#table-01 td {
         border-right: 2px solid #A8B8D9;
         padding: 2px 0px;
         border-top-width: 0;
-        /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
-        /* webkit specific markup */
-        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
         -webkit-border-bottom-right-radius: 8px;
         -webkit-border-bottom-left-radius: 8px;
 }
@@ -567,13 +571,6 @@ table#table-01 td {
         border-right: 2px solid #A8B8D9;
         padding: 2px 0px;
         border-top-width: 0;
-        /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
-        /* webkit specific markup */
-        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
-//        -webkit-border-bottom-right-radius: 8px;
-//        -webkit-border-bottom-left-radius: 8px;
-
 }
 
 .memproto {
@@ -583,10 +580,6 @@ table#table-01 td {
         font-size: 12pt;
         font-weight: bold;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
-        /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 0px 5px;
-        /* webkit specific markup */
-        -webkit-box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.15);
         background-image: url('nav_f.png');
         background-repeat:repeat-x;
         background-color: #E2E8F2;
@@ -606,10 +599,6 @@ table#table-01 td {
         font-size: 8pt;
         font-weight: bold;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
-        /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 0px 5px;
-        /* webkit specific markup */
-        -webkit-box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.15);
         background-image: url('nav_f.png');
         background-repeat:repeat-x;
         background-color: #E2E8F2;
@@ -621,13 +610,8 @@ table#table-01 td {
         border-right: 2px solid #A8B8D9;
         padding: 2px 0px;
         border-top-width: 0;
-        /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
-        /* webkit specific markup */
-        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
         -webkit-border-bottom-right-radius: 8px;
         -webkit-border-bottom-left-radius: 8px;
-
 }
 
 .memname_waiting {
@@ -640,10 +624,6 @@ table#table-01 td {
         border-right: 2px solid #A8B8D9;
         padding: 2px 0px;
         border-top-width: 0;
-        /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
-        /* webkit specific markup */
-        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
         -webkit-border-bottom-right-radius: 8px;
         -webkit-border-bottom-left-radius: 8px;
 }
@@ -658,10 +638,6 @@ table#table-01 td {
         border-right: 2px solid #A8B8D9;
         padding: 2px 0px;
         border-top-width: 0;
-        /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
-        /* webkit specific markup */
-        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
         -webkit-border-bottom-right-radius: 8px;
         -webkit-border-bottom-left-radius: 8px;
 }
@@ -683,4 +659,5 @@ footer {
   padding: 20px 0;
   text-align: right;
   border-top: 1px solid #DDD; 
-}             
+}
+
