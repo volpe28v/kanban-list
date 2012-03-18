@@ -552,9 +552,9 @@ table#table-01 td {
 }
 
 .memdoc_doing {
-        border-bottom: 2px solid #A8B8D9;
-        border-left: 2px solid #A8B8D9;
-        border-right: 2px solid #A8B8D9;
+        border-bottom: 1px solid #A8B8D9;
+        border-left: 1px solid #A8B8D9;
+        border-right: 1px solid #A8B8D9;
         padding: 2px 0px;
         border-top-width: 0;
         -webkit-border-bottom-right-radius: 8px;
@@ -567,8 +567,8 @@ table#table-01 td {
 
 .memdoc_todo_h {
         border-bottom: 0px solid #A8B8D9;
-        border-left: 2px solid #A8B8D9;
-        border-right: 2px solid #A8B8D9;
+        border-left: 1px solid #A8B8D9;
+        border-right: 1px solid #A8B8D9;
         padding: 2px 0px;
         border-top-width: 0;
 }
@@ -605,9 +605,9 @@ table#table-01 td {
 }
 
 .memdoc_todo_l {
-        border-bottom: 2px solid #A8B8D9;
-        border-left: 2px solid #A8B8D9;
-        border-right: 2px solid #A8B8D9;
+        border-bottom: 1px solid #A8B8D9;
+        border-left: 1px solid #A8B8D9;
+        border-right: 1px solid #A8B8D9;
         padding: 2px 0px;
         border-top-width: 0;
         -webkit-border-bottom-right-radius: 8px;
@@ -619,9 +619,9 @@ table#table-01 td {
 }
 
 .memdoc_waiting {
-        border-bottom: 2px solid #A8B8D9;
-        border-left: 2px solid #A8B8D9;
-        border-right: 2px solid #A8B8D9;
+        border-bottom: 1px solid #A8B8D9;
+        border-left: 1px solid #A8B8D9;
+        border-right: 1px solid #A8B8D9;
         padding: 2px 0px;
         border-top-width: 0;
         -webkit-border-bottom-right-radius: 8px;
@@ -633,9 +633,9 @@ table#table-01 td {
 }
 
 .memdoc_done {
-        border-bottom: 2px solid #A8B8D9;
-        border-left: 2px solid #A8B8D9;
-        border-right: 2px solid #A8B8D9;
+        border-bottom: 1px solid #A8B8D9;
+        border-left: 1px solid #A8B8D9;
+        border-right: 1px solid #A8B8D9;
         padding: 2px 0px;
         border-top-width: 0;
         -webkit-border-bottom-right-radius: 8px;
