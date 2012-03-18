@@ -266,8 +266,6 @@ li {
 
 .ui-state-highlight { height: 1.5em; border-style : dashed; }
 
-a { text-decoration: none; color: #8B0000; }
-
 #serverMsg{
   margin: 0 0 0 20px;
   width             : 97%   ;
@@ -693,15 +691,17 @@ table#table-01 td {
   background-color: #ff9;
 }
 
-#filter_str {
-  font-weight:normal;
-  padding:2px;
-  background-color: #ffc;
-}
-
 .sign {
   font-weight: bold;
   font-size: 10pt;
   color: #55f;
 }
 
+footer {
+  background: #fff;
+  width: 100%;
+  margin-top: 4px;                                                                    
+  padding: 20px 0;
+  text-align: right;
+  border-top: 1px solid #DDD; 
+}             

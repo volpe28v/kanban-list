@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-$ git clone git@github.com:volpe28v/todolist_on_rails.git
+$ git clone git@github.com:volpe28v/kanban-list.git
 $ cd todolist_on_rails
 $ bundle
 $ rake db:migrate

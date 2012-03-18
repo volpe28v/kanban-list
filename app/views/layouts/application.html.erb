@@ -14,18 +14,48 @@
  background-color: white;
  background-attachment: fixed;
  background-position: center top;
- background-repeat:  repeat
+ background-repeat:  repeat;
+ padding-top: 46px;
 "> 
 <header>
-<%= image_tag "title.png" %>
-<%= " for " + current_user.name  if current_user%> 
+  <div class="navbar navbar-fixed-top">                                             
+    <div class="navbar-inner">                                                      
+      <div class="container-fluid">                                                 
+        <a class="brand" href="/">かんばんりすと</a> 
+        <div class="nav-collapse">
+          <ul class="nav pull-left">
+            <li><%= link_to "Home", tasks_path %></li>
+            <li><%= link_to "DoneList", tasks_donelist_path %></li>
+          </ul>
+          <form method="post" class="navbar-search pull-left" onsubmit="filterTask( $('#filter_str').get(0).value );return false;">
+            <input type="text" id="filter_str" class="search-query" name="ttl" value="" placeholder="Filter"/>
+          </form>
+<!-- ポモドーロタイマ。TODO:レイアウトうまくいかないので一旦コメントアウト -->
+<!--
+<form class="form-inline pull-left">
+<div id="p_timer_form">
+<button id="p_start" class="btn" onclick="Start()">Start</button>
+<button id="p_pause" class="btn" onclick="Pause()">Pause</button>
+<button id="p_clear" class="btn" onclick="Clear()">Reset</button>
+<span id="p_min">25</span>:<span id="p_sec">00</span>&nbsp;
+</div>
+</form>
+-->
+          <ul class="nav pull-right">
+            <li><%= link_to('ログアウト', [ :destroy, :user_session ], :method => :delete ,:class => '') if current_user %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 
 <%= yield %>
 
-<%= link_to('ログアウト', [ :destroy, :user_session ], :method => :delete ,:class => 'sign signOut') if current_user %>
-<span class="notice"><%= notice %></span>
-<span class="alert"><%= alert %></span>
-<div id="generatedby">Created by Naoki Kodama. </div>
+ <footer>
+    <span>
+    © 2011 Naoki KODAMA. All rights reserved.
+    </span>
+  </footer>
 </body>
 </html>

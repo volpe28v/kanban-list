@@ -29,7 +29,7 @@ group :development, :test do
   gem 'growl'
   gem 'factory_girl'
   gem 'factory_girl_rails'
-  gem 'rcov'
+#  gem 'rcov'
   gem 'ci_reporter'
 end
 
