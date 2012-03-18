@@ -1,35 +1,10 @@
 <div class="row-fluid">
   <div class="span6">
-    <div class="add_form">
-      <div id="add_todo_form" style="display:block">
-        <form method="post" style="display:inline" onsubmit="addTodoWithPrefix($('#prefix').get(0).value , $('#add_todo_form_msg').get(0).value);$('#add_todo_form_msg').get(0).value='';return false;">
-          <input type="submit" value="Add" style="margin-left: 4px;font-size:12px" />
-          <input type="text" id="prefix" name="prefix" value="" size="6" />
-          <input type="text" id="add_todo_form_msg" name="ttl" value="" size="64" />
-          <input type="submit" value="Add" style="margin-right: 4px;font-size:12px" />
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="span6">
-    <table id="table-01" >
-    <tr>
-    <th class="doing"  >D</th>
-    <th class="todo_h" >H</th>
-    <th class="todo"   >M</th>
-    <th class="todo_l" >L</th>
-    <th class="waiting">W</th>
-    <th class="done"   >D</th>
-    </tr>
-    <tr>
-      <td><div id="doing_num"   class="counts"><%= @counts[:doing] %></div></td>
-      <td><div id="todo_h_num"  class="counts"><%= @counts[:todo_h] %></div></td>
-      <td><div id="todo_num"    class="counts"><%= @counts[:todo_m] %></div></td>
-      <td><div id="todo_l_num"  class="counts"><%= @counts[:todo_l] %></div></td>
-      <td><div id="waiting_num" class="counts"><%= @counts[:waiting] %></div></td>
-      <td><div id="done_num"    class="counts"><%= @counts[:done] %></div></td>
-    </tr>
-    </table>
+    <form method="post" class="form-inline" onsubmit="addTodoWithPrefix($('#prefix').get(0).value , $('#add_todo_form_msg').get(0).value);$('#add_todo_form_msg').get(0).value='';return false;">
+      <input type="text" id="prefix" class="span1" name="prefix" value="" placeholder="Tag"/>
+      <input type="text" id="add_todo_form_msg" class="span5" value="" placeholder="Task Name"/>
+      <input type="submit" value="Add" class="btn" />
+    </form>
   </div>
 </div>
 

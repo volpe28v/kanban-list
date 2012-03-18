@@ -15,7 +15,7 @@
  background-attachment: fixed;
  background-position: center top;
  background-repeat:  repeat;
- padding-top: 46px;
+ padding-top: 50px;
 "> 
 <header>
   <div class="navbar navbar-fixed-top">                                             
@@ -31,7 +31,6 @@
           <form method="post" class="navbar-search pull-left" onsubmit="filterTask( $('#filter_str').get(0).value );return false;">
             <input type="text" id="filter_str" class="search-query" name="ttl" value="" placeholder="Filter"/>
           </form>
-          <% end %>
 <!-- ポモドーロタイマ。TODO:レイアウトうまくいかないので一旦コメントアウト -->
 <!--
 <form class="form-inline pull-left">
@@ -43,6 +42,22 @@
 </div>
 </form>
 -->
+          <div class="pull-left">
+            <p>
+            <table id="table-01" >
+            <tr>
+              <td><div id="todo_h_num"  class="counts todo_h"><%= @counts[:todo_h] %></div></td>
+              <td><div id="todo_num"    class="counts todo"><%= @counts[:todo_m] %></div></td>
+              <td><div id="todo_l_num"  class="counts todo_l"><%= @counts[:todo_l] %></div></td>
+              <td><div id="doing_num"   class="counts doing"><%= @counts[:doing] %></div></td>
+              <td><div id="waiting_num" class="counts waiting"><%= @counts[:waiting] %></div></td>
+              <td><div id="done_num"    class="counts done"><%= @counts[:done] %></div></td>
+            </tr>
+            </table>
+            </p>
+          </div>
+          <% end %>
+
           <ul class="nav pull-right">
             <li><%= link_to('ログアウト', [ :destroy, :user_session ], :method => :delete ,:class => '') if current_user %></li>
           </ul>

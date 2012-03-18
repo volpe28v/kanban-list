@@ -274,7 +274,7 @@ li {
   z-index:100;
 }
 
-th.doing{ 
+.doing{ 
   padding: 4px;
   border: #E3E3E3 solid;
   border-width: 0 0 1px 1px;
@@ -292,7 +292,7 @@ th.doing{
 
 }
 
-th.todo_h{
+.todo_h{
   padding: 4px;
   border: #E3E3E3 solid;
   border-width: 0 0 1px 1px;
@@ -310,7 +310,7 @@ th.todo_h{
 
 }
 
-th.todo{
+.todo{
   padding: 4px;
   border: #E3E3E3 solid;
   border-width: 0 0 1px 1px;
@@ -329,7 +329,7 @@ th.todo{
 
 }
 
-th.todo_l{
+.todo_l{
   padding: 4px;
   border: #E3E3E3 solid;
   border-width: 0 0 1px 1px;
@@ -347,7 +347,7 @@ th.todo_l{
 
 }
 
-th.waiting{
+.waiting{
   padding: 4px;
   border: #E3E3E3 solid;
   border-width: 0 0 1px 1px;
@@ -365,7 +365,7 @@ th.waiting{
 
 }
 
-th.done{
+.done{
   padding: 4px;
   border: #E3E3E3 solid;
   border-width: 0 0 1px 1px;
@@ -440,7 +440,7 @@ h2.done{
 
 
 table#table-01 {
-    margin: 0 0 0 20px;
+    margin: 2px 0 2px 20px;
     border: 1px #999999 solid;
     border-collapse: collapse;
     border-spacing: 0;
@@ -448,13 +448,11 @@ table#table-01 {
 }
 
 table#table-01 th {
-    padding: 4px;
     border: 1px #999999 solid;
     border-width: 0 0 1px 1px;
 }
 
 table#table-01 td {
-    padding: 4px;
     border: 1px #bbbbbb solid;
     background: #F5F5F5;
     border-width: 0 0 1px 1px;
@@ -522,7 +520,7 @@ table#table-01 td {
 
 .counts {
         color: black;
-        font-size: 8pt;
+        font-size: 6pt;
         font-weight: bold;
         text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
 }
@@ -668,26 +666,7 @@ table#table-01 td {
         -webkit-border-bottom-left-radius: 8px;
 }
 
-.add_form {
-        border-top: 1px solid #A8B8D9;
-        border-left: 1px solid #A8B8D9;
-        border-right: 1px solid #A8B8D9;
-        font-size: 12pt;
-        font-weight: bold;
-        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
-        /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
-        /* webkit specific markup */
-        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
-        background-image: url('nav_f.png');
-        background-repeat:repeat-x;
-        background-color: #E2E8F2;
-        -webkit-border-radius: 8px;
-}
-
 #prefix,#add_todo_form_msg  {
-  font-weight:normal;
-  padding:2px; 
   background-color: #ff9;
 }
 

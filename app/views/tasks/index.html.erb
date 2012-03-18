@@ -3,29 +3,11 @@
     <div class="span12">
 
 <!-- ここから全要素を動的に更新可能なように別テンプレートとする -->
-<div id="task_list">
-  <%= render "tasklist" %>
-</div>
+    <div id="task_list">
+      <%= render "tasklist" %>
+    </div>
 <!-- ここまで動的更新できる範囲 -->
 
-<table id="table-01" >
-<tr>
-<th class="doing"  >D</th>
-<th class="todo_h" >H</th>
-<th class="todo"   >M</th>
-<th class="todo_l" >L</th>
-<th class="waiting">W</th>
-<th class="done"   >D</th>
-</tr>
-<tr>
-  <td><div id="doing_num"   class="counts"><%= @counts[:doing] %></div></td>
-  <td><div id="todo_h_num"  class="counts"><%= @counts[:todo_h] %></div></td>
-  <td><div id="todo_num"    class="counts"><%= @counts[:todo_m] %></div></td>
-  <td><div id="todo_l_num"  class="counts"><%= @counts[:todo_l] %></div></td>
-  <td><div id="waiting_num" class="counts"><%= @counts[:waiting] %></div></td>
-  <td><div id="done_num"    class="counts"><%= @counts[:done] %></div></td>
-</tr>
-</table>
     </div>
   </div>
 </div>
