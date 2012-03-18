@@ -11,7 +11,7 @@ $(document).ready(function(){
     touch_init();
 
     $("#filter_form input:submit").button();
-    $(".p_buttons").buttonset();
+//    $(".p_buttons").buttonset();
 
     return;
 });
