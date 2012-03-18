@@ -27,21 +27,10 @@
             <li><%= link_to "Home", tasks_path if current_user %></li>
             <li><%= link_to "DoneList", tasks_donelist_path if current_user %></li>
           </ul>
-          <% if current_user %>
+          <% if params[:controller] == "tasks" and params[:action] == "index" %>
           <form method="post" class="navbar-search pull-left" onsubmit="filterTask( $('#filter_str').get(0).value );return false;">
             <input type="text" id="filter_str" class="search-query" name="ttl" value="" placeholder="Filter"/>
           </form>
-<!-- ポモドーロタイマ。TODO:レイアウトうまくいかないので一旦コメントアウト -->
-<!--
-<form class="form-inline pull-left">
-<div id="p_timer_form">
-<button id="p_start" class="btn" onclick="Start()">Start</button>
-<button id="p_pause" class="btn" onclick="Pause()">Pause</button>
-<button id="p_clear" class="btn" onclick="Clear()">Reset</button>
-<span id="p_min">25</span>:<span id="p_sec">00</span>&nbsp;
-</div>
-</form>
--->
           <div class="pull-left">
             <p>
             <table id="table-01" >

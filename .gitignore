@@ -6,4 +6,4 @@ spec/**/*.swp
 app/**/**/*.swp
 coverage/*
 spec/reports/*
-
+*.swp
