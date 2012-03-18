@@ -77,7 +77,6 @@ function addMouseEventListener(element){
 function initForTaskList(){
     $("#add_todo_form input:submit").button();
     setSortableList();
-    markTodayDone();
     markTodayEdit();
 }
 
@@ -110,15 +109,6 @@ var option={
 // ドラッグ＆ドロップ可能にする
 function setSortableList(){
     $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
-}
-
-// 本日のDone 要素にマーカーをつける
-function markTodayDone(){
-  markTodayDoneWithElem( $('ul#done li div.sorttime[alt*="' + getTodayFullStr() + '"] div[id^="fixed_"]'));
-}
-
-function markTodayDoneWithElem( mark_obj ){
-  mark_obj.css("background","#ffff66");
 }
 
 // 本日の編集した要素にマーカーをつける
@@ -249,11 +239,6 @@ function moveToDone(move_id) {
   $("#edit_link_ms_" + id ).css("display","none");
   $("#edit_form_ms_" + id ).css("display","none");
   $("#fixed_" + id ).css("display","block");
-
-  markTodayDoneWithElem($("#fixed_" + id ))
-
-//  $(move_id).slideUp("normal",function(){ $(move_id).prependTo($("#" + to_status)); });
-//  $(move_id).slideDown("normal");
 
   $(move_id).fadeOut("normal",function(){ $(move_id).prependTo($("#" + to_status)); });
   $(move_id).fadeIn("normal");
