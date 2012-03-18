@@ -24,12 +24,14 @@
         <a class="brand" href="/">かんばんりすと</a> 
         <div class="nav-collapse">
           <ul class="nav pull-left">
-            <li><%= link_to "Home", tasks_path %></li>
-            <li><%= link_to "DoneList", tasks_donelist_path %></li>
+            <li><%= link_to "Home", tasks_path if current_user %></li>
+            <li><%= link_to "DoneList", tasks_donelist_path if current_user %></li>
           </ul>
+          <% if current_user %>
           <form method="post" class="navbar-search pull-left" onsubmit="filterTask( $('#filter_str').get(0).value );return false;">
             <input type="text" id="filter_str" class="search-query" name="ttl" value="" placeholder="Filter"/>
           </form>
+          <% end %>
 <!-- ポモドーロタイマ。TODO:レイアウトうまくいかないので一旦コメントアウト -->
 <!--
 <form class="form-inline pull-left">

@@ -6,7 +6,7 @@
 $(document).ready(function(){ 
     initForTaskList();
 
-    $('#filter_str').get(0).focus();
+//    $('#filter_str').get(0).focus();
 
     touch_init();
 
