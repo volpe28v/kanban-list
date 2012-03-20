@@ -86,9 +86,10 @@ li {
   -webkit-border-top-right-radius: 6px;
   -webkit-border-bottom-left-radius: 6px;
   -webkit-border-bottom-right-radius: 6px;
+
 }
 
-#doing   li { 
+#doing li { 
   margin: 0px 2px 1px 2px; 
   padding: 1px; 
   font-weight: bold; 
@@ -103,11 +104,11 @@ li {
   background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
-  background: -webkit-gradient(linear, left top, left bottom, from(#cde), to(#74b9ff));
+  background: -webkit-gradient(linear, left top, left bottom, from(#E0F0F6), to(#90C0C6));
   /* For Mozilla/Gecko (Firefox etc) */
-  background: -moz-linear-gradient(top, #cde, #74b9ff);
+  background: -moz-linear-gradient(top, #E0F0F6, #90C0C6);
 
-  color: #358;
+  color: #333;
   cursor: pointer;
 }
 
@@ -129,11 +130,11 @@ li {
   /* For Mozilla/Gecko (Firefox etc) */
   background: -moz-linear-gradient(top, #eec, #ee5);
 
-  color: #551;
+  color: #333;
   cursor: pointer;
 }
 
-#todo_m    li { 
+#todo_h li, #todo_m li, #todo_l li{ 
   margin: 0px 2px 1px 2px; 
   padding: 1px; 
   border : 1px solid #34f; 
@@ -149,58 +150,11 @@ li {
   background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
-  background: -webkit-gradient(linear, left top, left bottom, from(#beb), to(#7CFC00));
+  background: -webkit-gradient(linear, left top, left bottom, from(#D5FED5), to(#80DE80));
   /* For Mozilla/Gecko (Firefox etc) */
-  background: -moz-linear-gradient(top, #beb, #7CFC00);
+  background: -moz-linear-gradient(top, #D5FED5, #80DE80);
 
-  color: #152;
-  cursor: pointer;
-}
-
-#todo_l li { 
-  margin: 0px 2px 1px 2px; 
-  padding: 1px; 
-  border : 1px solid #34f; 
-  font-weight: bold; 
-  font-size: 12px; 
-  text-decoration:none;
-  border-top:1px solid #bc9;
-  border-right:2px solid #896;
-  border-bottom:2px solid #896;
-  border-left:1px solid #bc9;
-  background-image: url("todo_l_gra.jpg");
-  background-position: center bottom;
-  background-repeat:  repeat;
-
-  /* For WebKit (Safari, Google Chrome etc) */
-  background: -webkit-gradient(linear, left top, left bottom, from(#df7), to(#ADFF2F));
-  /* For Mozilla/Gecko (Firefox etc) */
-  background: -moz-linear-gradient(top, #df7, #ADFF2F);
-
-  color: #352;
-  cursor: pointer;
-}
-
-#todo_h li {
-  margin: 0px 2px 1px 2px;
-  padding: 1px;
-  font-weight: bold;
-  font-size: 12px;
-  text-decoration:none;
-  border-top:1px solid #399;
-  border-right:2px solid #066;
-  border-bottom:2px solid #066;
-  border-left:1px solid #399;
-  background-image: url("todo_h_gra.jpg");
-  background-position: center bottom;
-  background-repeat:  repeat;
-
-  /* For WebKit (Safari, Google Chrome etc) */
-  background: -webkit-gradient(linear, left top, left bottom, from(#cec), to(#40cF40));
-  /* For Mozilla/Gecko (Firefox etc) */
-  background: -moz-linear-gradient(top, #cec, #40cF40);
-
-  color: #155;
+  color: #333;
   cursor: pointer;
 }
 
@@ -216,14 +170,14 @@ li {
   background-image: url("done_gra.jpg");
 
   /* For WebKit (Safari, Google Chrome etc) */
-  background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#aaa));
+  background: -webkit-gradient(linear, left top, left bottom, from(#F6F6F6), to(#C2C2C2));
   /* For Mozilla/Gecko (Firefox etc) */ 
-  background: -moz-linear-gradient(top, #cdc, #00FF00);
+  background: -moz-linear-gradient(top, #F6F6F6, #C2C2C2);
 
   color: #444;
 }
 
-#donelist    li {
+#donelist li {
   margin: 0px 2px 1px 2px;
   padding: 1px;
   border : 0px solid #34f;
@@ -286,10 +240,9 @@ li {
   background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
-  background: -webkit-gradient(linear, left top, left bottom, from(#cde), to(#74b9ff));
+  background: -webkit-gradient(linear, left top, left bottom, from(#E0F0F6), to(#90C0C6));
   /* For Mozilla/Gecko (Firefox etc) */
-  background: -moz-linear-gradient(top, #cde, #74b9ff);
-
+  background: -moz-linear-gradient(top, #E0F0F6, #90C0C6);
 }
 
 .todo_h{
@@ -531,7 +484,6 @@ table#table-01 td {
         margin-left:  2px;
         margin-top: 2px;
         margin-bottom: 14px;
-        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
 
         background-color: ghostwhite;
         /* firefox specific markup */
