@@ -1,36 +1,28 @@
 <div id="wrapper">
+<div class="hero-unit">
+  <h1>かんばんりすと</h1>
+  <p>
+    <h3>概要</h3>
+    <ul>
+      <li>「かんばんりすと」はWeb上で比較的お手軽にTodo管理を行うためのWebアプリです。
+      <li>Agile界隈で話題になっている「ソフトウェアかんばん」をイメージして作りました。
+    </ul>
 
-<table>
-<tr><td id="main">
-<h3 class="title">「かんばんりすと」について</h3>
-<ul>
-<li>「かんばんりすと」はWeb上で比較的お手軽にTodo管理を行うためのWebアプリです。
-<li>Agile界隈で話題になっている「ソフトウェアかんばん」をイメージして作りました。
-<li>タスク状態の変更をマウスのドラッグ＆ドロップで容易に行えます。
-<li>タッチイベントにも対応していますので iPad 等でもご利用いただけます。
-</ul>
+    <h3>使い方</h3>
+    <ul>
+      <li>操作の基本は「タスクを追加」「ドラッグ＆ドロップで状態変更」「チェックでDone」です。
+      <li>タッチイベントにも対応していますので iPad 等でもご利用いただけます。
+    </ul>
 
-<h3 class="title">使い方</h3>
-<ul>
-<li>新規で利用したい場合は「ユーザー登録」から任意のユーザ名でログインしてください
-<li>操作の基本は「タスクを追加」「ドラッグ＆ドロップで状態変更」「チェックでDone」です。
-</ul>
+    <h3>ソースコード</h3>
+    <ul>
+      <li><a href=https://github.com/volpe28v/kanban-list>https://github.com/volpe28v/kanban-list</a></li>
+    </ul>
+  </p>
 
-<h3 class="title">ソースコード</h3>
-<ul>
-  <li><a href=https://github.com/volpe28v/kanban-list>https://github.com/volpe28v/kanban-list</a></li>
-</ul>
-
-</td><td id="side_bar">
-
-<ul class="sign_menu">
-  <li><%= link_to 'ログイン', [ :new, :user_session ],:class => 'sign'  %></li>
-  <li><%= link_to 'ユーザー登録', [ :new, :user_registration ] ,:class => 'sign' %></li>
-</ul>
-<!-- <p><%= link_to 'パスワード再発行', [ :new, :user_password ] ,:class => 'sign' %></p> -->
-
-<hr>
-</td></tr>
-</table>
-
+  <p>
+    <%= link_to 'ユーザー登録', [ :new, :user_registration ] ,:class => 'btn btn-primary btn-large' %>
+    <%= link_to 'ログイン', [ :new, :user_session ],:class => 'btn btn-primary btn-large'  %>
+  </p>
+</div>
 </div>
