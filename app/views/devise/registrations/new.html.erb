@@ -1,21 +1,44 @@
-<h2>Sign up</h2>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12"></div>
+    <%= devise_error_messages! %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-horizontal"}) do |f| %>
+      <fieldset>
+        <legend>Sign up</legend>
+        <div class="control-group">
+          <%= f.label :name, :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :name %>
+          </div>
+        </div>
+ 
+        <div class="control-group">
+          <%= f.label :email, :class => "control-label" %>
+          <div class="controls">
+            <%= f.email_field :email %>
+          </div>
+        </div>
+ 
+        <div class="control-group">
+          <%= f.label :password, :class => "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password_confirmation, :class => "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <%= f.submit "Sign in", :class => "btn btn-primary" %>
+          </div>
+        </div>
+      </fieldset>
+    <% end %>
+    </div>
+  </div>
+</div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <p><%= f.label :name %><br />
-  <%= f.text_field :name %></p>
-
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "Sign up" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
