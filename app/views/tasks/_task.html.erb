@@ -3,7 +3,7 @@
 <div class="sorttime" alt="<%= task.updated_at %>" id="ms_notyet_<%= task.id %>">
     <div class="citem_editable">
       <div id="edit_link_ms_<%= task.id %>" style="display:<%= done == false ? "block" : "none" %>">
-        <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="left" width="10px">
+        <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="left" width="14px">
           <input type="checkbox" onclick="moveToDone('#id_<%= task.id %>');return false;"/>
         </td><td class="taskLabel" align="left" width="10px">
           <font color="#00008B" style="font-size:10px;font-weight:normal;" ><div id="edit_link_time_<%= task.id %>" style="display:inline;">[<%= task.updated_at.strftime("%m/%d") %>]</div></font>&nbsp;
