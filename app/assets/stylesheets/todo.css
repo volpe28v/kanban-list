@@ -412,37 +412,6 @@ table#table-01 td {
     text-align: center;
 }
 
-#info_msg {
-    width:  94%; 
-    height: 50px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-
-  font-size: 12px;
-  list-style-type: none;
-  margin: 0px 0px 0px 10px;
-  padding: 2px;
-  border : 0px solid #aaaaaa;
-  border-top:1px solid #888;
-  border-right:2px solid #333;
-  border-bottom:2px solid #333;
-  border-left:1px solid #888;
-  background: #ddd;
-  color: #111;
-
-        /* firefox specific markup */
-        -moz-border-radius-topleft: 10px;
-        -moz-border-radius-topright: 10px;
-        -moz-border-radius-bottomleft: 10px;
-        -moz-border-radius-bottomright: 10px;
-        /* webkit specific markup */
-        -webkit-border-top-left-radius: 10px;
-        -webkit-border-top-right-radius: 10px;
-        -webkit-border-bottom-left-radius: 10px;
-        -webkit-border-bottom-right-radius: 10px;
-
-}
-
 #info_msg li {
     margin: 0px 0px 0px 4px;
 }
