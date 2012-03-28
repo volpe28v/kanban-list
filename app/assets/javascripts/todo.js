@@ -5,20 +5,15 @@
 
 $(document).ready(function(){ 
     initForTaskList();
-
-//    $('#filter_str').get(0).focus();
-
     touch_init();
 
     $("#filter_form input:submit").button();
-//    $(".p_buttons").buttonset();
 
     return;
 });
 
 function touchHandler(event)
 {
-//	$('#eventLog').html("Event : " + event.type );
 	if (event.touches.length > 1){return;} //マルチタッチを無効化
 
 	var touches = event.changedTouches;
@@ -80,30 +75,30 @@ function initForTaskList(){
     markTodayEdit();
 }
 
-var option={
-        start  : function(event, ui){
-          var update_id = ui.item.attr("id").slice(3);
+var option = {
+    start  : function(event, ui){
+        var update_id = ui.item.attr("id").slice(3);
           //$("#msg_" + update_id).css("color","red");
         },
-        stop   : function(event, ui){
-          var update_id = ui.item.attr("id").slice(3);
+    stop   : function(event, ui){
+        var update_id = ui.item.attr("id").slice(3);
           //$("#msg_" + update_id).css("color","#222");           
         },
 
-        receive: function(event, ui){
-            var update_id = ui.item.attr("id").slice(3);
+    receive: function(event, ui){
+        var update_id = ui.item.attr("id").slice(3);
 
-            sendCurrentTodo( update_id,
-                             $(this).get(0).id,
-                             $("#msg_" + update_id).html());
+        sendCurrentTodo( update_id,
+                         $(this).get(0).id,
+                         $("#msg_" + update_id).html());
         },
 
-        connectWith: 'ul',
-        placeholder: 'ui-state-highlight',
-        cancel: "#cancel",
-        scroll: false,
-        tolerance: 'pointer',
-        revert: true
+    connectWith: 'ul',
+    placeholder: 'ui-state-highlight',
+    cancel: "#cancel",
+    scroll: true,
+    tolerance: 'pointer',
+    revert: true
 };
 
 // ドラッグ＆ドロップ可能にする
