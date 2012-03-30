@@ -8,7 +8,7 @@
         </td><td class="taskLabel" align="left" width="10px">
           <font color="#00008B" style="font-size:10px;font-weight:normal;" ><div id="edit_link_time_<%= task.id %>" style="display:inline;">[<%= task.updated_at.strftime("%m/%d") %>]</div></font>&nbsp;
         </td><td class="taskLabel" align="left">
-          <div id="msg_<%= task.id %>" style="display:inline;"><%= raw task.msg %></div>&nbsp;
+          <pre id="msg_<%= task.id %>" style="display:inline;"><%= raw task.msg %></pre>&nbsp;
         </td><td align="right" width="40px">
         <div id="ms_<%= task.id %>_menu" style="display:inline;">
           <span class="s12">
