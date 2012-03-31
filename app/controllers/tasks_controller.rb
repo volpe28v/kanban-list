@@ -11,10 +11,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new
-    @task.msg = params[:msg]
-    @task.name = current_user.name
-    @task.user = current_user
+    @task = Task.new(:msg => params[:msg],
+                     :name => current_user.name,
+                     :user => current_user)
     @task.update_status(:todo_m)
     @task.save
 
