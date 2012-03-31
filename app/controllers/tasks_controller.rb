@@ -55,7 +55,7 @@ class TasksController < ApplicationController
   end
 
   def donelist
-    if params[:year] == nil
+    if params[:year].blank?
       @tasks = current_user.tasks.by_status(:done).paginate(:page => params[:page], :per_page => 15)
     else
       select_month = Time.new( params[:year], params[:month])
