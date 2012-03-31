@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :bg_img, :layout, :pomo
 
   has_many :tasks
+  has_many :books
 
   scope :all_user, order('name')
 
