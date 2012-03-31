@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def self.add_user(name)
-    if exist?(name) 
+    if exist?(name)
       false
     else
       User.create(:name => name,
