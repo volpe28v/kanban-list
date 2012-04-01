@@ -7,8 +7,6 @@ $(document).ready(function(){
     initForTaskList();
     touch_init();
 
-    $("#filter_form input:submit").button();
-
     return;
 });
 
