@@ -65,6 +65,18 @@ class TasksController < ApplicationController
     @to_month   = current_user.tasks.to_done_month
   end
 
+  def new_book
+    @user_name = current_user.name
+    @counts = current_user.tasks.all_counts
+    @bg_img_name = current_user.bg_img_path
+
+    @tasks = get_tasks_by( current_user )
+
+    @recent_done_num = 15
+    task_list_html = render_to_string :partial => 'tasklist'
+    render :json => { task_list_html: task_list_html}, :callback => 'updateBookJson'
+  end
+
   private
   def get_tasks_by( user ,done_num = 10)
       tasks = {

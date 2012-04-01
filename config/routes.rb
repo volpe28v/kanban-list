@@ -7,6 +7,7 @@ Todolist::Application.routes.draw do
 
   get "kanbanlist/index"
   post "tasks/filter_or_update"
+  post "tasks/new_book"
 
   resources :tasks
 #  get "kanbanlist/user"

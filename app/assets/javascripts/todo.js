@@ -6,12 +6,12 @@
 $(document).ready(function(){ 
     initForTaskList();
     touch_init();
-    initNavBar();
+    initNavBooks();
 
     return;
 });
 
-function initNavBar(){
+function initNavBooks(){
   $('#new_book').click(function(){
     $('#book_in').modal('show');
     $('#book_name').focus();
@@ -20,6 +20,7 @@ function initNavBar(){
   var new_book_action = function(){
     var name = $('#book_name').val();
     if ( name != "" ){
+      newBook(name);
       $('#book_in').modal('hide')
     }
   };
@@ -409,9 +410,28 @@ function filterTask(filter_str){
        $('#task_list').fadeIn('fast');
 
        initForTaskList();
-
      }
   });
+}
 
+function newBook(book_name){
+  var request_str = "book_name=" + book_name;
+
+  $('#task_list').fadeOut();
+
+  $.ajax({
+     type: "POST",
+     cache: false,
+     url: "tasks/new_book",
+     data: request_str,
+     dataType: "jsonp"
+  });
+}
+
+function updateBookJson(book_info){
+  $('#task_list').html(book_info.task_list_html);
+  $('#task_list').fadeIn('fast');
+
+  initForTaskList();
 }
 
