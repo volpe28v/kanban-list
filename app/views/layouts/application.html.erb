@@ -37,7 +37,7 @@
                 <li class="divider"></li>
                 <li><a href="#" onclick="selectBook(0);">default</a></li>
                 <% @books_list.each do |book| %>
-                  <li><a href="#"><%= book.name %></a></li>
+                  <li><a href="#" onclick="selectBook(<%= book.id %>);"><%= book.name %></a></li>
                 <% end %>
               </ul>
             </li>
