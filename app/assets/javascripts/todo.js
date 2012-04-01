@@ -16,6 +16,22 @@ function initNavBar(){
     $('#book_in').modal('show');
     $('#book_name').focus();
   });
+
+  var new_book_action = function(){
+    var name = $('#book_name').val();
+    if ( name != "" ){
+      $('#book_in').modal('hide')
+    }
+  };
+
+  $('#book_form').submit(function(){
+    new_book_action();
+    return false;
+  });
+
+  $('#new_book_button').click(function(){
+    new_book_action();
+  });
 }
 
 function touchHandler(event){
