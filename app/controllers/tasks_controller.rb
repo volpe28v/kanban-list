@@ -20,6 +20,11 @@ class TasksController < ApplicationController
                      :name => current_user.name,
                      :user => current_user)
     @task.update_status(:todo_m)
+
+    if session[:book_id] != nil and session[:book_id] != 0
+      @task.book = Book.find(session[:book_id])
+    end
+
     @task.save
 
     @counts = current_user.tasks.all_counts
