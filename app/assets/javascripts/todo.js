@@ -428,6 +428,20 @@ function newBook(book_name){
   });
 }
 
+function selectBook(book_id){
+  var request_str = "book_id=" + book_id;
+
+  $('#task_list').fadeOut();
+
+  $.ajax({
+     type: "GET",
+     cache: false,
+     url: "tasks/select_book",
+     data: request_str,
+     dataType: "jsonp"
+  });
+}
+
 function updateBookJson(book_info){
   $('#task_list').html(book_info.task_list_html);
   $('#task_list').fadeIn('fast');

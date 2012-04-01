@@ -78,6 +78,21 @@ class TasksController < ApplicationController
     new_book = Book.new({ name: params[:book_name]})
     new_book.user = current_user
     new_book.save
+    session[:book_id] = new_book.id
+
+    @recent_done_num = 15
+    @tasks = get_tasks_by( current_user, @recent_done_num )
+
+    task_list_html = render_to_string :partial => 'tasklist'
+    render :json => { task_list_html: task_list_html}, :callback => 'updateBookJson'
+  end
+
+  def select_book
+    @user_name = current_user.name
+    @counts = current_user.tasks.all_counts
+    @bg_img_name = current_user.bg_img_path
+
+    session[:book_id] = params[:book_id].to_i
 
     @recent_done_num = 15
     @tasks = get_tasks_by( current_user, @recent_done_num )
@@ -88,24 +103,29 @@ class TasksController < ApplicationController
 
   private
   def get_tasks_by( user ,done_num = 10)
-      tasks = {
-        :todo_high_tasks => user.tasks.by_status(:todo_h),
-        :todo_mid_tasks  => user.tasks.by_status(:todo_m),
-        :todo_low_tasks  => user.tasks.by_status(:todo_l),
-        :doing_tasks     => user.tasks.by_status(:doing),
-        :waiting_tasks   => user.tasks.by_status(:waiting),
-        :done_tasks      => user.tasks.by_status(:done).limit(done_num),
-      }
+    target_tasks = user.tasks
+    if session[:book_id] != nil and session[:book_id] != 0
+      target_tasks = user.books.find_by_id(session[:book_id]).tasks
+    end
+
+    tasks = {
+      :todo_high_tasks => target_tasks.by_status(:todo_h),
+      :todo_mid_tasks  => target_tasks.by_status(:todo_m),
+      :todo_low_tasks  => target_tasks.by_status(:todo_l),
+      :doing_tasks     => target_tasks.by_status(:doing),
+      :waiting_tasks   => target_tasks.by_status(:waiting),
+      :done_tasks      => target_tasks.by_status(:done).limit(done_num),
+    }
   end
 
   def get_filtered_tasks_by( user, filter_word, done_num = 10 )
-      tasks = {
-        :todo_high_tasks => user.tasks.by_status_and_filter(:todo_h,filter_word),
-        :todo_mid_tasks  => user.tasks.by_status_and_filter(:todo_m, filter_word),
-        :todo_low_tasks  => user.tasks.by_status_and_filter(:todo_l, filter_word),
-        :doing_tasks     => user.tasks.by_status_and_filter(:doing,  filter_word),
-        :waiting_tasks   => user.tasks.by_status_and_filter(:waiting,filter_word),
-        :done_tasks      => user.tasks.by_status_and_filter(:done,   filter_word).limit(done_num),
-      }
+    tasks = {
+      :todo_high_tasks => user.tasks.by_status_and_filter(:todo_h,filter_word),
+      :todo_mid_tasks  => user.tasks.by_status_and_filter(:todo_m, filter_word),
+      :todo_low_tasks  => user.tasks.by_status_and_filter(:todo_l, filter_word),
+      :doing_tasks     => user.tasks.by_status_and_filter(:doing,  filter_word),
+      :waiting_tasks   => user.tasks.by_status_and_filter(:waiting,filter_word),
+      :done_tasks      => user.tasks.by_status_and_filter(:done,   filter_word).limit(done_num),
+    }
   end
 end

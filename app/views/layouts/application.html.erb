@@ -35,6 +35,7 @@
               <ul class="dropdown-menu">
                 <li><a id="new_book" href="#">New Book</a></li>
                 <li class="divider"></li>
+                <li><a href="#" onclick="selectBook(0);">default</a></li>
                 <% @books_list.each do |book| %>
                   <li><a href="#"><%= book.name %></a></li>
                 <% end %>
