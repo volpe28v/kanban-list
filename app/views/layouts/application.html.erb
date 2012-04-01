@@ -24,9 +24,22 @@
         <a class="brand" href="/">かんばんりすと</a> 
         <div class="nav-collapse">
           <ul class="nav pull-left">
-            <li><%= link_to "Home", tasks_path if current_user %></li>
-            <li><%= link_to "DoneList", tasks_donelist_path if current_user %></li>
+            <% if current_user %>
+            <li><%= link_to "Home", tasks_path %></li>
+            <li><%= link_to "DoneList", tasks_donelist_path %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Books
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" onclick="$('#book_in').modal('show');$('#book_name').focus();">New Book</a></li>
+                <li class="divider"></li>
+              </ul>
+            </li>
+            <% end %>
           </ul>
+
           <% if params[:controller] == "tasks" and params[:action] == "index" %>
           <form method="post" class="navbar-search pull-left" onsubmit="filterTask( $('#filter_str').get(0).value );return false;">
             <input type="text" id="filter_str" class="search-query" name="ttl" value="" placeholder="Filter"/>
@@ -55,6 +68,21 @@
     </div>
   </div>
 </header>
+
+<div class="modal hide fade" id="book_in">
+  <div class="modal-header">
+    <h3>New Book</h3>
+  </div>
+  <div class="modal-body">
+    <p>Please type new book name.</p>
+    <form id="book_form">
+      <input type="text" id="book_name" class="span2" placeholder="Book Name"/>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button id="login" class="btn btn-primary">New</button>
+  </div>
+</div>
 
 <%= yield %>
 
