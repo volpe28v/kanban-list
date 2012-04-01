@@ -6,12 +6,19 @@
 $(document).ready(function(){ 
     initForTaskList();
     touch_init();
+    initNavBar();
 
     return;
 });
 
-function touchHandler(event)
-{
+function initNavBar(){
+  $('#new_book').click(function(){
+    $('#book_in').modal('show');
+    $('#book_name').focus();
+  });
+}
+
+function touchHandler(event){
 	if (event.touches.length > 1){return;} //マルチタッチを無効化
 
 	var touches = event.changedTouches;
