@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @counts = current_user.tasks.all_counts
     @bg_img_name = current_user.bg_img_path
 
-    @recent_done_num = 10
+    @recent_done_num = 15
     @tasks = get_tasks_by( current_user, @recent_done_num )
   end
 
@@ -42,14 +42,14 @@ class TasksController < ApplicationController
     @user_name = current_user.name
     @counts = current_user.tasks.all_counts
     @bg_img_name = current_user.bg_img_path
+    @recent_done_num = 15
 
     if params[:filter] != ""
-      @tasks = get_filtered_tasks_by( current_user, params[:filter] )
+      @tasks = get_filtered_tasks_by( current_user, params[:filter], @recent_done_num )
     else
-      @tasks = get_tasks_by( current_user )
+      @tasks = get_tasks_by( current_user, @recent_done_num )
     end
 
-    @recent_done_num = 15
     render :partial => 'tasklist'
   end
 
@@ -70,9 +70,13 @@ class TasksController < ApplicationController
     @counts = current_user.tasks.all_counts
     @bg_img_name = current_user.bg_img_path
 
-    @tasks = get_tasks_by( current_user )
+    new_book = Book.new({ name: params[:book_name]})
+    new_book.user = current_user
+    new_book.save
 
     @recent_done_num = 15
+    @tasks = get_tasks_by( current_user, @recent_done_num )
+
     task_list_html = render_to_string :partial => 'tasklist'
     render :json => { task_list_html: task_list_html}, :callback => 'updateBookJson'
   end
@@ -89,14 +93,14 @@ class TasksController < ApplicationController
       }
   end
 
-  def get_filtered_tasks_by( user, filter_word )
+  def get_filtered_tasks_by( user, filter_word, done_num = 10 )
       tasks = {
         :todo_high_tasks => user.tasks.by_status_and_filter(:todo_h,filter_word),
         :todo_mid_tasks  => user.tasks.by_status_and_filter(:todo_m, filter_word),
         :todo_low_tasks  => user.tasks.by_status_and_filter(:todo_l, filter_word),
         :doing_tasks     => user.tasks.by_status_and_filter(:doing,  filter_word),
         :waiting_tasks   => user.tasks.by_status_and_filter(:waiting,filter_word),
-        :done_tasks      => user.tasks.by_status_and_filter(:done,   filter_word),
+        :done_tasks      => user.tasks.by_status_and_filter(:done,   filter_word).limit(done_num),
       }
   end
 end
