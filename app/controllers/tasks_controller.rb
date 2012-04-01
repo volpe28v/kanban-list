@@ -1,5 +1,10 @@
 class TasksController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :books_list
+
+  def books_list
+    @books_list = current_user.books
+  end
 
   def index
     @user_name = current_user.name
