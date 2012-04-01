@@ -18,17 +18,11 @@ class User < ActiveRecord::Base
   end
 
   def self.add_user(name)
-    if exist?(name)
-      false
-    else
-      User.create(:name => name,
-                  :bg_img => AppConfig[:default_bg_image],
-                  :layout => AppConfig[:default_layout],
-                  :pomo => 0
-                 )
-      true
-    end
-
+    User.find_or_create_by_name(:name => name,
+                :bg_img => AppConfig[:default_bg_image],
+                :layout => AppConfig[:default_layout],
+                :pomo => 0
+               )
   end
 
   def self.by_name(name)
