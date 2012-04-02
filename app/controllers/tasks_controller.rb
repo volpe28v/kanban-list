@@ -85,7 +85,10 @@ class TasksController < ApplicationController
     @tasks = get_tasks_by( current_user, @recent_done_num )
 
     task_list_html = render_to_string :partial => 'tasklist'
-    render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
+    render :json => { task_list_html: task_list_html,
+                      task_counts: get_task_counts,
+                      new_book: { name: new_book.name, id: new_book.id }},
+           :callback => 'updateBookJson'
   end
 
   def select_book

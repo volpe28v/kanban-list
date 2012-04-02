@@ -441,6 +441,9 @@ function updateBookJson(book_info){
   $('#task_list').html(book_info.task_list_html);
   $('#task_list').fadeIn('fast');
 
+  if (book_info.new_book != null){
+    $('#book_list').append('<li><a href="#" onclick="selectBook(' + book_info.new_book.id + ');">' + book_info.new_book.name + '</a></li>');
+  }
   updateCountsJson( book_info.task_counts );
   initForTaskList();
 }
