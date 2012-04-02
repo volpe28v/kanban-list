@@ -8,7 +8,7 @@ class TasksController < ApplicationController
 
   def index
     @user_name = current_user.name
-    @counts = current_user.tasks.all_counts
+    @counts = get_task_counts
     @bg_img_name = current_user.bg_img_path
 
     @recent_done_num = 15
@@ -26,8 +26,7 @@ class TasksController < ApplicationController
     end
 
     @task.save
-
-    @counts = current_user.tasks.all_counts
+    @counts = get_task_counts
   end
 
   def update
@@ -36,21 +35,18 @@ class TasksController < ApplicationController
     task.msg = params[:msg]
     task.save
 
-    @counts = current_user.tasks.all_counts
-    render :json => @counts, :callback => 'updateCountsJson'
+    render :json => get_task_counts, :callback => 'updateCountsJson'
   end
 
   def destroy
     task = Task.find(params[:id])
     task.delete
 
-    @counts = current_user.tasks.all_counts
-    render :json => @counts, :callback => 'updateCountsJson'
+    render :json => get_task_counts, :callback => 'updateCountsJson'
   end
 
   def filter_or_update
     @user_name = current_user.name
-    @counts = current_user.tasks.all_counts
     @bg_img_name = current_user.bg_img_path
     @recent_done_num = 15
 
@@ -60,7 +56,8 @@ class TasksController < ApplicationController
       @tasks = get_tasks_by( current_user, @recent_done_num )
     end
 
-    render :partial => 'tasklist'
+    task_list_html = render_to_string :partial => 'tasklist'
+    render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
   end
 
   def donelist
@@ -77,7 +74,6 @@ class TasksController < ApplicationController
 
   def new_book
     @user_name = current_user.name
-    @counts = current_user.tasks.all_counts
     @bg_img_name = current_user.bg_img_path
 
     new_book = Book.new({ name: params[:book_name]})
@@ -94,7 +90,6 @@ class TasksController < ApplicationController
 
   def select_book
     @user_name = current_user.name
-    @counts = current_user.tasks.all_counts
     @bg_img_name = current_user.bg_img_path
 
     session[:book_id] = params[:book_id].to_i

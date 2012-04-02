@@ -405,12 +405,7 @@ function filterTask(filter_str){
      cache: false,
      url: "tasks/filter_or_update",
      data: request_str,
-     success: function(result){
-       $('#task_list').html(result);
-       $('#task_list').fadeIn('fast');
-
-       initForTaskList();
-     }
+     dataType: "jsonp"
   });
 }
 
