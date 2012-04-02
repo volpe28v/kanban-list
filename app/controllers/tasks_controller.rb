@@ -61,8 +61,8 @@ class TasksController < ApplicationController
     end
     @tasks = @tasks.paginate(:page => params[:page], :per_page => 100)
 
-    @from_month = Task.from_done_month
-    @to_month   = Task.to_done_month
+    @from_month = current_user.tasks.from_done_month
+    @to_month   = current_user.tasks.to_done_month
   end
 
   private
