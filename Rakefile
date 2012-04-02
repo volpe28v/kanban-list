@@ -3,8 +3,9 @@
 
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
-require 'ci/reporter/rake/rspec'
- 
+#Todo: なぜかエラーになり始めたので一旦コメントアウト
+#require 'ci/reporter/rake/rspec'
+
 
 
 Todolist::Application.load_tasks

@@ -35,7 +35,7 @@ group :development, :test do
   gem 'factory_girl'
   gem 'factory_girl_rails'
 #  gem 'rcov'
-  gem 'ci_reporter'
+#  gem 'ci_reporter'
 end
 
 group :production do
