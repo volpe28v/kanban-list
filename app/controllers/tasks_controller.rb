@@ -75,20 +75,32 @@ class TasksController < ApplicationController
   def new_book
     @user_name = current_user.name
     @bg_img_name = current_user.bg_img_path
-
-    new_book = Book.new({ name: params[:book_name]})
-    new_book.user = current_user
-    new_book.save
-    session[:book_id] = new_book.id
-
     @recent_done_num = 15
-    @tasks = get_tasks_by( current_user, @recent_done_num )
 
-    task_list_html = render_to_string :partial => 'tasklist'
-    render :json => { task_list_html: task_list_html,
-                      task_counts: get_task_counts,
-                      new_book: { name: new_book.name, id: new_book.id }},
-           :callback => 'updateBookJson'
+    new_book_name = params[:book_name]
+
+    aready_book = Book.find_by_name_and_user_id( new_book_name, current_user.id)
+    if aready_book
+      session[:book_id] = aready_book.id
+      @tasks = get_tasks_by( current_user, @recent_done_num )
+      task_list_html = render_to_string :partial => 'tasklist'
+      render :json => { task_list_html: task_list_html,
+                        task_counts: get_task_counts},
+             :callback => 'updateBookJson'
+    else
+      new_book = Book.new({ name: new_book_name})
+      new_book.user = current_user
+      new_book.save
+      session[:book_id] = new_book.id
+
+      @tasks = get_tasks_by( current_user, @recent_done_num )
+      task_list_html = render_to_string :partial => 'tasklist'
+      render :json => { task_list_html: task_list_html,
+                        task_counts: get_task_counts,
+                        new_book: { name: new_book.name, id: new_book.id }},
+             :callback => 'updateBookJson'
+
+    end
   end
 
   def select_book
