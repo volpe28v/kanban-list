@@ -10,6 +10,7 @@ class TasksController < ApplicationController
     @user_name = current_user.name
     @counts = get_task_counts
     @bg_img_name = current_user.bg_img_path
+    @book_name = get_book_name
 
     @recent_done_num = 15
     @tasks = get_tasks_by( current_user, @recent_done_num )
@@ -49,6 +50,7 @@ class TasksController < ApplicationController
     @user_name = current_user.name
     @bg_img_name = current_user.bg_img_path
     @recent_done_num = 15
+    @book_name = get_book_name
 
     if params[:filter] != ""
       @tasks = get_filtered_tasks_by( current_user, params[:filter], @recent_done_num )
@@ -83,6 +85,7 @@ class TasksController < ApplicationController
     if aready_book
       session[:book_id] = aready_book.id
       @tasks = get_tasks_by( current_user, @recent_done_num )
+      @book_name = get_book_name
       task_list_html = render_to_string :partial => 'tasklist'
       render :json => { task_list_html: task_list_html,
                         task_counts: get_task_counts},
@@ -94,12 +97,12 @@ class TasksController < ApplicationController
       session[:book_id] = new_book.id
 
       @tasks = get_tasks_by( current_user, @recent_done_num )
+      @book_name = get_book_name
       task_list_html = render_to_string :partial => 'tasklist'
       render :json => { task_list_html: task_list_html,
                         task_counts: get_task_counts,
                         new_book: { name: new_book.name, id: new_book.id }},
              :callback => 'updateBookJson'
-
     end
   end
 
@@ -111,17 +114,26 @@ class TasksController < ApplicationController
 
     @recent_done_num = 15
     @tasks = get_tasks_by( current_user, @recent_done_num )
+    @book_name = get_book_name
 
     task_list_html = render_to_string :partial => 'tasklist'
     render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
   end
 
   private
+  def get_book_name
+    if session[:book_id] != nil and session[:book_id] != 0
+      current_user.books.find_by_id(session[:book_id]).name
+    else
+      "All Tasks"
+    end
+  end
+
   def get_task_counts
     if session[:book_id] != nil and session[:book_id] != 0
-      counts = current_user.books.find_by_id(session[:book_id]).tasks.all_counts
+      current_user.books.find_by_id(session[:book_id]).tasks.all_counts
     else
-      counts = current_user.tasks.all_counts
+      current_user.tasks.all_counts
     end
   end
 
