@@ -446,6 +446,7 @@ function updateBookJson(book_info){
   $('#task_list').html(book_info.task_list_html);
   $('#task_list').fadeIn('fast');
 
+  updateCountsJson( book_info.task_counts );
   initForTaskList();
 }
 

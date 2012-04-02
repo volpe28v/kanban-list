@@ -89,7 +89,7 @@ class TasksController < ApplicationController
     @tasks = get_tasks_by( current_user, @recent_done_num )
 
     task_list_html = render_to_string :partial => 'tasklist'
-    render :json => { task_list_html: task_list_html}, :callback => 'updateBookJson'
+    render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
   end
 
   def select_book
@@ -103,10 +103,18 @@ class TasksController < ApplicationController
     @tasks = get_tasks_by( current_user, @recent_done_num )
 
     task_list_html = render_to_string :partial => 'tasklist'
-    render :json => { task_list_html: task_list_html}, :callback => 'updateBookJson'
+    render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
   end
 
   private
+  def get_task_counts
+    if session[:book_id] != nil and session[:book_id] != 0
+      counts = current_user.books.find_by_id(session[:book_id]).tasks.all_counts
+    else
+      counts = current_user.tasks.all_counts
+    end
+  end
+
   def get_tasks_by( user ,done_num = 10)
     target_tasks = user.tasks
     if session[:book_id] != nil and session[:book_id] != 0
