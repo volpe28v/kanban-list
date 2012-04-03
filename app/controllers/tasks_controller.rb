@@ -13,7 +13,7 @@ class TasksController < ApplicationController
     @book_name = get_book_name
 
     @recent_done_num = 15
-    @tasks = get_tasks_by( current_user, @recent_done_num )
+    @tasks = get_tasks_by( @recent_done_num )
   end
 
   def create
@@ -55,7 +55,7 @@ class TasksController < ApplicationController
     if params[:filter] != ""
       @tasks = get_filtered_tasks_by( current_user, params[:filter], @recent_done_num )
     else
-      @tasks = get_tasks_by( current_user, @recent_done_num )
+      @tasks = get_tasks_by( @recent_done_num )
     end
 
     task_list_html = render_to_string :partial => 'tasklist'
@@ -84,7 +84,7 @@ class TasksController < ApplicationController
     aready_book = Book.find_by_name_and_user_id( new_book_name, current_user.id)
     if aready_book
       session[:book_id] = aready_book.id
-      @tasks = get_tasks_by( current_user, @recent_done_num )
+      @tasks = get_tasks_by( @recent_done_num )
       @book_name = get_book_name
       task_list_html = render_to_string :partial => 'tasklist'
       render :json => { task_list_html: task_list_html,
@@ -96,7 +96,7 @@ class TasksController < ApplicationController
       new_book.save
       session[:book_id] = new_book.id
 
-      @tasks = get_tasks_by( current_user, @recent_done_num )
+      @tasks = get_tasks_by( @recent_done_num )
       @book_name = get_book_name
       task_list_html = render_to_string :partial => 'tasklist'
       render :json => { task_list_html: task_list_html,
@@ -113,7 +113,7 @@ class TasksController < ApplicationController
     session[:book_id] = params[:book_id].to_i
 
     @recent_done_num = 15
-    @tasks = get_tasks_by( current_user, @recent_done_num )
+    @tasks = get_tasks_by( @recent_done_num )
     @book_name = get_book_name
 
     task_list_html = render_to_string :partial => 'tasklist'
@@ -122,27 +122,15 @@ class TasksController < ApplicationController
 
   private
   def get_book_name
-    if session[:book_id] != nil and session[:book_id] != 0
-      current_user.books.find_by_id(session[:book_id]).name
-    else
-      "All Tasks"
-    end
+    current_book ? current_book.name : "All Tasks"
   end
 
   def get_task_counts
-    if session[:book_id] != nil and session[:book_id] != 0
-      current_user.books.find_by_id(session[:book_id]).tasks.all_counts
-    else
-      current_user.tasks.all_counts
-    end
+    current_book ? current_book.tasks.all_counts : current_user.tasks.all_counts
   end
 
-  def get_tasks_by( user ,done_num = 10)
-    target_tasks = user.tasks
-    if session[:book_id] != nil and session[:book_id] != 0
-      target_tasks = user.books.find_by_id(session[:book_id]).tasks
-    end
-
+  def get_tasks_by(done_num = 10)
+    target_tasks = current_book ? current_book.tasks : current_user.tasks
     tasks = {
       :todo_high_tasks => target_tasks.by_status(:todo_h),
       :todo_mid_tasks  => target_tasks.by_status(:todo_m),
@@ -151,6 +139,14 @@ class TasksController < ApplicationController
       :waiting_tasks   => target_tasks.by_status(:waiting),
       :done_tasks      => target_tasks.by_status(:done).limit(done_num),
     }
+  end
+
+  def current_book
+    if session[:book_id] != nil and session[:book_id] != 0
+      current_user.books.find_by_id(session[:book_id])
+    else
+      nil
+    end
   end
 
   def get_filtered_tasks_by( user, filter_word, done_num = 10 )
