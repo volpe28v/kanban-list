@@ -347,10 +347,10 @@ function addTodoResponse(id, li_html, counts_json){
   if (userAgent.indexOf("msie") <= -1) {
     var label_elemens = $(id_str).get(0).getElementsByClassName("taskLabel");
 
-	var i = 0;
-	for(i=0;i < label_elemens.length;i++){
-		addMouseEventListener(label_elemens[i]);
-	}
+    var i = 0;
+    for(i=0;i < label_elemens.length;i++){
+      addMouseEventListener(label_elemens[i]);
+    }
   }
 
   $(id_str).fadeIn();
@@ -446,5 +446,6 @@ function updateBookJson(book_info){
   }
   updateCountsJson( book_info.task_counts );
   initForTaskList();
+  touch_init();
 }
 
