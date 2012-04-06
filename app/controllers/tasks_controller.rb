@@ -11,6 +11,7 @@ class TasksController < ApplicationController
     @counts = get_task_counts
     @bg_img_name = current_user.bg_img_path
     @book_name = get_book_name
+    @prefix = get_prefix
 
     @recent_done_num = 15
     @tasks = get_tasks( @recent_done_num )
@@ -51,6 +52,7 @@ class TasksController < ApplicationController
     @bg_img_name = current_user.bg_img_path
     @recent_done_num = 15
     @book_name = get_book_name
+    @prefix = get_prefix
 
     if params[:filter] != ""
       @tasks = get_filtered_tasks_by( current_user, params[:filter], @recent_done_num )
@@ -86,6 +88,7 @@ class TasksController < ApplicationController
       session[:book_id] = aready_book.id
       @tasks = get_tasks( @recent_done_num )
       @book_name = get_book_name
+      @prefix = get_prefix
       task_list_html = render_to_string :partial => 'tasklist'
       render :json => { task_list_html: task_list_html,
                         task_counts: get_task_counts},
@@ -98,6 +101,7 @@ class TasksController < ApplicationController
 
       @tasks = get_tasks( @recent_done_num )
       @book_name = get_book_name
+      @prefix = get_prefix
       task_list_html = render_to_string :partial => 'tasklist'
       render :json => { task_list_html: task_list_html,
                         task_counts: get_task_counts,
@@ -115,6 +119,7 @@ class TasksController < ApplicationController
     @recent_done_num = 15
     @tasks = get_tasks( @recent_done_num )
     @book_name = get_book_name
+    @prefix = get_prefix
 
     task_list_html = render_to_string :partial => 'tasklist'
     render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
@@ -123,6 +128,10 @@ class TasksController < ApplicationController
   private
   def get_book_name
     current_book ? current_book.name : "All Tasks"
+  end
+
+  def get_prefix
+    current_book ? current_book.name : ""
   end
 
   def get_task_counts
