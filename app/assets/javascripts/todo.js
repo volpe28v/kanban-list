@@ -139,7 +139,6 @@ function markTodayEditById( id ){
 }
 
 function markTodayEditWithElem( mark_obj ){
-//    mark_obj.css("background","#FF40CB");
   mark_obj.removeClass("label-info");
   mark_obj.addClass("label-important");
 }
