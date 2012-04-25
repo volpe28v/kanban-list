@@ -130,7 +130,7 @@ function setSortableList(){
 
 // 本日の編集した要素にマーカーをつける
 function markTodayEdit(){
-  markTodayEditWithElem( $('ul li div[id*="_time_"]:contains(' + getTodayStr() + ')') );
+  markTodayEditWithElem( $('ul li span[id*="_time_"]:contains(' + getTodayStr() + ')') );
 }
 
 function markTodayEditById( id ){
@@ -139,7 +139,9 @@ function markTodayEditById( id ){
 }
 
 function markTodayEditWithElem( mark_obj ){
-    mark_obj.css("background","#FFC0CB");
+//    mark_obj.css("background","#FF40CB");
+  mark_obj.removeClass("label-info");
+  mark_obj.addClass("label-important");
 }
 
 function getTodayStr(){
@@ -162,8 +164,8 @@ function getTodayFullStr(){
 
 function sendCurrentTodo(id, status, msg) {
 
-  $("#edit_link_time_" + id ).html("[" + getTodayStr() + "]");
-  $("#fixed_time_" + id ).html("[" + getTodayStr() + "]");
+  $("#edit_link_time_" + id ).html(getTodayStr());
+  $("#fixed_time_" + id ).html(getTodayStr());
 
   markTodayEditById( id );
 
