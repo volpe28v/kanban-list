@@ -8,13 +8,17 @@ $(document).ready(function(){
     touch_init();
     initNavBooks();
 
+    $('#add_todo_form_msg').focus();
+
     return;
 });
 
 function initNavBooks(){
   $('#new_book').click(function(){
     $('#book_in').modal('show');
-    $('#book_name').focus();
+    setTimeout(function(){
+      $('#book_name').focus();
+    },500);
   });
 
   var new_book_action = function(){
@@ -440,7 +444,10 @@ function selectBook(book_id){
 
 function updateBookJson(book_info){
   $('#task_list').html(book_info.task_list_html);
-  $('#task_list').fadeIn('fast');
+  $('#task_list').fadeIn('fast', function(){
+        $('#add_todo_form_msg').focus();
+      }
+    );
 
   if (book_info.new_book != null){
     $('#book_list').append('<li><a href="#" onclick="selectBook(' + book_info.new_book.id + ');">' + book_info.new_book.name + '</a></li>');
