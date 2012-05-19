@@ -46,6 +46,18 @@ class Task < ActiveRecord::Base
     counts
   end
 
+  def self.done_month_list
+    from_month = self.from_done_month
+    to_month   = self.to_done_month
+
+    month_list = []
+    while from_month <= to_month do
+      month_list << { date: to_month, count: self.done.select_month(to_month).count}
+      to_month -= 1.month
+    end
+    return month_list
+  end
+
   def self.from_done_month
     last_task = self.by_status(:done).last
     if last_task

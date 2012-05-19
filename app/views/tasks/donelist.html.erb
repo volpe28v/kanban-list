@@ -2,10 +2,8 @@
 <div class="row-fluid">
   <div class="span2">
   <ul class="nav nav-list">
-    <%# TODO ここはロジック多すぎる。UIが固まったらロジックを controller や model に移動するべき。 %>
-    <% while @from_month <= @to_month do %>
-      <li><%= link_to "#{@to_month.strftime("%Y-%m")} (#{@current_tasks.select_month(@to_month).count})" , :year => @to_month.year ,:month => @to_month.mon  %></li>
-      <% @to_month -= 1.month %>
+    <% @month_list.each do |l| %>
+      <li><%= link_to "#{l[:date].strftime("%Y-%m")} (#{l[:count]})" , :year => l[:date].year ,:month => l[:date].mon  %></li>
     <% end %>
   </ul>
   </div>
