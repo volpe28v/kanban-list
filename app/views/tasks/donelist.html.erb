@@ -3,7 +3,7 @@
   <div class="span2">
   <ul class="nav nav-list">
     <% while @from_month <= @to_month do %>
-      <li><%= link_to @to_month.strftime("%Y-%m"), :year => @to_month.year ,:month => @to_month.mon  %></li>
+      <li><%= link_to "#{@to_month.strftime("%Y-%m")} (#{@current_tasks.select_month(@to_month).count})" , :year => @to_month.year ,:month => @to_month.mon  %></li>
       <% @to_month -= 1.month %>
     <% end %>
   </ul>
