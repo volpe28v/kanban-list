@@ -21,7 +21,7 @@
         <% latest_day = current_day %>
         </ul><li><span class="label label-info"><%= current_day %></span></li><ul>
       <% end %>
-      <li><span class="done_time"><%= task.updated_at.strftime("%2H:%2S ") %></span> <%= raw task.msg %></li>
+      <li><span class="label"><%= task.updated_at.strftime("%2H:%2S") %></span> <%= raw task.msg %></li>
     <% end %>
     </ul>
   </div>
