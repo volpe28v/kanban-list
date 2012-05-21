@@ -29,6 +29,8 @@ class TasksController < ApplicationController
 
     @task.save
     @counts = get_task_counts
+
+    TaskMailer.all_tasks(current_user, get_tasks(@recent_done_num)).deliver
   end
 
   def update
