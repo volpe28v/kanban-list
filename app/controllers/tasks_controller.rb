@@ -30,7 +30,6 @@ class TasksController < ApplicationController
     @task.save
     @counts = get_task_counts
 
-    TaskMailer.all_tasks(current_user, get_tasks(@recent_done_num)).deliver
   end
 
   def update
@@ -125,6 +124,14 @@ class TasksController < ApplicationController
     task_list_html = render_to_string :partial => 'tasklist'
     render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
   end
+
+  def send_mail
+    mail_addr = params[:mail_addr]
+
+    TaskMailer.all_tasks(current_user, mail_addr, get_tasks(@recent_done_num)).deliver
+#    render :json => get_task_counts, :callback => 'updateCountsJson'
+  end
+
 
   private
   def get_book_name

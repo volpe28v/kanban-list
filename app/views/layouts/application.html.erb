@@ -68,6 +68,18 @@
           <% end %>
 
           <ul class="nav pull-right">
+            <% if params[:controller] == "tasks" and params[:action] == "index" %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Trial 
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" id="book_list">
+                  <li><a id="send_mail" href="#">Send Mail</a></li>
+                </ul>
+              </li>
+            <% end %>
+
             <li><%= link_to('ログアウト', [ :destroy, :user_session ], :method => :delete ,:class => '') if current_user %></li>
           </ul>
         </div>
@@ -90,6 +102,22 @@
     <button id="new_book_button" class="btn btn-primary">New</button>
   </div>
 </div>
+
+<div class="modal hide fade" id="mail_in">
+  <div class="modal-header">
+    <h3>Send mail task list</h3>
+  </div>
+  <div class="modal-body">
+    <p>Please type email address.</p>
+    <form id="mail_form">
+      <input type="text" id="mail_addr" class="span2" placeholder="Mail Address"/>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button id="send_mail_button" class="btn btn-primary">Send</button>
+  </div>
+</div>
+
 
 <%= yield %>
 

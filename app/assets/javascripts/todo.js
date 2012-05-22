@@ -7,6 +7,7 @@ $(document).ready(function(){
     initForTaskList();
     touch_init();
     initNavBooks();
+    initSendMail();
 
     $('#add_todo_form_msg').focus();
 
@@ -36,6 +37,44 @@ function initNavBooks(){
 
   $('#new_book_button').click(function(){
     new_book_action();
+  });
+}
+
+function initSendMail(){
+  $('#send_mail').click(function(){
+    $('#mail_in').modal('show');
+    setTimeout(function(){
+      $('#mail_addr').focus();
+    },500);
+  });
+
+  var send_mail_action = function(){
+    var addr = $('#mail_addr').val();
+    if ( addr != "" ){
+      sendMail(addr);
+      $('#mail_in').modal('hide')
+    }
+  };
+
+  $('#mail_form').submit(function(){
+    send_mail_action();
+    return false;
+  });
+
+  $('#send_mail_button').click(function(){
+    send_mail_action();
+  });
+}
+
+function sendMail(addr){
+  var request_str = "mail_addr=" + addr;
+
+  $.ajax({
+     type: "POST",
+     cache: false,
+     url: "tasks/send_mail",
+     data: request_str,
+     dataType: "jsonp"
   });
 }
 
