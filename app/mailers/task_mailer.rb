@@ -5,6 +5,6 @@ class TaskMailer < ActionMailer::Base
     @user = user
     @tasks = tasks
     mail(:to => user.email,
-         :subject => "Welcome to KanbanList")
+         :subject => "#{@user.name}'s tasks")
   end
 end

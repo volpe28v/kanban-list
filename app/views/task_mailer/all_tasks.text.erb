@@ -1,27 +1,33 @@
-UserName: <%= @user.email %>
+UserName: <%= @user.name %>
 
 [Doing]
 ---------------------------------------------------
 <% @tasks[:doing_tasks].each do |t| %>
-  <%= t.msg %>
+- <%= t.msg %>
 <% end %>
 
 [TodoHigh]
 ---------------------------------------------------
 <% @tasks[:todo_high_tasks].each do |t| %>
-  <%= t.msg %>
+- <%= t.msg %>
 <% end %>
 
 [TodoMid]
 ---------------------------------------------------
 <% @tasks[:todo_mid_tasks].each do |t| %>
-  <%= t.msg %>
+- <%= t.msg %>
 <% end %>
 
 [TodoLow]
 ---------------------------------------------------
 <% @tasks[:todo_low_tasks].each do |t| %>
-  <%= t.msg %>
+- <%= t.msg %>
+<% end %>
+
+[Waiting]
+---------------------------------------------------
+<% @tasks[:waiting_tasks].each do |t| %>
+- <%= t.msg %>
 <% end %>
 
 
