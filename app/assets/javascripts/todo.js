@@ -2,6 +2,8 @@
  * todo.js
  * created by Naoki Kodama
  */
+var COOKIE_EXPIRES = 365;
+var COOKIE_MAIL_ADDR = 'kanbanlist_mail_addr';
 
 $(document).ready(function(){ 
     initForTaskList();
@@ -41,6 +43,9 @@ function initNavBooks(){
 }
 
 function initSendMail(){
+  var addr = $.cookie(COOKIE_MAIL_ADDR) || "";
+  $('#mail_addr').val(addr);
+
   $('#send_mail').click(function(){
     $('#mail_in').modal('show');
     setTimeout(function(){
@@ -51,8 +56,11 @@ function initSendMail(){
   var send_mail_action = function(){
     var addr = $('#mail_addr').val();
     if ( addr != "" ){
+      $('#sending_mail').text('Sending email to ' + addr);
+      $('#sending_mail').fadeIn();
       sendMail(addr);
       $('#mail_in').modal('hide')
+      $.cookie(COOKIE_MAIL_ADDR,addr,{ expires: COOKIE_EXPIRES });
     }
   };
 
@@ -494,5 +502,16 @@ function updateBookJson(book_info){
   updateCountsJson( book_info.task_counts );
   initForTaskList();
   touch_init();
+}
+
+function showMailResult(data){
+  $('#sending_mail').hide();
+  $('#send_mail_result').text("sent the mail to " + data.addr);
+  $('#send_mail_result').fadeIn();
+  setTimeout(function(){
+    $('#send_mail_result').fadeOut();
+    },5000);
+
+
 }
 

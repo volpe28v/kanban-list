@@ -129,7 +129,7 @@ class TasksController < ApplicationController
     mail_addr = params[:mail_addr]
 
     TaskMailer.all_tasks(current_user, mail_addr, get_tasks(@recent_done_num)).deliver
-#    render :json => get_task_counts, :callback => 'updateCountsJson'
+    render :json => { addr: mail_addr }, :callback => 'showMailResult'
   end
 
 
