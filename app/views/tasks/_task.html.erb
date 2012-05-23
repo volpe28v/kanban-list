@@ -13,24 +13,24 @@
         </td><td align="right" width="40px">
         <div id="ms_<%= task.id %>_menu" style="display:inline;">
           <span class="s12">
-            <input type="image" src="<%= image_path 'pencil.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'pencil_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'pencil.gif' %>'" onclick="$('#id_<%= task.id %>').parent().sortable('destroy');$('#ms_<%= task.id %>_edit').text($('#msg_<%= task.id %>').html());toggleDisplay('edit_link_ms_<%= task.id %>','edit_form_ms_<%= task.id %>');$('#ms_<%= task.id %>_edit').get(0).focus();return false;"/>
-            <input type="image" src="<%= image_path 'cross.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'cross_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'cross.gif' %>'" onclick="deleteTodo('#id_<%= task.id %>');return false;"/>
+            <input id="edit_button_<%= task.id %>" type="image" src="<%= image_path 'pencil.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'pencil_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'pencil.gif' %>'" />
+            <input id="delete_button_<%= task.id %>" type="image" src="<%= image_path 'cross.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'cross_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'cross.gif' %>'" />
           </span>
         </div>
         </td></tr></table>
       </div>
       <div id="edit_form_ms_<%= task.id %>" style="display:none">
-        <form method="post" style="display:inline" onsubmit="$('#id_<%= task.id %>').parent().sortable(option);updateToDoMsg('#ms_<%= task.id %>_edit', '#msg_<%= task.id %>');toggleDisplay('edit_form_ms_<%= task.id %>','edit_link_ms_<%= task.id %>');return false;">
+        <form id="edit_form_<%= task.id %>" method="post" style="display:inline">
           <textarea id="ms_<%= task.id %>_edit" rows="4" style="font-weight:normal;padding:2px;overflow:auto; width: 98%;" onfocus="this.style.background='#ffc';"/></textarea>
           <input type="submit" class="btn btn-primary" value="Update" style="font-size:10px" />
           <span class="s12">
-            <a href="#" onclick="$('#id_<%= task.id %>').parent().sortable(option);toggleDisplay('edit_form_ms_<%= task.id %>','edit_link_ms_<%= task.id %>');return false;">[cancel]</a>
+            <a href="#" id="edit_cancel_<%= task.id %>">[cancel]</a>
           </span>
         </form>
       </div>
       <div id="fixed_<%= task.id %>" style="display:<%= done == false ? "none" : "block" %>">
         <table width="100%"><tr><td align="left" width="10px">
-              <input type="checkbox" checked="checked" onclick="returnToTodo('#id_<%= task.id %>');return false;"/>
+          <input type="checkbox" checked="checked" onclick="returnToTodo('#id_<%= task.id %>');return false;"/>
         </td><td align="left" width="10px">
         <font color="#00008B" style="font-size:10px;font-weight:normal;"><span class="label" id="fixed_time_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></font>&nbsp;
         </td><td class="taskLabel" align="left">
@@ -42,4 +42,33 @@
     </div>
   </div>
 </li>
+
+<script>
+  $('#edit_form_<%= task.id %>').submit(function(){
+    $('#id_<%= task.id %>').parent().sortable(option);
+    updateToDoMsg('#ms_<%= task.id %>_edit', '#msg_<%= task.id %>');
+    toggleDisplay('edit_form_ms_<%= task.id %>','edit_link_ms_<%= task.id %>');
+    return false;
+  });
+
+  $('#edit_button_<%= task.id %>').click(function(){
+    $('#id_<%= task.id %>').parent().sortable('destroy');
+    $('#ms_<%= task.id %>_edit').text($('#msg_<%= task.id %>').html());
+    toggleDisplay('edit_link_ms_<%= task.id %>','edit_form_ms_<%= task.id %>');
+    $('#ms_<%= task.id %>_edit').get(0).focus();
+    return false;
+  });
+
+  $('#delete_button_<%= task.id %>').click(function(){
+    deleteTodo('#id_<%= task.id %>');
+    return false;
+  });
+
+  $('#edit_cancel_<%= task.id %>').click(function(){
+    $('#id_<%= task.id %>').parent().sortable(option);
+    toggleDisplay('edit_form_ms_<%= task.id %>','edit_link_ms_<%= task.id %>');
+    return false;
+  });
+
+</script>
 
