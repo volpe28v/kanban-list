@@ -43,8 +43,10 @@ function initNavBooks(){
 }
 
 function initSendMail(){
-  var addr = $.cookie(COOKIE_MAIL_ADDR) || "";
-  $('#mail_addr').val(addr);
+  var addr = $.cookie(COOKIE_MAIL_ADDR);
+  if ( addr ){
+    $('#mail_addr').val(addr);
+  }
 
   $('#send_mail').click(function(){
     $('#mail_in').modal('show');
