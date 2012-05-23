@@ -128,10 +128,9 @@ class TasksController < ApplicationController
   def send_mail
     mail_addr = params[:mail_addr]
 
-    TaskMailer.all_tasks(current_user, mail_addr, get_tasks(@recent_done_num)).deliver
+    TaskMailer.all_tasks(current_user, get_book_name, mail_addr, get_tasks(@recent_done_num)).deliver
     render :json => { addr: mail_addr }, :callback => 'showMailResult'
   end
-
 
   private
   def get_book_name
