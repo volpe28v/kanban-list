@@ -35,7 +35,7 @@ Todolist::Application.configure do
     :port => 587,
     :domain => 'gmail.com',
     :user_name => "kanbanlist.info@gmail.com",
-    :password => "kanbanlist_admin",
+    :password => "kanban_rails_list",
     :authentication => 'plain',
     :enable_starttls_auto => true,
   }
