@@ -56,7 +56,7 @@ function initSendMail(){
   var send_mail_action = function(){
     var addr = $('#mail_addr').val();
     if ( addr != "" ){
-      $('#sending_mail').text('Sending email to ' + addr);
+      $('#sending_mail').html('<strong>Processing...</strong> sending email to ' + addr);
       $('#sending_mail').fadeIn();
       sendMail(addr);
       $('#mail_in').modal('hide')
@@ -506,7 +506,7 @@ function updateBookJson(book_info){
 
 function showMailResult(data){
   $('#sending_mail').hide();
-  $('#send_mail_result').text("sent the mail to " + data.addr);
+  $('#send_mail_result').html("<strong>Success!</strong> sent the mail to " + data.addr);
   $('#send_mail_result').fadeIn();
   setTimeout(function(){
     $('#send_mail_result').fadeOut();
