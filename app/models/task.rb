@@ -79,7 +79,7 @@ class Task < ActiveRecord::Base
   end
 
   def status_sym
-    StatusTable.each_key {|key| return key if StatusTable[key] == self.status }
+    StatusTable.key(status)
   end
 
   def update_status( status )
