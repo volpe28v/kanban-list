@@ -283,9 +283,6 @@ function updateCountsJson( counts_json ){
 }
 
 function toggleDisplay(id1,id2) {
-//  $("#" + id1).toggle();
-//  $("#" + id2).toggle();
-
   $("#" + id1).hide();
   $("#" + id2).fadeIn();
 
@@ -293,13 +290,12 @@ function toggleDisplay(id1,id2) {
 }
  
 function updateToDoMsg(from, to) {
-  $(to).html(task_display_filter($(from).get(0).value));
+  var msg = $(from).val();
+  $(to).html(task_display_filter(msg));
 
   var id = to.slice(5);
   var status = $("#id_" + id).parent().get(0).id;
-  var msg = $(to).html();
   sendCurrentTodo(id, status, msg);
-
 }
  
 function moveToDone(move_id) {
