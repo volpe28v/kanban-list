@@ -165,7 +165,7 @@ var option = {
 
         sendCurrentTodo( update_id,
                          $(this).get(0).id,
-                         $("#msg_" + update_id).html());
+                         $("#ms_" + update_id + "_edit").val());
         },
 
     connectWith: 'ul',
