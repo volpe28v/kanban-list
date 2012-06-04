@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.alerts
+//= require bootstrap.min
 //= require todo
 //= require p_timer
-//= require_tree .
+//= require charCount

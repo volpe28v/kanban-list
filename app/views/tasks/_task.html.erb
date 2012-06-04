@@ -21,7 +21,7 @@
       </div>
       <div id="edit_form_ms_<%= task.id %>" style="display:none">
         <form id="edit_form_<%= task.id %>" method="post" style="display:inline">
-          <textarea id="ms_<%= task.id %>_edit" rows="4" style="font-weight:normal;padding:2px;overflow:auto; width: 98%;" onfocus="this.style.background='#ffc';"/></textarea>
+          <textarea id="ms_<%= task.id %>_edit" rows="4" style="font-weight:normal;padding:2px;overflow:auto; width: 98%;" onfocus="this.style.background='#ffc';" maxlength="200"/></textarea>
           <input type="submit" class="btn btn-primary" value="Update" style="font-size:10px" />
           <span class="s12">
             <a href="#" id="edit_cancel_<%= task.id %>">[cancel]</a>
