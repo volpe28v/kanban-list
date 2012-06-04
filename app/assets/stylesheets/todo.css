@@ -571,6 +571,11 @@ table#table-01 td {
   background-color: #ff9;
 }
 
+.task-chars-left {
+  float: right;
+  margin-right: 10px;
+}
+
 .sign {
   font-weight: bold;
   font-size: 10pt;

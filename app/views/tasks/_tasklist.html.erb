@@ -1,9 +1,14 @@
-<span class="label label-info">Book: <%= @book_name %></span>
 <form method="post" class="form-inline" onsubmit="addTodoWithPrefix($('#prefix').get(0).value , $('#add_todo_form_msg').get(0).value);$('#add_todo_form_msg').get(0).value='';return false;">
+  <span class="label label-info">Book: <%= @book_name %></span> <span class="charsLeft">200</span></br>
   <input type="text" id="prefix" class="span2" name="prefix" value="<%= @prefix %>" placeholder="Prefix" maxlength="50"/>
   <input type="text" id="add_todo_form_msg" class="span6" value="" placeholder="Task Name" maxlength="200"/>
   <input type="submit" value="Add" class="btn btn-primary" />
 </form>
+<script>
+  $("#add_todo_form_msg").maxlength({
+    'feedback' : '.charsLeft'
+  });
+</script>
 
 <div class="row-fluid">
   <div class="span4">

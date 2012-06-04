@@ -413,6 +413,10 @@ function realize_task(id, msg_array){
   $('#msg_' + id ).html(task_display_filter(msg));
   $('#fixed_msg_' + id ).html(task_display_filter(msg));
 
+  $('#ms_' + id + '_edit').maxlength({
+    'feedback' : '.task-chars-left'
+  });
+
   $('#check_done_' + id).click(function(){
     moveToDone('#id_' + id);
     return false;
