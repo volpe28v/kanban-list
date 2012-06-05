@@ -574,6 +574,14 @@ table#table-01 td {
 .task-chars-left {
   float: right;
   margin-right: 10px;
+  font-weight: bold;
+  color: #777;
+}
+
+.task-chars-left-add-form {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #777;
 }
 
 .sign {
