@@ -282,6 +282,16 @@ function updateCountsJson( counts_json ){
   }
 }
 
+function updateTaskJson( update_task ){
+  updateCountsJson( update_task.task_counts );
+
+  if ( update_task.move_task_id != 0 ){
+    setTimeout(function(){
+      $('#id_' + update_task.move_task_id).slideUp();
+    },500);
+  }
+}
+
 function toggleDisplay(id1,id2) {
   $("#" + id1).hide();
   $("#" + id2).fadeIn();

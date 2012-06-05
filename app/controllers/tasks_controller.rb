@@ -37,7 +37,9 @@ class TasksController < ApplicationController
     task.book = get_book_id_in_msg(task.msg)
     task.save
 
-    render :json => get_task_counts, :callback => 'updateCountsJson'
+    move_id = is_moved_from_book?(task) ? task.id : 0
+
+    render :json => { task_counts: get_task_counts, move_task_id: move_id}, :callback => 'updateTaskJson'
   end
 
   def destroy
@@ -171,6 +173,10 @@ class TasksController < ApplicationController
     else
       return nil
     end
+  end
+
+  def is_moved_from_book?(task)
+    (current_book != nil) and (current_book.id != (task.book ? task.book.id : 0 ))
   end
 
   def get_filtered_tasks_by( user, filter_word, done_num = 10 )
