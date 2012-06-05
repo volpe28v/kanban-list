@@ -1,3 +1,4 @@
+# coding: utf-8
 class TasksController < ApplicationController
   before_filter :authenticate_user!
   before_filter :books_list
@@ -22,10 +23,7 @@ class TasksController < ApplicationController
                      :name => current_user.name,
                      :user => current_user)
     @task.update_status(:todo_m)
-
-    if session[:book_id] != nil and session[:book_id] != 0
-      @task.book = Book.find(session[:book_id])
-    end
+    @task.book = get_book_id_in_msg(@task.msg)
 
     @task.save
     @counts = get_task_counts
@@ -36,6 +34,7 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     task.update_status(params[:status])
     task.msg = params[:msg]
+    task.book = get_book_id_in_msg(task.msg)
     task.save
 
     render :json => get_task_counts, :callback => 'updateCountsJson'
@@ -162,6 +161,14 @@ class TasksController < ApplicationController
       current_user.books.find_by_id(session[:book_id])
     else
       nil
+    end
+  end
+
+  def get_book_id_in_msg(msg)
+    if /^【(.+)】/ =~ msg
+      current_user.books.find_by_name($1) || nil
+    else
+      return nil
     end
   end
 
