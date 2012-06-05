@@ -165,6 +165,7 @@ class TasksController < ApplicationController
   end
 
   def get_book_id_in_msg(msg)
+    #TODO: prefix と msg の分離は View でやるべき
     if /^【(.+)】/ =~ msg
       current_user.books.find_by_name($1) || nil
     else
