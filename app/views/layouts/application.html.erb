@@ -37,9 +37,13 @@
                 <ul class="dropdown-menu" id="book_list">
                   <li><a id="new_book" href="#">New Book</a></li>
                   <li class="divider"></li>
-                  <li><a href="#" onclick="selectBook(0);">All Tasks</a></li>
+                  <li><a href="#" onclick="selectBook(0);">All tasks
+                    <%= render "layouts/book_task_counts", {:counts => current_user.tasks.all_counts } %>
+                  </a></li>
                   <% @books_list.each do |book| %>
-                    <li><a href="#" onclick="selectBook(<%= book.id %>);"><%= book.name %></a></li>
+                    <li><a href="#" onclick="selectBook(<%= book.id %>);"><%= book.name %>
+                      <%= render "layouts/book_task_counts", {:counts => book.tasks.all_counts } %>
+                    </a></li>
                   <% end %>
                 </ul>
               </li>
