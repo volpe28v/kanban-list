@@ -38,13 +38,9 @@
                   <li><a id="new_book" href="#">New Book</a></li>
                   <li><a id="remove_book" href="#">Remove Current Book</a></li>
                   <li class="divider"></li>
-                  <li><a href="#" onclick="selectBook(0);">All tasks
-                    <%= render "layouts/book_task_counts", {:counts => current_user.tasks.all_counts } %>
-                  </a></li>
+                  <li><a href="#" onclick="selectBook(0);">All tasks</a></li>
                   <% @books_list.each do |book| %>
-                    <li><a href="#" onclick="selectBook(<%= book.id %>);"><%= book.name %>
-                      <%= render "layouts/book_task_counts", {:counts => book.tasks.all_counts } %>
-                    </a></li>
+                    <li id="book_list_<%= book.id %>"><a href="#" onclick="selectBook(<%= book.id %>);"><%= book.name %></a></li>
                   <% end %>
                 </ul>
               </li>
