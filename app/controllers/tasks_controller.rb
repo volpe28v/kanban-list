@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   def index
     @user_name = current_user.name
     @counts = get_task_counts
-    @bg_img_name = current_user.bg_img_path
+    @bg_img_name = current_user.bg_img_path #TODO: not use
     @book_name = get_book_name
     @prefix = get_prefix
 
@@ -112,18 +112,17 @@ class TasksController < ApplicationController
   end
 
   def select_book
-    @user_name = current_user.name
-    @bg_img_name = current_user.bg_img_path
-
     session[:book_id] = params[:book_id].to_i
+    render_current_book
+  end
 
-    @recent_done_num = 15
-    @tasks = get_tasks( @recent_done_num )
-    @book_name = get_book_name
-    @prefix = get_prefix
-
-    task_list_html = render_to_string :partial => 'tasklist'
-    render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
+  def remove_book
+    if current_book != nil
+      current_book.tasks.destroy_all
+      current_book.destroy
+    end
+    session[:book_id] = 0
+    render_current_book
   end
 
   def send_mail
@@ -188,5 +187,15 @@ class TasksController < ApplicationController
       :waiting_tasks   => user.tasks.by_status_and_filter(:waiting,filter_word),
       :done_tasks      => user.tasks.by_status_and_filter(:done,   filter_word).limit(done_num),
     }
+  end
+
+  def render_current_book
+    @recent_done_num = 15
+    @tasks = get_tasks( @recent_done_num )
+    @book_name = get_book_name
+    @prefix = get_prefix
+
+    task_list_html = render_to_string :partial => 'tasklist'
+    render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
   end
 end

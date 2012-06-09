@@ -10,6 +10,7 @@ $(document).ready(function(){
     touch_init();
     initNavBooks();
     initSendMail();
+    initRemoveBook();
 
     $('#add_todo_form_msg').focus();
 
@@ -85,6 +86,29 @@ function sendMail(addr){
      url: "tasks/send_mail",
      data: request_str,
      dataType: "jsonp"
+  });
+}
+
+function initRemoveBook(){
+  $('#remove_book').click(function(){
+    $('#remove_book_in').modal('show');
+  });
+
+  $('#remove_book_button').click(function(){
+    $('#remove_book_in').modal('hide');
+
+    $('#task_list').fadeOut();
+
+    $.ajax({
+       type: "GET",
+       cache: false,
+       url: "tasks/remove_book",
+       dataType: "jsonp"
+    });
+  });
+
+  $('#remove_book_cancel_button').click(function(){
+    $('#remove_book_in').modal('hide');
   });
 }
 

@@ -9,6 +9,7 @@ Todolist::Application.routes.draw do
   post "tasks/filter_or_update"
   post "tasks/new_book"
   get "tasks/select_book"
+  get "tasks/remove_book"
 
   post "tasks/send_mail"
 
