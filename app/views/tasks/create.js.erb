@@ -1,6 +1,0 @@
-var id = <%= @task.id %>;
-var li_html = '<%= raw((render "task", {:task => @task, :display => "none" }).gsub(/'/,"\\\\'").gsub(/\n/,"\\\n")) %>';
-var counts_json = <%= raw(@counts.to_json) %>
-
-addTodoResponse(id, li_html, counts_json)
-

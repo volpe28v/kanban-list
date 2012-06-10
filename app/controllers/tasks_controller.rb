@@ -27,6 +27,9 @@ class TasksController < ApplicationController
     @task.save
     @counts = get_task_counts
 
+    task_html = render_to_string :partial => 'task', :locals => {:task => @task, :display => "none" }
+
+    render :json => { id: @task.id, li_html: task_html, task_counts: get_task_counts }, :callback => 'addTodoResponse'
   end
 
   def update

@@ -414,17 +414,19 @@ function addTodoAjax(msg) {
     type: "POST",
     cache: false,
     url: "tasks",
-    data: "msg=" + msg
+    data: "msg=" + msg,
+    dataType: "jsonp"
  });
 }
 
-function addTodoResponse(id, li_html, counts_json){
-  var id_str = '#id_' + id;
+//function addTodoResponse(id, li_html, counts_json){
+function addTodoResponse(add_task_info){
+  var id_str = '#id_' + add_task_info.id;
 
-  $('#todo_m').prepend(li_html);
+  $('#todo_m').prepend(add_task_info.li_html);
 
-  markTodayEditById( id );
-  updateCountsJson(counts_json)
+  markTodayEditById( add_task_info.id );
+  updateCountsJson(add_task_info.task_counts)
 
   //IE の場合はタッチイベントを設定しない
   var userAgent = window.navigator.userAgent.toLowerCase();
