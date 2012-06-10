@@ -312,7 +312,7 @@ function updateTaskJson( update_task ){
   if ( update_task.move_task_id != 0 ){
     setTimeout(function(){
       $('#id_' + update_task.move_task_id).slideUp();
-    },500);
+    },200);
   }
 }
 
