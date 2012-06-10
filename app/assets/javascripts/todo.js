@@ -99,11 +99,13 @@ function initRemoveBook(){
 
     $('#task_list').fadeOut();
 
+    var dummy_id = 0
+
     $.ajax({
-       type: "GET",
-       cache: false,
-       url: "books/remove_book",
-       dataType: "jsonp"
+      type: "DELETE",
+      cache: false,
+      url: "books/" + dummy_id,
+      dataType: "jsonp"
     });
   });
 
@@ -560,7 +562,7 @@ function newBook(book_name){
   $.ajax({
      type: "POST",
      cache: false,
-     url: "books/new_book",
+     url: "books",
      data: request_str,
      dataType: "jsonp"
   });
@@ -574,8 +576,7 @@ function selectBook(book_id){
   $.ajax({
      type: "GET",
      cache: false,
-     url: "books/select_book",
-     data: request_str,
+     url: "books/" + book_id,
      dataType: "jsonp"
   });
 }

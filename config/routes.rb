@@ -3,24 +3,15 @@ Todolist::Application.routes.draw do
 
   devise_for :users
   get 'tasks', :to => 'tasks#index', :as => :user_root
-  get 'tasks/donelist'
 
   get "kanbanlist/index"
-  post "tasks/filter_or_update"
-  post "tasks/new_book"
-  get "tasks/select_book"
-  get "tasks/remove_book"
 
-  post "tasks/send_mail"
-
-  post "books/new_book"
-  get "books/select_book"
-  get "books/remove_book"
-
+  resources :books
   resources :tasks
-#  get "kanbanlist/user"
-#  post "kanbanlist/new_user"
-#  post "kanbanlist/update"
+#
+  post "tasks/filter_or_update"
+  post "tasks/send_mail"
+  get 'tasks/donelist'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

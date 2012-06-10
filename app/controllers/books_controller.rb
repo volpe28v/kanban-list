@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  def new_book
+  def create
     @user_name = current_user.name
     @recent_done_num = 15
 
@@ -19,12 +19,12 @@ class BooksController < ApplicationController
     end
   end
 
-  def select_book
-    session[:book_id] = params[:book_id].to_i
+  def show
+    session[:book_id] = params[:id]
     render_current_book
   end
 
-  def remove_book
+  def destroy
     if current_book != nil
       remove_book_name = current_book.name
       remove_book_id = current_book.id
