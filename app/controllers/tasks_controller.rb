@@ -78,46 +78,6 @@ class TasksController < ApplicationController
     @month_list = current_user.tasks.done_month_list
   end
 
-  def new_book
-    @user_name = current_user.name
-    @recent_done_num = 15
-
-    new_book_name = params[:book_name]
-
-    aready_book = Book.find_by_name_and_user_id( new_book_name, current_user.id)
-    if aready_book
-      session[:book_id] = aready_book.id
-      render_current_book
-    else
-      new_book = Book.new({ name: new_book_name})
-      new_book.user = current_user
-      new_book.save
-
-      session[:book_id] = new_book.id
-      render_current_book({new_book: { name: new_book.name, id: new_book.id }})
-    end
-  end
-
-  def select_book
-    session[:book_id] = params[:book_id].to_i
-    render_current_book
-  end
-
-  def remove_book
-    if current_book != nil
-      remove_book_name = current_book.name
-      remove_book_id = current_book.id
-
-      current_book.tasks.destroy_all
-      current_book.destroy
-      session[:book_id] = 0
-      render_current_book({remove_book: { name: remove_book_name, id: remove_book_id }})
-    else
-      session[:book_id] = 0
-      render_current_book
-    end
-  end
-
   def send_mail
     mail_addr = params[:mail_addr]
 
@@ -126,38 +86,6 @@ class TasksController < ApplicationController
   end
 
   private
-  def get_book_name
-    current_book ? current_book.name : "All Tasks"
-  end
-
-  def get_prefix
-    current_book ? current_book.name : ""
-  end
-
-  def get_task_counts
-    current_book ? current_book.tasks.all_counts : current_user.tasks.all_counts
-  end
-
-  def get_tasks(done_num = 10)
-    target_tasks = current_book ? current_book.tasks : current_user.tasks
-    tasks = {
-      :todo_high_tasks => target_tasks.by_status(:todo_h),
-      :todo_mid_tasks  => target_tasks.by_status(:todo_m),
-      :todo_low_tasks  => target_tasks.by_status(:todo_l),
-      :doing_tasks     => target_tasks.by_status(:doing),
-      :waiting_tasks   => target_tasks.by_status(:waiting),
-      :done_tasks      => target_tasks.by_status(:done).limit(done_num),
-    }
-  end
-
-  def current_book
-    if session[:book_id] != nil and session[:book_id] != 0
-      current_user.books.find_by_id(session[:book_id])
-    else
-      nil
-    end
-  end
-
   def get_book_id_in_msg(msg)
     #TODO: prefix と msg の分離は View でやるべき
     if /^【(.+)】/ =~ msg
@@ -180,15 +108,5 @@ class TasksController < ApplicationController
       :waiting_tasks   => user.tasks.by_status_and_filter(:waiting,filter_word),
       :done_tasks      => user.tasks.by_status_and_filter(:done,   filter_word).limit(done_num),
     }
-  end
-
-  def render_current_book(option = {})
-    @recent_done_num = 15
-    @tasks = get_tasks( @recent_done_num )
-    @book_name = get_book_name
-    @prefix = get_prefix
-
-    task_list_html = render_to_string :partial => 'tasklist'
-    render :json => { task_list_html: task_list_html, task_counts: get_task_counts }.merge(option), :callback => 'updateBookJson'
   end
 end

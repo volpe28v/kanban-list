@@ -13,6 +13,10 @@ Todolist::Application.routes.draw do
 
   post "tasks/send_mail"
 
+  post "books/new_book"
+  get "books/select_book"
+  get "books/remove_book"
+
   resources :tasks
 #  get "kanbanlist/user"
 #  post "kanbanlist/new_user"
