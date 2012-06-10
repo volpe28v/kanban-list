@@ -10,7 +10,6 @@ class TasksController < ApplicationController
   def index
     @user_name = current_user.name
     @counts = get_task_counts
-    @bg_img_name = current_user.bg_img_path #TODO: not use
     @book_name = get_book_name
     @prefix = get_prefix
 
@@ -51,7 +50,6 @@ class TasksController < ApplicationController
 
   def filter_or_update
     @user_name = current_user.name
-    @bg_img_name = current_user.bg_img_path
     @recent_done_num = 15
     @book_name = get_book_name
     @prefix = get_prefix
@@ -79,7 +77,6 @@ class TasksController < ApplicationController
 
   def new_book
     @user_name = current_user.name
-    @bg_img_name = current_user.bg_img_path
     @recent_done_num = 15
 
     new_book_name = params[:book_name]
