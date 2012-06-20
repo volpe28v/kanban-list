@@ -6,12 +6,12 @@ Todolist::Application.routes.draw do
 
   get "kanbanlist/index"
 
-  resources :books
-  resources :tasks
-#
   post "tasks/filter_or_update"
   post "tasks/send_mail"
   get 'tasks/donelist'
+
+  resources :books
+  resources :tasks
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
