@@ -4,6 +4,8 @@
 
 ## Installation
 
+Ruby ver 1.9.2
+
 ```bash
 $ git clone git@github.com:volpe28v/kanban-list.git
 $ cd kanban-list
