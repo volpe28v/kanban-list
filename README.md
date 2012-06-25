@@ -6,7 +6,7 @@
 
 ```bash
 $ git clone git@github.com:volpe28v/kanban-list.git
-$ cd kanbanlist
+$ cd kanban-list
 $ bundle
 $ rake db:migrate
 $ rails s
