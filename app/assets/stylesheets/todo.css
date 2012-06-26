@@ -590,6 +590,14 @@ table#table-01 td {
   color: #55f;
 }
 
+.done-list-day{
+  width: 64px;
+}
+
+.done-list-time{
+  width: 34px;
+}
+
 footer {
   background: #fff;
   width: 100%;

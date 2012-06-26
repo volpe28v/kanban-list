@@ -1,5 +1,6 @@
 <div class="donenote">
 <div class="row-fluid">
+  <div class="span1"></div>
   <div class="span2">
   <ul class="nav nav-list">
     <% @month_list.each do |l| %>
@@ -8,22 +9,25 @@
   </ul>
   </div>
 
-  <div class="span10">
-    <ul class="note">
-      <%# TODO ここはロジック多すぎる。UIが固まったらロジックを controller や model に移動するべき。 %>
+  <div class="span9">
+    <table class="table table-striped table-bordered">
     <% latest_day = nil %>
     <% @tasks.each do |task| %>
       <% current_day = task.updated_at.strftime("%Y-%m-%d") %>
-      <% if latest_day == nil %>
+      <tr>
+      <% if latest_day == nil or latest_day != current_day %>
         <% latest_day = current_day %>
-        <li><span class="label label-info"><%= current_day %></span></li><ul>
-      <% elsif latest_day != current_day %>
-        <% latest_day = current_day %>
-        </ul><li><span class="label label-info"><%= current_day %></span></li><ul>
+        <td class="done-list-day"><span class="label label-info"><%= current_day %></span></td>
+        <td class="done-list-time"><span class="label"><%= task.updated_at.strftime("%2H:%2S") %></span></td>
+        <td><%= raw task.msg %></td>
+      <% else %>
+        <td></td>
+        <td><span class="label"><%= task.updated_at.strftime("%2H:%2S") %></span></td>
+        <td><%= raw task.msg %></td>
       <% end %>
-      <li><span class="label"><%= task.updated_at.strftime("%2H:%2S") %></span> <%= raw task.msg %></li>
+      </tr>
     <% end %>
-    </ul>
+    </table>
   </div>
 </div>
 </div>
