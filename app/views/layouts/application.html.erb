@@ -40,7 +40,20 @@
                   <li class="divider"></li>
                   <li><a href="#" onclick="selectBook(0);">All tasks</a></li>
                   <% @books_list.each do |book| %>
-                    <li id="book_list_<%= book.id %>"><a href="#" onclick="selectBook(<%= book.id %>);"><%= book.name %></a></li>
+                    <li id="book_list_<%= book.id %>">
+                      <a href="#" onclick="selectBook(<%= book.id %>);"><%= book.name %>
+                        <table style="float:right">
+                          <tr>
+                            <td><div class="counts todo_h" ><%= book.todo_h_count %></div></td>
+                            <td><div class="counts todo"   ><%= book.todo_m_count %></div></td>
+                            <td><div class="counts todo_l" ><%= book.todo_l_count %></div></td>
+                            <td><div class="counts doing"  ><%= book.doing_count %></div></td>
+                            <td><div class="counts waiting"><%= book.waiting_count %></div></td>
+                            <td><div class="counts done"   ><%= book.done_count %></div></td>
+                          </tr>
+                        </table>
+                      </a>
+                    </li>
                   <% end %>
                 </ul>
               </li>
