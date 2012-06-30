@@ -97,7 +97,7 @@ function initRemoveBook(){
   $('#remove_book_button').click(function(){
     $('#remove_book_in').modal('hide');
 
-    $('#task_list').fadeOut();
+    loadingTasklist();
 
     var dummy_id = 0
 
@@ -543,7 +543,7 @@ function newUser( url_name , user_name ) {
 function filterTask(filter_str){
   var request_str = "filter=" + filter_str;
 
-  $('#task_list').fadeOut();
+  loadingTasklist();
 
   $.ajax({
      type: "POST",
@@ -554,10 +554,15 @@ function filterTask(filter_str){
   });
 }
 
+function loadingTasklist(){
+  $('#task_list').fadeOut();
+  $('#loader').fadeIn();
+}
+
 function newBook(book_name){
   var request_str = "book_name=" + book_name;
 
-  $('#task_list').fadeOut();
+  loadingTasklist();
 
   $.ajax({
      type: "POST",
@@ -571,7 +576,7 @@ function newBook(book_name){
 function selectBook(book_id){
   var request_str = "book_id=" + book_id;
 
-  $('#task_list').fadeOut();
+  loadingTasklist();
 
   $.ajax({
      type: "GET",
@@ -582,6 +587,7 @@ function selectBook(book_id){
 }
 
 function updateBookJson(book_info){
+  $('#loader').hide();
   $('#task_list').html(book_info.task_list_html);
   $('#task_list').fadeIn('fast', function(){
         $('#add_todo_form_msg').focus();
