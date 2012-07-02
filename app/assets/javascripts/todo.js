@@ -9,6 +9,7 @@ $(document).ready(function(){
     initForTaskList();
     touch_init();
     initBookList();
+    initNavBooks();
     initSendMail();
 
     $('#add_todo_form_msg').focus();
@@ -16,14 +17,23 @@ $(document).ready(function(){
     return;
 });
 
-function initNavBooks(){
+function initNewBookAction(){
   $('#new_book').click(function(){
     $('#book_in').modal('show');
     setTimeout(function(){
       $('#book_name').focus();
     },500);
   });
+}
 
+function initRemoveBookAction(){
+  $('#remove_book').click(function(){
+    $('#remove_book_in').modal('show');
+  });
+}
+
+
+function initNavBooks(){
   var new_book_action = function(){
     var name = $('#book_name').val();
     if ( name != "" ){
@@ -39,6 +49,25 @@ function initNavBooks(){
 
   $('#new_book_button').click(function(){
     new_book_action();
+  });
+
+  $('#remove_book_button').click(function(){
+    $('#remove_book_in').modal('hide');
+
+    loadingTasklist();
+
+    var dummy_id = 0
+
+    $.ajax({
+      type: "DELETE",
+      cache: false,
+      url: "books/" + dummy_id,
+      dataType: "jsonp"
+    });
+  });
+
+  $('#remove_book_cancel_button').click(function(){
+    $('#remove_book_in').modal('hide');
   });
 }
 
@@ -85,31 +114,6 @@ function sendMail(addr){
      url: "tasks/send_mail",
      data: request_str,
      dataType: "jsonp"
-  });
-}
-
-function initRemoveBook(){
-  $('#remove_book').click(function(){
-    $('#remove_book_in').modal('show');
-  });
-
-  $('#remove_book_button').click(function(){
-    $('#remove_book_in').modal('hide');
-
-    loadingTasklist();
-
-    var dummy_id = 0
-
-    $.ajax({
-      type: "DELETE",
-      cache: false,
-      url: "books/" + dummy_id,
-      dataType: "jsonp"
-    });
-  });
-
-  $('#remove_book_cancel_button').click(function(){
-    $('#remove_book_in').modal('hide');
   });
 }
 
@@ -239,11 +243,12 @@ function updateBookListsJson( book_infos ){
                  '</a>' +
                '</li>';
   }
+
   $('#book_list').empty();
   $('#book_list').append(header + lists);
 
-  initNavBooks();
-  initRemoveBook();
+  initNewBookAction();
+  initRemoveBookAction();
 }
  
 // 本日の編集した要素にマーカーをつける
