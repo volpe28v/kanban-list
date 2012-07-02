@@ -349,6 +349,7 @@ function updateCountsJson( counts_json ){
 
 function updateTaskJson( update_task ){
   updateCountsJson( update_task.task_counts );
+  updateBookListsJson( update_task.all_books );
 
   if ( update_task.move_task_id != 0 ){
     setTimeout(function(){
@@ -460,14 +461,15 @@ function addTodoAjax(msg) {
  });
 }
 
-//function addTodoResponse(id, li_html, counts_json){
 function addTodoResponse(add_task_info){
   var id_str = '#id_' + add_task_info.id;
 
   $('#todo_m').prepend(add_task_info.li_html);
 
-  markTodayEditById( add_task_info.id );
-  updateCountsJson(add_task_info.task_counts)
+  markTodayEditById(add_task_info.id);
+  updateCountsJson(add_task_info.task_counts);
+  updateBookListsJson(add_task_info.all_books);
+    
 
   //IE の場合はタッチイベントを設定しない
   var userAgent = window.navigator.userAgent.toLowerCase();

@@ -29,7 +29,7 @@ class TasksController < ApplicationController
 
     task_html = render_to_string :partial => 'task', :locals => {:task => @task, :display => "none" }
 
-    render :json => { id: @task.id, li_html: task_html, task_counts: get_task_counts }, :callback => 'addTodoResponse'
+    render :json => { id: @task.id, li_html: task_html, task_counts: get_task_counts, all_books: get_all_book_counts }, :callback => 'addTodoResponse'
   end
 
   def update
@@ -41,14 +41,14 @@ class TasksController < ApplicationController
 
     move_id = is_moved_from_book?(task) ? task.id : 0
 
-    render :json => { task_counts: get_task_counts, move_task_id: move_id}, :callback => 'updateTaskJson'
+    render :json => { task_counts: get_task_counts, move_task_id: move_id, all_books: get_all_book_counts }, :callback => 'updateTaskJson'
   end
 
   def destroy
     task = Task.find(params[:id])
     task.delete
 
-    render :json => get_task_counts, :callback => 'updateCountsJson'
+    render :json => { task_counts: get_task_counts, move_task_id: 0, all_books: get_all_book_counts }, :callback => 'updateTaskJson'
   end
 
   def filter_or_update
