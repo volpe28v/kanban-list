@@ -20,6 +20,15 @@ class ApplicationController < ActionController::Base
     current_book ? current_book.tasks.all_counts : current_user.tasks.all_counts
   end
 
+  def get_all_book_counts
+    current_user.books.inject([]){|all, b|
+      book_info = b.tasks.all_counts
+      book_info['id'] = b.id
+      book_info['name'] = b.name
+      all << book_info
+    }
+  end
+
   def get_tasks(done_num = 10)
     target_tasks = current_book ? current_book.tasks : current_user.tasks
     tasks = {
