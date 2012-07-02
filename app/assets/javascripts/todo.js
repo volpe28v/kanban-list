@@ -633,14 +633,9 @@ function updateBookJson(book_info){
       }
     );
 
-  if (book_info.new_book != null){
-    $('#book_list').append('<li id="book_list_' + book_info.new_book.id + '"><a href="#" onclick="selectBook(' + book_info.new_book.id + ');">' + book_info.new_book.name + '</a></li>');
-  }
-  if (book_info.remove_book != null){
-    $('#book_list_' + book_info.remove_book.id).remove();
-  }
-
+  updateBookListsJson( book_info.all_books );
   updateCountsJson( book_info.task_counts );
+
   initForTaskList();
   touch_init();
 }
