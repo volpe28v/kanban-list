@@ -26,7 +26,7 @@
         <td id="done_<%= task.id %>"></td>
       <% end %>
         <script>
-          var msg_array = [<%= to_js_array(task.msg) %>];
+          var msg_array = <%= to_js_array(task.msg) %>;
           $("#done_<%= task.id %>").html(task_display_filter(msg_array.join('\n')));
         </script>
       </tr>
