@@ -19,12 +19,16 @@
         <% latest_day = current_day %>
         <td class="done-list-day"><span class="label label-info"><%= current_day %></span></td>
         <td class="done-list-time"><span class="label"><%= task.updated_at.strftime("%2H:%2S") %></span></td>
-        <td><%= raw task.msg %></td>
+        <td id="done_<%= task.id %>"></td>
       <% else %>
         <td></td>
         <td><span class="label"><%= task.updated_at.strftime("%2H:%2S") %></span></td>
-        <td><%= raw task.msg %></td>
+        <td id="done_<%= task.id %>"></td>
       <% end %>
+        <script>
+          var msg_array = [<%= to_js_array(task.msg) %>];
+          $("#done_<%= task.id %>").html(task_display_filter(msg_array.join('\n')));
+        </script>
       </tr>
     <% end %>
     </table>

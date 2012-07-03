@@ -45,7 +45,7 @@
 </li>
 
 <script>
-  var msg_array = [<%= raw task.msg.split("\n").map{|ts| "'" + ts + "'" }.join(",") %>];
+  var msg_array = [<%= to_js_array(task.msg) %>];
   realize_task(<%= task.id %>, msg_array);
 </script>
 
