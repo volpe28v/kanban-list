@@ -230,7 +230,7 @@ function updateBookListsJson( book_infos ){
   for(var i = 0; i < book_infos.length; i++ ){ 
     lists += '<li id="book_list_' + book_infos[i].id + '">' +
                  '<a href="#" onclick="selectBook(' + book_infos[i].id + ');">' + book_infos[i].name +
-                   '<table style="float:right">' +
+                   '<table style="float:right" class="book-counts">' +
                      '<tr>' +
                        '<td><div class="counts todo_h" >' + book_infos[i].todo_h + '</div></td>' +
                        '<td><div class="counts todo"   >' + book_infos[i].todo_m + '</div></td>' +
