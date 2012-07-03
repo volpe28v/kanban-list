@@ -18,18 +18,17 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(:msg => params[:msg],
+    task = Task.new(:msg => params[:msg],
                      :name => current_user.name,
                      :user => current_user)
-    @task.update_status(:todo_m)
-    @task.book = get_book_id_in_msg(@task.msg)
+    task.update_status(:todo_m)
+    task.book = get_book_id_in_msg(task.msg)
+    task.save
 
-    @task.save
-    @counts = get_task_counts
+    move_id = is_moved_from_book?(task) ? task.id : 0
+    task_html = render_to_string :partial => 'task', :locals => {:task => task, :display => "none" }
 
-    task_html = render_to_string :partial => 'task', :locals => {:task => @task, :display => "none" }
-
-    render :json => { id: @task.id, li_html: task_html, task_counts: get_task_counts, all_books: get_all_book_counts }, :callback => 'addTodoResponse'
+    render :json => { id: task.id, li_html: task_html, move_task_id: move_id, task_counts: get_task_counts, all_books: get_all_book_counts }, :callback => 'addTodoResponse'
   end
 
   def update

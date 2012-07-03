@@ -475,6 +475,11 @@ function addTodoResponse(add_task_info){
   updateCountsJson(add_task_info.task_counts);
   updateBookListsJson(add_task_info.all_books);
     
+  if ( add_task_info.move_task_id != 0 ){
+    setTimeout(function(){
+      $('#id_' + add_task_info.move_task_id).slideUp();
+    },700);
+  }
 
   //IE の場合はタッチイベントを設定しない
   var userAgent = window.navigator.userAgent.toLowerCase();
