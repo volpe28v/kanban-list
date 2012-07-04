@@ -88,7 +88,7 @@ li {
 
 }
 
-#doing li #waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{ 
+#doing li ,#waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{ 
   margin: 0px 2px 2px 2px; 
   font-weight: bold; 
   font-size: 12px; 
