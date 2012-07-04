@@ -75,6 +75,9 @@
 }
 
 li {
+  margin: 0px 2px 2px 2px; 
+  padding: 1px; 
+ 
   /* firefox specific markup */
   -moz-border-radius-topleft: 6px;
   -moz-border-radius-topright: 6px;
@@ -89,8 +92,6 @@ li {
 }
 
 #doing li { 
-  margin: 0px 2px 1px 2px; 
-  padding: 1px; 
   font-weight: bold; 
   font-size: 12px; 
   text-decoration:none;
@@ -112,7 +113,6 @@ li {
 }
 
 #waiting li { 
-  margin: 0px 2px 1px 2px; padding: 1px; 
   font-weight: bold; 
   font-size: 12px; 
   text-decoration:none;
@@ -134,8 +134,6 @@ li {
 }
 
 #todo_h li, #todo_m li, #todo_l li{ 
-  margin: 0px 2px 1px 2px; 
-  padding: 1px; 
   border : 1px solid #34f; 
   font-weight: bold; 
   font-size: 12px; 
@@ -158,8 +156,6 @@ li {
 }
 
 #done li {
-  margin: 0px 2px 1px 2px;
-  padding: 1px;
   font-size: 11px;
   text-decoration:none;
   border-top:1px solid #aaa;
@@ -172,47 +168,6 @@ li {
   background: -webkit-gradient(linear, left top, left bottom, from(#F6F6F6), to(#C2C2C2));
   /* For Mozilla/Gecko (Firefox etc) */ 
   background: -moz-linear-gradient(top, #F6F6F6, #C2C2C2);
-
-  color: #444;
-}
-
-#donelist li {
-  margin: 0px 2px 1px 2px;
-  padding: 1px;
-  border : 0px solid #34f;
-  background: #fff;
-  font-size: 14px;
-  color: #000;
-}
-
-.doinglist   li {
-  margin: 0px 2px 1px 2px;
-  padding: 1px;
-  font-weight: bold;
-  font-size: 12px;
-  text-decoration:none;
-  border-top:1px solid #88A;
-  border-right:2px solid #557;
-  border-bottom:2px solid #557;
-  border-left:1px solid #88A;
-  background-image: url("doing_gra.jpg");
-  background-position: center bottom;
-  background-repeat:  repeat;
-
-  /* For WebKit (Safari, Google Chrome etc) */
-  background: -webkit-gradient(linear, left top, left bottom, from(#cde), to(#74b9ff));
-  /* For Mozilla/Gecko (Firefox etc) */
-  background: -moz-linear-gradient(top, #cde, #74b9ff);
-
-  color: #358;
-}
-
-.donelist    li {
-  margin: 0px 2px 1px 2px;
-  padding: 0px;
-  border : 0px solid #34f;
-  background: #efefef;
-  font-size: 11px;
 
   color: #444;
 }
@@ -590,7 +545,7 @@ table#table-01 td {
 }
 
 .done-list-day{
-  width: 64px;
+  width: 66px;
 }
 
 .done-list-time{
