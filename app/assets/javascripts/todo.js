@@ -223,8 +223,7 @@ function initBookList(){
 function updateBookListsJson( book_infos ){
   var header = '<li><a id="new_book" href="#">New Book</a></li>' + 
                '<li><a id="remove_book" href="#">Remove Current Book</a></li>' +
-               '<li class="divider"></li>' +
-               '<li><a href="#" onclick="selectBook(0);">All tasks</a></li>';
+               '<li class="divider"></li>'; 
 
   var lists = '';
   for(var i = 0; i < book_infos.length; i++ ){ 

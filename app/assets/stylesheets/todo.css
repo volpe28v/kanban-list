@@ -75,9 +75,6 @@
 }
 
 li {
-  margin: 0px 2px 2px 2px; 
-  padding: 1px; 
- 
   /* firefox specific markup */
   -moz-border-radius-topleft: 6px;
   -moz-border-radius-topright: 6px;
@@ -91,17 +88,22 @@ li {
 
 }
 
-#doing li { 
+#doing li #waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{ 
+  margin: 0px 2px 2px 2px; 
   font-weight: bold; 
   font-size: 12px; 
   text-decoration:none;
+  padding: 1px; 
+  background-position: center bottom;
+  background-repeat:  repeat;
+}
+
+#doing li{
   border-top:1px solid #88A;
   border-right:2px solid #557;
   border-bottom:2px solid #557;
   border-left:1px solid #88A;
   background-image: url("doing_gra.jpg");
-  background-position: center bottom;
-  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#E0F0F6), to(#90C0C6));
@@ -113,16 +115,11 @@ li {
 }
 
 #waiting li { 
-  font-weight: bold; 
-  font-size: 12px; 
-  text-decoration:none;
   border-top:1px solid #aa6;
   border-right:2px solid #773;
   border-bottom:2px solid #773;
   border-left:1px solid #aa6;
   background-image: url("waiting_gra.jpg"); 
-  background-position: center bottom;
-  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#eec), to(#ee5));
@@ -134,17 +131,11 @@ li {
 }
 
 #todo_h li, #todo_m li, #todo_l li{ 
-  border : 1px solid #34f; 
-  font-weight: bold; 
-  font-size: 12px; 
-  text-decoration:none;
   border-top:1px solid #6b7;
   border-right:2px solid #384;
   border-bottom:2px solid #384;
   border-left:1px solid #6b7;
   background-image: url("todo_gra.jpg");
-  background-position: center bottom;
-  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#D5FED5), to(#80DE80));
@@ -157,7 +148,6 @@ li {
 
 #done li {
   font-size: 11px;
-  text-decoration:none;
   border-top:1px solid #aaa;
   border-right:2px solid #555;
   border-bottom:2px solid #555;
