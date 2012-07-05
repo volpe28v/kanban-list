@@ -40,6 +40,7 @@ class TasksController < ApplicationController
 
     move_id = is_moved_from_book?(task) ? task.id : 0
 
+    do_hooks(task)
     render :json => { task_counts: get_task_counts, move_task_id: move_id, all_books: get_all_book_counts }, :callback => 'updateTaskJson'
   end
 
@@ -85,6 +86,20 @@ class TasksController < ApplicationController
   end
 
   private
+  def rm_html_tag(str)
+    str.sub!(/<[^<>]*>/,"") while /<[^<>]*>/ =~ str
+    str
+  end
+
+  def do_hooks(task)
+    case task.status_sym
+    when :done
+      hook = "#{Rails.root}/hooks/update_task"
+      command = "source #{hook} \"DONE\" \"#{task.msg}\""
+      system(command) if File.exist?(hook)
+    end
+  end
+
   def get_book_id_in_msg(msg)
     #TODO: prefix と msg の分離は View でやるべき
     if /^【(.+?)】/ =~ msg
