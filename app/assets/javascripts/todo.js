@@ -21,6 +21,7 @@ function initNewBookAction(){
   $('#new_book').click(function(){
     $('#book_in').modal('show');
     setTimeout(function(){
+      $('#book_name').val('');      
       $('#book_name').focus();
     },500);
   });
