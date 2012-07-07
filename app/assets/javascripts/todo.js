@@ -60,11 +60,12 @@ function initNavBooks(){
     loadingTasklist();
 
     var dummy_id = 0
-
+    var request_str = "filter=" + $('#filter_str').get(0).value;
     $.ajax({
       type: "DELETE",
       cache: false,
       url: "books/" + dummy_id,
+      data: request_str,
       dataType: "jsonp"
     });
   });
@@ -582,7 +583,8 @@ function loadingTasklist(){
 }
 
 function newBook(book_name){
-  var request_str = "book_name=" + book_name;
+  var filter_param = "filter=" + $('#filter_str').get(0).value;
+  var request_str = "book_name=" + book_name + "&" + filter_param;
 
   loadingTasklist();
 
@@ -596,7 +598,7 @@ function newBook(book_name){
 }
 
 function selectBook(book_id){
-  var request_str = "book_id=" + book_id;
+  var request_str = "filter=" + $('#filter_str').get(0).value;
 
   loadingTasklist();
 
@@ -604,6 +606,7 @@ function selectBook(book_id){
      type: "GET",
      cache: false,
      url: "books/" + book_id,
+     data: request_str,
      dataType: "jsonp"
   });
 }
