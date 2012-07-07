@@ -8,3 +8,6 @@ coverage/*
 spec/reports/*
 *.swp
 *.swo
+hook_latest
+hooks/update_task_*
+
