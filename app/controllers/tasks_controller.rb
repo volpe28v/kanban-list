@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @prefix = get_prefix
 
     @recent_done_num = 15
-    @tasks = get_tasks( @recent_done_num )
+    @tasks = get_tasks( "", @recent_done_num )
   end
 
   def create
@@ -57,11 +57,19 @@ class TasksController < ApplicationController
     @book_name = get_book_name
     @prefix = get_prefix
 
-    if params[:filter] != ""
-      @tasks = get_filtered_tasks_by( current_user, params[:filter], @recent_done_num )
-    else
-      @tasks = get_tasks( @recent_done_num )
-    end
+    @tasks = get_tasks( params[:filter], @recent_done_num )
+
+    task_list_html = render_to_string :partial => 'tasklist'
+    render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
+  end
+
+  def silent_update
+    @user_name = current_user.name
+    @recent_done_num = 15
+    @book_name = get_book_name
+    @prefix = get_prefix
+
+    @tasks = get_tasks( params[:filter], @recent_done_num )
 
     task_list_html = render_to_string :partial => 'tasklist'
     render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
@@ -81,7 +89,7 @@ class TasksController < ApplicationController
   def send_mail
     mail_addr = params[:mail_addr]
 
-    TaskMailer.all_tasks(current_user, get_book_name, mail_addr, get_tasks(@recent_done_num)).deliver
+    TaskMailer.all_tasks(current_user, get_book_name, mail_addr, get_tasks("", @recent_done_num)).deliver
     render :json => { addr: mail_addr }, :callback => 'showMailResult'
   end
 
@@ -113,14 +121,14 @@ class TasksController < ApplicationController
     (current_book != nil) and (current_book.id != (task.book ? task.book.id : 0 ))
   end
 
-  def get_filtered_tasks_by( user, filter_word, done_num = 10 )
-    tasks = {
-      :todo_high_tasks => user.tasks.by_status_and_filter(:todo_h,filter_word),
-      :todo_mid_tasks  => user.tasks.by_status_and_filter(:todo_m, filter_word),
-      :todo_low_tasks  => user.tasks.by_status_and_filter(:todo_l, filter_word),
-      :doing_tasks     => user.tasks.by_status_and_filter(:doing,  filter_word),
-      :waiting_tasks   => user.tasks.by_status_and_filter(:waiting,filter_word),
-      :done_tasks      => user.tasks.by_status_and_filter(:done,   filter_word).limit(done_num),
-    }
+  def get_task_list( filter_str )
+    @user_name = current_user.name
+    @recent_done_num = 15
+    @book_name = get_book_name
+    @prefix = get_prefix
+
+    @tasks = get_tasks( filter_str, @recent_done_num )
+
+    task_list_html = render_to_string :partial => 'tasklist'
   end
 end

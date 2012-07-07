@@ -14,6 +14,8 @@ $(document).ready(function(){
 
     $('#add_todo_form_msg').focus();
 
+//    setInterval( function() { filterTask( $('#filter_str').get(0).value ); },5000 );
+
     return;
 });
 
