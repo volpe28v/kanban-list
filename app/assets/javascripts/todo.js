@@ -552,37 +552,6 @@ function realize_task(id, msg_array){
   });
 }
 
-function changeBgImg(img_name) {
-  document.body.style.backgroundImage = 'url(/bg_img/' + img_name + ')';
-
-  $.ajax({
-    type: "POST",
-    cache: false,
-    url: "todo.cgi",
-    data: "mode=setbgurl&name=" + CurrentUser + "&bg_url=" + img_name,
-    success: function(result){
-       $('#viewSortlist').html(result );
-//     alert( "bg_changed");
-    }
- });
-
-}
-
-function changeLayout(layout) {
-
-  $.ajax({
-    type: "POST",
-    cache: false,
-    url: "todo.cgi",
-    data: "mode=setlayout&name=" + CurrentUser + "&layout=" + layout,
-    success: function(result){
-       $('#viewSortlist').html(result );
-       filterTask( $('#filter_str').get(0).value );
-    }
- });
-
-}
-
 function newUser( url_name , user_name ) {
   if ( user_name != "" ){
     location.href = url_name + '/todo.cgi?mode=new&name=' + user_name;
