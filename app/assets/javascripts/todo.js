@@ -19,23 +19,32 @@ $(document).ready(function(){
   return;
 });
 
-var autoLoadingTimer = {
-  stack: 0,
-  timer_id: null,
-  start: function(){
-    this.stack++;
-    if ( this.stack != 1 ){ return; }
-    this.timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
-  },
-  stop: function(){
-    this.stack--;
-    if ( this.stack != 0 ){ return; }
-    clearInterval(this.timer_id);
-  },
-  isActive: function(){
-    return this.stack <= 1 ;
-  }
-}
+var autoLoadingTimer = function(){
+  var valid = false;
+  var stack = 0;
+  var timer_id = null;
+
+  return {
+    setMode: function(mode){
+      valid = mode;
+    },
+    start: function(){
+      if ( !valid ){ return; }
+      stack++;
+      if ( stack != 1 ){ return; }
+      timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
+    },
+    stop: function(){
+      if ( !valid ){ return; }
+      stack--;
+      if ( stack != 0 ){ return; }
+      clearInterval(timer_id);
+    },
+    isActive: function(){
+      return stack >= 1 ;
+    }
+  };
+}();
 
 function initNewBookAction(){
   $('#new_book').click(function(){
