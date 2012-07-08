@@ -12,6 +12,7 @@ $(document).ready(function(){
   initBookList();
   initNavBooks();
   initSendMail();
+  initAutoLoading();
 
   $('#add_todo_form_msg').focus();
 
@@ -28,14 +29,17 @@ var autoLoadingTimer = function(){
     setMode: function(mode){
       valid = mode;
     },
+    isValid: function(){
+      return valid == true;
+    },
     start: function(){
-      if ( !valid ){ return; }
+      if ( !this.isValid() ){ return; }
       stack++;
       if ( stack != 1 ){ return; }
       timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
     },
     stop: function(){
-      if ( !valid ){ return; }
+      if ( !this.isValid() ){ return; }
       stack--;
       if ( stack != 0 ){ return; }
       clearInterval(timer_id);
@@ -145,6 +149,20 @@ function sendMail(addr){
      url: "tasks/send_mail",
      data: request_str,
      dataType: "jsonp"
+  });
+}
+
+function initAutoLoading(){
+  $('#auto_loading').click(function(){
+    if ( autoLoadingTimer.isActive() ){
+      autoLoadingTimer.stop();
+      autoLoadingTimer.setMode(false);
+      $('#auto_loading').html("AutoLoading - ON");
+    }else{
+      autoLoadingTimer.setMode(true);
+      autoLoadingTimer.start();
+      $('#auto_loading').html("AutoLoading - OFF");
+    }
   });
 }
 
