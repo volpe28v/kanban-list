@@ -5,8 +5,6 @@
 var COOKIE_EXPIRES = 365;
 var COOKIE_MAIL_ADDR = 'kanbanlist_mail_addr';
 var last_task_list_html = "";
-var auto_loading_timer = null;
-var auto_loading_stack = 0;
 
 $(document).ready(function(){ 
   filterTask("");
@@ -17,26 +15,23 @@ $(document).ready(function(){
 
   $('#add_todo_form_msg').focus();
 
-  auto_loading_start();
+  autoLoadingTimer.start();
   return;
 });
 
-function auto_loading_start(){
-  auto_loading_stack++;
-  console.log(auto_loading_stack);
-  if ( auto_loading_stack != 1 ){ return; }
-
-  auto_loading_timer = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
-  console.log("al start");
-}
-
-function auto_loading_stop(){
-  auto_loading_stack--;
-  console.log(auto_loading_stack);
-  if ( auto_loading_stack != 0 ){ return; }
-
-  clearInterval(auto_loading_timer);
-  console.log("al stop");
+var autoLoadingTimer = {
+  stack: 0,
+  timer_id: null,
+  start: function(){
+    this.stack++;
+    if ( this.stack!= 1 ){ return; }
+    this.timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
+  },
+  stop: function(){
+    this.stack--;
+    if ( this.stack != 0 ){ return; }
+    clearInterval(this.timer_id);
+  }
 }
 
 function initNewBookAction(){
@@ -205,11 +200,11 @@ function initForTaskList(){
 
 var option = {
     start  : function(event, ui){
-        auto_loading_stop();
+        autoLoadingTimer.stop();
         var update_id = ui.item.attr("id").slice(3);
         },
     stop   : function(event, ui){
-        auto_loading_start();
+        autoLoadingTimer.start();
         var update_id = ui.item.attr("id").slice(3);
         },
 
@@ -551,7 +546,7 @@ function realize_task(id, msg_array){
   });
 
   $('#edit_button_' + id ).click(function(){
-    auto_loading_stop();
+    autoLoadingTimer.stop();
     $('#id_' + id ).parent().sortable('destroy');
     var org_msg = $('#ms_' + id + '_edit').val();
 
@@ -559,7 +554,7 @@ function realize_task(id, msg_array){
     $('#ms_' + id + '_edit').get(0).focus();
 
     $('#edit_form_' + id ).submit(function(){
-      auto_loading_start();
+      autoLoadingTimer.start();
       $('#id_' + id ).parent().sortable(option);
       updateToDoMsg('#ms_' + id + '_edit', '#msg_' + id );
       toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
@@ -567,7 +562,7 @@ function realize_task(id, msg_array){
     });
 
     $('#edit_cancel_' + id ).click(function(){
-      auto_loading_start();
+      autoLoadingTimer.start();
       $('#id_' + id ).parent().sortable(option);
 
       $('#ms_' + id + '_edit').val(org_msg);
