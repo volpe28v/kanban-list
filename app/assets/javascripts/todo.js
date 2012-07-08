@@ -4,19 +4,20 @@
  */
 var COOKIE_EXPIRES = 365;
 var COOKIE_MAIL_ADDR = 'kanbanlist_mail_addr';
+var last_task_list_html = "";
 
 $(document).ready(function(){ 
-    initForTaskList();
-    touch_init();
-    initBookList();
-    initNavBooks();
-    initSendMail();
+  filterTask("");
 
-    $('#add_todo_form_msg').focus();
+  initBookList();
+  initNavBooks();
+  initSendMail();
 
-//    setInterval( function() { filterTask( $('#filter_str').get(0).value ); },5000 );
+  $('#add_todo_form_msg').focus();
 
-    return;
+  setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
+
+  return;
 });
 
 function initNewBookAction(){
@@ -583,6 +584,18 @@ function loadingTasklist(){
   $('#loader').fadeIn();
 }
 
+function loadLatestTasks(filter_str){
+  var request_str = "filter=" + filter_str;
+
+  $.ajax({
+     type: "POST",
+     cache: false,
+     url: "tasks/silent_update",
+     data: request_str,
+     dataType: "jsonp"
+  });
+}
+
 function newBook(book_name){
   var filter_param = "filter=" + $('#filter_str').get(0).value;
   var request_str = "book_name=" + book_name + "&" + filter_param;
@@ -613,12 +626,28 @@ function selectBook(book_id){
 }
 
 function updateBookJson(book_info){
+  last_task_list_html = book_info.task_list_html;
+
   $('#loader').hide();
   $('#task_list').html(book_info.task_list_html);
   $('#task_list').fadeIn('fast', function(){
         $('#add_todo_form_msg').focus();
       }
     );
+
+  updateBookListsJson( book_info.all_books );
+  updateCountsJson( book_info.task_counts );
+
+  initForTaskList();
+  touch_init();
+}
+
+function updateSilentJson(book_info){
+  if ( last_task_list_html == book_info.task_list_html){ return; }
+  last_task_list_html = book_info.task_list_html;
+
+  $('#task_list').html(book_info.task_list_html);
+  $('#add_todo_form_msg').focus();
 
   updateBookListsJson( book_info.all_books );
   updateCountsJson( book_info.task_counts );
