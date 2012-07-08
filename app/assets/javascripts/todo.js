@@ -24,13 +24,16 @@ var autoLoadingTimer = {
   timer_id: null,
   start: function(){
     this.stack++;
-    if ( this.stack!= 1 ){ return; }
+    if ( this.stack != 1 ){ return; }
     this.timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
   },
   stop: function(){
     this.stack--;
     if ( this.stack != 0 ){ return; }
     clearInterval(this.timer_id);
+  },
+  isActive: function(){
+    return this.stack <= 1 ;
   }
 }
 
@@ -660,6 +663,7 @@ function updateBookJson(book_info){
 }
 
 function updateSilentJson(book_info){
+  if ( autoLoadingTimer.isActive() == false ){ return; }
   if ( last_task_list_html == book_info.task_list_html){ return; }
   last_task_list_html = book_info.task_list_html;
 
