@@ -46,7 +46,7 @@ var autoLoadingTimer = function(){
     stop: function(){
       if ( !this.isValid() ){ return; }
       stack--;
-      console.log(stack);
+//      console.log(stack);
       if ( stack != 0 ){ return; }
       clearInterval(timer_id);
     },
