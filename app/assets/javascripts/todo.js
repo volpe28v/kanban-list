@@ -14,9 +14,6 @@ $(document).ready(function(){
   initSendMail();
   initAutoLoading();
 
-  $('#add_todo_form_msg').focus();
-
-  autoLoadingTimer.start();
   return;
 });
 
@@ -35,12 +32,21 @@ var autoLoadingTimer = function(){
     start: function(){
       if ( !this.isValid() ){ return; }
       stack++;
+//      console.log(stack);
       if ( stack != 1 ){ return; }
+      timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
+    },
+    startForce: function(){
+      if ( !this.isValid() ){ return; }
+      stack = 1;
+//      console.log(stack);
+      clearInterval(timer_id);
       timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
     },
     stop: function(){
       if ( !this.isValid() ){ return; }
       stack--;
+      console.log(stack);
       if ( stack != 0 ){ return; }
       clearInterval(timer_id);
     },
@@ -86,6 +92,7 @@ function initNavBooks(){
   });
 
   $('#remove_book_button').click(function(){
+    autoLoadingTimer.stop();
     $('#remove_book_in').modal('hide');
 
     loadingTasklist();
@@ -613,6 +620,7 @@ function newUser( url_name , user_name ) {
 }
 
 function filterTask(filter_str){
+  autoLoadingTimer.stop();
   var request_str = "filter=" + filter_str;
 
   loadingTasklist();
@@ -644,6 +652,7 @@ function loadLatestTasks(filter_str){
 }
 
 function newBook(book_name){
+  autoLoadingTimer.stop();
   var filter_param = "filter=" + $('#filter_str').get(0).value;
   var request_str = "book_name=" + book_name + "&" + filter_param;
 
@@ -659,6 +668,7 @@ function newBook(book_name){
 }
 
 function selectBook(book_id){
+  autoLoadingTimer.stop();
   var request_str = "filter=" + $('#filter_str').get(0).value;
 
   loadingTasklist();
@@ -687,6 +697,7 @@ function updateBookJson(book_info){
 
   initForTaskList();
   touch_init();
+  autoLoadingTimer.startForce();
 }
 
 function updateSilentJson(book_info){
