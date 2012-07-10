@@ -640,6 +640,8 @@ function loadingTasklist(){
 }
 
 function loadLatestTasks(filter_str){
+  if ($('#add_todo_form_msg').val() != ""){ return; };
+
   var request_str = "filter=" + filter_str;
 
   $.ajax({
