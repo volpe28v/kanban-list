@@ -96,7 +96,7 @@ class TasksController < ApplicationController
     case task.status_sym
     when :done
       hook = "#{Rails.root}/hooks/update_task_#{current_user.email}"
-      command = "source #{hook} \"DONE\" \"#{task.msg}\""
+      command = "source #{hook} \"DONE\" \"#{rm_html_tag(task.msg)}\""
       system(command) if File.exist?(hook)
     end
   end
