@@ -736,6 +736,13 @@ function task_display_filter(text){
           return '<a href="' + matched_link + '" target="_blank" >[URL]</a>';
         }
       });
-  return linked_text;
+
+  var prefixed_text = linked_text.replace(/^(\[.+?\])/,
+      function(){
+        var matched_prefix = arguments[1];
+        return '<span class="book-name">' + matched_prefix + '</span>';
+      });
+
+  return prefixed_text;
 }
 

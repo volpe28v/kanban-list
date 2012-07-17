@@ -546,6 +546,13 @@ table#table-01 td {
   margin-left: 7px;
 }
 
+.book-name{
+  color: dimgray;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+}
+
 footer {
   background: #fff;
   width: 100%;
