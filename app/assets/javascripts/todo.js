@@ -501,10 +501,10 @@ function addTodoWithPrefix( prefix, msg ){
 
   var prefix_text = "";
   if ( prefix != "" ){
-    prefix_text = "【" + prefix + "】";
+    prefix_text = "[" + prefix + "]";
   }
 
-  addTodoAjax( prefix_text + msg );
+  addTodoAjax( prefix_text + " " + msg );
 }
 
 function addTodoAjax(msg) {
