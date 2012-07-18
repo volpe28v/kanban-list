@@ -742,7 +742,11 @@ function task_display_filter(text){
         var matched_prefix = arguments[1];
         return '<span class="book-name">' + matched_prefix + '</span>';
       });
-
+  prefixed_text = prefixed_text.replace(/^【(.+?)】/,
+      function(){
+        var matched_prefix = arguments[1];
+        return '<span class="book-name">[' + matched_prefix + ']</span> ';
+      });
   return prefixed_text;
 }
 
