@@ -147,7 +147,6 @@ li {
 }
 
 #done li {
-  font-size: 11px;
   border-top:1px solid #aaa;
   border-right:2px solid #555;
   border-bottom:2px solid #555;
