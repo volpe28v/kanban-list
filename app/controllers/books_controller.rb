@@ -52,7 +52,6 @@ class BooksController < ApplicationController
     @book_name = get_book_name
     @prefix = get_prefix
 
-    task_list_html = render_to_string :partial => 'tasks/tasklist'
-    render :json => { task_list_html: task_list_html, task_counts: get_task_counts, all_books: get_all_book_counts }, :callback => 'updateBookJson'
+    render :json => { task_list_html: get_task_list_html, task_counts: get_task_counts, all_books: get_all_book_counts }, :callback => 'updateBookJson'
   end
 end

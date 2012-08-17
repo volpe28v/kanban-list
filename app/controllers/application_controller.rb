@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :user_email
-
   def user_email
     @user_email = current_user ? current_user.email : ""
   end
@@ -60,6 +59,10 @@ class ApplicationController < ActionController::Base
       :waiting_tasks   => target_tasks.by_status_and_filter(:waiting,filter_word),
       :done_tasks      => target_tasks.by_status_and_filter(:done,   filter_word).limit(done_num),
     }
+  end
+
+  def get_task_list_html
+    render_to_string :partial => 'tasks/tasklist_compact'
   end
 
   def current_book

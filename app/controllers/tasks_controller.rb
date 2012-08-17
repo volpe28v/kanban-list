@@ -52,8 +52,7 @@ class TasksController < ApplicationController
 
     @tasks = get_tasks( params[:filter], @recent_done_num )
 
-    task_list_html = render_to_string :partial => 'tasklist'
-    render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
+    render :json => { task_list_html: get_task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
   end
 
   def silent_update
@@ -64,8 +63,7 @@ class TasksController < ApplicationController
 
     @tasks = get_tasks( params[:filter], @recent_done_num )
 
-    task_list_html = render_to_string :partial => 'tasklist'
-    render :json => { task_list_html: task_list_html, task_counts: get_task_counts }, :callback => 'updateSilentJson'
+    render :json => { task_list_html: get_task_list_html, task_counts: get_task_counts }, :callback => 'updateSilentJson'
   end
 
   def donelist
@@ -87,6 +85,7 @@ class TasksController < ApplicationController
   end
 
   private
+
   def rm_html_tag(str)
     str.sub!(/<[^<>]*>/,"") while /<[^<>]*>/ =~ str
     str
@@ -124,6 +123,6 @@ class TasksController < ApplicationController
 
     @tasks = get_tasks( filter_str, @recent_done_num )
 
-    task_list_html = render_to_string :partial => 'tasklist'
+    get_task_list_html
   end
 end
