@@ -114,15 +114,4 @@ class TasksController < ApplicationController
   def is_moved_from_book?(task)
     (current_book != nil) and (current_book.id != (task.book ? task.book.id : 0 ))
   end
-
-  def get_task_list( filter_str )
-    @user_name = current_user.name
-    @recent_done_num = 15
-    @book_name = get_book_name
-    @prefix = get_prefix
-
-    @tasks = get_tasks( filter_str, @recent_done_num )
-
-    get_task_list_html
-  end
 end
