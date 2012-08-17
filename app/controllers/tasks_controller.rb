@@ -49,8 +49,8 @@ class TasksController < ApplicationController
     @recent_done_num = 15
     @book_name = get_book_name
     @prefix = get_prefix
-
     @tasks = get_tasks( params[:filter], @recent_done_num )
+    set_layout(params[:layout])
 
     render :json => { task_list_html: get_task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
   end
@@ -113,5 +113,9 @@ class TasksController < ApplicationController
 
   def is_moved_from_book?(task)
     (current_book != nil) and (current_book.id != (task.book ? task.book.id : 0 ))
+  end
+
+  def set_layout(layout_name)
+    session[:layout] = layout_name if layout_name
   end
 end

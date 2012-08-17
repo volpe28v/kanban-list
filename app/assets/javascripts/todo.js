@@ -750,3 +750,20 @@ function task_display_filter(text){
   return prefixed_text;
 }
 
+function selectLayout(layout_name){
+  autoLoadingTimer.stop();
+  var request_str = "filter=" + $('#filter_str').get(0).value;
+  request_str += "&layout=" + layout_name;
+
+  loadingTasklist();
+
+  $.ajax({
+     type: "POST",
+     cache: false,
+     url: "tasks/filter_or_update",
+     data: request_str,
+     dataType: "jsonp"
+  });
+}
+
+

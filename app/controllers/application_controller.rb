@@ -62,7 +62,8 @@ class ApplicationController < ActionController::Base
   end
 
   def get_task_list_html
-    render_to_string :partial => 'tasks/tasklist_compact'
+    session[:layout] ||= 'default'
+    render_to_string :partial => 'tasks/tasklist_' + session[:layout]
   end
 
   def current_book
