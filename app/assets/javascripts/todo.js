@@ -639,6 +639,10 @@ function loadingTasklist(){
   $('#loader').fadeIn();
 }
 
+function loadingTasklistEnd(){
+  $('#loader').hide();
+}
+
 function loadLatestTasks(filter_str){
   if ($('#add_todo_form_msg').val() != ""){ return; };
 
@@ -687,7 +691,7 @@ function selectBook(book_id){
 function updateBookJson(book_info){
   last_task_list_html = book_info.task_list_html;
 
-  $('#loader').hide();
+  loadingTasklistEnd();
   $('#task_list').html(book_info.task_list_html);
   $('#task_list').fadeIn('fast', function(){
         $('#add_todo_form_msg').focus();
