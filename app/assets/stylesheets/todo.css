@@ -552,6 +552,10 @@ table#table-01 td {
   font-weight: normal;
 }
 
+#loading_msg {
+  color: #888;
+}
+
 footer {
   background: #fff;
   width: 100%;
