@@ -655,7 +655,6 @@ function loadingTasklist(){
 
   $('#task_list').fadeOut();
   $('#loader').fadeIn();
-
 }
 
 function loadingTasklistEnd(){
