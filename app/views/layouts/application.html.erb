@@ -87,7 +87,9 @@
               </li>
             <% end %>
 
-            <li><%= link_to('ログアウト', [ :destroy, :user_session ], :method => :delete ,:class => '') if current_user %></li>
+            <% if current_user %>
+            <li><%= link_to('Logout', [ :destroy, :user_session ], :method => :delete ,:class => '') %></li>
+            <% end %>
           </ul>
         </div>
       </div>
