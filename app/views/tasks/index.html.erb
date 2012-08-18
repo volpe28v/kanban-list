@@ -3,7 +3,10 @@
   <div id="sending_mail" class="alert alert-info" style="display:none"></div>
   <div id="send_mail_result" class="alert alert-success" style="display:none"></div>
 
-  <div id="loader" style="display:none"><center><img src="<%= image_path 'loader.gif' %>"></center></div>
+  <div id="loader" style="display:none">
+    <center><img src="<%= image_path 'loader.gif' %>"></center>
+    <center><p>Tips: <span id="loading_msg"></span></p></center>
+  </div>
   <div id="task_list">
   </div>
 <!-- ここまで動的更新できる範囲 -->

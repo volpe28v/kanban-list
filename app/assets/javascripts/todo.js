@@ -634,9 +634,28 @@ function filterTask(filter_str){
   });
 }
 
+var LoadingMsg = [
+  "タスクの[xxx]を既存の Book名に変更することで Book間の移動ができます",
+  "タスクの[xxx]を新しい Book名に変更することで新しい Book が追加されます",
+  "タスク内容では簡単な html タグが使用できます",
+  "URL は自動的にリンクに変換します",
+  "画像URLを貼り付けると画像を表示します",
+  "Bookを削除すると Book 内に含まれるタスクも削除されますので注意！",
+  "タスク内に書き込める文字数は 200文字です",
+  "「Layout」メニューでタスクの表示方法を変更できます",
+  "自動更新機能は多人数で使う場合に便利です",
+  "自動更新機能は操作が無い場合に５秒間隔で最新の状態に更新します",
+  "「Books」メニュー内の並び順は残タスクが多い順になっています",
+  "iPad でも使えます",
+];
+
 function loadingTasklist(){
+  var msg_no = Math.floor(Math.random() * LoadingMsg.length);
+  $('#loading_msg').html(LoadingMsg[msg_no]);
+
   $('#task_list').fadeOut();
   $('#loader').fadeIn();
+
 }
 
 function loadingTasklistEnd(){
