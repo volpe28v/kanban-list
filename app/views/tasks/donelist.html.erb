@@ -10,6 +10,7 @@
   </div>
 
   <div class="span9">
+    <%= will_paginate(@tasks) %>
     <table class="table table-striped table-bordered">
     <% latest_day = nil %>
     <% @tasks.each do |task| %>
@@ -32,9 +33,9 @@
       </tr>
     <% end %>
     </table>
+    <%= will_paginate(@tasks) %>
   </div>
 </div>
 </div>
 
-<%= will_paginate(@tasks) %>
 
