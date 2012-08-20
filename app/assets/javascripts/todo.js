@@ -284,10 +284,12 @@ function updateBookListsJson( book_infos ){
 
   var lists = '';
   for(var i = 0; i < book_infos.length; i++ ){ 
+    var active_todo_counts = book_infos[i].todo_h + book_infos[i].todo_m + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
     lists += '<li id="book_list_' + book_infos[i].id + '">' +
                  '<a href="#" onclick="selectBook(' + book_infos[i].id + ');">' + book_infos[i].name +
                    '<table style="float:right" class="book-counts">' +
                      '<tr>' +
+                       '<td><div class="counts-active"   >' + active_todo_counts    + '</div></td>' +
                        '<td><div class="counts todo_h" >' + book_infos[i].todo_h + '</div></td>' +
                        '<td><div class="counts todo"   >' + book_infos[i].todo_m + '</div></td>' +
                        '<td><div class="counts todo_l" >' + book_infos[i].todo_l + '</div></td>' +

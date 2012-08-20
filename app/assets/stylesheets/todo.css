@@ -390,6 +390,13 @@ table#table-01 td {
         text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
 }
 
+.counts-active {
+        color: gray;
+        font-size: 6pt;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
+}
+
 .memitem {
         padding: 0;
         margin-right:  2px;
