@@ -613,14 +613,6 @@ function realize_task(id, msg_array){
   });
 }
 
-function newUser( url_name , user_name ) {
-  if ( user_name != "" ){
-    location.href = url_name + '/todo.cgi?mode=new&name=' + user_name;
-  }else{
-    alert("Please input new user name!");
-  }
-}
-
 function filterTask(filter_str){
   autoLoadingTimer.stop();
   var request_str = "filter=" + filter_str;
