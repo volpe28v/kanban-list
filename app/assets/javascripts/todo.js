@@ -363,33 +363,6 @@ function sendCurrentTodo(id, status, msg) {
 
 }
 
-// Todo数表示を更新する
-function updateCounts( counts_array ){
-  if ( counts_array.length != 6 ){
-    return;
-  }
-
-  var state_ids = [
-                    ['#todo_h_num',  counts_array[0]],
-                    ['#todo_num',    counts_array[1]],
-                    ['#todo_l_num',  counts_array[2]],
-                    ['#doing_num',   counts_array[3]],
-                    ['#waiting_num', counts_array[4]],
-                    ['#done_num',    counts_array[5]]
-                  ];
-
-  for(var i = 0; i < state_ids.length; i++ ){
-    var state_name = state_ids[i][0];
-    var count_num  = state_ids[i][1];
-    if ( $(state_name).html() != count_num ){
-      $(state_name).hide();
-      $(state_name).css("color","red");
-      $(state_name).html(count_num);
-      $(state_name).fadeIn("normal",function(){ $(this).css("color","black");});
-    }
-  }
-}
-
 function updateCountsJson( counts_json ){
   var state_ids = [
                     ['#todo_h_num',  counts_json.todo_h],
