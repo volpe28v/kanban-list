@@ -174,96 +174,98 @@ function initAutoLoading(){
 }
 
 function touchHandler(event){
-	if (event.touches.length > 1){return;} //マルチタッチを無効化
+  if (event.touches.length > 1){return;} //マルチタッチを無効化
 
-	var touches = event.changedTouches;
-	event.preventDefault();        
-    var first = touches[0];
-    var type = "";
-    switch(event.type)
-    {
-        case "touchstart": 
-        	type = "mousedown"; 
-        	break;
-        case "touchend":   
-    		type = "mouseup";   
-        	break;
-        case "touchmove":  
-        	type = "mousemove"; 
-        	break;
-        default: 
-        	return;
-    }
-    dispatchMouseEvent(type, first);
+  var touches = event.changedTouches;
+  event.preventDefault();
+  var first = touches[0];
+  var type = "";
+  switch(event.type)
+  {
+    case "touchstart":
+      type = "mousedown";
+      break;
+    case "touchend":
+      type = "mouseup";
+      break;
+    case "touchmove":
+      type = "mousemove";
+      break;
+    default:
+      return;
+  }
+  dispatchMouseEvent(type, first);
 }
 
 function dispatchMouseEvent( event_type, touch_event ){
-	var simulatedEvent = document.createEvent("MouseEvent");
-	simulatedEvent.initMouseEvent(
-			event_type, true, true, window, 1, 
-			touch_event.screenX, touch_event.screenY, 
-			touch_event.clientX, touch_event.clientY, false, 
-	        false, false, false, 0, null);
+  var simulatedEvent = document.createEvent("MouseEvent");
+  simulatedEvent.initMouseEvent(
+    event_type, true, true, window, 1,
+    touch_event.screenX,
+    touch_event.screenY,
+    touch_event.clientX,
+    touch_event.clientY,
+    false, false, false, false, 0, null);
 
-	touch_event.target.dispatchEvent(simulatedEvent);
+  touch_event.target.dispatchEvent(simulatedEvent);
 }
- 
-function touch_init() 
+
+function touch_init()
 {
-	var userAgent = window.navigator.userAgent.toLowerCase();
-	if (userAgent.indexOf("msie") > -1) {
-		return;
-	}
-	
-	var label_elemens = document.getElementsByClassName("taskLabel");
-	var i = 0;
-	for(i=0;i < label_elemens.length;i++){
-		addMouseEventListener(label_elemens[i]);
-	}
+  var userAgent = window.navigator.userAgent.toLowerCase();
+  if (userAgent.indexOf("msie") > -1) {
+    return;
+  }
+
+  var label_elemens = document.getElementsByClassName("taskLabel");
+  var i = 0;
+  for(i=0;i < label_elemens.length;i++){
+    addMouseEventListener(label_elemens[i]);
+  }
 }
 
 function addMouseEventListener(element){
-	element.addEventListener("touchstart",  touchHandler, true);
-	element.addEventListener("touchmove",   touchHandler, true);
-	element.addEventListener("touchend",    touchHandler, true);
-	element.addEventListener("touchcancel", touchHandler, true);    
+  element.addEventListener("touchstart",  touchHandler, true);
+  element.addEventListener("touchmove",   touchHandler, true);
+  element.addEventListener("touchend",    touchHandler, true);
+  element.addEventListener("touchcancel", touchHandler, true);
 }
 
 function initForTaskList(){
-    $("#add_todo_form input:submit").button();
-    setSortableList();
-    markTodayEdit();
+  $("#add_todo_form input:submit").button();
+  setSortableList();
+  markTodayEdit();
 }
 
 var option = {
-    start  : function(event, ui){
-        autoLoadingTimer.stop();
-        var update_id = ui.item.attr("id").slice(3);
-        },
-    stop   : function(event, ui){
-        autoLoadingTimer.start();
-        var update_id = ui.item.attr("id").slice(3);
-        },
+  start  : function(event, ui){
+      autoLoadingTimer.stop();
+      var update_id = ui.item.attr("id").slice(3);
+      },
+  stop   : function(event, ui){
+      autoLoadingTimer.start();
+      var update_id = ui.item.attr("id").slice(3);
+      },
 
-    receive: function(event, ui){
-        var update_id = ui.item.attr("id").slice(3);
+  receive: function(event, ui){
+      var update_id = ui.item.attr("id").slice(3);
 
-        sendCurrentTodo( update_id,
-                         $(this).get(0).id,
-                         $("#ms_" + update_id + "_edit").val());
-        },
+      sendCurrentTodo( update_id,
+                       $(this).get(0).id,
+                       $("#ms_" + update_id + "_edit").val());
+      },
 
-    connectWith: 'ul',
-    placeholder: 'ui-state-highlight',
-    cancel: "#cancel",
-    scroll: true,
-    tolerance: 'pointer',
-    revert: true
+  connectWith: 'ul',
+  placeholder: 'ui-state-highlight',
+  cancel: "#cancel",
+  scroll: true,
+  tolerance: 'pointer',
+  revert: true
 };
 
 // ドラッグ＆ドロップ可能にする
 function setSortableList(){
-    $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
+  $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
 }
 
 function initBookList(){
@@ -363,29 +365,29 @@ function sendCurrentTodo(id, status, msg) {
 
 // Todo数表示を更新する
 function updateCounts( counts_array ){
-    if ( counts_array.length != 6 ){
-      return;
-    }
+  if ( counts_array.length != 6 ){
+    return;
+  }
 
-    var state_ids = [
-                      ['#todo_h_num',  counts_array[0]],
-                      ['#todo_num',    counts_array[1]],
-                      ['#todo_l_num',  counts_array[2]],
-                      ['#doing_num',   counts_array[3]],
-                      ['#waiting_num', counts_array[4]],
-                      ['#done_num',    counts_array[5]]
-                    ];
+  var state_ids = [
+                    ['#todo_h_num',  counts_array[0]],
+                    ['#todo_num',    counts_array[1]],
+                    ['#todo_l_num',  counts_array[2]],
+                    ['#doing_num',   counts_array[3]],
+                    ['#waiting_num', counts_array[4]],
+                    ['#done_num',    counts_array[5]]
+                  ];
 
-    for(var i = 0; i < state_ids.length; i++ ){ 
-      var state_name = state_ids[i][0];
-      var count_num  = state_ids[i][1];
-      if ( $(state_name).html() != count_num ){
-        $(state_name).hide();
-        $(state_name).css("color","red");
-        $(state_name).html(count_num);
-        $(state_name).fadeIn("normal",function(){ $(this).css("color","black");});
-      }
+  for(var i = 0; i < state_ids.length; i++ ){
+    var state_name = state_ids[i][0];
+    var count_num  = state_ids[i][1];
+    if ( $(state_name).html() != count_num ){
+      $(state_name).hide();
+      $(state_name).css("color","red");
+      $(state_name).html(count_num);
+      $(state_name).fadeIn("normal",function(){ $(this).css("color","black");});
     }
+  }
 }
 
 function updateCountsJson( counts_json ){
