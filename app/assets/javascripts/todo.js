@@ -485,18 +485,20 @@ function addTodoWithPrefix( prefix, msg ){
 }
 
 function addTodoAjax(msg) {
-//TODO: エスケープ処理しないとまずい。& ! ' など
-  msg = msg.replace(/&/g,""); 
-  msg = msg.replace(/'/g,"\""); 
-  msg = msg.replace(/!/g,"|"); 
-
   $.ajax({
     type: "POST",
     cache: false,
     url: "tasks",
-    data: "msg=" + msg,
+    data: "msg=" + escapeInvalidChar(msg),
     dataType: "jsonp"
  });
+}
+
+function escapeInvalidChar(msg){
+  var escaped_msg = msg.replace(/&/g,""); 
+  escaped_msg = escaped_msg.replace(/'/g,"\""); 
+  escaped_msg = escaped_msg.replace(/!/g,"|"); 
+  return escaped_msg;
 }
 
 function addTodoResponse(add_task_info){
