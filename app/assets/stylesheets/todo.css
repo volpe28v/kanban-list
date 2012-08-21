@@ -276,96 +276,94 @@ li {
   background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#aaa));
   /* For Mozilla/Gecko (Firefox etc) */
   background: -moz-linear-gradient(top, #cdc, #00FF00);
-
-
 }
 
 h2.doing{
-        margin: 0.5em 2% 0.0em 5px;
-        padding: 0.3em 0.5em 0.2em 0.5em;
-        border-style: solid;
-        border-width: 0 0 2px 25px;
-        border-color: #BFEFDF;
-        font-size: 18px;
+  margin: 0.5em 2% 0.0em 5px;
+  padding: 0.3em 0.5em 0.2em 0.5em;
+  border-style: solid;
+  border-width: 0 0 2px 25px;
+  border-color: #BFEFDF;
+  font-size: 18px;
 }
 
 h2.waiting{
-        margin: 0.5em 2% 0.0em 5px;
-        padding: 0.3em 0.5em 0.2em 0.5em;
-        border-style: solid;
-        border-width: 0 0 2px 25px;
-        border-color: #EfEfAb; 
-        font-size: 18px;
+  margin: 0.5em 2% 0.0em 5px;
+  padding: 0.3em 0.5em 0.2em 0.5em;
+  border-style: solid;
+  border-width: 0 0 2px 25px;
+  border-color: #EfEfAb; 
+  font-size: 18px;
 }
 
 h2.todo_m{
-        margin: 0.5em 2% 0.0em 5px;
-        padding: 0.3em 0.5em 0.2em 0.5em;
-        border-style: solid;
-        border-width: 0 0 2px 25px;
-        border-color: #9DE0AD;
-        font-size: 18px;
+  margin: 0.5em 2% 0.0em 5px;
+  padding: 0.3em 0.5em 0.2em 0.5em;
+  border-style: solid;
+  border-width: 0 0 2px 25px;
+  border-color: #9DE0AD;
+  font-size: 18px;
 }
 
 h2.todo_l{
-        margin: 0.5em 2% 0.0em 5px;
-        padding: 0.3em 0.5em 0.2em 0.5em;
-        border-style: solid;
-        border-width: 0 0 2px 25px;
-        border-color: #E5FCC2;
-        font-size: 18px;
+  margin: 0.5em 2% 0.0em 5px;
+  padding: 0.3em 0.5em 0.2em 0.5em;
+  border-style: solid;
+  border-width: 0 0 2px 25px;
+  border-color: #E5FCC2;
+  font-size: 18px;
 }
 
 h2.todo_h{
-        margin: 0.5em 2% 0.0em 5px;
-        padding: 0.3em 0.5em 0.2em 0.5em;
-        border-style: solid;
-        border-width: 0 0 2px 25px;
-        border-color: #75dDd8;
-        font-size: 18px;
+  margin: 0.5em 2% 0.0em 5px;
+  padding: 0.3em 0.5em 0.2em 0.5em;
+  border-style: solid;
+  border-width: 0 0 2px 25px;
+  border-color: #75dDd8;
+  font-size: 18px;
 }
 
 h2.done{
-        margin: 0.5em 2% 0.0em 5px;
-        padding: 0.3em 0.5em 0.2em 0.5em;
-        border-style: solid;
-        border-width: 0 0 2px 25px;
-        border-color: #dfdfdf;
-        font-size: 18px;
+  margin: 0.5em 2% 0.0em 5px;
+  padding: 0.3em 0.5em 0.2em 0.5em;
+  border-style: solid;
+  border-width: 0 0 2px 25px;
+  border-color: #dfdfdf;
+  font-size: 18px;
 }
 
 
 table#table-01 {
-    margin: 2px 0 2px 20px;
-    border: 1px #999999 solid;
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 8px;
+  margin: 2px 0 2px 20px;
+  border: 1px #999999 solid;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 8px;
 }
 
 table#table-01 th {
-    border: 1px #999999 solid;
-    border-width: 0 0 1px 1px;
+  border: 1px #999999 solid;
+  border-width: 0 0 1px 1px;
 }
 
 table#table-01 td {
-    border: 1px #bbbbbb solid;
-    background: #F5F5F5;
-    border-width: 0 0 1px 1px;
-    text-align: center;
+  border: 1px #bbbbbb solid;
+  background: #F5F5F5;
+  border-width: 0 0 1px 1px;
+  text-align: center;
 }
 
 #info_msg li {
-    margin: 0px 0px 0px 4px;
+  margin: 0px 0px 0px 4px;
 }
 
 .refresh_alert_msg {
-        white-space: nowrap;
-        font-weight: bold;
-        font-size:  10pt;
-        text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
-        margin-left: 10px;
-        color: #FFFF55;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size:  10pt;
+  text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
+  margin-left: 10px;
+  color: #FFFF55;
 }
 
 
@@ -384,137 +382,136 @@ table#table-01 td {
 }
 
 .counts {
-        color: black;
-        font-size: 6pt;
-        font-weight: bold;
-        text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
+  color: black;
+  font-size: 6pt;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
 }
 
 .counts-active {
-        color: gray;
-        font-size: 6pt;
-        font-weight: bold;
-        text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
+  color: gray;
+  font-size: 6pt;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
 }
 
 .memitem {
-        padding: 0;
-        margin-right:  2px;
-        margin-left:  2px;
-        margin-top: 2px;
-        margin-bottom: 14px;
+  padding: 0;
+  margin-right:  2px;
+  margin-left:  2px;
+  margin-top: 2px;
+  margin-bottom: 14px;
 
-        background-color: ghostwhite;
-        /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
-        /* webkit specific markup */
-        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+  background-color: ghostwhite;
+  /* firefox specific markup */
+  -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+  /* webkit specific markup */
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
 
-        -webkit-border-top-right-radius: 8px;
-        -webkit-border-top-left-radius: 8px;
-        -webkit-border-bottom-right-radius: 8px;
-        -webkit-border-bottom-left-radius: 8px;
+  -webkit-border-top-right-radius: 8px;
+  -webkit-border-top-left-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
 }
 
 .memname {
-        white-space: nowrap;
-        font-weight: bold;
-        margin-left: 15px;
+  white-space: nowrap;
+  font-weight: bold;
+  margin-left: 15px;
 }
 
 .memname_doing {
-        color: #000066;
+  color: #000066;
 }
 
 .memdoc_doing {
-        border-bottom: 1px solid #A8B8D9;
-        border-left: 1px solid #A8B8D9;
-        border-right: 1px solid #A8B8D9;
-        padding: 2px 0px;
-        border-top-width: 0;
-        -webkit-border-bottom-right-radius: 8px;
-        -webkit-border-bottom-left-radius: 8px;
+  border-bottom: 1px solid #A8B8D9;
+  border-left: 1px solid #A8B8D9;
+  border-right: 1px solid #A8B8D9;
+  padding: 2px 0px;
+  border-top-width: 0;
+  -webkit-border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
 }
 
 .memname_todo_h {
-        color: #006600;
+  color: #006600;
 }
 
 .memdoc_todo_h {
-        border-bottom: 0px solid #A8B8D9;
-        border-left: 1px solid #A8B8D9;
-        border-right: 1px solid #A8B8D9;
-        padding: 2px 0px;
-        border-top-width: 0;
+  border-bottom: 0px solid #A8B8D9;
+  border-left: 1px solid #A8B8D9;
+  border-right: 1px solid #A8B8D9;
+  padding: 2px 0px;
+  border-top-width: 0;
 }
 
 .memproto {
-        border-top: 1px solid #A8B8D9;
-        border-left: 1px solid #A8B8D9;
-        border-right: 1px solid #A8B8D9;
-        font-size: 12pt;
-        font-weight: bold;
-        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
-        background-image: url('nav_f.png');
-        background-repeat:repeat-x;
-        background-color: #E2E8F2;
-        -webkit-border-top-right-radius: 8px;
-        -webkit-border-top-left-radius: 8px;
-
+  border-top: 1px solid #A8B8D9;
+  border-left: 1px solid #A8B8D9;
+  border-right: 1px solid #A8B8D9;
+  font-size: 12pt;
+  font-weight: bold;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+  background-image: url('nav_f.png');
+  background-repeat:repeat-x;
+  background-color: #E2E8F2;
+  -webkit-border-top-right-radius: 8px;
+  -webkit-border-top-left-radius: 8px;
 }
 
 .memname_todo_m {
-        color: #224422;
+  color: #224422;
 }
 
 .memproto_todo_m {
-        border-top: 1px solid #A8B8D9;
-        border-left: 1px solid #A8B8D9;
-        border-right: 1px solid #A8B8D9;
-        font-size: 8pt;
-        font-weight: bold;
-        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
-        background-image: url('nav_f.png');
-        background-repeat:repeat-x;
-        background-color: #E2E8F2;
+  border-top: 1px solid #A8B8D9;
+  border-left: 1px solid #A8B8D9;
+  border-right: 1px solid #A8B8D9;
+  font-size: 8pt;
+  font-weight: bold;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+  background-image: url('nav_f.png');
+  background-repeat:repeat-x;
+  background-color: #E2E8F2;
 }
 
 .memdoc_todo_l {
-        border-bottom: 1px solid #A8B8D9;
-        border-left: 1px solid #A8B8D9;
-        border-right: 1px solid #A8B8D9;
-        padding: 2px 0px;
-        border-top-width: 0;
-        -webkit-border-bottom-right-radius: 8px;
-        -webkit-border-bottom-left-radius: 8px;
+  border-bottom: 1px solid #A8B8D9;
+  border-left: 1px solid #A8B8D9;
+  border-right: 1px solid #A8B8D9;
+  padding: 2px 0px;
+  border-top-width: 0;
+  -webkit-border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
 }
 
 .memname_waiting {
-        color: #888800;
+  color: #888800;
 }
 
 .memdoc_waiting {
-        border-bottom: 1px solid #A8B8D9;
-        border-left: 1px solid #A8B8D9;
-        border-right: 1px solid #A8B8D9;
-        padding: 2px 0px;
-        border-top-width: 0;
-        -webkit-border-bottom-right-radius: 8px;
-        -webkit-border-bottom-left-radius: 8px;
+  border-bottom: 1px solid #A8B8D9;
+  border-left: 1px solid #A8B8D9;
+  border-right: 1px solid #A8B8D9;
+  padding: 2px 0px;
+  border-top-width: 0;
+  -webkit-border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
 }
 
 .memname_done {
-        color: #555;
+  color: #555;
 }
 
 .memdoc_done {
-        border-bottom: 1px solid #A8B8D9;
-        border-left: 1px solid #A8B8D9;
-        border-right: 1px solid #A8B8D9;
-        padding: 2px 0px;
-        border-top-width: 0;
-        -webkit-border-bottom-right-radius: 8px;
-        -webkit-border-bottom-left-radius: 8px;
+  border-bottom: 1px solid #A8B8D9;
+  border-left: 1px solid #A8B8D9;
+  border-right: 1px solid #A8B8D9;
+  padding: 2px 0px;
+  border-top-width: 0;
+  -webkit-border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
 }
 
 #prefix,#add_todo_form_msg  {
