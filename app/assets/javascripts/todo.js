@@ -280,8 +280,8 @@ function initBookList(){
 
 function updateBookListsJson( book_infos ){
   if ( book_infos == null ){ return; }
-  var header = '<li><a id="new_book" href="#">New Book</a></li>' + 
-               '<li><a id="remove_book" href="#">Remove Current Book</a></li>' +
+  var header = '<li><a id="new_book" href="#"><i class="icon-plus"></i> New Book</a></li>' + 
+               '<li><a id="remove_book" href="#"><i class="icon-trash"></i> Remove Current Book</a></li>' +
                '<li class="divider"></li>'; 
 
   var lists = '';
