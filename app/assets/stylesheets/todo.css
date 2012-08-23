@@ -560,8 +560,11 @@ table#table-01 td {
   color: #888;
 }
 
+#done_list_table tr {
+  background-color: white;
+}
+
 footer {
-//  background: #fff;
   width: 100%;
   margin-top: 4px;                                                                    
   padding: 20px 0;

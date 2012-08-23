@@ -11,7 +11,7 @@
 
   <div class="span9">
     <%= will_paginate(@tasks) %>
-    <table class="table table-striped table-bordered">
+    <table id="done_list_table" class="table table-striped table-bordered">
     <% latest_day = nil %>
     <% @tasks.each do |task| %>
       <% current_day = task.updated_at.strftime("%Y-%m-%d") %>
