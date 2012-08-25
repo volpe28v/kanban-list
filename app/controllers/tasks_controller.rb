@@ -47,23 +47,19 @@ class TasksController < ApplicationController
   def filter_or_update
     @user_name = current_user.name
     @recent_done_num = 15
-    @book_name = get_book_name
-    @prefix = get_prefix
     @tasks = get_tasks( params[:filter], @recent_done_num )
     set_layout(params[:layout])
 
-    render :json => { task_list_html: get_task_list_html, task_counts: get_task_counts }, :callback => 'updateBookJson'
+    render :json => { task_list_html: get_task_list_html, task_counts: get_task_counts, book_name: get_book_name, prefix: get_prefix, all_books: get_all_book_counts }, :callback => 'updateBookJson'
   end
 
   def silent_update
     @user_name = current_user.name
     @recent_done_num = 15
-    @book_name = get_book_name
-    @prefix = get_prefix
 
     @tasks = get_tasks( params[:filter], @recent_done_num )
 
-    render :json => { task_list_html: get_task_list_html, task_counts: get_task_counts }, :callback => 'updateSilentJson'
+    render :json => { task_list_html: get_task_list_html, task_counts: get_task_counts, all_books: get_all_book_counts }, :callback => 'updateSilentJson'
   end
 
   def donelist

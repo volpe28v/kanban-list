@@ -733,6 +733,9 @@ function updateBookJson(book_info){
       }
     );
 
+  $('#book_name_label').text(book_info.book_name);
+  $('#prefix').val(book_info.prefix);
+
   updateBookListsJson( book_info.all_books );
   updateCountsJson( book_info.task_counts );
 

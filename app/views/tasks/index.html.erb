@@ -3,10 +3,18 @@
   <div id="sending_mail" class="alert alert-info" style="display:none"></div>
   <div id="send_mail_result" class="alert alert-success" style="display:none"></div>
 
+<form method="post" id="add_todo_form" class="form-inline">
+  <span class="label label-info">Book: <span id="book_name_label"></span></span> <span class="task-chars-left-add-form"></span></br>
+  <input type="text" id="prefix" class="span2" name="prefix" value="" placeholder="Book Name" maxlength="50"/>
+  <input type="text" id="add_todo_form_msg" class="span6" value="" placeholder="Task Name" maxlength="200"/>
+  <input type="submit" value="Add" class="btn btn-primary" />
+</form>
+
   <div id="loader" class="well" style="display:none">
     <center><img src="<%= image_path 'loader.gif' %>"></center>
     <center><p id="loading_msg_area">Tips: <span id="loading_msg"></span></p></center>
   </div>
+
   <div id="task_list">
   </div>
 <!-- ここまで動的更新できる範囲 -->
