@@ -663,7 +663,11 @@ var LoadingMsg = [
   "定期的に長く放置されたタスクを整理しましょう",
   "たまには壁紙を変えて気分転換しましょう！",
   "Doingにタスクが溜まってきたら危険信号",
-  "やらないと決めてタスクを削除する勇気"
+  "やらないと決めてタスクを削除する勇気",
+  '<i class="icon-list"></i> で完了したタスクのリストページを表示します',
+  '<i class="icon-envelope"></i> で表示しているリストをメール送信できます',
+  '<i class="icon-picture"></i> で背景画像を設定できます',
+  '<i class="icon-refresh"></i> で自動更新機能の ON/OFF ができます'
 ];
 
 function loadingTasklist(){
