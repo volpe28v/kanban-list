@@ -16,6 +16,7 @@ $(document).ready(function(){
   initAutoLoading();
   initSetBgImage();
 
+  $('a[rel=tooltip]').tooltip({ placement:"bottom"});
   return;
 });
 
@@ -162,16 +163,21 @@ function sendMail(addr){
 }
 
 function initAutoLoading(){
-  $('#auto_loading').click(function(){
+  $('#auto_loading').html("To ON");
+  var setAutoLoading = function(){
     if ( autoLoadingTimer.isActive() ){
       autoLoadingTimer.stop();
       autoLoadingTimer.setMode(false);
-      $('#auto_loading').html("AutoLoading - ON");
+      $('#auto_loading').html("To ON");
     }else{
       autoLoadingTimer.setMode(true);
       autoLoadingTimer.start();
-      $('#auto_loading').html("AutoLoading - OFF");
+      $('#auto_loading').html("To OFF");
     }
+  }
+
+  $('#auto_loading').click(function(){
+    setAutoLoading();
   });
 }
 

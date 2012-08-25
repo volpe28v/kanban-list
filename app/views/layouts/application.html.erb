@@ -25,7 +25,7 @@
         <div class="nav-collapse">
           <ul class="nav pull-left">
             <% if current_user %>
-              <li><%= link_to "Home", tasks_path %></li>
+              <li><%= link_to raw('<i class="icon-home"></i>'), tasks_path, { rel: "tooltip", title: "Go to your kanbanlist" } %></li>
             <% end %>
             <% if params[:controller] == "tasks" and params[:action] == "index" %>
               <%= render "layouts/book_list_dropdown_li" %>
@@ -45,7 +45,6 @@
 
           <ul class="nav pull-right">
             <% if params[:controller] == "tasks" and params[:action] == "index" %>
-              <li><%= link_to "DoneList", tasks_donelist_path %></li>
               <%= render "layouts/trial_feature_dropdown_li" %>
             <% end %>
 
