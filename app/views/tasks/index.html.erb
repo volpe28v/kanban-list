@@ -10,6 +10,23 @@
     <input type="submit" value="Add" class="btn btn-primary" />
   </form>
 
+  <script>
+    $("#add_todo_form_msg").maxlength({
+      'feedback' : '.task-chars-left-add-form'
+    });
+
+    $("#add_todo_form").submit(function(){
+      addTodoWithPrefix($('#prefix').val() , $('#add_todo_form_msg').val());
+      $('#add_todo_form_msg').val('');
+      $('#add_todo_form_msg').focus();
+ 
+      $("#add_todo_form_msg").maxlength({
+        'feedback' : '.task-chars-left-add-form'
+      });
+      return false;
+    });
+</script>
+
   <div id="loader" class="well" style="display:none">
     <center><img src="<%= image_path 'loader.gif' %>"></center>
     <center><p id="loading_msg_area">Tips: <span id="loading_msg"></span></p></center>
