@@ -8,8 +8,6 @@ var COOKIE_BG_IMAGE = 'kanbanlist_bg_image_url';
 var last_task_list_html = "";
 
 $(document).ready(function(){ 
-  filterTask("");
-
   initBookList();
   initNavBooks();
   initSendMail();

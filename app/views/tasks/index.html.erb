@@ -1,5 +1,4 @@
 <div class="container-fluid">
-<!-- ここから全要素を動的に更新可能なように別テンプレートとする -->
   <div id="sending_mail" class="alert alert-info" style="display:none"></div>
   <div id="send_mail_result" class="alert alert-success" style="display:none"></div>
 
@@ -10,7 +9,18 @@
     <input type="submit" value="Add" class="btn btn-primary" />
   </form>
 
-  <script>
+  <div id="loader" class="well" style="display:none">
+    <center><img src="<%= image_path 'loader.gif' %>"></center>
+    <center><p id="loading_msg_area">Tips: <span id="loading_msg"></span></p></center>
+  </div>
+
+  <div id="task_list">
+    <!-- タスクリストは動的に表示する -->
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){ 
     $("#add_todo_form_msg").maxlength({
       'feedback' : '.task-chars-left-add-form'
     });
@@ -25,15 +35,9 @@
       });
       return false;
     });
+
+    filterTask("");
+  });
 </script>
 
-  <div id="loader" class="well" style="display:none">
-    <center><img src="<%= image_path 'loader.gif' %>"></center>
-    <center><p id="loading_msg_area">Tips: <span id="loading_msg"></span></p></center>
-  </div>
-
-  <div id="task_list">
-  </div>
-<!-- ここまで動的更新できる範囲 -->
-</div>
 
