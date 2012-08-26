@@ -495,8 +495,9 @@ function fillZero( num ){
 }
 
 function deleteTodo( delete_id ) {
-  jConfirm('Are you sure?','TodoList - delete task -',function(r){
-    if(r){
+  $('#delete_task_in').modal('show');
+
+  $('#delete_task_ok_button').click(function(){
     var id = delete_id.slice(4);
     $.ajax({
       type: "DELETE",
@@ -505,8 +506,16 @@ function deleteTodo( delete_id ) {
       dataType: "jsonp"
     });
 
+    $('#delete_task_in').modal('hide')
     $(delete_id).fadeOut("normal",function(){ $(delete_id).remove(); });
-    }
+    $('#delete_task_ok_button').unbind("click");
+    $('#delete_task_cancel_button').unbind("click");
+  });
+
+  $('#delete_task_cancel_button').click(function(){
+    $('#delete_task_in').modal('hide')
+    $('#delete_task_ok_button').unbind("click");
+    $('#delete_task_cancel_button').unbind("click");
   });
 }
 
