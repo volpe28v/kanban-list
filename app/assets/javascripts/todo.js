@@ -495,6 +495,8 @@ function fillZero( num ){
 }
 
 function deleteTodo( delete_id ) {
+  var msg_id = '#msg_' + delete_id.slice(4);
+  $('#delete_task_string').html($(msg_id).html());
   $('#delete_task_in').modal('show');
 
   $('#delete_task_ok_button').click(function(){
