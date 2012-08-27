@@ -683,12 +683,17 @@ function loadingTasklist(){
   var msg_no = Math.floor(Math.random() * LoadingMsg.length);
   $('#loading_msg').html(LoadingMsg[msg_no]);
 
-  $('#task_list').fadeOut();
-  $('#loader').fadeIn();
+  $('#task_list').fadeOut('fast',function(){
+    $('#loader').fadeIn();
+  });
 }
 
 function loadingTasklistEnd(){
-  $('#loader').hide();
+  $('#loader').fadeOut('fast',function(){
+    $('#task_list').fadeIn('fast', function(){
+      $('#add_todo_form_msg').focus();
+    });
+  });
 }
 
 function loadLatestTasks(filter_str){
@@ -739,12 +744,8 @@ function selectBook(book_id){
 function updateBookJson(book_info){
   last_task_list_html = book_info.task_list_html;
 
-  loadingTasklistEnd();
   $('#task_list').html(book_info.task_list_html);
-  $('#task_list').fadeIn('fast', function(){
-        $('#add_todo_form_msg').focus();
-      }
-    );
+  loadingTasklistEnd();
 
   $('#book_name_label').text(book_info.book_name);
   $('#prefix').val(book_info.prefix);
