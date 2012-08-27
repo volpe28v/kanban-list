@@ -374,15 +374,6 @@ function getTodayStr(){
   return month + "/" + day;
 }
 
-function getTodayFullStr(){
-  var now_date = new Date();
-  var year = now_date.getFullYear();
-  var month = fillZero(now_date.getMonth() + 1);
-  var day   = fillZero(now_date.getDate());
-
-  return year + "-" + month + "-" + day;
-}
-
 function sendCurrentTodo(id, status, msg) {
 
   $("#edit_link_time_" + id ).html(getTodayStr());
