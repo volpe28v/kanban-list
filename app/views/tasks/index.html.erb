@@ -6,7 +6,7 @@
     <span class="label label-info">Book: <span id="book_name_label"></span></span> <span class="task-chars-left-add-form"></span></br>
     <input type="text" id="prefix" class="span2" name="prefix" value="" placeholder="Book Name" maxlength="50"/>
     <input type="text" id="add_todo_form_msg" class="span6" value="" placeholder="Task Name" maxlength="200"/>
-    <input type="submit" value="Add" class="btn btn-primary" />
+    <button class="btn btn-success" id="add_todo_button"/><i class="icon-plus icon-white"></i></button>
   </form>
 
   <div id="loader" class="well" style="display:none">
@@ -19,25 +19,4 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  $(document).ready(function(){ 
-    $("#add_todo_form_msg").maxlength({
-      'feedback' : '.task-chars-left-add-form'
-    });
-
-    $("#add_todo_form").submit(function(){
-      addTodoWithPrefix($('#prefix').val() , $('#add_todo_form_msg').val());
-      $('#add_todo_form_msg').val('');
-      $('#add_todo_form_msg').focus();
- 
-      $("#add_todo_form_msg").maxlength({
-        'feedback' : '.task-chars-left-add-form'
-      });
-      return false;
-    });
-
-    filterTask("");
-  });
-</script>
-
-
+<%= javascript_include_tag 'add_todo_form' %>

@@ -512,36 +512,6 @@ function deleteTodo( delete_id ) {
   });
 }
 
-function addTodoWithPrefix( prefix, msg ){
-  if ( msg == "" ){
-    return;
-  }
-
-  var prefix_text = "";
-  if ( prefix != "" ){
-    prefix_text = "[" + prefix + "]";
-  }
-
-  addTodoAjax( prefix_text + " " + msg );
-}
-
-function addTodoAjax(msg) {
-  $.ajax({
-    type: "POST",
-    cache: false,
-    url: "tasks",
-    data: "msg=" + escapeInvalidChar(msg),
-    dataType: "jsonp"
- });
-}
-
-function escapeInvalidChar(msg){
-  var escaped_msg = msg.replace(/&/g,""); 
-  escaped_msg = escaped_msg.replace(/'/g,"\""); 
-  escaped_msg = escaped_msg.replace(/!/g,"|"); 
-  return escaped_msg;
-}
-
 function addTodoResponse(add_task_info){
   var id_str = '#id_' + add_task_info.id;
 
