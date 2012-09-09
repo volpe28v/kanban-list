@@ -6,6 +6,6 @@ class TaskMailer < ActionMailer::Base
     @book_name = book_name
     @tasks = tasks
     mail(:to => addr,
-         :subject => "#{@user.name}'s tasks")
+         :subject => "#{@user.name} - [#{@book_name}]")
   end
 end

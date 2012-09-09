@@ -1,32 +1,24 @@
-User: <%= @user.name %>
-Book: <%= @book_name %>
-
-[Doing]
------------------------
+= Doing ===============
 <% @tasks[:doing_tasks].each do |t| %>
 - <%= strip_tags t.msg %>
 <% end %>
 
-[TodoHigh]
------------------------
+= TodoHigh ===========
 <% @tasks[:todo_high_tasks].each do |t| %>
 - <%= strip_tags t.msg %>
 <% end %>
 
-[TodoMid]
------------------------
+= TodoMid ============
 <% @tasks[:todo_mid_tasks].each do |t| %>
 - <%= strip_tags t.msg %>
 <% end %>
 
-[TodoLow]
------------------------
+= TodoLow ============
 <% @tasks[:todo_low_tasks].each do |t| %>
 - <%= strip_tags t.msg %>
 <% end %>
 
-[Waiting]
------------------------
+= Waiting ============
 <% @tasks[:waiting_tasks].each do |t| %>
 - <%= strip_tags t.msg %>
 <% end %>
