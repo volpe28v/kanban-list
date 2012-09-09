@@ -159,7 +159,7 @@ describe Task do
     end
 
     it "ステータスが数値で格納されること" do
-      Task.find(6).status.should == StatusTable[:todo_m]
+      Task.find(6).status.should == 1 #TODO: マジックナンバーを消したい
     end
   end
 
