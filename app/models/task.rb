@@ -1,3 +1,4 @@
+# coding: utf-8
 StatusTable = {
   :todo_h  => 0,
   :todo_m  => 1,
@@ -84,5 +85,15 @@ class Task < ActiveRecord::Base
 
   def update_status( status )
     self.status = StatusTable[status.to_sym]
+  end
+
+  def get_book_id_in_msg_by_user(user)
+    if /^\[(.+?)\]/ =~ self.msg
+      user.books.find_or_create_by_name($1)
+    elsif /^【(.+?)】/ =~ self.msg
+      user.books.find_or_create_by_name($1)
+    else
+      return nil
+    end
   end
 end

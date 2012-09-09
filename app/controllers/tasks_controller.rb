@@ -15,7 +15,7 @@ class TasksController < ApplicationController
                      :name => current_user.name,
                      :user => current_user)
     task.update_status(:todo_m)
-    task.book = get_book_id_in_msg(task.msg)
+    task.book = task.get_book_id_in_msg_by_user(current_user)
     task.save
 
     move_id = is_moved_from_book?(task) ? task.id : 0
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     task.update_status(params[:status])
     task.msg = params[:msg]
-    task.book = get_book_id_in_msg(task.msg)
+    task.book = task.get_book_id_in_msg_by_user(current_user)
     task.save
 
     move_id = is_moved_from_book?(task) ? task.id : 0
@@ -93,17 +93,6 @@ class TasksController < ApplicationController
       hook_name = "#{Rails.root}/hooks/update_task_#{current_user.email}"
       command = "source #{hook_name} \"DONE\" \"#{rm_html_tag(task.msg)}\""
       system(command) if File.exist?(hook_name)
-    end
-  end
-
-  def get_book_id_in_msg(msg)
-    #TODO: prefix と msg の分離は View でやるべき
-    if /^\[(.+?)\]/ =~ msg
-      current_user.books.find_or_create_by_name($1)
-    elsif /^【(.+?)】/ =~ msg
-      current_user.books.find_or_create_by_name($1)
-    else
-      return nil
     end
   end
 
