@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_book_name
-    current_book ? current_book.name : "All Tasks"
+    current_book ? current_book.name : Book.default_name
   end
 
   def get_prefix
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def get_all_book_counts
     all_info = current_user.tasks.all_counts
     all_info['id'] = 0
-    all_info['name'] = 'All tasks'
+    all_info['name'] = Book.default_name
 
     user_infos = current_user.books.inject([]){|all, b|
       book_info = b.tasks.all_counts
