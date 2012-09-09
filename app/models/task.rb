@@ -8,10 +8,14 @@ StatusTable = {
   :done    => 5
 }
 
-
 class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :book
+
+  @@book_name_patterns = [
+    Regexp.new(/^\[(.+?)\][ ]*/),
+    Regexp.new(/^【(.+?)】[ ]*/)
+  ]
 
   scope :by_name_and_status, lambda {|name,status|
     where(:name => name, :status => StatusTable[status])
@@ -88,24 +92,19 @@ class Task < ActiveRecord::Base
   end
 
   def get_book_id_in_msg_by_user(user)
-    if /^\[(.+?)\]/ =~ self.msg
-      user.books.find_or_create_by_name($1)
-    elsif /^【(.+?)】/ =~ self.msg
-      user.books.find_or_create_by_name($1)
-    else
-      return nil
-    end
+    @@book_name_patterns.each{|pattern|
+      if pattern =~ self.msg
+        return user.books.find_or_create_by_name($1)
+      end
+    }
+
+    nil
   end
 
   def msg_without_book_name(book)
     return self.msg if book == nil
 
-    book_name_patterns = [
-      Regexp.new(/^\[(.+?)\][ ]*/),
-      Regexp.new(/^【(.+?)】[ ]*/)
-    ]
-
-    book_name_patterns.each{|pattern|
+    @@book_name_patterns.each{|pattern|
       if pattern =~ self.msg
         return self.msg.sub(pattern,"")
       end
