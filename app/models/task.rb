@@ -96,4 +96,21 @@ class Task < ActiveRecord::Base
       return nil
     end
   end
+
+  def msg_without_book_name(book)
+    return self.msg if book == nil
+
+    book_name_patterns = [
+      Regexp.new(/^\[(.+?)\][ ]*/),
+      Regexp.new(/^【(.+?)】[ ]*/)
+    ]
+
+    book_name_patterns.each{|pattern|
+      if pattern =~ self.msg
+        return self.msg.sub(pattern,"")
+      end
+    }
+
+    self.msg
+  end
 end
