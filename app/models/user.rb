@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   has_many :tasks
   has_many :books
 
+  validates :name,
+    :presence => true,
+    :uniqueness => true
+
   scope :all_user, order('name')
 
   def bg_img_path
