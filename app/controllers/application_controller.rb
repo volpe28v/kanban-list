@@ -33,19 +33,25 @@ class ApplicationController < ActionController::Base
   end
 
   def get_all_book_counts
+    [all_count_info] + books_count_info_array
+  end
+
+  def all_count_info
     all_info = current_user.tasks.all_counts
     all_info['id'] = 0
     all_info['name'] = Book.default_name
 
-    user_infos = current_user.books.inject([]){|all, b|
+    all_info
+  end
+
+  def books_count_info_array
+    current_user.books.inject([]){|all, b|
       book_info = b.tasks.all_counts
       book_info['active_task'] = book_info[:todo_h] + book_info[:todo_m] + book_info[:todo_l] + book_info[:doing] + book_info[:waiting]
       book_info['id'] = b.id
       book_info['name'] = b.name
       all << book_info
     }.sort{|a,b| b['active_task'] <=> a['active_task'] }
-
-    [all_info] + user_infos
   end
 
   def get_tasks(filter_str = "", done_num = 10)
@@ -57,7 +63,6 @@ class ApplicationController < ActionController::Base
       get_filtered_tasks(target_tasks, filter_str, done_num)
     end
   end
-
 
   def get_unfiltered_tasks(target_tasks, done_num = 10)
     tasks = {
