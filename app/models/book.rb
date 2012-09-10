@@ -13,4 +13,12 @@ class Book < ActiveRecord::Base
       self.tasks.by_status(s).count
     end
   }
+
+  def task_count_info
+      book_info = self.tasks.all_counts
+      book_info['active_task'] = book_info[:todo_h] + book_info[:todo_m] + book_info[:todo_l] + book_info[:doing] + book_info[:waiting]
+      book_info['id'] = self.id
+      book_info['name'] = self.name
+      book_info
+  end
 end
