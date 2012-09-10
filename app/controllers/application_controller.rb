@@ -36,9 +36,15 @@ class ApplicationController < ActionController::Base
   end
 
   def get_tasks(filter_str = "", done_num = 10)
-    return get_filtered_tasks_by( filter_str, done_num ) if filter_str != ""
-
     target_tasks = current_book ? current_book.tasks : current_user.tasks
+    if filter_str.blank?
+      get_unfiltered_tasks(target_tasks, done_num)
+    else
+      get_filtered_tasks_by(target_tasks, filter_str, done_num)
+    end
+  end
+
+  def get_unfiltered_tasks(target_tasks, done_num = 10)
     tasks = {
       :todo_high_tasks => target_tasks.by_status(:todo_h),
       :todo_mid_tasks  => target_tasks.by_status(:todo_m),
@@ -49,15 +55,14 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  def get_filtered_tasks_by( filter_word, done_num = 10 )
-    target_tasks = current_book ? current_book.tasks : current_user.tasks
+  def get_filtered_tasks_by(target_tasks, filter_word, done_num = 10 )
     tasks = {
-      :todo_high_tasks => target_tasks.by_status_and_filter(:todo_h,filter_word),
-      :todo_mid_tasks  => target_tasks.by_status_and_filter(:todo_m, filter_word),
-      :todo_low_tasks  => target_tasks.by_status_and_filter(:todo_l, filter_word),
-      :doing_tasks     => target_tasks.by_status_and_filter(:doing,  filter_word),
-      :waiting_tasks   => target_tasks.by_status_and_filter(:waiting,filter_word),
-      :done_tasks      => target_tasks.by_status_and_filter(:done,   filter_word).limit(done_num),
+      :todo_high_tasks => target_tasks.by_status_and_filter(:todo_h,  filter_word),
+      :todo_mid_tasks  => target_tasks.by_status_and_filter(:todo_m,  filter_word),
+      :todo_low_tasks  => target_tasks.by_status_and_filter(:todo_l,  filter_word),
+      :doing_tasks     => target_tasks.by_status_and_filter(:doing,   filter_word),
+      :waiting_tasks   => target_tasks.by_status_and_filter(:waiting, filter_word),
+      :done_tasks      => target_tasks.by_status_and_filter(:done,    filter_word).limit(done_num),
     }
   end
 
