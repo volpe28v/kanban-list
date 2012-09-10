@@ -45,8 +45,8 @@ class ApplicationController < ActionController::Base
   end
 
   def books_count_info_array
-    current_user.books.inject([]){|all_books_count_info, book|
-      all_books_count_info << book.task_count_info
+    current_user.books.inject([]){|all_book_count_info, book|
+      all_book_count_info << book.task_count_info
     }.sort{|a,b| b['active_task'] <=> a['active_task'] }
   end
 
