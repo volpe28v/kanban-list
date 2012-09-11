@@ -83,6 +83,10 @@ class Task < ActiveRecord::Base
     end
   end
 
+  def self.created_today_count
+    self.where('created_at >= ? and created_at <= ?', 1.day.ago, Time.now).count
+  end
+
   def status_sym
     @@status_table.key(status)
   end
