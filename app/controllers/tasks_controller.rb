@@ -82,16 +82,11 @@ class TasksController < ApplicationController
 
   private
 
-  def rm_html_tag(str)
-    str.sub!(/<[^<>]*>/,"") while /<[^<>]*>/ =~ str
-    str
-  end
-
   def do_hooks(task)
     case task.status_sym
     when :done
       hook_name = "#{Rails.root}/hooks/update_task_#{current_user.email}"
-      command = "source #{hook_name} \"DONE\" \"#{rm_html_tag(task.msg)}\""
+      command = "source #{hook_name} \"DONE\" \"#{helper.strip_tags task.msg}\""
       system(command) if File.exist?(hook_name)
     end
   end

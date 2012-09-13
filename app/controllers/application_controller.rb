@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :user_email
 
+  class Helper
+    include ::Singleton
+    include ::ActionView::Helpers::SanitizeHelper
+    extend ActionView::Helpers::SanitizeHelper::ClassMethods
+  end
+
+  def helper
+    return Helper.instance
+  end
+
   def current_book
     if session[:book_id] != nil and session[:book_id] != 0
       current_user.books.find_by_id(session[:book_id])
