@@ -58,82 +58,11 @@
   </div>
 </header>
 
-<div class="modal hide fade" id="book_in">
-  <div class="modal-header">
-    <h3>New Book</h3>
-  </div>
-  <div class="modal-body">
-    <p>Please type new book name.</p>
-    <form id="book_form">
-      <input type="text" id="book_name" class="span2" placeholder="Book Name"/>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button id="new_book_button" class="btn btn-primary">New</button>
-  </div>
-</div>
-
-<div class="modal hide fade" id="mail_in">
-  <div class="modal-header">
-    <h3>Send the task list by Email</h3>
-  </div>
-  <div class="modal-body">
-    <p>Please type email address(es).</p>
-    <form id="mail_form">
-      <input type="text" id="mail_addr" class="span4" placeholder="Mail Address" value="<%= @user_email %>"/>
-      (separated by ",")
-    </form>
-    <p>Email will be sent from "kanbanlist.info@gmail.com".</p>
-  </div>
-  <div class="modal-footer">
-    <button id="send_mail_button" class="btn btn-primary">Send</button>
-  </div>
-</div>
-
-<div class="modal hide fade" id="remove_book_in">
-  <div class="modal-header">
-    <h3>Remove Current Book</h3>
-  </div>
-  <div class="modal-body">
-    <p>Are you sure you want to remove current Book?</p>
-    <p>All tasks of current book is removed.</p>
-  </div>
-  <div class="modal-footer">
-    <button id="remove_book_button" class="btn btn-primary">OK</button>
-    <button id="remove_book_cancel_button" class="btn">Cancel</button>
-  </div>
-</div>
-
-<div class="modal hide fade" id="bg_image_in">
-  <div class="modal-header">
-    <h3>Set background image url</h3>
-  </div>
-  <div class="modal-body">
-    <p>Please type background image url.</p>
-    <form id="bg_image_form">
-      <input type="text" id="image_url" class="span6" placeholder="Image URL" value=""/>
-    <p>ex) http://hogehoge/fuga.jpg</p>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button id="set_bg_image_button" class="btn btn-primary">Set</button>
-  </div>
-</div>
-
-<div class="modal hide fade" id="delete_task_in">
-  <div class="modal-header">
-    <h3>Delete task?</h3>
-  </div>
-  <div class="modal-body">
-    <div id="delete_task_string"></div>
-  </div>
-  <div class="modal-footer">
-    <button id="delete_task_ok_button" class="btn btn-primary">OK</button>
-    <button id="delete_task_cancel_button" class="btn">Cancel</button>
-  </div>
-</div>
-
-
+<%= render "layouts/new_book_dialog" %>
+<%= render "layouts/remove_book_dialog" %>
+<%= render "layouts/send_mail_dialog" %>
+<%= render "layouts/set_bg_image_dialog" %>
+<%= render "layouts/delete_task_dialog" %>
 
 <%= yield %>
 

@@ -1,0 +1,18 @@
+<div class="modal hide fade" id="mail_in">
+  <div class="modal-header">
+    <h3>Send the task list by Email</h3>
+  </div>
+  <div class="modal-body">
+    <p>Please type email address(es).</p>
+    <form id="mail_form">
+      <input type="text" id="mail_addr" class="span4" placeholder="Mail Address" value="<%= @user_email %>"/>
+      (separated by ",")
+    </form>
+    <p>Email will be sent from "kanbanlist.info@gmail.com".</p>
+  </div>
+  <div class="modal-footer">
+    <button id="send_mail_button" class="btn btn-primary">Send</button>
+  </div>
+</div>
+
+
