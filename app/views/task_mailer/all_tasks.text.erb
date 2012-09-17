@@ -1,3 +1,7 @@
+<% unless @comment.blank? %>
+<%= @comment %>
+
+<% end %>
 = Doing ===============
 <% @tasks[:doing_tasks].each do |t| %>
 - <%= strip_tags t.msg_without_book_name(@book) %>

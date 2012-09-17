@@ -129,10 +129,11 @@ function initSendMail(){
 
   var send_mail_action = function(){
     var addr = $('#mail_addr').val();
+    var comment = $('#mail_comment').val();
     if ( addr != "" ){
       $('#sending_mail').html('<strong>Processing...</strong> sending email to ' + addr);
       $('#sending_mail').fadeIn();
-      sendMail(addr);
+      sendMail(addr, comment);
       $('#mail_in').modal('hide')
       $.cookie(COOKIE_MAIL_ADDR,addr,{ expires: COOKIE_EXPIRES });
     }
@@ -143,13 +144,18 @@ function initSendMail(){
     return false;
   });
 
+  $('#mail_comment_form').submit(function(){
+    send_mail_action();
+    return false;
+  });
+
   $('#send_mail_button').click(function(){
     send_mail_action();
   });
 }
 
-function sendMail(addr){
-  var request_str = "mail_addr=" + addr;
+function sendMail(addr, comment){
+  var request_str = "mail_addr=" + addr + "&comment=" + comment;
 
   $.ajax({
      type: "POST",
