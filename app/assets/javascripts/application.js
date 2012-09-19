@@ -13,4 +13,5 @@
 //= require bootstrap.min
 //= require todo
 //= require p_timer
+//= require utility
 

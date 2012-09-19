@@ -371,15 +371,6 @@ function markTodayEditWithElem( mark_obj ){
   mark_obj.addClass("label-important");
 }
 
-function getTodayStr(){
-  var now_date = new Date();
-  var year = now_date.getFullYear();
-  var month = fillZero(now_date.getMonth() + 1);
-  var day   = fillZero(now_date.getDate());
-
-  return month + "/" + day;
-}
-
 function sendCurrentTodo(id, status, msg) {
 
   $("#edit_link_time_" + id ).html(getTodayStr());
@@ -432,13 +423,6 @@ function updateTaskJson( update_task ){
   }
 }
 
-function toggleDisplay(id1,id2) {
-  $("#" + id1).hide();
-  $("#" + id2).fadeIn();
-
-  return false;
-}
- 
 function updateToDoMsg(from, to) {
   var msg = $(from).val();
   $(to).html(task_display_filter(msg));
