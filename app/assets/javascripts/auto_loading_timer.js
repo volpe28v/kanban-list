@@ -20,39 +20,67 @@ KanbanList.autoLoadingTimer = (function(){
        dataType: "jsonp"
     });
   }
+  function init(){
+    $('#auto_loading').html("To ON");
+    var setAutoLoading = function(){
+      if ( isActive() ){
+        stop();
+        setMode(false);
+        $('#auto_loading').html("To ON");
+      }else{
+        setMode(true);
+        start();
+        $('#auto_loading').html("To OFF");
+      }
+    }
 
+    $('#auto_loading').click(function(){
+      setAutoLoading();
+    });
+  }
+
+  function setMode(mode){
+    valid = mode;
+  }
+
+  function isValid(){
+    return valid == true;
+  }
+
+  function start(){
+    if ( !isValid() ){ return; }
+    stack++;
+    if ( stack != 1 ){ return; }
+    timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
+  }
+
+  function startForce(){
+    if ( !isValid() ){ return; }
+    stack = 1;
+    clearInterval(timer_id);
+    timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
+  }
+
+  function stop(){
+    if ( !isValid() ){ return; }
+    stack--;
+    if ( stack != 0 ){ return; }
+    clearInterval(timer_id);
+  }
+ 
+  function isActive(){
+      return stack >= 1 ;
+  }
+ 
   return {
     //public
-    setMode: function(mode){
-      valid = mode;
-    },
-    isValid: function(){
-      return valid == true;
-    },
-    start: function(){
-      if ( !this.isValid() ){ return; }
-      stack++;
-//      console.log(stack);
-      if ( stack != 1 ){ return; }
-      timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
-    },
-    startForce: function(){
-      if ( !this.isValid() ){ return; }
-      stack = 1;
-//      console.log(stack);
-      clearInterval(timer_id);
-      timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
-    },
-    stop: function(){
-      if ( !this.isValid() ){ return; }
-      stack--;
-//      console.log(stack);
-      if ( stack != 0 ){ return; }
-      clearInterval(timer_id);
-    },
-    isActive: function(){
-      return stack >= 1 ;
-    }
+    init: init,
+    setMode: setMode,
+    isValid: isValid,
+    start: start,
+    startForce: startForce,
+    stop: stop,
+    isActive: isActive
   }
 }());
 

@@ -17,7 +17,7 @@ $(document).ready(function(){
   initBookList();
   initNavBooks();
   initSendMail();
-  initAutoLoading();
+  autoLoadingTimer.init();
   initSetBgImage();
 
   $('a[rel=tooltip]').tooltip({ placement:"bottom"});
@@ -129,25 +129,6 @@ function sendMail(addr, comment){
      url: "tasks/send_mail",
      data: request_str,
      dataType: "jsonp"
-  });
-}
-
-function initAutoLoading(){
-  $('#auto_loading').html("To ON");
-  var setAutoLoading = function(){
-    if ( autoLoadingTimer.isActive() ){
-      autoLoadingTimer.stop();
-      autoLoadingTimer.setMode(false);
-      $('#auto_loading').html("To ON");
-    }else{
-      autoLoadingTimer.setMode(true);
-      autoLoadingTimer.start();
-      $('#auto_loading').html("To OFF");
-    }
-  }
-
-  $('#auto_loading').click(function(){
-    setAutoLoading();
   });
 }
 
