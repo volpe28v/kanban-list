@@ -15,6 +15,7 @@
 //= require auto_loading_timer
 //= require ajax_loader
 //= require utility
+//= require touch_event
 //= require todo
 //= require p_timer
 
