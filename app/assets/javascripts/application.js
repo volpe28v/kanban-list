@@ -14,6 +14,7 @@
 //= require kanbanlist
 //= require auto_loading_timer
 //= require ajax_loader
+//= require background_image
 //= require utility
 //= require touch_event
 //= require todo
