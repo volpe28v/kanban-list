@@ -20,6 +20,8 @@ KanbanList.autoLoadingTimer = (function(){
        dataType: "jsonp"
     });
   }
+
+  // public
   function init(){
     $('#auto_loading').html("To ON");
     var setAutoLoading = function(){
