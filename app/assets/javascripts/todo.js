@@ -7,6 +7,9 @@ var COOKIE_MAIL_ADDR = 'kanbanlist_mail_addr';
 var COOKIE_BG_IMAGE = 'kanbanlist_bg_image_url';
 var last_task_list_html = "";
 
+var autoLoadingTimer = KanbanList.autoLoadingTimer;
+var utility = KanbanList.utility;
+
 $(document).ready(function(){ 
   initBookList();
   initNavBooks();
@@ -17,45 +20,6 @@ $(document).ready(function(){
   $('a[rel=tooltip]').tooltip({ placement:"bottom"});
   return;
 });
-
-var autoLoadingTimer = function(){
-  var valid = false;
-  var stack = 0;
-  var timer_id = null;
-
-  return {
-    setMode: function(mode){
-      valid = mode;
-    },
-    isValid: function(){
-      return valid == true;
-    },
-    start: function(){
-      if ( !this.isValid() ){ return; }
-      stack++;
-//      console.log(stack);
-      if ( stack != 1 ){ return; }
-      timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
-    },
-    startForce: function(){
-      if ( !this.isValid() ){ return; }
-      stack = 1;
-//      console.log(stack);
-      clearInterval(timer_id);
-      timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
-    },
-    stop: function(){
-      if ( !this.isValid() ){ return; }
-      stack--;
-//      console.log(stack);
-      if ( stack != 0 ){ return; }
-      clearInterval(timer_id);
-    },
-    isActive: function(){
-      return stack >= 1 ;
-    }
-  };
-}();
 
 function initNewBookAction(){
   $('#new_book').click(function(){
@@ -358,7 +322,7 @@ function updateBookListsJson( book_infos ){
  
 // 本日の編集した要素にマーカーをつける
 function markTodayEdit(){
-  markTodayEditWithElem( $('ul li span[id*="_time_"]:contains(' + KanbanList.utility.getTodayStr() + ')') );
+  markTodayEditWithElem( $('ul li span[id*="_time_"]:contains(' + utility.getTodayStr() + ')') );
 }
 
 function markTodayEditById( id ){
@@ -373,8 +337,8 @@ function markTodayEditWithElem( mark_obj ){
 
 function sendCurrentTodo(id, status, msg) {
 
-  $("#edit_link_time_" + id ).html(KanbanList.utility.getTodayStr());
-  $("#fixed_time_" + id ).html(KanbanList.utility.getTodayStr());
+  $("#edit_link_time_" + id ).html(utility.getTodayStr());
+  $("#fixed_time_" + id ).html(utility.getTodayStr());
 
   markTodayEditById( id );
 
@@ -559,14 +523,14 @@ function realize_task(id, msg_array){
     $('#id_' + id ).parent().sortable('destroy');
     var org_msg = $('#ms_' + id + '_edit').val();
 
-    KanbanList.utility.toggleDisplay('edit_link_ms_' + id ,'edit_form_ms_' + id );
+    utility.toggleDisplay('edit_link_ms_' + id ,'edit_form_ms_' + id );
     $('#ms_' + id + '_edit').get(0).focus();
 
     $('#edit_form_' + id ).submit(function(){
       autoLoadingTimer.start();
       $('#id_' + id ).parent().sortable(option);
       updateToDoMsg('#ms_' + id + '_edit', '#msg_' + id );
-      KanbanList.utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
+      utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
       return false;
     });
 
@@ -575,7 +539,7 @@ function realize_task(id, msg_array){
       $('#id_' + id ).parent().sortable(option);
 
       $('#ms_' + id + '_edit').val(org_msg);
-      KanbanList.utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
+      utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
       return false;
     });
 
@@ -636,20 +600,6 @@ function loadingTasklistEnd(){
     $('#task_list').fadeIn('fast', function(){
       $('#add_todo_form_msg').focus();
     });
-  });
-}
-
-function loadLatestTasks(filter_str){
-  if ($('#add_todo_form_msg').val() != ""){ return; };
-
-  var request_str = "filter=" + filter_str;
-
-  $.ajax({
-     type: "POST",
-     cache: false,
-     url: "tasks/silent_update",
-     data: request_str,
-     dataType: "jsonp"
   });
 }
 

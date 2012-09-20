@@ -12,7 +12,8 @@
 //= require jquery.maxlength
 //= require bootstrap.min
 //= require kanbanlist
+//= require auto_loading_timer
+//= require utility
 //= require todo
 //= require p_timer
-//= require utility
 
