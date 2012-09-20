@@ -358,7 +358,7 @@ function updateBookListsJson( book_infos ){
  
 // 本日の編集した要素にマーカーをつける
 function markTodayEdit(){
-  markTodayEditWithElem( $('ul li span[id*="_time_"]:contains(' + getTodayStr() + ')') );
+  markTodayEditWithElem( $('ul li span[id*="_time_"]:contains(' + KanbanList.utility.getTodayStr() + ')') );
 }
 
 function markTodayEditById( id ){
@@ -373,8 +373,8 @@ function markTodayEditWithElem( mark_obj ){
 
 function sendCurrentTodo(id, status, msg) {
 
-  $("#edit_link_time_" + id ).html(getTodayStr());
-  $("#fixed_time_" + id ).html(getTodayStr());
+  $("#edit_link_time_" + id ).html(KanbanList.utility.getTodayStr());
+  $("#fixed_time_" + id ).html(KanbanList.utility.getTodayStr());
 
   markTodayEditById( id );
 

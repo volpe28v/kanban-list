@@ -1,13 +1,18 @@
 // Utility functions
+KanbanList.namespace('utility');
 
-function getTodayStr(){
-  var now_date = new Date();
-  var year = now_date.getFullYear();
-  var month = fillZero(now_date.getMonth() + 1);
-  var day   = fillZero(now_date.getDate());
+KanbanList.utility = function(){
+  return {
+    getTodayStr: function(){
+      var now_date = new Date();
+      var year = now_date.getFullYear();
+      var month = fillZero(now_date.getMonth() + 1);
+      var day   = fillZero(now_date.getDate());
 
-  return month + "/" + day;
-}
+      return month + "/" + day;
+    }
+  }
+}();
 
 function toggleDisplay(id1,id2) {
   $("#" + id1).hide();
@@ -23,5 +28,4 @@ function fillZero( num ){
     return num;
   }
 }
-
 

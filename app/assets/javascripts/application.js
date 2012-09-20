@@ -11,6 +11,7 @@
 //= require jquery.cookie
 //= require jquery.maxlength
 //= require bootstrap.min
+//= require kanbanlist
 //= require todo
 //= require p_timer
 //= require utility
