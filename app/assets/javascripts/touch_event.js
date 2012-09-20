@@ -27,7 +27,7 @@ KanbanList.touchEvent = (function(){
     dispatchMouseEvent(type, first);
   }
 
-  function dispatchMouseEvent( event_type, touch_event ){
+  function dispatchMouseEvent(event_type, touch_event){
     var simulatedEvent = document.createEvent("MouseEvent");
     simulatedEvent.initMouseEvent(
       event_type, true, true, window, 1,
