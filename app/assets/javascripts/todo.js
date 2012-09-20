@@ -467,14 +467,6 @@ function returnToTodo(ret_id){
   sendCurrentTodo(id, to_status, msg);
 }
 
-function fillZero( num ){
-  if (num < 10){
-    return "0" + num;
-  }else {
-    return num;
-  }
-}
-
 function deleteTodo( delete_id ) {
   var msg_id = '#msg_' + delete_id.slice(4);
   $('#delete_task_string').html($(msg_id).html());
@@ -567,14 +559,14 @@ function realize_task(id, msg_array){
     $('#id_' + id ).parent().sortable('destroy');
     var org_msg = $('#ms_' + id + '_edit').val();
 
-    toggleDisplay('edit_link_ms_' + id ,'edit_form_ms_' + id );
+    KanbanList.utility.toggleDisplay('edit_link_ms_' + id ,'edit_form_ms_' + id );
     $('#ms_' + id + '_edit').get(0).focus();
 
     $('#edit_form_' + id ).submit(function(){
       autoLoadingTimer.start();
       $('#id_' + id ).parent().sortable(option);
       updateToDoMsg('#ms_' + id + '_edit', '#msg_' + id );
-      toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
+      KanbanList.utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
       return false;
     });
 
@@ -583,7 +575,7 @@ function realize_task(id, msg_array){
       $('#id_' + id ).parent().sortable(option);
 
       $('#ms_' + id + '_edit').val(org_msg);
-      toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
+      KanbanList.utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
       return false;
     });
 
