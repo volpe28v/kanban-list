@@ -365,16 +365,8 @@ function addTodoResponse(add_task_info){
     },700);
   }
 
-  //IE の場合はタッチイベントを設定しない
-  var userAgent = window.navigator.userAgent.toLowerCase();
-  if (userAgent.indexOf("msie") <= -1) {
-    var label_elemens = $(id_str).get(0).getElementsByClassName("taskLabel");
-
-    var i = 0;
-    for(i=0;i < label_elemens.length;i++){
-      addMouseEventListener(label_elemens[i]);
-    }
-  }
+  var label_elems = $(id_str).get(0).getElementsByClassName("taskLabel");
+  touchEvent.setEvent(label_elems);
 
   $(id_str).fadeIn();
 }

@@ -47,21 +47,28 @@ KanbanList.touchEvent = (function(){
     element.addEventListener("touchcancel", touchHandler, true);
   }
 
-  return {
-    // public
-    init: function(target_class_name){
-      var userAgent = window.navigator.userAgent.toLowerCase();
-      if (userAgent.indexOf("msie") > -1) {
-        return;
-      }
+  function setEvent(target_elems){
+    var userAgent = window.navigator.userAgent.toLowerCase();
+    if (userAgent.indexOf("msie") > -1) {
+      return;
+    }
 
-      var label_elemens = document.getElementsByClassName(target_class_name);
-      var i = 0;
-      for(i=0;i < label_elemens.length;i++){
-        addMouseEventListener(label_elemens[i]);
-      }
+    var i = 0;
+    for(i=0;i < target_elems.length;i++){
+      addMouseEventListener(target_elems[i]);
     }
   }
+
+  function init(target_class_name){
+    var label_elems = document.getElementsByClassName(target_class_name);
+    setEvent(label_elems);
+  }
+ 
+  return {
+    // public
+    init: init,
+    setEvent: setEvent
+ }
 }());
 
 
