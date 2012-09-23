@@ -12,10 +12,10 @@ var utility = KanbanList.utility;
 var ajaxLoader = KanbanList.ajaxLoader;
 var touchEvent = KanbanList.touchEvent;
 var backgroundImage = KanbanList.backgroundImage;
+var bookNavi = KanbanList.bookNavi;
 
 $(document).ready(function(){ 
-  initBookList();
-  initNavBooks();
+  bookNavi.init();
   initSendMail();
   autoLoadingTimer.init();
   backgroundImage.init();
@@ -23,62 +23,6 @@ $(document).ready(function(){
   $('a[rel=tooltip]').tooltip({ placement:"bottom"});
   return;
 });
-
-function initNewBookAction(){
-  $('#new_book').click(function(){
-    $('#book_in').modal('show');
-    setTimeout(function(){
-      $('#book_name').val('');      
-      $('#book_name').focus();
-    },500);
-  });
-}
-
-function initRemoveBookAction(){
-  $('#remove_book').click(function(){
-    $('#remove_book_in').modal('show');
-  });
-}
-
-function initNavBooks(){
-  var new_book_action = function(){
-    var name = $('#book_name').val();
-    if ( name != "" ){
-      newBook(name);
-      $('#book_in').modal('hide')
-    }
-  };
-
-  $('#book_form').submit(function(){
-    new_book_action();
-    return false;
-  });
-
-  $('#new_book_button').click(function(){
-    new_book_action();
-  });
-
-  $('#remove_book_button').click(function(){
-    autoLoadingTimer.stop();
-    $('#remove_book_in').modal('hide');
-
-    ajaxLoader.start();
-
-    var dummy_id = 0
-    var request_str = "filter=" + $('#filter_str').get(0).value;
-    $.ajax({
-      type: "DELETE",
-      cache: false,
-      url: "books/" + dummy_id,
-      data: request_str,
-      dataType: "jsonp"
-    });
-  });
-
-  $('#remove_book_cancel_button').click(function(){
-    $('#remove_book_in').modal('hide');
-  });
-}
 
 function initSendMail(){
   var addr = $.cookie(COOKIE_MAIL_ADDR);
@@ -169,16 +113,6 @@ function setSortableList(){
   $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
 }
 
-function initBookList(){
-  $.ajax({
-     type: "GET",
-     cache: false,
-     url: "/books/get_book_lists",
-     dataType: "jsonp"
-  });
-}
-
-
 function updateBookListsJson( book_infos ){
   if ( book_infos == null ){ return; }
   var header = '<li><a id="new_book" href="#"><i class="icon-plus"></i> New Book</a></li>' + 
@@ -203,13 +137,16 @@ function updateBookListsJson( book_infos ){
                    '</table>' +
                  '</a>' +
                '</li>';
+
+//    $('#book_list_' + book_infos[i].id + ' a').click(function(){
+//      selectBook( book_infos[i].id );
+//    });
   }
 
   $('#book_list').empty();
   $('#book_list').append(header + lists);
 
-  initNewBookAction();
-  initRemoveBookAction();
+  bookNavi.setAction();
 }
  
 // 本日の編集した要素にマーカーをつける
