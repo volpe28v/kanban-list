@@ -2,7 +2,41 @@
 KanbanList.namespace('bookNavi');
 
 KanbanList.bookNavi = (function(){
+  var autoLoadingTimer = KanbanList.autoLoadingTimer;
+  var ajaxLoader = KanbanList.ajaxLoader;
+
   // private
+  function newBookAction(book_name){
+    autoLoadingTimer.stop();
+    var filter_param = "filter=" + $('#filter_str').get(0).value;
+    var request_str = "book_name=" + book_name + "&" + filter_param;
+
+    ajaxLoader.start();
+
+    $.ajax({
+       type: "POST",
+       cache: false,
+       url: "books",
+       data: request_str,
+       dataType: "jsonp"
+    });
+  }
+
+  function selectBookAction(book_id){
+    autoLoadingTimer.stop();
+    var request_str = "filter=" + $('#filter_str').get(0).value;
+
+    ajaxLoader.start();
+
+    $.ajax({
+      type: "GET",
+      cache: false,
+      url: "books/" + book_id,
+      data: request_str,
+      dataType: "jsonp"
+    });
+  }
+
   function setAction(book_infos){
     initNewBookAction();
     initRemoveBookAction();
@@ -11,7 +45,7 @@ KanbanList.bookNavi = (function(){
       $('#book_list_' + book_infos[i].id + ' a').click(function(){
         var book_id = book_infos[i].id;
         return function(){
-          selectBook( book_id );
+          selectBookAction( book_id );
         }
       }());
     }
@@ -37,7 +71,7 @@ KanbanList.bookNavi = (function(){
     var new_book_action = function(){
       var name = $('#book_name').val();
       if ( name != "" ){
-        newBook(name);
+        newBookAction(name);
         $('#book_in').modal('hide')
       }
     };

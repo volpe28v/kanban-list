@@ -348,37 +348,6 @@ function filterTask(filter_str){
 }
 
 
-function newBook(book_name){
-  autoLoadingTimer.stop();
-  var filter_param = "filter=" + $('#filter_str').get(0).value;
-  var request_str = "book_name=" + book_name + "&" + filter_param;
-
-  ajaxLoader.start();
-
-  $.ajax({
-     type: "POST",
-     cache: false,
-     url: "books",
-     data: request_str,
-     dataType: "jsonp"
-  });
-}
-
-function selectBook(book_id){
-  autoLoadingTimer.stop();
-  var request_str = "filter=" + $('#filter_str').get(0).value;
-
-  ajaxLoader.start();
-
-  $.ajax({
-     type: "GET",
-     cache: false,
-     url: "books/" + book_id,
-     data: request_str,
-     dataType: "jsonp"
-  });
-}
-
 function updateBookJson(book_info){
   last_task_list_html = book_info.task_list_html;
 
