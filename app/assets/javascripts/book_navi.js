@@ -3,6 +3,20 @@ KanbanList.namespace('bookNavi');
 
 KanbanList.bookNavi = (function(){
   // private
+  function setAction(book_infos){
+    initNewBookAction();
+    initRemoveBookAction();
+
+    for(var i = 0; i < book_infos.length; i++ ){ 
+      $('#book_list_' + book_infos[i].id + ' a').click(function(){
+        var book_id = book_infos[i].id;
+        return function(){
+          selectBook( book_id );
+        }
+      }());
+    }
+  }
+
   function initNewBookAction(){
     $('#new_book').click(function(){
       $('#book_in').modal('show');
@@ -59,23 +73,42 @@ KanbanList.bookNavi = (function(){
     });
   }
 
-  function setAction(book_infos){
-    initNewBookAction();
-    initRemoveBookAction();
+  function updateByJson( book_infos ){
+    if ( book_infos == null ){ return; }
+    var header = '<li><a id="new_book" href="#"><i class="icon-plus"></i> New Book</a></li>' + 
+               '<li><a id="remove_book" href="#"><i class="icon-trash"></i> Remove Current Book</a></li>' +
+               '<li class="divider"></li>'; 
 
+    var lists = '';
     for(var i = 0; i < book_infos.length; i++ ){ 
-      $('#book_list_' + book_infos[i].id + ' a').click(function(){
-        var book_id = book_infos[i].id;
-        return function(){
-          selectBook( book_id );
-        }
-      }());
+      var active_todo_counts = book_infos[i].todo_h + book_infos[i].todo_m + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
+      lists += '<li id="book_list_' + book_infos[i].id + '">' +
+                 '<a href="#">' + book_infos[i].name +
+                   '<table style="float:right" class="book-counts">' +
+                     '<tr>' +
+                       '<td><div class="counts-active"   >' + active_todo_counts    + '</div></td>' +
+                       '<td><div class="counts todo_h" >' + book_infos[i].todo_h + '</div></td>' +
+                       '<td><div class="counts todo"   >' + book_infos[i].todo_m + '</div></td>' +
+                       '<td><div class="counts todo_l" >' + book_infos[i].todo_l + '</div></td>' +
+                       '<td><div class="counts doing"  >' + book_infos[i].doing  + '</div></td>' +
+                       '<td><div class="counts waiting">' + book_infos[i].waiting + '</div></td>' +
+                       '<td><div class="counts done"   >' + book_infos[i].done    + '</div></td>' +
+                     '</tr>' +
+                   '</table>' +
+                 '</a>' +
+               '</li>';
     }
-  }
 
+    $('#book_list').empty();
+    $('#book_list').append(header + lists);
+
+    setAction(book_infos);
+  }
+ 
   return {
+    // public
     init: init,
-    setAction: setAction
+    updateByJson: updateByJson
   }
 }());
 

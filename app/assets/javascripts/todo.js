@@ -113,38 +113,6 @@ function setSortableList(){
   $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
 }
 
-function updateBookListsJson( book_infos ){
-  if ( book_infos == null ){ return; }
-  var header = '<li><a id="new_book" href="#"><i class="icon-plus"></i> New Book</a></li>' + 
-               '<li><a id="remove_book" href="#"><i class="icon-trash"></i> Remove Current Book</a></li>' +
-               '<li class="divider"></li>'; 
-
-  var lists = '';
-  for(var i = 0; i < book_infos.length; i++ ){ 
-    var active_todo_counts = book_infos[i].todo_h + book_infos[i].todo_m + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
-    lists += '<li id="book_list_' + book_infos[i].id + '">' +
-                 '<a href="#">' + book_infos[i].name +
-                   '<table style="float:right" class="book-counts">' +
-                     '<tr>' +
-                       '<td><div class="counts-active"   >' + active_todo_counts    + '</div></td>' +
-                       '<td><div class="counts todo_h" >' + book_infos[i].todo_h + '</div></td>' +
-                       '<td><div class="counts todo"   >' + book_infos[i].todo_m + '</div></td>' +
-                       '<td><div class="counts todo_l" >' + book_infos[i].todo_l + '</div></td>' +
-                       '<td><div class="counts doing"  >' + book_infos[i].doing  + '</div></td>' +
-                       '<td><div class="counts waiting">' + book_infos[i].waiting + '</div></td>' +
-                       '<td><div class="counts done"   >' + book_infos[i].done    + '</div></td>' +
-                     '</tr>' +
-                   '</table>' +
-                 '</a>' +
-               '</li>';
-  }
-
-  $('#book_list').empty();
-  $('#book_list').append(header + lists);
-
-  bookNavi.setAction(book_infos);
-}
- 
 // 本日の編集した要素にマーカーをつける
 function markTodayEdit(){
   markTodayEditWithElem( $('ul li span[id*="_time_"]:contains(' + utility.getTodayStr() + ')') );
@@ -203,7 +171,7 @@ function updateCountsJson( counts_json ){
 
 function updateTaskJson( update_task ){
   updateCountsJson( update_task.task_counts );
-  updateBookListsJson( update_task.all_books );
+  bookNavi.updateByJson( update_task.all_books );
 
   if ( update_task.move_task_id != 0 ){
     setTimeout(function(){
@@ -290,7 +258,7 @@ function addTodoResponse(add_task_info){
 
   markTodayEditById(add_task_info.id);
   updateCountsJson(add_task_info.task_counts);
-  updateBookListsJson(add_task_info.all_books);
+  bookNavi.updateByJson( add_task_info.all_books );
     
   if ( add_task_info.move_task_id != 0 ){
     setTimeout(function(){
@@ -420,7 +388,7 @@ function updateBookJson(book_info){
   $('#book_name_label').text(book_info.book_name);
   $('#prefix').val(book_info.prefix);
 
-  updateBookListsJson( book_info.all_books );
+  bookNavi.updateByJson(book_info.all_books);
   updateCountsJson( book_info.task_counts );
 
   initForTaskList();
@@ -436,7 +404,7 @@ function updateSilentJson(book_info){
   $('#task_list').html(book_info.task_list_html);
   $('#add_todo_form_msg').focus();
 
-  updateBookListsJson( book_info.all_books );
+  bookNavi.updateByJson( book_info.all_books );
   updateCountsJson( book_info.task_counts );
 
   initForTaskList();
