@@ -4,6 +4,33 @@
  */
 var last_task_list_html = "";
 
+KanbanList.namespace('todayMarker');
+
+KanbanList.todayMarker = (function(){
+
+// 本日の編集した要素にマーカーをつける
+function markAll(){
+  markTodayEditWithElem( $('ul li span[id*="_time_"]:contains(' + utility.getTodayStr() + ')') );
+}
+
+function markById( id ){
+  markTodayEditWithElem( $("#edit_link_time_" + id ) );
+  markTodayEditWithElem( $("#fixed_time_" + id ) );
+}
+
+function markTodayEditWithElem( mark_obj ){
+  mark_obj.removeClass("label-info");
+  mark_obj.addClass("label-important");
+}
+
+ return {
+   markAll: markAll,
+   markById: markById
+ }
+   
+}());
+
+
 // dependent modules 
 var autoLoadingTimer = KanbanList.autoLoadingTimer;
 var utility = KanbanList.utility;
@@ -12,6 +39,7 @@ var touchEvent = KanbanList.touchEvent;
 var backgroundImage = KanbanList.backgroundImage;
 var bookNavi = KanbanList.bookNavi;
 var sendMail = KanbanList.sendMail;
+var todayMarker = KanbanList.todayMarker;
 
 $(document).ready(function(){ 
   bookNavi.init();
@@ -26,7 +54,7 @@ $(document).ready(function(){
 function initForTaskList(){
   $("#add_todo_form input:submit").button();
   setSortableList();
-  markTodayEdit();
+  todayMarker.markAll();
 }
 
 var option = {
@@ -60,27 +88,12 @@ function setSortableList(){
   $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
 }
 
-// 本日の編集した要素にマーカーをつける
-function markTodayEdit(){
-  markTodayEditWithElem( $('ul li span[id*="_time_"]:contains(' + utility.getTodayStr() + ')') );
-}
-
-function markTodayEditById( id ){
-  markTodayEditWithElem( $("#edit_link_time_" + id ) );
-  markTodayEditWithElem( $("#fixed_time_" + id ) );
-}
-
-function markTodayEditWithElem( mark_obj ){
-  mark_obj.removeClass("label-info");
-  mark_obj.addClass("label-important");
-}
-
 function sendCurrentTodo(id, status, msg) {
 
   $("#edit_link_time_" + id ).html(utility.getTodayStr());
   $("#fixed_time_" + id ).html(utility.getTodayStr());
 
-  markTodayEditById( id );
+  todayMarker.markById( id );
 
   var request_str = "status=" + status + "&msg=" + msg;
 
@@ -203,7 +216,7 @@ function addTodoResponse(add_task_info){
 
   $('#todo_m').prepend(add_task_info.li_html);
 
-  markTodayEditById(add_task_info.id);
+  todayMarker.markById(add_task_info.id);
   updateCountsJson(add_task_info.task_counts);
   bookNavi.updateByJson( add_task_info.all_books );
     
