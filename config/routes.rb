@@ -10,7 +10,6 @@ Todolist::Application.routes.draw do
   post "tasks/silent_update"
   post "tasks/send_mail"
   get 'tasks/donelist'
-  get 'books/get_book_lists'
 
   resources :books
   resources :tasks

@@ -41,10 +41,6 @@ class BooksController < ApplicationController
     render_current_book( filter_str )
   end
 
-  def get_book_lists
-    render :json => get_all_book_counts, :callback => 'updateBookListsJson'
-  end
-
   private
   def render_current_book(filter_str = "")
     @recent_done_num = 15
