@@ -294,7 +294,6 @@ function filterTask(filter_str){
   });
 }
 
-
 function updateBookJson(book_info){
   last_task_list_html = book_info.task_list_html;
 
