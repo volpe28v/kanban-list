@@ -2,16 +2,7 @@
 KanbanList.namespace('bookNavi');
 
 KanbanList.bookNavi = (function(){
-
-  function initBookListName(){
-    $.ajax({
-       type: "GET",
-       cache: false,
-       url: "/books/get_book_lists",
-       dataType: "jsonp"
-    });
-  }
-
+  // private
   function initNewBookAction(){
     $('#new_book').click(function(){
       $('#book_in').modal('show');
@@ -28,14 +19,7 @@ KanbanList.bookNavi = (function(){
     });
   }
 
-  function setAction(){
-    initNewBookAction();
-    initRemoveBookAction();
-  }
-
   function init(){
-    initBookListName();
-
     var new_book_action = function(){
       var name = $('#book_name').val();
       if ( name != "" ){
@@ -75,8 +59,23 @@ KanbanList.bookNavi = (function(){
     });
   }
 
+  function setAction(book_infos){
+    initNewBookAction();
+    initRemoveBookAction();
+
+    for(var i = 0; i < book_infos.length; i++ ){ 
+      $('#book_list_' + book_infos[i].id + ' a').click(function(){
+        var book_id = book_infos[i].id;
+        return function(){
+          selectBook( book_id );
+        }
+      }());
+    }
+  }
+
   return {
-    init: init
+    init: init,
+    setAction: setAction
   }
 }());
 

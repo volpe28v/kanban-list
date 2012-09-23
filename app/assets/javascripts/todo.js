@@ -123,7 +123,7 @@ function updateBookListsJson( book_infos ){
   for(var i = 0; i < book_infos.length; i++ ){ 
     var active_todo_counts = book_infos[i].todo_h + book_infos[i].todo_m + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
     lists += '<li id="book_list_' + book_infos[i].id + '">' +
-                 '<a href="#" onclick="selectBook(' + book_infos[i].id + ');">' + book_infos[i].name +
+                 '<a href="#">' + book_infos[i].name +
                    '<table style="float:right" class="book-counts">' +
                      '<tr>' +
                        '<td><div class="counts-active"   >' + active_todo_counts    + '</div></td>' +
@@ -137,16 +137,12 @@ function updateBookListsJson( book_infos ){
                    '</table>' +
                  '</a>' +
                '</li>';
-
-//    $('#book_list_' + book_infos[i].id + ' a').click(function(){
-//      selectBook( book_infos[i].id );
-//    });
   }
 
   $('#book_list').empty();
   $('#book_list').append(header + lists);
 
-  bookNavi.setAction();
+  bookNavi.setAction(book_infos);
 }
  
 // 本日の編集した要素にマーカーをつける
