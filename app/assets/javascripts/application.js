@@ -18,6 +18,7 @@
 //= require utility
 //= require touch_event
 //= require book_navi.js
+//= require send_mail
 //= require todo
 //= require p_timer
 

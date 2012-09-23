@@ -2,8 +2,6 @@
  * todo.js
  * created by Naoki Kodama
  */
-var COOKIE_EXPIRES = 365;
-var COOKIE_MAIL_ADDR = 'kanbanlist_mail_addr';
 var last_task_list_html = "";
 
 // dependent modules 
@@ -13,68 +11,17 @@ var ajaxLoader = KanbanList.ajaxLoader;
 var touchEvent = KanbanList.touchEvent;
 var backgroundImage = KanbanList.backgroundImage;
 var bookNavi = KanbanList.bookNavi;
+var sendMail = KanbanList.sendMail;
 
 $(document).ready(function(){ 
   bookNavi.init();
-  initSendMail();
+  sendMail.init();
   autoLoadingTimer.init();
   backgroundImage.init();
 
   $('a[rel=tooltip]').tooltip({ placement:"bottom"});
   return;
 });
-
-function initSendMail(){
-  var addr = $.cookie(COOKIE_MAIL_ADDR);
-  if ( addr ){
-    $('#mail_addr').val(addr);
-  }
-
-  $('#send_mail').click(function(){
-    $('#mail_in').modal('show');
-    setTimeout(function(){
-      $('#mail_addr').focus();
-    },500);
-  });
-
-  var send_mail_action = function(){
-    var addr = $('#mail_addr').val();
-    var comment = $('#mail_comment').val();
-    if ( addr != "" ){
-      $('#sending_mail').html('<strong>Processing...</strong> sending email to ' + addr);
-      $('#sending_mail').fadeIn();
-      sendMail(addr, comment);
-      $('#mail_in').modal('hide')
-      $.cookie(COOKIE_MAIL_ADDR,addr,{ expires: COOKIE_EXPIRES });
-    }
-  };
-
-  $('#mail_form').submit(function(){
-    send_mail_action();
-    return false;
-  });
-
-  $('#mail_comment_form').submit(function(){
-    send_mail_action();
-    return false;
-  });
-
-  $('#send_mail_button').click(function(){
-    send_mail_action();
-  });
-}
-
-function sendMail(addr, comment){
-  var request_str = "mail_addr=" + addr + "&comment=" + comment;
-
-  $.ajax({
-     type: "POST",
-     cache: false,
-     url: "tasks/send_mail",
-     data: request_str,
-     dataType: "jsonp"
-  });
-}
 
 function initForTaskList(){
   $("#add_todo_form input:submit").button();
