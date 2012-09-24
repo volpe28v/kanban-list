@@ -5,9 +5,7 @@
 var last_task_list_html = "";
 
 KanbanList.namespace('todayMarker');
-
 KanbanList.todayMarker = (function(){
-
   // 本日の編集した要素にマーカーをつける
   function markAll(){
     markWithElem( $('ul li span[id*="_time_"]:contains(' + utility.getTodayStr() + ')') );
@@ -30,6 +28,55 @@ KanbanList.todayMarker = (function(){
   }
 }());
 
+KanbanList.namespace('draggableTask');
+KanbanList.draggableTask = (function(){
+  var autoLoadingTimer = KanbanList.autoLoadingTimer;
+
+  var option = {
+    start  : function(event, ui){
+      autoLoadingTimer.stop();
+      var update_id = ui.item.attr("id").slice(3);
+      },
+    stop   : function(event, ui){
+      autoLoadingTimer.start();
+      var update_id = ui.item.attr("id").slice(3);
+      },
+
+    receive: function(event, ui){
+      var update_id = ui.item.attr("id").slice(3);
+
+      sendCurrentTodo( update_id,
+                       $(this).get(0).id,
+                       $("#ms_" + update_id + "_edit").val());
+      },
+
+    connectWith: 'ul',
+    placeholder: 'ui-state-highlight',
+    cancel: "#cancel",
+    scroll: true,
+    tolerance: 'pointer',
+    revert: true
+  };
+
+  // ドラッグ＆ドロップ可能にする
+  function startAll(){
+    $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
+  }
+
+  function startByElem(elem){
+    elem.sortable(option);
+  }
+
+  function stopByElem(elem){
+    elem.sortable('destroy');
+  }
+
+  return {
+    startAll:    startAll,
+    startByElem: startByElem,
+    stopByElem:  stopByElem
+  }
+}());
 
 // dependent modules 
 var autoLoadingTimer = KanbanList.autoLoadingTimer;
@@ -40,6 +87,7 @@ var backgroundImage = KanbanList.backgroundImage;
 var bookNavi = KanbanList.bookNavi;
 var sendMail = KanbanList.sendMail;
 var todayMarker = KanbanList.todayMarker;
+var draggableTask = KanbanList.draggableTask;
 
 $(document).ready(function(){ 
   bookNavi.init();
@@ -52,39 +100,9 @@ $(document).ready(function(){
 });
 
 function initForTaskList(){
-  setSortableList();
+//  setSortableList();
+  draggableTask.startAll();
   todayMarker.markAll();
-}
-
-var option = {
-  start  : function(event, ui){
-      autoLoadingTimer.stop();
-      var update_id = ui.item.attr("id").slice(3);
-      },
-  stop   : function(event, ui){
-      autoLoadingTimer.start();
-      var update_id = ui.item.attr("id").slice(3);
-      },
-
-  receive: function(event, ui){
-      var update_id = ui.item.attr("id").slice(3);
-
-      sendCurrentTodo( update_id,
-                       $(this).get(0).id,
-                       $("#ms_" + update_id + "_edit").val());
-      },
-
-  connectWith: 'ul',
-  placeholder: 'ui-state-highlight',
-  cancel: "#cancel",
-  scroll: true,
-  tolerance: 'pointer',
-  revert: true
-};
-
-// ドラッグ＆ドロップ可能にする
-function setSortableList(){
-  $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
 }
 
 function sendCurrentTodo(id, status, msg) {
@@ -264,7 +282,8 @@ function realize_task(id, msg_array){
 
   $('#edit_button_' + id ).click(function(){
     autoLoadingTimer.stop();
-    $('#id_' + id ).parent().sortable('destroy');
+    draggableTask.stopByElem($('#id_' + id ).parent());
+
     var org_msg = $('#ms_' + id + '_edit').val();
 
     utility.toggleDisplay('edit_link_ms_' + id ,'edit_form_ms_' + id );
@@ -272,7 +291,7 @@ function realize_task(id, msg_array){
 
     $('#edit_form_' + id ).submit(function(){
       autoLoadingTimer.start();
-      $('#id_' + id ).parent().sortable(option);
+      draggableTask.startByElem($('#id_' + id ).parent());
       updateToDoMsg('#ms_' + id + '_edit', '#msg_' + id );
       utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
       return false;
@@ -280,7 +299,7 @@ function realize_task(id, msg_array){
 
     $('#edit_cancel_' + id ).click(function(){
       autoLoadingTimer.start();
-      $('#id_' + id ).parent().sortable(option);
+      draggableTask.startByElem($('#id_' + id ).parent());
 
       $('#ms_' + id + '_edit').val(org_msg);
       utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
