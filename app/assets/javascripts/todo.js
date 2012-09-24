@@ -52,7 +52,6 @@ $(document).ready(function(){
 });
 
 function initForTaskList(){
-  $("#add_todo_form input:submit").button();
   setSortableList();
   todayMarker.markAll();
 }
