@@ -11,14 +11,14 @@ KanbanList.bookNavi = (function(){
     var filter_param = "filter=" + $('#filter_str').get(0).value;
     var request_str = "book_name=" + book_name + "&" + filter_param;
 
-    ajaxLoader.start();
-
-    $.ajax({
-       type: "POST",
-       cache: false,
-       url: "books",
-       data: request_str,
-       dataType: "jsonp"
+    ajaxLoader.start(function(){
+      $.ajax({
+         type: "POST",
+         cache: false,
+         url: "books",
+         data: request_str,
+         dataType: "jsonp"
+      });
     });
   }
 
@@ -26,14 +26,14 @@ KanbanList.bookNavi = (function(){
     autoLoadingTimer.stop();
     var request_str = "filter=" + $('#filter_str').get(0).value;
 
-    ajaxLoader.start();
-
-    $.ajax({
-      type: "GET",
-      cache: false,
-      url: "books/" + book_id,
-      data: request_str,
-      dataType: "jsonp"
+    ajaxLoader.start(function(){
+      $.ajax({
+        type: "GET",
+        cache: false,
+        url: "books/" + book_id,
+        data: request_str,
+        dataType: "jsonp"
+      });
     });
   }
 
@@ -89,16 +89,16 @@ KanbanList.bookNavi = (function(){
       autoLoadingTimer.stop();
       $('#remove_book_in').modal('hide');
 
-      ajaxLoader.start();
-
       var dummy_id = 0
       var request_str = "filter=" + $('#filter_str').get(0).value;
-      $.ajax({
-        type: "DELETE",
-        cache: false,
-        url: "books/" + dummy_id,
-        data: request_str,
-        dataType: "jsonp"
+      ajaxLoader.start(function(){
+        $.ajax({
+          type: "DELETE",
+          cache: false,
+          url: "books/" + dummy_id,
+          data: request_str,
+          dataType: "jsonp"
+        });
       });
     });
 
