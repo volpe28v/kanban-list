@@ -314,14 +314,14 @@ function filterTask(filter_str){
   autoLoadingTimer.stop();
   var request_str = "filter=" + filter_str;
 
-  ajaxLoader.start();
-
-  $.ajax({
-     type: "POST",
-     cache: false,
-     url: "tasks/filter_or_update",
-     data: request_str,
-     dataType: "jsonp"
+  ajaxLoader.start(function(){
+    $.ajax({
+      type: "POST",
+      cache: false,
+      url: "tasks/filter_or_update",
+      data: request_str,
+      dataType: "jsonp"
+    });
   });
 }
 

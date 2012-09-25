@@ -27,23 +27,31 @@ KanbanList.ajaxLoader = (function(){
     '<i class="icon-refresh"></i> で自動更新機能の ON/OFF ができます'
   ];
 
+  function start(callback){
+    var msg_no = Math.floor(Math.random() * LoadingMsg.length);
+    $('#loading_msg').html(LoadingMsg[msg_no]);
+
+    $('#task_list').fadeOut('fast',function(){
+      $('#loader').fadeIn('fast', function(){
+        if (callback != undefined){
+          callback();
+        }
+      });
+    });
+  }
+
+  function stop(){
+    $('#loader').fadeOut('fast',function(){
+      $('#task_list').fadeIn('fast', function(){
+        $('#add_todo_form_msg').focus();
+      });
+    });
+  }
+ 
   return {
     // public
-    start: function(){
-      var msg_no = Math.floor(Math.random() * LoadingMsg.length);
-      $('#loading_msg').html(LoadingMsg[msg_no]);
-
-      $('#task_list').fadeOut('fast',function(){
-        $('#loader').fadeIn();
-      });
-    },
-    stop: function(){
-      $('#loader').fadeOut('fast',function(){
-        $('#task_list').fadeIn('fast', function(){
-          $('#add_todo_form_msg').focus();
-        });
-      });
-    }
+    start: start,
+    stop: stop
   }
 }());
 
