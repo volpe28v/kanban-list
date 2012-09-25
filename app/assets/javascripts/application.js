@@ -17,8 +17,9 @@
 //= require background_image
 //= require utility
 //= require touch_event
-//= require book_navi.js
+//= require book_navi
 //= require send_mail
+//= require today_marker
 //= require todo
 //= require p_timer
 
