@@ -20,6 +20,7 @@
 //= require book_navi
 //= require send_mail
 //= require today_marker
+//= require draggable_task
 //= require todo
 //= require p_timer
 

@@ -2,63 +2,6 @@
  * todo.js
  * created by Naoki Kodama
  */
-var last_task_list_html = "";
-KanbanList.namespace('draggableTask');
-KanbanList.draggableTask = (function(){
-  var autoLoadingTimer = KanbanList.autoLoadingTimer;
-  var handlers = {};
-
-  var option = {
-    start  : function(event, ui){
-      autoLoadingTimer.stop();
-      var update_id = ui.item.attr("id").slice(3);
-      },
-    stop   : function(event, ui){
-      autoLoadingTimer.start();
-      var update_id = ui.item.attr("id").slice(3);
-      },
-
-    receive: function(event, ui){
-      if (handlers.receive == undefined){ return; }
-      var update_id = ui.item.attr("id").slice(3);
-
-      handlers.receive( update_id,
-                       $(this).get(0).id,
-                       $("#ms_" + update_id + "_edit").val());
-      },
-
-    connectWith: 'ul',
-    placeholder: 'ui-state-highlight',
-    cancel: "#cancel",
-    scroll: true,
-    tolerance: 'pointer',
-    revert: true
-  };
-
-  function setHandlers(handlers_hash){
-    handlers = handlers_hash;
-  }
-
-  // ドラッグ＆ドロップ可能にする
-  function startAll(){
-    $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
-  }
-
-  function startByElem(elem){
-    elem.sortable(option);
-  }
-
-  function stopByElem(elem){
-    elem.sortable('destroy');
-  }
-
-  return {
-    setHandlers: setHandlers,
-    startAll:    startAll,
-    startByElem: startByElem,
-    stopByElem:  stopByElem
-  }
-}());
 
 // dependent modules 
 var autoLoadingTimer = KanbanList.autoLoadingTimer;
@@ -71,12 +14,17 @@ var sendMail = KanbanList.sendMail;
 var todayMarker = KanbanList.todayMarker;
 var draggableTask = KanbanList.draggableTask;
 
+// global
+var last_task_list_html = "";
+
 $(document).ready(function(){ 
+  // initialize menus
   bookNavi.init();
   sendMail.init();
   autoLoadingTimer.init();
   backgroundImage.init();
 
+  // initialize modules
   draggableTask.setHandlers({receive: sendCurrentTodo});
 
   $('a[rel=tooltip]').tooltip({ placement:"bottom"});
