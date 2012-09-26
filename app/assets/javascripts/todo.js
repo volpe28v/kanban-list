@@ -6,6 +6,7 @@ var last_task_list_html = "";
 KanbanList.namespace('draggableTask');
 KanbanList.draggableTask = (function(){
   var autoLoadingTimer = KanbanList.autoLoadingTimer;
+  var handlers = {};
 
   var option = {
     start  : function(event, ui){
@@ -18,9 +19,10 @@ KanbanList.draggableTask = (function(){
       },
 
     receive: function(event, ui){
+      if (handlers.receive == undefined){ return; }
       var update_id = ui.item.attr("id").slice(3);
 
-      sendCurrentTodo( update_id,
+      handlers.receive( update_id,
                        $(this).get(0).id,
                        $("#ms_" + update_id + "_edit").val());
       },
@@ -32,6 +34,10 @@ KanbanList.draggableTask = (function(){
     tolerance: 'pointer',
     revert: true
   };
+
+  function setHandlers(handlers_hash){
+    handlers = handlers_hash;
+  }
 
   // ドラッグ＆ドロップ可能にする
   function startAll(){
@@ -47,6 +53,7 @@ KanbanList.draggableTask = (function(){
   }
 
   return {
+    setHandlers: setHandlers,
     startAll:    startAll,
     startByElem: startByElem,
     stopByElem:  stopByElem
@@ -69,6 +76,8 @@ $(document).ready(function(){
   sendMail.init();
   autoLoadingTimer.init();
   backgroundImage.init();
+
+  draggableTask.setHandlers({receive: sendCurrentTodo});
 
   $('a[rel=tooltip]').tooltip({ placement:"bottom"});
   return;
