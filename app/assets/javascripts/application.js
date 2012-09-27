@@ -21,6 +21,7 @@
 //= require send_mail
 //= require today_marker
 //= require draggable_task
+//= require task_action
 //= require todo
 //= require p_timer
 

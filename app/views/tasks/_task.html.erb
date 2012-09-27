@@ -45,7 +45,10 @@
 </li>
 
 <script>
+(function(){
   var msg_array = <%= to_js_array(task.msg) %>;
-  realize_task(<%= task.id %>, msg_array);
+  var taskAction = KanbanList.taskAction;
+  taskAction.realize(<%= task.id %>, msg_array);
+}());
 </script>
 
