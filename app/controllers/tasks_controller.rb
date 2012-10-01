@@ -70,7 +70,7 @@ class TasksController < ApplicationController
     end
     @tasks = @tasks.paginate(:page => params[:page], :per_page => 100)
 
-    @month_list = current_user.tasks.done_month_list
+    @month_list = current_tasks.done_month_list
   end
 
   def send_mail
