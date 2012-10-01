@@ -63,7 +63,7 @@ class TasksController < ApplicationController
   end
 
   def donelist
-    @tasks = current_user.tasks.by_status(:done)
+    @tasks = current_tasks.by_status(:done)
     if params[:year].blank? == false
       select_month = Time.new( params[:year], params[:month])
       @tasks = @tasks.select_month(select_month)
