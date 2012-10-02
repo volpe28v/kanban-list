@@ -11,6 +11,7 @@
 //= require jquery.cookie
 //= require jquery.maxlength
 //= require bootstrap.min
+//= require sanitize
 //= require kanbanlist
 //= require auto_loading_timer
 //= require ajax_loader

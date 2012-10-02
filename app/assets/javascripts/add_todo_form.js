@@ -30,7 +30,7 @@ $(document).ready(function(){
   }
 
   function addTodoAction(){
-    addTodoWithPrefix($('#prefix').val() , $('#add_todo_form_msg').val());
+    addTodoWithPrefix($('#prefix').val() , sanitize($('#add_todo_form_msg').val()));
     $('#add_todo_form_msg').val('');
     $('#add_todo_form_msg').focus();
  

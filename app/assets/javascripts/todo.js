@@ -44,7 +44,7 @@ function sendCurrentTodo(id, status, msg) {
 
   todayMarker.markById( id );
 
-  var request_str = "status=" + status + "&msg=" + msg;
+  var request_str = "status=" + status + "&msg=" + sanitize(msg);
 
    $.ajax({
      type: "PUT",
@@ -168,7 +168,8 @@ function showMailResult(data){
 }
 
 function task_display_filter(text){
-  var linked_text = text.replace(/((https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+))/g,
+  var sanitize_text = sanitize(text);
+  var linked_text = sanitize_text.replace(/((https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+))/g,
       function(){
         var matched_link = arguments[1];
         if ( matched_link.match(/(\.jpg|\.gif|\.png|\.bmp)$/)){

@@ -69,7 +69,8 @@ KanbanList.taskAction = (function(){
   }
 
   function updateToDoMsg(from, to) {
-    var msg = $(from).val();
+    var msg = sanitize($(from).val());
+    $(from).val(msg);
     $(to).html(task_display_filter(msg));
 
     var id = to.slice(5);
