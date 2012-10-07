@@ -18,21 +18,6 @@ var filterNavi = KanbanList.filterNavi;
 // global
 var last_task_list_html = "";
 
-$(document).ready(function(){ 
-  // initialize menus
-  bookNavi.init();
-  sendMail.init();
-  autoLoadingTimer.init();
-  backgroundImage.init();
-  filterNavi.init({submit: filterTask});
-
-  // initialize modules
-  draggableTask.setHandlers({receive: sendCurrentTodo});
-
-  $('a[rel=tooltip]').tooltip({ placement:"bottom"});
-  return;
-});
-
 function initForTaskList(){
   draggableTask.startAll();
   todayMarker.markAll();
