@@ -13,6 +13,7 @@ var bookNavi = KanbanList.bookNavi;
 var sendMail = KanbanList.sendMail;
 var todayMarker = KanbanList.todayMarker;
 var draggableTask = KanbanList.draggableTask;
+var filterNavi = KanbanList.filterNavi;
 
 // global
 var last_task_list_html = "";
@@ -23,6 +24,7 @@ $(document).ready(function(){
   sendMail.init();
   autoLoadingTimer.init();
   backgroundImage.init();
+  filterNavi.init({submit: filterTask});
 
   // initialize modules
   draggableTask.setHandlers({receive: sendCurrentTodo});

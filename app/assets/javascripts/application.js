@@ -23,6 +23,7 @@
 //= require today_marker
 //= require draggable_task
 //= require task_action
+//= require filter_navi
 //= require todo
 //= require p_timer
 

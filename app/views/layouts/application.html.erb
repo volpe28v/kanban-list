@@ -34,7 +34,7 @@
           </ul>
 
           <% if params[:controller] == "tasks" and params[:action] == "index" %>
-          <form method="post" class="navbar-search pull-left" onsubmit="filterTask( $('#filter_str').get(0).value );return false;">
+          <form id="filter_form" method="post" class="navbar-search pull-left">
             <input type="text" id="filter_str" class="search-query span2" value="" placeholder="Filter"/>
           </form>
 
