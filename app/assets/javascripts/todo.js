@@ -34,28 +34,24 @@ $(document).ready(function(){
 });
 
 function initForTaskList(){
-//  setSortableList();
   draggableTask.startAll();
   todayMarker.markAll();
 }
 
 function sendCurrentTodo(id, status, msg) {
-
   $("#edit_link_time_" + id ).html(utility.getTodayStr());
   $("#fixed_time_" + id ).html(utility.getTodayStr());
 
   todayMarker.markById( id );
 
   var request_str = "status=" + status + "&msg=" + sanitize(msg);
-
-   $.ajax({
-     type: "PUT",
-     cache: false,
-     url: "tasks/" + id,
-     data: request_str,
-     dataType: "jsonp"
-   });
-
+  $.ajax({
+    type: "PUT",
+    cache: false,
+    url: "tasks/" + id,
+    data: request_str,
+    dataType: "jsonp"
+  });
 }
 
 function updateCountsJson( counts_json ){
@@ -90,7 +86,6 @@ function updateTaskJson( update_task ){
     },200);
   }
 }
-
 
 function addTodoResponse(add_task_info){
   var id_str = '#id_' + add_task_info.id;
@@ -209,5 +204,4 @@ function selectLayout(layout_name){
     });
   });
 }
-
 
