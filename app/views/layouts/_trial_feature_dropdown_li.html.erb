@@ -1,16 +1,19 @@
-              <li><%= link_to raw('<i class="icon-list"></i>'), tasks_donelist_path, { rel: "tooltip", title: "Go to DoneList" } %></li>
-              <li><a id="send_mail" href="#" rel="tooltip" title="Send list by mail"><i class="icon-envelope"></i></a></li>
-              <li><a id="set_bg_image" href="#" rel="tooltip" title="Set background image"><i class="icon-picture"></i></a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="Auto loading">
-                  <i class="icon-refresh"></i>
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a id="auto_loading" href="#"></a></li>
-                </ul>
-              </li>
-              <% if !is_sample_user? %>
-                <li><%= link_to raw('<i class="icon-user"></i>'), edit_user_path(current_user), { rel: "tooltip", title: "Edit user info" } %></li>
-              <% end %>
+<li><a id="pomo_navi" href="#">
+  <img class="icon-pomo" src="<%= image_path 'tomato.gif' %>" />
+</a></li>
+<li><%= link_to raw('<i class="icon-list"></i>'), tasks_donelist_path, { rel: "tooltip", title: "Go to DoneList" } %></li>
+<li><a id="send_mail" href="#" rel="tooltip" title="Send list by mail"><i class="icon-envelope"></i></a></li>
+<li><a id="set_bg_image" href="#" rel="tooltip" title="Set background image"><i class="icon-picture"></i></a></li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="Auto loading">
+    <i class="icon-refresh"></i>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a id="auto_loading" href="#"></a></li>
+  </ul>
+</li>
+<% if !is_sample_user? %>
+  <li><%= link_to raw('<i class="icon-user"></i>'), edit_user_path(current_user), { rel: "tooltip", title: "Edit user info" } %></li>
+<% end %>
  

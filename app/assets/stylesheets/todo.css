@@ -561,6 +561,11 @@ table#table-01 td {
   background-color: white;
 }
 
+#p_min, #p_sec, #p_delim {
+  font-size: 30px;
+  color: blue;
+}
+
 footer {
   width: 100%;
   margin-top: 4px;                                                                    

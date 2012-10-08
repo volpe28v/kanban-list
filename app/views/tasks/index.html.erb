@@ -2,17 +2,35 @@
   <div id="sending_mail" class="alert alert-info" style="display:none"></div>
   <div id="send_mail_result" class="alert alert-success" style="display:none"></div>
 
+  <div class="row-fluid">
+    <div class="span7">
   <form method="post" id="add_todo_form" class="form-inline">
     <span class="label label-info">Book: <span id="book_name_label"></span></span> <span class="task-chars-left-add-form"></span></br>
     <input type="text" id="prefix" class="span2" name="prefix" value="" placeholder="Book Name" maxlength="50"/>
     <input type="text" id="add_todo_form_msg" class="span6" value="" placeholder="Task Name" maxlength="200"/>
     <button class="btn btn-success" id="add_todo_button"/><i class="icon-plus icon-white"></i></button>
   </form>
+    </div>
+
+    <div class="span3">
+      <div id="p_timer_body" class="well" style="display:none">
+        <span class="btn-group">
+          <button id="p_start" class="btn btn-mini btn-info">Start</button>
+          <button id="p_pause" class="btn btn-mini btn-info">Pause</button>
+          <button id="p_clear" class="btn btn-mini btn-info">Reset</button>
+        </span>
+        &nbsp;
+        <span id="p_min">25</span><span id="p_delim">:</span><span id="p_sec">00</span>
+      </div>
+    </div>
+    <div class="span2"></div>
+  </div>
 
   <div id="loader" class="well" style="display:none">
     <center><img src="<%= image_path 'loader.gif' %>"></center>
     <center><p id="loading_msg_area">Tips: <span id="loading_msg"></span></p></center>
   </div>
+
 
   <div id="task_list">
     <!-- タスクリストは動的に表示する -->
