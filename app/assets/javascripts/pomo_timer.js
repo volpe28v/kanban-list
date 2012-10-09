@@ -2,10 +2,24 @@ KanbanList.namespace('pomodoroTimer');
 
 KanbanList.pomodoroTimer = (function(){
   var Timer1; 
+  var DefaultMin = 25;
+  var DefaultSec = 0;
 
+  function setDecrementTime(min,sec){
+    var remain = (min * 60) + (sec - 1);
+    var next_min =  Math.floor(remain / 60);
+    var next_sec = (remain % 60);
+    setTime(next_min, next_sec);
+    return remain;
+  }
+ 
+  function setTime(min, sec){
+    $("#p_min").html(("0" + min).slice(-2));
+    $("#p_sec").html(("0" + sec).slice(-2));
+  }
   function start()
   {
-    $("#p_start").get(0).disabled=true;
+    $("#p_start").get(0).disabled = true;
     Timer1 = setInterval(countDown,1000);
   }
 
@@ -26,10 +40,7 @@ KanbanList.pomodoroTimer = (function(){
     var min = eval($("#p_min").html());
     var sec = eval($("#p_sec").html());
   
-    var remain = (min * 60) + (sec - 1);
-    $("#p_min").html(("0" + Math.floor(remain / 60)).slice(-2));
-    $("#p_sec").html(("0" + (remain % 60)).slice(-2));
-   
+    var remain = setDecrementTime(min, sec);
     showPopup(remain);
   }
 
@@ -44,12 +55,13 @@ KanbanList.pomodoroTimer = (function(){
 
   function reset()
   {
-    $("#p_min").html("25");
-    $("#p_sec").html("00");
+    setTime(DefaultMin, DefaultSec);
     clearInterval(Timer1);
   }  
  
   function init(){
+    setTime(DefaultMin, DefaultSec);
+
     $('#pomo_navi').click(function(){
       $('#p_timer_body').fadeToggle('slow');
       return false;
