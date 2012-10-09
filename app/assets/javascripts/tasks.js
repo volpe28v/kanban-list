@@ -9,10 +9,10 @@
 //= require send_mail
 //= require today_marker
 //= require draggable_task
+//= require pomo_timer
 //= require task_action
 //= require filter_navi
 //= require todo
-//= require pomo_timer
 
 // dependent modules 
 var autoLoadingTimer = KanbanList.autoLoadingTimer;

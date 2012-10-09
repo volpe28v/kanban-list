@@ -569,6 +569,13 @@ table#table-01 td {
   text-shadow: 1px 1px 2px gray;
 }
 
+#pomo_done_num {
+  margin-left: 20px;
+  font-size: 30px;
+  color: dodgerblue;
+  text-shadow: 1px 1px 2px gray;
+}
+
 footer {
   width: 100%;
   margin-top: 4px;                                                                    

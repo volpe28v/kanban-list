@@ -3,6 +3,7 @@ KanbanList.taskAction = (function(){
   var draggableTask = KanbanList.draggableTask;
   var autoLoadingTimer = KanbanList.autoLoadingTimer;
   var utility = KanbanList.utility;
+  var pomodoroTimer = KanbanList.pomodoroTimer;
 
   function display_filter(text){
     var sanitize_text = sanitize(text);
@@ -46,6 +47,7 @@ KanbanList.taskAction = (function(){
 
     //TODO: グローバルのメソッドを呼んでいるので修正する
     sendCurrentTodo(id, to_status, msg);
+    pomodoroTimer.addDone();
   }
 
   function returnToTodo(ret_id){
