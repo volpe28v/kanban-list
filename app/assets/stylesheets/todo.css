@@ -551,6 +551,8 @@ table#table-01 td {
   font-size: 11px;
   font-style: normal;
   font-weight: normal;
+
+  text-shadow: 0px 1px 1px white;
 }
 
 #loading_msg_area {
@@ -563,7 +565,8 @@ table#table-01 td {
 
 #p_min, #p_sec, #p_delim {
   font-size: 30px;
-  color: blue;
+  color: tomato;
+  text-shadow: 1px 1px 2px gray;
 }
 
 footer {
