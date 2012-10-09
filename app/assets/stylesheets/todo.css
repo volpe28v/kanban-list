@@ -569,8 +569,12 @@ table#table-01 td {
   text-shadow: 1px 1px 2px gray;
 }
 
+#p_min {
+  margin-left: 10px;
+}
+
 #pomo_done_num {
-  margin-left: 20px;
+  margin-left: 15px;
   font-size: 24px;
   color: dodgerblue;
   text-shadow: 1px 1px 2px gray;
