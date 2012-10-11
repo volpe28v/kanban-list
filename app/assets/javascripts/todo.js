@@ -39,6 +39,16 @@ function sendCurrentTodo(id, status, msg) {
   });
 }
 
+function sendTaskOrder(status, order){
+  var request_str = "status=" + status + "&" + order;
+  $.ajax({
+    type: "POST",
+    cache: false,
+    url: "tasks/update_order",
+    data: request_str
+  });
+}
+
 function updateCountsJson( counts_json ){
   var state_ids = [
                     ['#todo_h_num',  counts_json.todo_h],

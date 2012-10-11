@@ -44,6 +44,11 @@ class TasksController < ApplicationController
     render :json => { task_counts: get_task_counts, move_task_id: 0, all_books: get_all_book_counts }, :callback => 'updateTaskJson'
   end
 
+  def update_order
+
+    render :text => params[:id].join(" ") #TODO: debug msg
+  end
+
   def filter_or_update
     @user_name = current_user.name
     @recent_done_num = 15

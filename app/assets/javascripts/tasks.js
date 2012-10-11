@@ -37,7 +37,9 @@ $(document).ready(function(){
   pomodoroTimer.init();
 
   // initialize modules
-  draggableTask.setHandlers({receive: sendCurrentTodo});
+  draggableTask.setHandlers({receive: sendCurrentTodo,
+                             update_order: sendTaskOrder
+                            });
 
   $('a[rel=tooltip]').tooltip({ placement:"bottom"});
   return;

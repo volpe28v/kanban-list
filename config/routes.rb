@@ -6,6 +6,7 @@ Todolist::Application.routes.draw do
 
   get "kanbanlist/index"
 
+  post "tasks/update_order"
   post "tasks/filter_or_update"
   post "tasks/silent_update"
   post "tasks/send_mail"
