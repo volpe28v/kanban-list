@@ -45,8 +45,20 @@ class TasksController < ApplicationController
   end
 
   def update_order
+    if params[:id] == nil
+      render :text => "update_order noop"
+      return
+    end
 
-    render :text => params[:id].join(" ") #TODO: debug msg
+    # 並び順の変更はタイムスタンプを更新したくない
+    Task.record_timestamps = false
+    params[:id].each_with_index do |task_id,i|
+      target_task = Task.find(task_id)
+      target_task.update_attribute(:order_no, i)
+    end
+    Task.record_timestamps = true
+
+    render :text => "update_order ok"
   end
 
   def filter_or_update

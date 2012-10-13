@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120401152721) do
+ActiveRecord::Schema.define(:version => 20121013140431) do
 
   create_table "books", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "public",     :default => false
   end
 
   create_table "tasks", :force => true do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120401152721) do
     t.integer  "pomo",       :default => 0
     t.integer  "user_id"
     t.integer  "book_id"
+    t.integer  "order_no",   :default => 0
   end
 
   create_table "users", :force => true do |t|
