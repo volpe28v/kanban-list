@@ -2,6 +2,13 @@
 require 'spec_helper'
 
 describe Task do
+  before do
+    if user = User.find_by_name("volpe")
+      user.destroy
+    end
+
+    @user = Factory.create(:volpe)
+  end
 
   describe "初期設定されているタスクを読み出す場合" do
     it "全て読み出すことができる" do
@@ -12,12 +19,7 @@ describe Task do
 
   describe "特定ユーザと状態を指定してタスクを取り出す場合" do
     before do
-      if user = User.find_by_name("volpe")
-        user.destroy
-      end
-
-      user = Factory.create(:volpe)
-      @tasks = user.tasks.by_status(:todo_m)
+      @tasks = @user.tasks.by_status(:todo_m)
     end
     subject{@tasks}
 
@@ -57,12 +59,7 @@ describe Task do
 
   describe "Doneと名前を指定してタスクを取り出す場合" do
     before do
-      if user = User.find_by_name("volpe")
-        user.destroy
-      end
-
-      user = Factory.create(:volpe)
-      @tasks = user.tasks.done
+      @tasks = @user.tasks.done
     end
     subject{@tasks}
 
@@ -102,12 +99,7 @@ describe Task do
 
   describe "Doingと名前を指定してタスクを取り出す場合" do
     before do
-      if user = User.find_by_name("volpe")
-        user.destroy
-      end
-
-      user = Factory.create(:volpe)
-      @tasks = user.tasks.doing
+      @tasks = @user.tasks.doing
     end
     subject{@tasks}
 
@@ -130,12 +122,7 @@ describe Task do
 
   describe "本日のDoneと名前を指定してタスクを取り出す場合" do
     before do
-      if user = User.find_by_name("volpe")
-        user.destroy
-      end
-
-      user = Factory.create(:volpe)
-      @task = user.tasks.today_done
+      @task = @user.tasks.today_done
     end
     subject{@task}
 
@@ -152,12 +139,7 @@ describe Task do
 
   describe "各状態のタスク数を取り出す場合" do
     before do
-      if user = User.find_by_name("volpe")
-        user.destroy
-      end
-
-      user = Factory.create(:volpe)
-      @task_counts = user.tasks.all_counts
+      @task_counts = @user.tasks.all_counts
     end
     subject{@task_counts}
 
