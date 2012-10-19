@@ -86,6 +86,16 @@ li {
   -webkit-border-bottom-left-radius: 6px;
   -webkit-border-bottom-right-radius: 6px;
 }
+.task_elem {
+  -webkit-box-shadow: 0px 0px 0px #444;
+  box-shadow: 0px 0px 0px #444;
+  -webkit-transition-property: -webkit-box-shadow;
+  -webkit-transition-duration: 0.2s;
+  -webkit-transition-timing-function: default;
+  -moz-transition-property: box-shadow;
+  -moz-transition-duration: 0.2s;
+  -moz-transition-timing-function: default;
+}
 
 .task_elem:hover {
   -webkit-box-shadow: 0px 5px 15px #444;
