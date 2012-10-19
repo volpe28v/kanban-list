@@ -43,7 +43,7 @@ Factory.define :volpe, :class => User do |f|
   f.pomo     9
   f.tasks {
     [
-      Factory(:task_1), 
+      Factory(:task_1),
       Factory(:task_2),
       Factory(:task_3),
       Factory(:task_4),

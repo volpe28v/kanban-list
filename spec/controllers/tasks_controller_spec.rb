@@ -5,7 +5,7 @@ describe TasksController do
 
   describe "GET 'index'" do
     it "レスポンスが正常であること" do
-      sign_in Factory.create(:volpe)
+      sign_in User.find_by_name("volpe") || Factory.create(:volpe)
       get 'index'
       response.should be_success
     end
@@ -13,7 +13,7 @@ describe TasksController do
 
   describe "get tasks" do
     before do
-      sign_in Factory.create(:volpe)
+      sign_in User.find_by_name("volpe") || Factory.create(:volpe)
       get :index,{ :user => "volpe" }
     end
 
@@ -29,7 +29,7 @@ describe TasksController do
 
   describe "POST 'update'" do
     before do
-      sign_in Factory.create(:volpe)
+      sign_in User.find_by_name("volpe") || Factory.create(:volpe)
       post :update,{ :id => "6" , :status => "doing", :msg => "updated" }
     end
 
@@ -48,7 +48,7 @@ describe TasksController do
 
   describe "task destroy" do
     before do
-      sign_in Factory.create(:volpe)
+      sign_in User.find_by_name("volpe") || Factory.create(:volpe)
       delete :destroy,{ :id => "1" }
     end
 
@@ -63,7 +63,7 @@ describe TasksController do
 
   describe "task filter_or_filter" do
     before do
-      sign_in Factory.create(:volpe)
+      sign_in User.find_by_name("volpe") || Factory.create(:volpe)
       post :filter_or_update,{ :filter => "todo_m" }
     end
 

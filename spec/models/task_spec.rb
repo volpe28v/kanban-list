@@ -12,8 +12,12 @@ describe Task do
 
   describe "特定ユーザと状態を指定してタスクを取り出す場合" do
     before do
-      @user = Factory.create(:volpe)
-      @tasks = @user.tasks.by_status(:todo_m)
+      if user = User.find_by_name("volpe")
+        user.destroy
+      end
+
+      user = Factory.create(:volpe)
+      @tasks = user.tasks.by_status(:todo_m)
     end
     subject{@tasks}
 
@@ -53,6 +57,10 @@ describe Task do
 
   describe "Doneと名前を指定してタスクを取り出す場合" do
     before do
+      if user = User.find_by_name("volpe")
+        user.destroy
+      end
+
       user = Factory.create(:volpe)
       @tasks = user.tasks.done
     end
@@ -94,6 +102,10 @@ describe Task do
 
   describe "Doingと名前を指定してタスクを取り出す場合" do
     before do
+      if user = User.find_by_name("volpe")
+        user.destroy
+      end
+
       user = Factory.create(:volpe)
       @tasks = user.tasks.doing
     end
@@ -118,6 +130,10 @@ describe Task do
 
   describe "本日のDoneと名前を指定してタスクを取り出す場合" do
     before do
+      if user = User.find_by_name("volpe")
+        user.destroy
+      end
+
       user = Factory.create(:volpe)
       @task = user.tasks.today_done
     end
@@ -136,6 +152,10 @@ describe Task do
 
   describe "各状態のタスク数を取り出す場合" do
     before do
+      if user = User.find_by_name("volpe")
+        user.destroy
+      end
+
       user = Factory.create(:volpe)
       @task_counts = user.tasks.all_counts
     end
