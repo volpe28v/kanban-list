@@ -53,3 +53,19 @@ Factory.define :volpe, :class => User do |f|
     ]
   }
 end
+
+Factory.define :work_book, :class => Book do |b|
+  b.name "work"
+  b.tasks {
+    [
+      Factory(:task_1),
+      Factory(:task_2),
+      Factory(:task_3),
+      Factory(:task_4),
+      Factory(:task_5),
+      Factory(:task_6),
+      Factory(:task_7)
+    ]
+  }
+end
+
