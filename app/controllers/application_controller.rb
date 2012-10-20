@@ -97,4 +97,14 @@ class ApplicationController < ActionController::Base
     render_to_string :partial => 'tasks/tasklist_' + session[:layout]
   end
 
+  def render_json_for_updateBookJson(filter_str = "", done_num)
+    @tasks = get_tasks( filter_str, done_num )
+
+    render :json => { task_list_html: get_task_list_html,
+                      book_name: get_book_name,
+                      prefix: get_prefix,
+                      task_counts: get_task_counts,
+                      all_books: get_all_book_counts },
+           :callback => 'updateBookJson'
+  end
 end

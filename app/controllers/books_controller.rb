@@ -43,9 +43,6 @@ class BooksController < ApplicationController
 
   private
   def render_current_book(filter_str = "")
-    @recent_done_num = 15
-    @tasks = get_tasks( filter_str, @recent_done_num )
-
-    render :json => { task_list_html: get_task_list_html, book_name: get_book_name, prefix: get_prefix, task_counts: get_task_counts, all_books: get_all_book_counts }, :callback => 'updateBookJson'
+    render_json_for_updateBookJson(filter_str, 15)
   end
 end

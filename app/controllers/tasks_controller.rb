@@ -1,11 +1,6 @@
 # coding: utf-8
 class TasksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :books_list
-
-  def books_list
-#    @books_list = current_user.books
-  end
 
   def index
   end
@@ -73,17 +68,8 @@ class TasksController < ApplicationController
   end
 
   def filter_or_update
-    @user_name = current_user.name
-    @recent_done_num = 15
-    @tasks = get_tasks( params[:filter], @recent_done_num )
     set_layout(params[:layout])
-
-    render :json => { task_list_html: get_task_list_html,
-                      task_counts: get_task_counts,
-                      book_name: get_book_name,
-                      prefix: get_prefix,
-                      all_books: get_all_book_counts },
-           :callback => 'updateBookJson'
+    render_json_for_updateBookJson(params[:filter], 15)
   end
 
   def silent_update
