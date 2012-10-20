@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_filter :books_list
 
   def books_list
-    @books_list = current_user.books
+#    @books_list = current_user.books
   end
 
   def index
@@ -21,7 +21,12 @@ class TasksController < ApplicationController
     move_id = is_moved_from_book?(task) ? task.id : 0
     task_html = render_to_string :partial => 'task', :locals => {:task => task, :display => "none" }
 
-    render :json => { id: task.id, li_html: task_html, move_task_id: move_id, task_counts: get_task_counts, all_books: get_all_book_counts }, :callback => 'addTodoResponse'
+    render :json => { id: task.id,
+                      li_html: task_html,
+                      move_task_id: move_id,
+                      task_counts: get_task_counts,
+                      all_books: get_all_book_counts },
+           :callback => 'addTodoResponse'
   end
 
   def update
@@ -34,14 +39,20 @@ class TasksController < ApplicationController
     move_id = is_moved_from_book?(task) ? task.id : 0
 
     do_hooks(task)
-    render :json => { task_counts: get_task_counts, move_task_id: move_id, all_books: get_all_book_counts }, :callback => 'updateTaskJson'
+    render :json => { task_counts: get_task_counts,
+                      move_task_id: move_id,
+                      all_books: get_all_book_counts },
+           :callback => 'updateTaskJson'
   end
 
   def destroy
     task = Task.find(params[:id])
     task.delete
 
-    render :json => { task_counts: get_task_counts, move_task_id: 0, all_books: get_all_book_counts }, :callback => 'updateTaskJson'
+    render :json => { task_counts: get_task_counts,
+                      move_task_id: 0,
+                      all_books: get_all_book_counts },
+           :callback => 'updateTaskJson'
   end
 
   def update_order
@@ -67,16 +78,23 @@ class TasksController < ApplicationController
     @tasks = get_tasks( params[:filter], @recent_done_num )
     set_layout(params[:layout])
 
-    render :json => { task_list_html: get_task_list_html, task_counts: get_task_counts, book_name: get_book_name, prefix: get_prefix, all_books: get_all_book_counts }, :callback => 'updateBookJson'
+    render :json => { task_list_html: get_task_list_html,
+                      task_counts: get_task_counts,
+                      book_name: get_book_name,
+                      prefix: get_prefix,
+                      all_books: get_all_book_counts },
+           :callback => 'updateBookJson'
   end
 
   def silent_update
     @user_name = current_user.name
     @recent_done_num = 15
-
     @tasks = get_tasks( params[:filter], @recent_done_num )
 
-    render :json => { task_list_html: get_task_list_html, task_counts: get_task_counts, all_books: get_all_book_counts }, :callback => 'updateSilentJson'
+    render :json => { task_list_html: get_task_list_html,
+                      task_counts: get_task_counts,
+                      all_books: get_all_book_counts },
+           :callback => 'updateSilentJson'
   end
 
   def donelist
@@ -94,7 +112,12 @@ class TasksController < ApplicationController
     mail_addr    = params[:mail_addr]
     mail_comment = params[:comment]
 
-    TaskMailer.all_tasks(current_user, current_book, mail_addr, mail_comment, get_tasks("", @recent_done_num)).deliver
+    TaskMailer.all_tasks(current_user,
+                         current_book,
+                         mail_addr,
+                         mail_comment,
+                         get_tasks("", @recent_done_num)
+                        ).deliver
     render :json => { addr: mail_addr }, :callback => 'showMailResult'
   end
 
