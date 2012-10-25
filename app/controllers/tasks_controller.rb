@@ -3,6 +3,14 @@ class TasksController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    if request.smart_phone?
+      @user_name = current_user.name
+      @counts = get_task_counts
+      @book_name = get_book_name
+      @prefix = get_prefix
+      @recent_done_num = 10
+      @tasks = get_tasks( "", @recent_done_num )
+    end
   end
 
   def create

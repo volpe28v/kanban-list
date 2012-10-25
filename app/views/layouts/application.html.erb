@@ -49,7 +49,7 @@
             <% end %>
 
             <% if current_user %>
-              <li><%= link_to('Logout', [ :destroy, :user_session ], :method => :delete ,:class => '') %></li>
+              <li><%= link_to('Logout', [ :destroy, :user_session ], :class => '') %></li>
             <% end %>
           </ul>
         </div>

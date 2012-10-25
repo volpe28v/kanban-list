@@ -1,0 +1,35 @@
+<div data-role="header" data-position="fixed">
+  <h1>かんばんりすと</h1>
+</div>
+ 
+<div data-role="content">
+  <p>
+    <h3>概要</h3>
+    <ul>
+      <li>「かんばんりすと」はWeb上で比較的お手軽にTodo管理を行うためのWebアプリです。</li>
+      <li>Agile界隈で話題になっている「ソフトウェアかんばん」をイメージして作りました。</li>
+    </ul>
+
+    <h3>使い方</h3>
+    <ul>
+      <li>操作の基本は「タスクを追加」「ドラッグ＆ドロップで状態変更」「チェックでDone」です。</li>
+    </ul>
+
+    <h3>SampleAccount</h3>
+    <ul>
+      <li>Email: sample@kanban.list</li>
+      <li>Pass: sample</li>
+    </ul>
+
+    <h3>ソースコード</h3>
+    <ul>
+      <li><a href=https://github.com/volpe28v/kanban-list>GitHub</a></li>
+    </ul>
+  </p>
+
+  <p>
+  <%= link_to 'ユーザー登録', [ :new, :user_registration ] ,:class => 'btn btn-primary btn-large' , 'data-role' => 'button'%>
+  <%= link_to 'ログイン', [ :new, :user_session ],:class => 'btn btn-primary btn-large' , 'data-role' => 'button' %>
+  </p>
+</div>
+

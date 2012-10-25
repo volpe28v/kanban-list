@@ -1,0 +1,15 @@
+<li id="id_<%= t.id %>">
+  <a href="#setting_<%= t.id %>" id="edit_task_link_<%= t.id %>" data-transition="pop" data-rel="dialog">
+    <p><span class="label label-info" id="updated_<%= t.id %>" style="display:inline;"><%= t.updated_at.strftime("%m/%d") %></span></p>
+    <p><span id="msg_<%= t.id %>"><%= raw t.msg %></span></p>
+  </a>
+  <a href="#move_<%= t.id %>" data-transition="slide"></a>
+</li>
+<script>
+  $('#edit_task_link_<%= t.id %>').click(function(){
+    $('#edit_msg_<%= t.id %>').val($('#msg_<%= t.id %>').html());
+  });
+</script>
+
+
+ 

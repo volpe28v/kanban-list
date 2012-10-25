@@ -27,6 +27,9 @@ gem 'devise'
 gem 'rails_autolink'
 gem 'rake'
 
+gem 'jpmobile'
+gem 'jpmobile-terminfo'
+
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'

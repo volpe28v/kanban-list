@@ -1,0 +1,133 @@
+<div data-role="page" id="todo_nav">
+  <%= render "header_smart_phone_iphone", {:state => 'todo'} %>
+
+  <div data-role="content">
+    <ul data-role="listview" data-inset="true">
+      <li data-role="list-divider">Todo</li>
+      <li id="todo_h" data-role="list-divider" style="padding: 0.1em 15px;">High</li>
+      <% @tasks[:todo_high_tasks].each do |t| %>
+        <%= render "task_smart_phone_iphone", {:t => t} %>
+      <% end %>
+      <li id="todo_m" data-role="list-divider" style="padding: 0.1em 15px;">Middle</li>
+      <% @tasks[:todo_mid_tasks].each do |t| %>
+        <%= render "task_smart_phone_iphone", {:t => t} %>
+      <% end %>
+      <li id="todo_l" data-role="list-divider" style="padding: 0.1em 15px;">Low</li>
+      <% @tasks[:todo_low_tasks].each do |t| %>
+        <%= render "task_smart_phone_iphone", {:t => t} %>
+      <% end %>
+      <li data-role="list-divider" style="padding: 4px;"></li>
+    </ul>
+  </div>
+
+  <%= render "footer_smart_phone_iphone" %>
+</div>
+
+<div data-role="page" id="doing_nav">
+  <%= render "header_smart_phone_iphone", {:state => 'doing'} %>
+
+  <div data-role="content">
+    Under construction...
+    <ul data-role="listview" data-inset="true">
+      <li id="doing" data-role="list-divider">Doing <span class="ui-li-count"><%= @tasks[:doing_tasks].size %></span></li>
+      <% @tasks[:doing_tasks].each do |t| %>
+        <%= render "task_smart_phone_iphone", {:t => t} %>
+      <% end %>
+      <li data-role="list-divider" style="padding: 4px;"></li>
+    </ul>
+
+    <ul data-role="listview" data-inset="true">
+      <li id="waiting" data-role="list-divider">Waiting <span class="ui-li-count"><%= @tasks[:waiting_tasks].size %></span></li>
+      <% @tasks[:waiting_tasks].each do |t| %>
+        <%= render "task_smart_phone_iphone", {:t => t} %>
+      <% end %>
+      <li data-role="list-divider" style="padding: 4px;"></li>
+    </ul>
+  </div>
+
+  <%= render "footer_smart_phone_iphone" %>
+</div>
+
+<div data-role="page" id="done_nav">
+  <%= render "header_smart_phone_iphone", {:state => 'done'} %>
+
+  <div data-role="content">
+    Under construction...
+    <ul data-role="listview" data-inset="true">
+      <li id="done" data-role="list-divider">Done</li>
+      <% @tasks[:done_tasks].each do |t| %>
+        <%= render "task_smart_phone_iphone", {:t => t} %>
+      <% end %>
+      <li data-role="list-divider" style="padding: 4px;"></li>
+    </ul>
+  </div>
+
+  <%= render "footer_smart_phone_iphone" %>
+</div>
+
+<div data-role="page" id="option">
+  <div data-role="header"><h1>設定</h1></div> 
+
+  <div data-role="content"> 
+    <select name="book-list"  data-native-menu="false">
+      <option value="All">AllBooks</option>
+      <option value="サンプル2">サンプル2</option>
+      <option value="サンプル3">サンプル3</option>
+    </select>
+
+    <a data-role="button" data-mini="true" data-inline="true">AddTask</a>
+    <input type="text" name="name" id="basic" data-mini="true" width="10" value="" /> 
+    <input type="text" name="name" id="basic" data-mini="true" value="" /> 
+    <a data-role="button" data-rel="back">Back</a>
+  </div>
+</div>
+
+<% @tasks.each do |category, tasks| %>
+<% tasks.each do |t| %>
+<div data-role="page" id="setting_<%= t.id %>">
+  <div data-role="header"><h1>タスクの編集</h1></div> 
+  <div data-role="content"> 
+    <form id="edit_form_<%= t.id %>" method="post" style="display:inline">
+      <textarea id="edit_msg_<%= t.id %>"/></textarea>
+      <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+        <a data-role="button" data-inline="true" data-rel="back" onclick="updateToDoMsg('#edit_msg_<%= t.id %>', '#msg_<%= t.id %>');">Update</a>
+        <a data-role="button" data-inline="true" data-rel="back">Cancel</a>
+        <a data-role="button" data-inline="true" data-rel="back" onclick="deleteTodo('#id_<%= t.id %>');">Delete</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div data-role="page" id="move_<%= t.id %>">
+  <div data-role="header"><h1>状態を変更</h1></div> 
+  <div data-role="content"> 
+    <div class="ui-grid-b">
+      <div class="ui-block-a">
+        <a data-role="button" data-inline="true" data-rel="back" onclick="moveTo('todo_h','#id_<%= t.id %>')">High</a>
+      </div>
+      <div class="ui-block-b">
+        <a data-role="button" data-inline="true" data-rel="back" onclick="moveTo('doing','#id_<%= t.id %>')">Doing</a>
+      </div>
+      <div class="ui-block-c">
+        <a data-role="button" data-inline="true" data-rel="back" data-theme="b" onclick="moveTo('done','#id_<%= t.id %>')">Done</a>
+      </div>
+      <div class="ui-block-a">
+        <a data-role="button" data-inline="true" data-rel="back" onclick="moveTo('todo_m','#id_<%= t.id %>')">Middle</a>
+      </div>
+      <div class="ui-block-b">
+        <a data-role="button" data-inline="true" data-rel="back" onclick="moveTo('waiting','#id_<%= t.id %>')">Waiting</a>
+      </div>
+      <div class="ui-block-c"></div>
+      <div class="ui-block-a">
+        <a data-role="button" data-inline="true" data-rel="back" onclick="moveTo('todo_l','#id_<%= t.id %>')">Low</a>
+      </div>
+      <div class="ui-block-b"></div>
+      <div class="ui-block-c"></div>
+    </div>
+    <a data-role="button" data-inline="false" data-rel="back")">Cancel</a>
+  </div>
+</div>
+<% end %>
+<% end %>
+
