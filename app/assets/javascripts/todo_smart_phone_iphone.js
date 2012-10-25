@@ -257,8 +257,7 @@ function moveTo(status, move_id){
     var move_item = 
       '<li id="id_' + id + '">' + 
         '<a href="#setting_' + id + '">' + 
-          '<p><span class="label label-info" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span></p>' +
-          '<p><span id="msg_' + id + '">' + msg + '</span></p>' + 
+          '<p><span class="label label-info" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span> <span id="msg_' + id + '">' + msg + '</span></p>' + 
         '</a>' +
       '</li>';
 

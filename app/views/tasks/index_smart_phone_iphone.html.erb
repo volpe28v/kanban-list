@@ -27,9 +27,8 @@
   <%= render "header_smart_phone_iphone", {:state => 'doing'} %>
 
   <div data-role="content">
-    Under construction...
     <ul data-role="listview" data-inset="true">
-      <li id="doing" data-role="list-divider">Doing <span class="ui-li-count"><%= @tasks[:doing_tasks].size %></span></li>
+      <li id="doing" data-role="list-divider">Doing</span></li>
       <% @tasks[:doing_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:t => t} %>
       <% end %>
@@ -37,7 +36,7 @@
     </ul>
 
     <ul data-role="listview" data-inset="true">
-      <li id="waiting" data-role="list-divider">Waiting <span class="ui-li-count"><%= @tasks[:waiting_tasks].size %></span></li>
+      <li id="waiting" data-role="list-divider">Waiting</span></li>
       <% @tasks[:waiting_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:t => t} %>
       <% end %>
@@ -52,7 +51,6 @@
   <%= render "header_smart_phone_iphone", {:state => 'done'} %>
 
   <div data-role="content">
-    Under construction...
     <ul data-role="listview" data-inset="true">
       <li id="done" data-role="list-divider">Done</li>
       <% @tasks[:done_tasks].each do |t| %>

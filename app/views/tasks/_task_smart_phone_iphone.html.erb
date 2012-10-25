@@ -1,7 +1,6 @@
 <li id="id_<%= t.id %>">
   <a href="#setting_<%= t.id %>" id="edit_task_link_<%= t.id %>">
-    <p><span class="label label-info" id="updated_<%= t.id %>" style="display:inline;"><%= t.updated_at.strftime("%m/%d") %></span></p>
-    <p><span id="msg_<%= t.id %>"><%= raw t.msg %></span></p>
+    <p><span class="label label-info" id="updated_<%= t.id %>" style="display:inline;"><%= t.updated_at.strftime("%m/%d") %></span> <span id="msg_<%= t.id %>"><%= raw t.msg %></span></p>
   </a>
 </li>
 <script>
