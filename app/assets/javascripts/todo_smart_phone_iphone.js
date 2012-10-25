@@ -256,9 +256,10 @@ function moveTo(status, move_id){
   }else{
     var move_item = 
       '<li id="id_' + id + '">' + 
-        '<span class="label label-info" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span>' +
-        '<a href="#setting_' + id + '" data-transition="pop" data-rel="dialog"><p><span id="msg_' + id + '">' + msg + '</span></p></a>' +
-        '<a href="#move_' + id + '" data-transition="slide"></a>' +
+        '<a href="#setting_' + id + '">' + 
+          '<p><span class="label label-info" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span></p>' +
+          '<p><span id="msg_' + id + '">' + msg + '</span></p>' + 
+        '</a>' +
       '</li>';
 
     setTimeout(function(){
