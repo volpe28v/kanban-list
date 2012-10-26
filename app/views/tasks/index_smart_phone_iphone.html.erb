@@ -2,8 +2,7 @@
   <%= render "header_smart_phone_iphone", {:state => 'todo'} %>
 
   <div data-role="content">
-    <ul data-role="listview" data-inset="true">
-      <li data-role="list-divider">Todo</li>
+    <ul data-role="listview">
       <li id="todo_h" data-role="list-divider" style="padding: 0.1em 15px;">High</li>
       <% @tasks[:todo_high_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:t => t} %>
@@ -27,7 +26,7 @@
   <%= render "header_smart_phone_iphone", {:state => 'doing'} %>
 
   <div data-role="content">
-    <ul data-role="listview" data-inset="true">
+    <ul data-role="listview">
       <li id="doing" data-role="list-divider">Doing</span></li>
       <% @tasks[:doing_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:t => t} %>
@@ -35,7 +34,7 @@
       <li data-role="list-divider" style="padding: 4px;"></li>
     </ul>
 
-    <ul data-role="listview" data-inset="true">
+    <ul data-role="listview">
       <li id="waiting" data-role="list-divider">Waiting</span></li>
       <% @tasks[:waiting_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:t => t} %>
@@ -51,7 +50,7 @@
   <%= render "header_smart_phone_iphone", {:state => 'done'} %>
 
   <div data-role="content">
-    <ul data-role="listview" data-inset="true">
+    <ul data-role="listview">
       <li id="done" data-role="list-divider">Done</li>
       <% @tasks[:done_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:t => t} %>
@@ -88,9 +87,9 @@
     <form id="edit_form_<%= t.id %>" method="post" style="display:inline">
       <textarea id="edit_msg_<%= t.id %>"/></textarea>
       <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-        <a data-role="button" data-inline="true" data-rel="back" onclick="updateToDoMsg('#edit_msg_<%= t.id %>', '#msg_<%= t.id %>');">Update</a>
+        <a id="update_btn_<%= t.id %>" data-role="button" data-inline="true" data-rel="back">Update</a>
         <a data-role="button" data-inline="true" data-rel="back">Cancel</a>
-        <a data-role="button" data-inline="true" data-rel="back" onclick="deleteTodo('#id_<%= t.id %>');">Delete</a>
+        <a id="delete_btn_<%= t.id %>" data-role="button" data-inline="true" data-rel="back">Delete</a>
       </div>
     </form>
   </div>
@@ -99,23 +98,23 @@
   <div data-role="content"> 
     <div class="ui-grid-b">
       <div class="ui-block-a">
-        <a data-role="button" data-inline="true" data-rel="back" onclick="moveTo('todo_h','#id_<%= t.id %>')">High</a>
+        <a id="todo_h_btn_<%= t.id %>", data-role="button" data-inline="true" data-rel="back">High</a>
       </div>
       <div class="ui-block-b">
-        <a data-role="button" data-inline="true" data-rel="back" onclick="moveTo('doing','#id_<%= t.id %>')">Doing</a>
+        <a id="doing_btn_<%= t.id %>", data-role="button" data-inline="true" data-rel="back">Doing</a>
       </div>
       <div class="ui-block-c">
-        <a data-role="button" data-inline="true" data-rel="back" data-theme="b" onclick="moveTo('done','#id_<%= t.id %>')">Done</a>
+        <a id="done_btn_<%= t.id %>" data-role="button" data-inline="true" data-rel="back" data-theme="b">Done</a>
       </div>
       <div class="ui-block-a">
-        <a data-role="button" data-inline="true" data-rel="back" onclick="moveTo('todo_m','#id_<%= t.id %>')">Middle</a>
+        <a id="todo_m_btn_<%= t.id %>", data-role="button" data-inline="true" data-rel="back">Middle</a>
       </div>
       <div class="ui-block-b">
-        <a data-role="button" data-inline="true" data-rel="back" onclick="moveTo('waiting','#id_<%= t.id %>')">Waiting</a>
+        <a id="waiting_btn_<%= t.id %>", data-role="button" data-inline="true" data-rel="back">Waiting</a>
       </div>
       <div class="ui-block-c"></div>
       <div class="ui-block-a">
-        <a data-role="button" data-inline="true" data-rel="back" onclick="moveTo('todo_l','#id_<%= t.id %>')">Low</a>
+        <a id="todo_l_btn_<%= t.id %>", data-role="button" data-inline="true" data-rel="back">Low</a>
       </div>
       <div class="ui-block-b"></div>
       <div class="ui-block-c"></div>
@@ -123,7 +122,7 @@
     <a data-role="button" data-inline="false" data-rel="back")">Cancel</a>
   </div>
 </div>
+<% end %>
+<% end %>
 
-<% end %>
-<% end %>
 

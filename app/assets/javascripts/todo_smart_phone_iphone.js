@@ -1,3 +1,6 @@
+//= require kanbanlist
+//= require task_action_smart_phone_iphone
+
 /*
  * todo.js
  * created by Naoki Kodama
@@ -233,45 +236,6 @@ function toggleDisplay(id1,id2) {
   return false;
 }
  
-function updateToDoMsg(from, to) {
-  $(to).html($(from).get(0).value);
-
-  var id = to.slice(5);
-  var msg = $(to).html();
-  sendCurrentTodo(id, "", msg);
-}
- 
-function moveTo(status, move_id){
-  var to_status = status;
-  var id = move_id.slice(4);
-  var msg = $("#msg_" + id).html();
-  var target_status = $("#" + to_status);
-  var updated_date = $("#updated_" + id).html();
-
-  if (target_status.hasClass("ui-li")){
-    setTimeout(function(){
-      $(move_id).fadeOut("normal",function(){ $(move_id).insertAfter($("#" + to_status)); });
-      $(move_id).fadeIn("normal");
-    },500);
-  }else{
-    var move_item = 
-      '<li id="id_' + id + '">' + 
-        '<a href="#setting_' + id + '">' + 
-          '<p><span class="label label-info" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span> <span id="msg_' + id + '">' + msg + '</span></p>' + 
-        '</a>' +
-      '</li>';
-
-    setTimeout(function(){
-      $(move_id).fadeOut(function(){
-        $(move_id).remove();
-        $("#" + to_status).after(move_item);
-      });
-    },500);
-  }
-
-  sendCurrentTodo(id, to_status, msg);
-}
-
 function returnToTodo(ret_id){
   var to_status = "todo_m";
   var id = ret_id.slice(4);

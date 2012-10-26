@@ -1,12 +1,21 @@
 <li id="id_<%= t.id %>">
-  <a href="#setting_<%= t.id %>" id="edit_task_link_<%= t.id %>">
-    <p><span class="label label-info" id="updated_<%= t.id %>" style="display:inline;"><%= t.updated_at.strftime("%m/%d") %></span> <span id="msg_<%= t.id %>"><%= raw t.msg %></span></p>
+  <a href="#setting_<%= t.id %>" id="edit_task_link_<%= t.id %>" data-transition="slidefade">
+    <span class="label label-info" id="updated_<%= t.id %>" style="display:inline;"><%= t.updated_at.strftime("%m/%d") %></span> <span id="msg_<%= t.id %>"><%= raw t.msg %></span>
   </a>
 </li>
+
 <script>
+(function(){
+  var first_flg = true;
   $('#edit_task_link_<%= t.id %>').click(function(){
-    $('#edit_msg_<%= t.id %>').val($('#msg_<%= t.id %>').html());
+    if (first_flg){
+      var msg_array = <%= to_js_array(t.msg) %>;
+      var taskAction = KanbanList.taskAction;
+      taskAction.realize(<%= t.id %>, msg_array);
+      first_flg = false;
+    }
   });
+}());
 </script>
 
 

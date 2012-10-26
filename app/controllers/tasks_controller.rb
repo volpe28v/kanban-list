@@ -34,7 +34,7 @@ class TasksController < ApplicationController
 
   def update
     task = Task.find(params[:id])
-    task.update_status(params[:status])
+    task.update_status(params[:status]) if params[:status] != ""
     task.msg = params[:msg]
     task.book = task.get_book_id_in_msg_by_user(current_user)
     task.save
