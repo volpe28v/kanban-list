@@ -6,11 +6,13 @@
 
 <script>
 (function(){
+  var taskAction = KanbanList.taskAction;
+  var msg_array = <%= to_js_array(t.msg) %>;
+  taskAction.initial_task(<%= t.id %>, msg_array);
+
   var first_flg = true;
   $('#edit_task_link_<%= t.id %>').click(function(){
     if (first_flg){
-      var msg_array = <%= to_js_array(t.msg) %>;
-      var taskAction = KanbanList.taskAction;
       taskAction.realize(<%= t.id %>, msg_array);
       first_flg = false;
     }

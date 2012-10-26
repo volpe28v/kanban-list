@@ -27,10 +27,11 @@ KanbanList.taskAction = (function(){
   }
 
   function updateToDoMsg(from, to) {
-    $(to).html($(from).get(0).value);
+    var msg = sanitize($(from).val());
+    $(from).val(msg);
+    $(to).html(display_filter(msg));
 
     var id = to.slice(5);
-    var msg = $(to).html();
     sendCurrentTodo(id, "", msg);
   }
  
@@ -82,11 +83,16 @@ KanbanList.taskAction = (function(){
     sendCurrentTodo(id, to_status, msg);
   }
 
+  function initial_task(id, msg_array){
+    var msg = msg_array.join('\n');
+
+    $('#msg_' + id ).html(display_filter(msg));
+  }
+
   function realize_task(id, msg_array){
     var msg = msg_array.join('\n');
 
     $('#edit_msg_' + id).val(msg);
-    $('#msg_' + id ).html(display_filter(msg));
 
 //TODO: 後で有効にする
 //    $('#edit_msg_' + id).maxlength({
@@ -95,7 +101,6 @@ KanbanList.taskAction = (function(){
 
     $('#update_btn_' + id).click(function(){
       updateToDoMsg('#edit_msg_' + id, '#msg_' + id);
-      console.log("update" + id );
     });
 
     $('#delete_btn_' + id).click(function(){
@@ -132,6 +137,7 @@ KanbanList.taskAction = (function(){
   }
 
   return {
+    initial_task: initial_task,
     realize: realize_task,
     display_filter: display_filter
   }
