@@ -13,3 +13,13 @@
 .label-info{background-color:#4183C4;}
 .label-important{background-color:#BD2C00;}
 
+.book-name{
+  color: dimgray;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+
+  text-shadow: 0px 1px 1px white;
+}
+
+
