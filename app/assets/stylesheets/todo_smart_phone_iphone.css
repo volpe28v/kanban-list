@@ -22,4 +22,14 @@
   text-shadow: 0px 1px 1px white;
 }
 
-
+/* 文字列を省略しないようにする */
+.ui-header .ui-title, /* header */
+.ui-footer .ui-title, /* footer */
+.ui-btn-inner, /* button */
+.ui-li-heading, /* listview heading */
+.ui-li .ui-btn-text a.ui-link-inherit, /* listview link */
+.ui-li-desc /* listview description */
+{
+  overflow: visible;
+  white-space: normal;
+}
