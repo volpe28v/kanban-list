@@ -59,6 +59,9 @@ KanbanList.taskAction = (function(){
     var target_status = $("#" + to_status);
     var updated_date = $("#updated_" + id).html();
 
+    // 状態遷移ボタンに色付けする
+    $('.status-btn_' + id).buttonMarkup({ theme: 'd' });
+    $('#' + status + '_btn_' + id).buttonMarkup({ theme: 'e' });
     if (target_status.hasClass("ui-li")){
       setTimeout(function(){
         $(move_id).fadeOut("normal",function(){ $(move_id).insertAfter($("#" + to_status)); });
@@ -89,10 +92,14 @@ KanbanList.taskAction = (function(){
     $('#msg_' + id ).html(display_filter(msg));
   }
 
-  function realize_task(id, msg_array){
+  function realize_task(id, status, msg_array){
     var msg = msg_array.join('\n');
 
     $('#edit_msg_' + id).val(msg);
+
+    // 状態遷移ボタンに色付けする
+    $('.status-btn_' + id).buttonMarkup({ theme: 'd' });
+    $('#' + status + '_btn_' + id).buttonMarkup({ theme: 'e' });
 
 //TODO: 後で有効にする
 //    $('#edit_msg_' + id).maxlength({
@@ -109,30 +116,32 @@ KanbanList.taskAction = (function(){
 
     $('#todo_h_btn_' + id).click(function(){
       moveTo('todo_h','#id_' + id);
+      history.back();
     });
 
     $('#todo_m_btn_' + id).click(function(){
       moveTo('todo_m','#id_' + id);
+      history.back();
     });
 
     $('#todo_l_btn_' + id).click(function(){
       moveTo('todo_l','#id_' + id);
+      history.back();
     });
 
     $('#doing_btn_' + id).click(function(){
       moveTo('doing','#id_' + id);
+      history.back();
     });
 
     $('#waiting_btn_' + id).click(function(){
       moveTo('waiting','#id_' + id);
+      history.back();
     });
 
     $('#done_btn_' + id).click(function(){
       moveTo('done','#id_' + id);
-    });
-
-    $('#delete_btn_' + id ).click(function(){
-      deleteTodo('#id_' + id );
+      history.back();
     });
   }
 

@@ -13,7 +13,7 @@
   var first_flg = true;
   $('#edit_task_link_<%= t.id %>').click(function(){
     if (first_flg){
-      taskAction.realize(<%= t.id %>, msg_array);
+      taskAction.realize(<%= t.id %>, "<%= t.status_sym %>", msg_array);
       first_flg = false;
     }
   });
