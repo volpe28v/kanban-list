@@ -55,7 +55,7 @@ KanbanList.taskAction = (function(){
   function moveTo(status, move_id){
     var to_status = status;
     var id = move_id.slice(4);
-    var msg = $("#msg_" + id).html();
+    var display_msg = $("#msg_" + id).html();
     var target_status = $("#" + to_status);
     var updated_date = $("#updated_" + id).html();
 
@@ -71,7 +71,7 @@ KanbanList.taskAction = (function(){
       var move_item = 
         '<li id="id_' + id + '">' + 
           '<a href="#setting_' + id + '">' + 
-            '<span class="label label-info" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span> <span id="msg_' + id + '">' + msg + '</span>' + 
+            '<span class="label label-info" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span> <span id="msg_' + id + '">' + display_msg + '</span>' + 
           '</a>' +
         '</li>';
 
@@ -83,7 +83,8 @@ KanbanList.taskAction = (function(){
       },500);
     }
 
-    sendCurrentTodo(id, to_status, msg);
+    var edit_msg = $("#edit_msg_" + id).val();
+    sendCurrentTodo(id, to_status, edit_msg);
   }
 
   function initial_task(id, msg_array){
@@ -111,7 +112,7 @@ KanbanList.taskAction = (function(){
     });
 
     $('#delete_btn_' + id).click(function(){
-      deleteTodo('#msg_' + id);
+      deleteTodo('#id_' + id);
     });
 
     $('#todo_h_btn_' + id).click(function(){
