@@ -66,18 +66,29 @@
   <div data-role="header"><h1>設定</h1></div> 
 
   <div data-role="content"> 
-    <select name="book-list"  data-native-menu="false">
-      <option value="All">AllBooks</option>
-      <option value="サンプル2">サンプル2</option>
-      <option value="サンプル3">サンプル3</option>
+    <label for="select_book" class="select">BookName</label>
+    <select id="select_book" name="select_book">
+      <option value="0">All Books</option>
+      <% @books.each do |b| %>
+        <option value="<%= b.id %>"><%= b.name %></option>
+      <% end %>
     </select>
 
+    <!--
     <a data-role="button" data-mini="true" data-inline="true">AddTask</a>
     <input type="text" name="name" id="basic" data-mini="true" width="10" value="" /> 
     <input type="text" name="name" id="basic" data-mini="true" value="" /> 
     <a data-role="button" data-rel="back">Back</a>
+    -->
   </div>
 </div>
+
+<script>
+  $('#select_book').val('<%= @current_book_id %>');
+  $('#select_book').change(function(){
+    location.href="tasks?book_id=" + $(this).val();
+  });
+</script>
 
 <% @tasks.each do |category, tasks| %>
 <% tasks.each do |t| %>

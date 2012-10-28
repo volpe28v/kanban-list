@@ -4,11 +4,16 @@ class TasksController < ApplicationController
 
   def index
     if request.smart_phone?
+      session[:book_id] = params[:book_id] if params[:book_id] != nil
+
       @user_name = current_user.name
       @counts = get_task_counts
       @book_name = get_book_name
+      @current_book_id = current_book ? current_book.id : 0
       @prefix = get_prefix
       @recent_done_num = 10
+      @books = current_user.books
+
       @tasks = get_tasks( "", @recent_done_num )
     end
   end
