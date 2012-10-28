@@ -120,6 +120,13 @@
     <a id="cancel_move_btn_<%= t.id %>" data-role="button" data-rel="back">Cancel</a>
   </div>
 </div>
+<script>
+(function(){
+  var taskAction = KanbanList.taskAction;
+  var msg_array = <%= to_js_array(t.msg) %>;
+  taskAction.realize(<%= t.id %>, "<%= t.status_sym %>", msg_array);
+}());
+</script>
 <% end %>
 <% end %>
 

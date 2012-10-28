@@ -92,13 +92,7 @@ KanbanList.taskAction = (function(){
     var msg = msg_array.join('\n');
     $('#msg_' + id ).html(display_filter(msg));
 
-    var first_flg = true;
     $('#edit_task_link_' + id).click(function(){
-      if (first_flg){
-        realize(id, status, msg_array);
-        first_flg = false;
-      }
-
       org_msg[id] = $('#edit_msg_' + id).val();
     });
   }
@@ -107,6 +101,7 @@ KanbanList.taskAction = (function(){
     var msg = msg_array.join('\n');
 
     $('#edit_msg_' + id).val(msg);
+    org_msg[id] = $('#edit_msg_' + id).val();
 
     // 状態遷移ボタンに色付けする
     $('.status-btn_' + id).buttonMarkup({ theme: 'd' });
