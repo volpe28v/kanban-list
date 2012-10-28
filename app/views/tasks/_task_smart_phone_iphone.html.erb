@@ -8,15 +8,7 @@
 (function(){
   var taskAction = KanbanList.taskAction;
   var msg_array = <%= to_js_array(t.msg) %>;
-  taskAction.initial_task(<%= t.id %>, msg_array);
-
-  var first_flg = true;
-  $('#edit_task_link_<%= t.id %>').click(function(){
-    if (first_flg){
-      taskAction.realize(<%= t.id %>, "<%= t.status_sym %>", msg_array);
-      first_flg = false;
-    }
-  });
+  taskAction.initial(<%= t.id %>, "<%= t.status_sym %>", msg_array);
 }());
 </script>
 

@@ -87,13 +87,20 @@ KanbanList.taskAction = (function(){
     sendCurrentTodo(id, to_status, edit_msg);
   }
 
-  function initial_task(id, msg_array){
+  function initial(id, status, msg_array){
     var msg = msg_array.join('\n');
-
     $('#msg_' + id ).html(display_filter(msg));
+
+    var first_flg = true;
+    $('#edit_task_link_' + id).click(function(){
+      if (first_flg){
+        realize(id, status, msg_array);
+        first_flg = false;
+      }
+    });
   }
 
-  function realize_task(id, status, msg_array){
+  function realize(id, status, msg_array){
     var msg = msg_array.join('\n');
 
     $('#edit_msg_' + id).val(msg);
@@ -147,8 +154,8 @@ KanbanList.taskAction = (function(){
   }
 
   return {
-    initial_task: initial_task,
-    realize: realize_task,
+    initial: initial,
+    realize: realize,
     display_filter: display_filter
   }
 }());
