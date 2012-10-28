@@ -87,6 +87,7 @@ KanbanList.taskAction = (function(){
     sendCurrentTodo(id, to_status, edit_msg);
   }
 
+  var org_msg = {}; //編集前 msg 退避用ハッシュ
   function initial(id, status, msg_array){
     var msg = msg_array.join('\n');
     $('#msg_' + id ).html(display_filter(msg));
@@ -97,6 +98,8 @@ KanbanList.taskAction = (function(){
         realize(id, status, msg_array);
         first_flg = false;
       }
+
+      org_msg[id] = $('#edit_msg_' + id).val();
     });
   }
 
@@ -117,6 +120,11 @@ KanbanList.taskAction = (function(){
     $('#update_btn_' + id).click(function(){
       updateToDoMsg('#edit_msg_' + id, '#msg_' + id);
     });
+
+    $('#cancel_edit_btn_' + id).click(function(){
+      $('#edit_msg_' + id).val(org_msg[id]);
+    });
+
 
     $('#delete_btn_' + id).click(function(){
       deleteTodo('#id_' + id);
