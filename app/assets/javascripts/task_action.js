@@ -106,6 +106,7 @@ KanbanList.taskAction = (function(){
     sendCurrentTodo(id, status, msg);
   }
  
+  var edit_before_msg = {};
   function realize_task(id, msg_array){
     var msg = msg_array.join('\n');
 
@@ -141,31 +142,32 @@ KanbanList.taskAction = (function(){
       autoLoadingTimer.stop();
       draggableTask.stopByElem($('#id_' + id ).parent());
 
-      var org_msg = $('#ms_' + id + '_edit').val();
+      edit_before_msg[id] = $('#ms_' + id + '_edit').val();
 
       utility.toggleDisplay('edit_link_ms_' + id ,'edit_form_ms_' + id );
       $('#ms_' + id + '_edit').get(0).focus();
 
-      $('#edit_form_' + id ).submit(function(){
-        autoLoadingTimer.start();
-        draggableTask.startByElem($('#id_' + id ).parent());
-        updateToDoMsg('#ms_' + id + '_edit', '#msg_' + id );
-        utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
-        return false;
-      });
+      return false;
+    });
 
-      $('#edit_cancel_' + id ).click(function(){
-        autoLoadingTimer.start();
-        draggableTask.startByElem($('#id_' + id ).parent());
+    $('#edit_form_' + id ).submit(function(){
+      autoLoadingTimer.start();
+      draggableTask.startByElem($('#id_' + id ).parent());
+      updateToDoMsg('#ms_' + id + '_edit', '#msg_' + id );
+      utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
+      return false;
+    });
 
-        $('#ms_' + id + '_edit').val(org_msg);
-        utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
-        return false;
-      });
+    $('#edit_cancel_' + id ).click(function(){
+      autoLoadingTimer.start();
+      draggableTask.startByElem($('#id_' + id ).parent());
 
+      $('#ms_' + id + '_edit').val(edit_before_msg[id]);
+      utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
       return false;
     });
   }
+
 
   return {
     realize: realize_task,
