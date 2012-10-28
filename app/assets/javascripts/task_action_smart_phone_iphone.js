@@ -26,13 +26,13 @@ KanbanList.taskAction = (function(){
     return prefixed_text;
   }
 
-  function updateToDoMsg(from, to) {
+  function updateToDoMsg(from, to, status) {
     var msg = sanitize($(from).val());
     $(from).val(msg);
     $(to).html(display_filter(msg));
 
     var id = to.slice(5);
-    sendCurrentTodo(id, "", msg);
+    sendCurrentTodo(id, status, msg);
   }
  
   function deleteTodo( delete_id ) {
@@ -55,9 +55,9 @@ KanbanList.taskAction = (function(){
   function moveTo(status, move_id){
     var to_status = status;
     var id = move_id.slice(4);
-    var display_msg = $("#msg_" + id).html();
     var target_status = $("#" + to_status);
-    var updated_date = $("#updated_" + id).html();
+
+    updateToDoMsg('#edit_msg_' + id, '#msg_' + id, to_status);
 
     // 状態遷移ボタンに色付けする
     $('.status-btn_' + id).buttonMarkup({ theme: 'd' });
@@ -68,6 +68,8 @@ KanbanList.taskAction = (function(){
         $(move_id).fadeIn("normal");
       },500);
     }else{
+      var display_msg = $("#msg_" + id).html();
+      var updated_date = $("#updated_" + id).html();
       var move_item = 
         '<li id="id_' + id + '">' + 
           '<a href="#setting_' + id + '">' + 
@@ -82,9 +84,6 @@ KanbanList.taskAction = (function(){
         });
       },500);
     }
-
-    var edit_msg = $("#edit_msg_" + id).val();
-    sendCurrentTodo(id, to_status, edit_msg);
   }
 
   var org_msg = {}; //編集前 msg 退避用ハッシュ
@@ -112,7 +111,7 @@ KanbanList.taskAction = (function(){
     });
 
     $('#update_btn_' + id).click(function(){
-      updateToDoMsg('#edit_msg_' + id, '#msg_' + id);
+      updateToDoMsg('#edit_msg_' + id, '#msg_' + id, "");
     });
 
     $('#cancel_edit_btn_' + id).click(function(){
