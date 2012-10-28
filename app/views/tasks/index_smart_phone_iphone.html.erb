@@ -85,11 +85,12 @@
   <div data-role="header"><h1>タスクの編集</h1></div> 
   <div data-role="content"> 
     <form id="edit_form_<%= t.id %>" method="post" style="display:inline">
-      <textarea id="edit_msg_<%= t.id %>"/></textarea>
+      <textarea id="edit_msg_<%= t.id %>" maxlength="200"/></textarea>
       <div data-role="controlgroup" data-type="horizontal" data-mini="true">
         <a id="update_btn_<%= t.id %>" data-role="button" data-inline="true" data-rel="back">Update</a>
         <a id="cancel_edit_btn_<%= t.id %>" data-role="button" data-inline="true" data-rel="back">Cancel</a>
         <a id="delete_btn_<%= t.id %>" data-role="button" data-inline="true" data-rel="back">Delete</a>
+      <span class="task-chars-left"></span>
       </div>
     </form>
   </div>
@@ -116,7 +117,7 @@
         <button id="todo_l_btn_<%= t.id %>" class="status-btn_<%= t.id %>" data-corners="false" data-rel="back">Low</button>
       </div>
     </div>
-    <a data-role="button" data-rel="back">Cancel</a>
+    <a id="cancel_move_btn_<%= t.id %>" data-role="button" data-rel="back">Cancel</a>
   </div>
 </div>
 <% end %>

@@ -33,3 +33,11 @@
   overflow: visible;
   white-space: normal;
 }
+
+.task-chars-left {
+  float: right;
+  margin-right: 10px;
+  font-weight: bold;
+  color: #777;
+}
+

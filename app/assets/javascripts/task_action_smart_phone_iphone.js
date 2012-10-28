@@ -112,10 +112,9 @@ KanbanList.taskAction = (function(){
     $('.status-btn_' + id).buttonMarkup({ theme: 'd' });
     $('#' + status + '_btn_' + id).buttonMarkup({ theme: 'e' });
 
-//TODO: 後で有効にする
-//    $('#edit_msg_' + id).maxlength({
-//      'feedback' : '.task-chars-left'
-//    });
+    $('#edit_msg_' + id).maxlength({
+      'feedback' : '.task-chars-left'
+    });
 
     $('#update_btn_' + id).click(function(){
       updateToDoMsg('#edit_msg_' + id, '#msg_' + id);
@@ -124,7 +123,6 @@ KanbanList.taskAction = (function(){
     $('#cancel_edit_btn_' + id).click(function(){
       $('#edit_msg_' + id).val(org_msg[id]);
     });
-
 
     $('#delete_btn_' + id).click(function(){
       deleteTodo('#id_' + id);
@@ -158,6 +156,10 @@ KanbanList.taskAction = (function(){
     $('#done_btn_' + id).click(function(){
       moveTo('done','#id_' + id);
       history.back();
+    });
+
+    $('#cancel_move_btn_' + id).click(function(){
+      $('#edit_msg_' + id).val(org_msg[id]);
     });
   }
 
