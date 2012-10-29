@@ -60,7 +60,7 @@ KanbanList.taskAction = (function(){
     updateToDoMsg('#edit_msg_' + id, '#msg_' + id, to_status);
 
     // 状態遷移ボタンに色付けする
-    $('.status-btn_' + id).buttonMarkup({ theme: 'd' });
+    $('.status-btn_' + id).buttonMarkup({ theme: 'b' });
     $('#' + status + '_btn_' + id).buttonMarkup({ theme: 'e' });
     if (target_status.hasClass("ui-li")){
       setTimeout(function(){
@@ -103,7 +103,7 @@ KanbanList.taskAction = (function(){
     org_msg[id] = $('#edit_msg_' + id).val();
 
     // 状態遷移ボタンに色付けする
-    $('.status-btn_' + id).buttonMarkup({ theme: 'd' });
+    $('.status-btn_' + id).buttonMarkup({ theme: 'b' });
     $('#' + status + '_btn_' + id).buttonMarkup({ theme: 'e' });
 
     $('#edit_msg_' + id).maxlength({
