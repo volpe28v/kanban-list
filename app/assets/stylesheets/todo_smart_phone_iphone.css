@@ -14,12 +14,10 @@
 .label-important{background-color:#BD2C00;}
 
 .book-name{
-  color: #ddd;
+  color: yellow;
   font-size: 11px;
   font-style: normal;
   font-weight: normal;
-
-  text-shadow: 0px 1px 1px white;
 }
 
 /* 文字列を省略しないようにする */

@@ -1,6 +1,9 @@
 <li id="id_<%= t.id %>">
   <a href="#setting_<%= t.id %>" id="edit_task_link_<%= t.id %>" data-transition="slidefade">
-    <span class="label label-info" id="updated_<%= t.id %>" style="display:inline;"><%= t.updated_at.strftime("%m/%d") %></span> <span id="msg_<%= t.id %>"><%= raw t.msg %></span>
+    <table><tr>
+        <td><span class="label label-info" id="updated_<%= t.id %>" style="display:inline;"><%= t.updated_at.strftime("%m/%d") %></span></td>
+        <td><span id="msg_<%= t.id %>"><%= raw t.msg %></span></td>
+    </tr></table>
   </a>
 </li>
 
