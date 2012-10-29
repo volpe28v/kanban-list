@@ -67,7 +67,7 @@
 
   <div data-role="content"> 
     <label for="select_book" class="select">Select Book</label>
-    <select id="select_book" name="select_book">
+    <select id="select_book" name="select_book" data-mini="true">
       <option value="0">All Books</option>
       <% @books.each do |b| %>
         <option value="<%= b.id %>"><%= b.name %></option>

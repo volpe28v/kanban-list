@@ -1,30 +1,18 @@
-<div data-role="page" id="sign-in">
+<div data-role="page" id="sign-in" data-theme="a">
   <div data-role="header"><h1>ログイン</h1></div> 
 
   <div data-role="content"> 
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal"}) do |f| %>
       <fieldset>
         <div class="control-group">
-          <%= f.label :email, :class => "control-label" %>
           <div class="controls">
-            <%= f.email_field :email %>
+            <%= f.email_field :email, :placeholder => "Email" %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :password, :class => "control-label" %>
           <div class="controls">
-            <%= f.password_field :password %>
+            <%= f.password_field :password, :placeholder => "Password" %>
           </div>
-        </div>
-
-        <div class="control-group">
-          <% if devise_mapping.rememberable? -%>
-            <div class="controls">
-              <label class="checkbox">
-                <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-              </label>
-            </div>
-          <% end -%>
         </div>
 
         <div class="control-group">
