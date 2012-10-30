@@ -75,14 +75,14 @@
     </select>
   </div>
 
-  <div data-role="content"> 
+  <div data-role="content">
     <label for="select_book" class="select">Add Task</label>
     <form method="post" id="add_todo_form" class="form-inline">
       <input type="text" id="prefix" name="prefix" data-mini="true" width="10" value="" placeholder="Book Name"/>
       <input type="text" id="add_todo_form_msg" data-mini="true" width="10" value="" placeholder="Task Name" />
       <a data-role="button" id="add_todo_button" data-mini="true" data-inline="true" />Add</a>
     </form>
- 
+
     <button id="return_book">Return</button>
   </div>
 </div>
@@ -117,8 +117,8 @@
     </form>
   </div>
 
-  <div data-role="header"><h1>状態を変更</h1></div> 
-  <div data-role="content"> 
+  <div data-role="header"><h1>状態を変更</h1></div>
+  <div data-role="content">
     <div class="ui-grid-b">
       <div class="ui-block-a">
         <button id="todo_h_btn_<%= t.id %>" class="status-btn_<%= t.id %>" data-corners="false" data-rel="back">High</button>
