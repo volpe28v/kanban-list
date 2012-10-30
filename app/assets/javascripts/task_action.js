@@ -27,6 +27,7 @@ KanbanList.taskAction = (function(){
         var matched_prefix = arguments[1];
         return '<span class="book-name">[' + matched_prefix + ']</span> ';
       });
+    prefixed_text = prefixed_text.replace(/\n/g,'<br>');
     return prefixed_text;
   }
 
