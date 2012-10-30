@@ -32,7 +32,9 @@
   white-space: normal;
 }
 
-.task-chars-left {
+.task-chars-left,
+.task-chars-left-add-form
+{
   float: right;
   margin-right: 10px;
   font-weight: bold;

@@ -79,8 +79,8 @@
     <label for="select_book" class="select">Add Task</label>
     <form method="post" id="add_todo_form" class="form-inline">
       <input type="text" id="prefix" name="prefix" data-mini="true" width="10" value="" placeholder="Book Name"/>
-      <input type="text" id="add_todo_form_msg" data-mini="true" width="10" value="" placeholder="Task Name" />
-      <a data-role="button" id="add_todo_button" data-mini="true" data-inline="true" />Add</a>
+      <textarea id="add_todo_form_msg" data-mini="true" maxlength="200" placeholder="Task Name"></textarea>
+      <a data-role="button" id="add_todo_button" data-mini="true" data-inline="true" />Add</a><span class="task-chars-left-add-form"></span>
     </form>
 
     <button id="return_book">Return</button>

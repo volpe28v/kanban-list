@@ -36,15 +36,11 @@ KanbanList.addForm = (function(){
       $('#add_todo_form_msg').val('');
 
       is_added_task = true;
-
-//    $("#add_todo_form_msg").maxlength({
-//      'feedback' : '.task-chars-left-add-form'
-//    });
     }
  
-//  $("#add_todo_form_msg").maxlength({
-//    'feedback' : '.task-chars-left-add-form'
-//  });
+    $("#add_todo_form_msg").maxlength({
+      'feedback' : '.task-chars-left-add-form'
+    });
 
     $("#add_todo_form").submit(function(){
       addTodoAction();
