@@ -78,6 +78,7 @@ GEM
     mime-types (1.17.2)
     multi_json (1.1.0)
     orm_adapter (0.0.6)
+    pg (0.14.1)
     polyglot (0.3.3)
     rack (1.3.6)
     rack-cache (1.0.3)
@@ -163,6 +164,7 @@ DEPENDENCIES
   jpmobile
   jpmobile-terminfo
   jquery-rails
+  pg
   rails (= 3.1.0)
   rails_autolink
   rake
