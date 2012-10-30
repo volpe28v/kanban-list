@@ -1,5 +1,6 @@
 //= require kanbanlist
 //= require task_action_smart_phone_iphone
+//= require add_todo_form_smart_phone_iphone
 
 /*
  * todo.js

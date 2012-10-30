@@ -87,18 +87,18 @@
   </div>
 </div>
 
-<%= javascript_include_tag 'add_todo_form_smart_phone_iphone.js' %>
-
 <script>
   $('#select_book').val('<%= @current_book_id %>');
   $('#select_book').change(function(){
     location.href="tasks?book_id=" + $(this).val();
   });
 
-  $('#prefix').val('<%= @current_book_id != 0 ? @book_name : "" %>');
-  $('#return_book').click(function(){
-    location.href="tasks?book_id=<%= @current_book_id %>";
-  });
+  var current_book = {
+    id : <%= @current_book_id %>,
+    name : '<%= @current_book_id != 0 ? @book_name : "" %>'
+  }
+  var addForm = KanbanList.addForm;
+  addForm.initial(current_book);
 </script>
 
 <% @tasks.each do |category, tasks| %>
