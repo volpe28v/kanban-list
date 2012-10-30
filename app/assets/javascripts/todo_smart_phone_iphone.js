@@ -22,7 +22,7 @@ $(document).ready(function(){
     initSendMail();
 
     // この数値以上、横スワイプしたときにイベントを発生
-    $.event.special.swipe.horizontalDistanceThreshold = 40;
+    $.event.special.swipe.horizontalDistanceThreshold = 60;
 
     // フリック・スワイプ画面遷移
     $("#todo_nav").bind("swipeleft", function(){
