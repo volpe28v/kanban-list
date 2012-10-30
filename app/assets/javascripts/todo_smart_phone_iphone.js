@@ -21,7 +21,25 @@ $(document).ready(function(){
     initNavBooks();
     initSendMail();
 
-    $('#add_todo_form_msg').focus();
+    // この数値以上、横スワイプしたときにイベントを発生
+    $.event.special.swipe.horizontalDistanceThreshold = 40;
+
+    // フリック・スワイプ画面遷移
+    $("#todo_nav").bind("swipeleft", function(){
+        $.mobile.changePage('#doing_nav' , { transition: "slide"} );
+    });
+
+    $("#doing_nav").bind("swiperight", function(){
+      $.mobile.changePage('#todo_nav', { transition: 'slide', reverse: true});
+    });
+
+    $("#doing_nav").bind("swipeleft", function(){
+      $.mobile.changePage('#done_nav', { transition: 'slide', reverse: false});
+    });
+
+    $("#done_nav").bind("swiperight", function(){
+      $.mobile.changePage('#doing_nav', { transition: 'slide', reverse: true});
+    });
 
     return;
 });
