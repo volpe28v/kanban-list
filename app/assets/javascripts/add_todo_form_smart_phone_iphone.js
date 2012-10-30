@@ -35,7 +35,7 @@ KanbanList.addForm = (function(){
       addTodoWithPrefix($('#prefix').val() , sanitize($('#add_todo_form_msg').val()));
       $('#add_todo_form_msg').val('');
 
-      is_added_task = ture;
+      is_added_task = true;
 
 //    $("#add_todo_form_msg").maxlength({
 //      'feedback' : '.task-chars-left-add-form'
@@ -68,4 +68,5 @@ KanbanList.addForm = (function(){
   return {
     initial: initial
   }
-});
+}());
+
