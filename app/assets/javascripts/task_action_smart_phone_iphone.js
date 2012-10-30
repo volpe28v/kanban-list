@@ -74,7 +74,7 @@ KanbanList.taskAction = (function(){
         '<li id="id_' + id + '">' + 
           '<a href="#setting_' + id + '">' + 
             '<table><tr>' + 
-              '<td><span class="label label-info" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span></td>' + 
+              '<td><span class="label label-important" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span></td>' + 
               '<td><span id="msg_' + id + '">' + display_msg + '</span></td>' + 
             '</tr></table>' + 
           '</a>' +
