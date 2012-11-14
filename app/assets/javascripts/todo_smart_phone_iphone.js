@@ -11,9 +11,9 @@ var COOKIE_MAIL_ADDR = 'kanbanlist_mail_addr';
 
 // for jQuery mobile initialize
 $(document).bind("mobileinit", function(){
-  $.extend( $.mobile, {
-    ajaxEnabled: false
-  });
+//  $.extend( $.mobile, {
+//    ajaxEnabled: false
+//  });
 });
 
 $(document).ready(function(){ 
