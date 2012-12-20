@@ -64,7 +64,7 @@ class Task < ActiveRecord::Base
   end
 
   def self.from_done_month
-    last_task = self.by_status(:done).last
+    last_task = self.done.last
     if last_task
       from_time = last_task.updated_at
       Time.new(from_time.year, from_time.mon)
@@ -74,7 +74,7 @@ class Task < ActiveRecord::Base
   end
 
   def self.to_done_month
-    first_task = self.by_status(:done).first
+    first_task = self.done.first
     if first_task
       to_time = first_task.updated_at
       Time.new(to_time.year, to_time.mon)
