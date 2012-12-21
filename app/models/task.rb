@@ -26,16 +26,17 @@ class Task < ActiveRecord::Base
   }
 
   scope :by_status_and_filter, lambda {|status,filter|
-    where("status = ? and msg LIKE ?", @@status_table[status] , "%#{URI.decode(filter)}%").order('updated_at DESC')
+    where("status = ? and msg LIKE ?", @@status_table[status] , "%#{URI.decode(filter)}%").order('order_no ASC, updated_at DESC')
   }
 
   scope :filtered, lambda {|name, filter|
-    where("name = ? and msg LIKE ?", name ,"%#{URI.encode(filter)}%").order('updated_at DESC')
+    where("name = ? and msg LIKE ?", name ,"%#{URI.encode(filter)}%").order('order_no ASC, updated_at DESC')
   }
 
   scope :done, where(:status => @@status_table[:done]).order('updated_at DESC')
-
-  scope :doing, where(:status => @@status_table[:doing]).order('updated_at DESC')
+  scope :done_and_filter, lambda {|filter|
+    where("status = ? and msg LIKE ?", @@status_table[:done] , "%#{URI.decode(filter)}%").order('updated_at DESC')
+  }
 
   scope :today_done, where("status = ? and updated_at LIKE ?", @@status_table[:done], "#{Time.now.strftime("%Y-%m-%d")}%").order('updated_at DESC' )
 

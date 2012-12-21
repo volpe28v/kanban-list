@@ -78,7 +78,7 @@ class ApplicationController < ActionController::Base
       :todo_low_tasks  => target_tasks.by_status(:todo_l),
       :doing_tasks     => target_tasks.by_status(:doing),
       :waiting_tasks   => target_tasks.by_status(:waiting),
-      :done_tasks      => target_tasks.by_status(:done).limit(done_num),
+      :done_tasks      => target_tasks.done.limit(done_num),
     }
   end
 
@@ -89,7 +89,7 @@ class ApplicationController < ActionController::Base
       :todo_low_tasks  => target_tasks.by_status_and_filter(:todo_l,  filter_word),
       :doing_tasks     => target_tasks.by_status_and_filter(:doing,   filter_word),
       :waiting_tasks   => target_tasks.by_status_and_filter(:waiting, filter_word),
-      :done_tasks      => target_tasks.by_status_and_filter(:done,    filter_word).limit(done_num),
+      :done_tasks      => target_tasks.done_and_filter(filter_word).limit(done_num),
     }
   end
 
