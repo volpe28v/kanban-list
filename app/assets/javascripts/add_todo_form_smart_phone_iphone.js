@@ -20,6 +20,7 @@ KanbanList.addForm = (function(){
         cache: false,
         url: "tasks",
         data: "msg=" + escapeInvalidChar(msg),
+        dataType: "jsonp"
      });
     }
 

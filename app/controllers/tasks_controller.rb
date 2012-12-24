@@ -27,7 +27,11 @@ class TasksController < ApplicationController
     task.save
 
     move_id = is_moved_from_book?(task) ? task.id : 0
-    task_html = render_to_string :partial => 'task', :locals => {:task => task, :display => "none" }
+    if request.smart_phone?
+      task_html = render_to_string :partial => 'task', :locals => {:t => task }
+    else
+      task_html = render_to_string :partial => 'task', :locals => {:task => task, :display => "none" }
+    end
 
     render :json => { id: task.id,
                       li_html: task_html,

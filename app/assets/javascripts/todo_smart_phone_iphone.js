@@ -326,26 +326,10 @@ function addTodoAjax(msg) {
  });
 }
 
-function addTodoResponse(id, li_html, counts_json){
-  var id_str = '#id_' + id;
-
-  $('#todo_m').prepend(li_html);
-
-  markTodayEditById( id );
-  updateCountsJson(counts_json)
-
-  //IE の場合はタッチイベントを設定しない
-  var userAgent = window.navigator.userAgent.toLowerCase();
-  if (userAgent.indexOf("msie") <= -1) {
-    var label_elemens = $(id_str).get(0).getElementsByClassName("taskLabel");
-
-    var i = 0;
-    for(i=0;i < label_elemens.length;i++){
-      addMouseEventListener(label_elemens[i]);
-    }
-  }
-
-  $(id_str).fadeIn();
+function addTodoResponse(add_task_info){
+  $("#todo_m").after(add_task_info.li_html);
+  $('#todo_ul').listview('refresh');
+  markTodayEditById( add_task_info.id );
 }
 
 function changeBgImg(img_name) {

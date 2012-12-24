@@ -2,7 +2,6 @@
   <%= render "header_smart_phone_iphone", {:state => 'todo'} %>
 
   <div id="add_task">
-    <button>hoge</button>
     <div data-role="content">
       <form method="post" id="add_todo_form" class="form-inline">
         <input type="text" id="prefix" name="prefix" data-mini="true" width="10" value="" placeholder="Book Name"/>
@@ -26,7 +25,7 @@
   </script>
 
   <div data-role="content">
-    <ul data-role="listview">
+    <ul data-role="listview" id="todo_ul">
       <li id="todo_h" data-role="list-divider" style="padding: 0.1em 15px;">High</li>
       <% @tasks[:todo_high_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:t => t} %>
