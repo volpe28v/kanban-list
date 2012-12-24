@@ -103,7 +103,7 @@
 
 <% @tasks.each do |category, tasks| %>
 <% tasks.each do |t| %>
-<div data-role="page" id="setting_<%= t.id %>" data-theme="a">
+<div data-role="page" id="setting_<%= t.id %>" data-theme="a" class="swipe-back">
   <div data-role="header"><h1>タスクの編集</h1></div> 
   <div data-role="content"> 
     <form id="edit_form_<%= t.id %>" method="post" style="display:inline">

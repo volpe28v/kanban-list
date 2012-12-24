@@ -41,6 +41,11 @@ $(document).ready(function(){
       $.mobile.changePage('#doing_nav', { transition: 'slide', reverse: true});
     });
 
+    $(".swipe-back").bind("swiperight", function(){
+      history.back();
+    });
+
+
     return;
 });
 
