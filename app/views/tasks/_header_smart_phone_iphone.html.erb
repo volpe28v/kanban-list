@@ -1,5 +1,6 @@
   <div data-role="header" data-position="fixed">
-    <a href="#option" data-icon="gear" class="ui-btn-left">Option</a>
+    <a data-role="actionsheet" data-sheet="add_task" data-icon="plus" class="ui-btn-left">Add</a>
+
     <h3>かんばんりすと</h3>
     <%= link_to 'Logout', [ :destroy, :user_session ], :class => 'ui-btn-right', 'rel' => 'external' %>
 
@@ -10,14 +11,22 @@
           <li><a href="#todo_nav" class="ui-btn-active ui-state-persist">Todo</a></li>
           <li><a href="#doing_nav">Doing</a></li>
           <li><a href="#done_nav">Done</a></li>
+          <li><a href="#option">Option</a></li>
         <% when 'doing' %>
           <li><a href="#todo_nav">Todo</a></li>
           <li><a href="#doing_nav" class="ui-btn-active ui-state-persist">Doing</a></li>
           <li><a href="#done_nav">Done</a></li>
+          <li><a href="#option">Option</a></li>
         <% when 'done' %>
           <li><a href="#todo_nav">Todo</a></li>
           <li><a href="#doing_nav">Doing</a></li>
           <li><a href="#done_nav" class="ui-btn-active ui-state-persist">Done</a></li>
+          <li><a href="#option">Option</a></li>
+        <% when 'option' %>
+          <li><a href="#todo_nav">Todo</a></li>
+          <li><a href="#doing_nav">Doing</a></li>
+          <li><a href="#done_nav">Done</a></li>
+          <li><a href="#option" class="ui-btn-active ui-state-persist">Option</a></li>
         <% end %>
       </ul>
     </div>

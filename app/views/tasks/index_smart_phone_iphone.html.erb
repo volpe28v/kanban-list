@@ -1,6 +1,29 @@
 <div data-role="page" id="todo_nav" data-theme="a">
   <%= render "header_smart_phone_iphone", {:state => 'todo'} %>
 
+<div id="add_task">
+  <div data-role="content">
+    <form method="post" id="add_todo_form" class="form-inline">
+      <input type="text" id="prefix" name="prefix" data-mini="true" width="10" value="" placeholder="Book Name"/>
+      <textarea id="add_todo_form_msg" data-mini="true" maxlength="200" placeholder="Task Name"></textarea>
+    </form>
+
+    <div class="ui-grid-a">
+      <div class="ui-block-a"><a id="add_todo_button" href="#" data-theme="b" data-role="button">Add</a></div>
+      <div class="ui-block-b"><a href="#" data-rel="close" data-role="button">Cancel</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var current_book = {
+    id : <%= @current_book_id %>,
+    name : '<%= @current_book_id != 0 ? @book_name : "" %>'
+  }
+  var addForm = KanbanList.addForm;
+  addForm.initial(current_book);
+</script>
+
   <div data-role="content">
     <ul data-role="listview">
       <li id="todo_h" data-role="list-divider" style="padding: 0.1em 15px;">High</li>
@@ -59,8 +82,8 @@
   <%= render "footer_smart_phone_iphone" %>
 </div>
 
-<div data-role="page" id="option" data-theme="a">
-  <div data-role="header"><h1>Option</h1></div> 
+<div id="option" data-role="page" data-theme="a">
+  <%= render "header_smart_phone_iphone", {:state => 'option'} %>
 
   <div data-role="content"> 
     <label for="select_book" class="select">Select Book</label>
@@ -72,16 +95,7 @@
     </select>
   </div>
 
-  <div data-role="content">
-    <label for="select_book" class="select">Add Task</label>
-    <form method="post" id="add_todo_form" class="form-inline">
-      <input type="text" id="prefix" name="prefix" data-mini="true" width="10" value="" placeholder="Book Name"/>
-      <textarea id="add_todo_form_msg" data-mini="true" maxlength="200" placeholder="Task Name"></textarea>
-      <a data-role="button" id="add_todo_button" data-mini="true" data-inline="true" />Add</a><span class="task-chars-left-add-form"></span>
-    </form>
-
-    <button id="return_book">Return</button>
-  </div>
+  <%= render "footer_smart_phone_iphone" %>
 </div>
 
 <script>
@@ -89,14 +103,8 @@
   $('#select_book').change(function(){
     location.href="tasks?book_id=" + $(this).val();
   });
-
-  var current_book = {
-    id : <%= @current_book_id %>,
-    name : '<%= @current_book_id != 0 ? @book_name : "" %>'
-  }
-  var addForm = KanbanList.addForm;
-  addForm.initial(current_book);
 </script>
+
 
 <% @tasks.each do |category, tasks| %>
 <% tasks.each do |t| %>

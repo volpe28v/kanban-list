@@ -1,0 +1,204 @@
+.ui-actionsheet-commandbtn.destructive {
+	background: #843631 !important; /* Old browsers */
+	background: -moz-linear-gradient(top,  #843631 0%, #964743 50%, #84312b 51%, #870a00 100%) !important; /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#843631), color-stop(50%,#964743), color-stop(51%,#84312b), color-stop(100%,#870a00)) !important; /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #843631 0%,#964743 50%,#84312b 51%,#870a00 100%) !important; /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #843631 0%,#964743 50%,#84312b 51%,#870a00 100%) !important; /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #843631 0%,#964743 50%,#84312b 51%,#870a00 100%) !important; /* IE10+ */
+	background: linear-gradient(to bottom,  #843631 0%,#964743 50%,#84312b 51%,#870a00 100%) !important; /* W3C */
+	color: white;
+	text-shadow: none;
+}
+.ui-header a.actionsheet-toggle {
+	position: absolute;
+	top: 0.3em;
+	right: 10px;
+	background: transparent;
+	background-image: url(images/icons-36-white.png);
+	background-position: -577px -3px;
+	width: 31px;
+	height: 30px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.ui-header a.actionsheet-toggle .ui-btn-corner-all {
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+}
+.ui-actionsheet-wallpaper { 
+	display: none;
+	background-color: black; 
+	opacity: .3;
+	position: absolute;
+	top:0;
+	left: 0;
+	min-height: 100%; 
+	height: auto;
+	width: 100%;
+}
+.ui-actionsheet-content {
+	background: -moz-linear-gradient(top,  rgba(180,193,196,0.61) 0%, rgba(120,130,127,0.61) 5%, rgba(24,34,24,0.61) 8%, rgba(29,23,26,0.61) 97%, rgba(29,23,26,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(180,193,196,0.61)), color-stop(5%,rgba(120,130,127,0.61)), color-stop(8%,rgba(24,34,24,0.61)), color-stop(97%,rgba(29,23,26,0.61)), color-stop(100%,rgba(29,23,26,1)));
+	background: -webkit-linear-gradient(top,  rgba(180,193,196,0.61) 0%,rgba(120,130,127,0.61) 5%,rgba(24,34,24,0.61) 8%,rgba(29,23,26,0.61) 97%,rgba(29,23,26,1) 100%);
+	background: -o-linear-gradient(top,  rgba(180,193,196,0.61) 0%,rgba(120,130,127,0.61) 5%,rgba(24,34,24,0.61) 8%,rgba(29,23,26,0.61) 97%,rgba(29,23,26,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(180,193,196,0.61) 0%,rgba(120,130,127,0.61) 5%,rgba(24,34,24,0.61) 8%,rgba(29,23,26,0.61) 97%,rgba(29,23,26,1) 100%);
+	background: linear-gradient(to bottom,  rgba(180,193,196,0.61) 0%,rgba(120,130,127,0.61) 5%,rgba(24,34,24,0.61) 8%,rgba(29,23,26,0.61) 97%,rgba(29,23,26,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9cb4c1c4', endColorstr='#1d171a',GradientType=0 );
+	border-radius: 8px;
+	border: 1px solid black;
+	display: none;
+	height: auto;
+	position: absolute;
+	width: 230px;
+	z-index: 20;
+	box-shadow: 0px 0px 12px rgba(0,0,0,.6);
+	padding: 6px;
+}
+.ui-actionsheet-closebtn {
+	color: white;
+	text-shadow: none;
+	background: #5E6369; /* old browsers */
+	background: -moz-linear-gradient(top, #5E6369 0%, #52575D 1%, #40454E 46%, #141D26 50%, #252F38 98%, #303339 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5E6369), color-stop(1%,#52575D), color-stop(46%,#40454E), color-stop(50%,#141D26), color-stop(98%,#252F38), color-stop(100%,#303339)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5E6369', endColorstr='#303339',GradientType=0 ); /* ie */
+	background: -o-linear-gradient(top, #5E6369 0%,#52575D 1%,#40454E 46%,#141D26 50%,#252F38 98%,#303339 100%); /* opera */
+}
+@-webkit-keyframes actionsheet-open-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes actionsheet-close-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes actionsheet-open-slideup {
+  0% {
+    -webkit-transform: translateY(1100px);
+  }
+  70% {
+    -webkit-transform: translateY(-20px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+@-webkit-keyframes actionsheet-close-slideup {
+  0% {
+    -webkit-transform: translateY(0);
+  }
+  30% {
+  	-webkit-transform: translateY(-30px);
+  }
+  100% {
+  	opacity: 0;
+    -webkit-transform: translateY(300px);
+  }
+}
+@-moz-keyframes actionsheet-open-slideup
+{
+  0% {
+    -moz-transform: translateY(1100px);
+  }
+  70% {
+    -moz-transform: translateY(-20px);
+  }
+  100% {
+    -moz-transform: translateY(0);
+  }
+}
+@-moz-keyframes actionsheet-close-slideup {
+  0% {
+    -moz-transform: translateY(0);
+  }
+  30% {
+  	-moz-transform: translateY(-30px);
+  }
+  100% {
+  	opacity: 0;
+    -moz-transform: translateY(300px);
+  }
+}
+.ui-actionsheet-animateIn {
+	-webkit-animation-name: actionsheet-open-slideup;
+	-webkit-animation-delay: 0;
+	-webkit-animation-duration: 500ms;
+	-moz-animation-name: actionsheet-open-slideup;
+	-moz-animation-delay: 0;
+	-moz-animation-duration: 500ms;
+}
+.ui-actionsheet-animateOut {
+	-webkit-animation-name: actionsheet-close-slideup;
+	-webkit-animation-delay: 0;
+	-webkit-animation-duration: 500ms;
+	-moz-animation-name: actionsheet-close-slideup;
+	-moz-animation-delay: 0;
+	-moz-animation-duration: 500ms;
+}
+/* CMD Button */
+.ui-actionsheet-commandbtn.ui-btn-up-a {
+	border: 1px solid 		#222;
+	background: 			#333333;
+	font-weight: bold;
+	color: 					#fff;
+	text-shadow: 0 -1px 1px #000;
+	background-image: -moz-linear-gradient(top, 
+							#555555, 
+							#333333);
+	background-image: -webkit-gradient(linear,left top,left bottom,
+		color-stop(0, 		#555555),
+		color-stop(1, 		#333333));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#555555', EndColorStr='#333333')";
+}
+.ui-btn-up-a a.ui-link-inherit.ui-actionsheet-commandbtn {
+	color: 					#fff;
+}
+.ui-actionsheet-commandbtn.ui-btn-hover-a {
+	border: 1px solid 		#000;
+	background: 			#444444;
+	font-weight: bold;
+	color: 					#fff;
+	text-shadow: 0 -1px 1px #000;
+	background-image: -moz-linear-gradient(top, 
+							#666666, 
+							#444444);
+	background-image: -webkit-gradient(linear,left top,left bottom,
+		color-stop(0, 		#666666),
+		color-stop(1, 		#444444));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#666666', EndColorStr='#444444')";
+}
+.ui-btn-hover-a a.ui-link-inherit.ui-actionsheet-commandbtn {
+	color: 					#fff;
+}
+.ui-btn-down-a.ui-actionsheet-commandbtn {
+	border: 1px solid 		#000;
+	background: 			#3d3d3d;
+	font-weight: bold;
+	color: 					#fff;
+	text-shadow: 0 -1px 1px #000;
+	background-image: -moz-linear-gradient(top, 
+							#333333, 
+							#5a5a5a);
+	background-image: -webkit-gradient(linear,left top,left bottom,
+		color-stop(0, 		#333333),
+		color-stop(1, 		#5a5a5a));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#333333', EndColorStr='#5a5a5a')";
+}
+.ui-btn-down-a a.ui-link-inherit.ui-actionsheet-commandbtn {
+	color: 					#fff;
+}
+.ui-btn-up-a.ui-actionsheet-commandbtn,
+.ui-btn-hover-a.ui-actionsheet-commandbtn,
+.ui-btn-down-a.ui-actionsheet-commandbtn {
+	font-family: Helvetica, Arial, sans-serif;
+	text-decoration: none;
+}
+/* /CMD Button */
