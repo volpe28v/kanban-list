@@ -47,7 +47,7 @@ KanbanList.addForm = (function(){
       return false;
     });
 
-    $("#add_todo_button").click(function(){
+    $('#todo_nav').delegate('#add_todo_button', 'click',function(){
       addTodoAction();
     });
 

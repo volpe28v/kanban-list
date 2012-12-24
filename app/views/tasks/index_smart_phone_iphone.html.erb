@@ -1,28 +1,29 @@
 <div data-role="page" id="todo_nav" data-theme="a">
   <%= render "header_smart_phone_iphone", {:state => 'todo'} %>
 
-<div id="add_task">
-  <div data-role="content">
-    <form method="post" id="add_todo_form" class="form-inline">
-      <input type="text" id="prefix" name="prefix" data-mini="true" width="10" value="" placeholder="Book Name"/>
-      <textarea id="add_todo_form_msg" data-mini="true" maxlength="200" placeholder="Task Name"></textarea>
-    </form>
+  <div id="add_task">
+    <button>hoge</button>
+    <div data-role="content">
+      <form method="post" id="add_todo_form" class="form-inline">
+        <input type="text" id="prefix" name="prefix" data-mini="true" width="10" value="" placeholder="Book Name"/>
+        <textarea id="add_todo_form_msg" data-mini="true" maxlength="200" placeholder="Task Name"></textarea>
+      </form>
 
-    <div class="ui-grid-a">
-      <div class="ui-block-a"><a id="add_todo_button" href="#" data-theme="b" data-role="button">Add</a></div>
-      <div class="ui-block-b"><a href="#" data-rel="close" data-role="button">Cancel</a></div>
+      <div class="ui-grid-a">
+        <div class="ui-block-a"><a id="add_todo_button" href="#" data-theme="b" data-role="button">Add</a></div>
+        <div class="ui-block-b"><a href="#" data-rel="close" data-role="button">Cancel</a></div>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  var current_book = {
-    id : <%= @current_book_id %>,
-    name : '<%= @current_book_id != 0 ? @book_name : "" %>'
-  }
-  var addForm = KanbanList.addForm;
-  addForm.initial(current_book);
-</script>
+  <script>
+    var current_book = {
+      id : <%= @current_book_id %>,
+      name : '<%= @current_book_id != 0 ? @book_name : "" %>'
+    }
+    var addForm = KanbanList.addForm;
+    addForm.initial(current_book);
+  </script>
 
   <div data-role="content">
     <ul data-role="listview">
