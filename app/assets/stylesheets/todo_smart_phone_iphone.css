@@ -20,6 +20,12 @@
   font-weight: normal;
 }
 
+.msg-body{
+  font-size: 13px;
+  font-style: normal;
+}
+
+
 /* 文字列を省略しないようにする */
 .ui-header .ui-title, /* header */
 .ui-footer .ui-title, /* footer */

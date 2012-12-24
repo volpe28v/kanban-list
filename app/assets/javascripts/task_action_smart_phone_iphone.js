@@ -24,7 +24,7 @@ KanbanList.taskAction = (function(){
         return '<span class="book-name">[' + matched_prefix + ']</span> ';
       });
     prefixed_text = prefixed_text.replace(/\n/g,'<br>');
-    return prefixed_text;
+    return '<span class="msg-body">' + prefixed_text + '</span>';
   }
 
   function updateToDoMsg(from, to, status) {

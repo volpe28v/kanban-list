@@ -27,15 +27,12 @@
 
   <div data-role="content">
     <ul data-role="listview">
-      <li id="doing" data-role="list-divider">Doing</li>
+      <li id="doing" data-role="list-divider" style="padding: 0.1em 15px;">Doing</li>
       <% @tasks[:doing_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:t => t} %>
       <% end %>
-      <li data-role="list-divider" style="padding: 4px;"></li>
-    </ul>
 
-    <ul data-role="listview">
-      <li id="waiting" data-role="list-divider">Waiting</li>
+      <li id="waiting" data-role="list-divider" style="padding: 0.1em 15px;">Waiting</li>
       <% @tasks[:waiting_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:t => t} %>
       <% end %>
