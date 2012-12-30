@@ -28,7 +28,7 @@ KanbanList.taskAction = (function(){
   }
 
   function updateToDoMsg(id, status) {
-    var msg = sanitize($('#edit_msg')).val());
+    var msg = sanitize($('#edit_msg')).val();
     $('#msg_' + id).html(display_filter(msg));
 
     org_msg[id].msg = msg;
@@ -95,7 +95,7 @@ KanbanList.taskAction = (function(){
   }
 
   function initial_setting(){
-    $('#edit_msg_' + id).maxlength({
+    $('#edit_msg').maxlength({
       'feedback' : '.task-chars-left'
     });
 
@@ -148,19 +148,24 @@ KanbanList.taskAction = (function(){
 
   // タスクリストをクリックしたタイミングで呼ばれる
   // pagebeforechange イベントで使う
-  function realize(id){
-    $('#setting').data('id') = id;
-    $('#edit_msg').val(org_msg[id].msg);
+  function get_setting_page(url){
+    var id = url.replace(/.*id=/,"");
+
+    var $page = $('#setting');
+    $page.data('id',id);
+    $page.find('#edit_msg').val(org_msg[id].msg);
 
     // 状態遷移ボタンに色付けする
-    $('.status-btn').buttonMarkup({ theme: 'b' });
-    $('#' + org_msg[id].status + '_btn').buttonMarkup({ theme: 'e' });
+    $page.find('.status-btn').buttonMarkup({ theme: 'b' });
+    $page.find('#' + org_msg[id].status + '_btn').buttonMarkup({ theme: 'e' });
+
+    return $page;
   }
 
   return {
     initial: initial,
     initial_setting: initial_setting,
-    realize: realize,
+    get_setting_page: get_setting_page,
     display_filter: display_filter
   }
 }());

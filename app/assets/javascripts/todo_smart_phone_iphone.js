@@ -17,36 +17,51 @@ $(document).bind("mobileinit", function(){
 });
 
 $(document).ready(function(){ 
-    initForTaskList();
-    initNavBooks();
-    initSendMail();
+  initForTaskList();
+  initNavBooks();
+  initSendMail();
 
-    // この数値以上、横スワイプしたときにイベントを発生
-    $.event.special.swipe.horizontalDistanceThreshold = 60;
+  // この数値以上、横スワイプしたときにイベントを発生
+  $.event.special.swipe.horizontalDistanceThreshold = 60;
 
-    // フリック・スワイプ画面遷移
-    $("#todo_nav").bind("swipeleft", function(){
-        $.mobile.changePage('#doing_nav' , { transition: "slide"} );
-    });
+  // フリック・スワイプ画面遷移
+  $("#todo_nav").bind("swipeleft", function(){
+      $.mobile.changePage('#doing_nav' , { transition: "slide"} );
+  });
 
-    $("#doing_nav").bind("swiperight", function(){
-      $.mobile.changePage('#todo_nav', { transition: 'slide', reverse: true});
-    });
+  $("#doing_nav").bind("swiperight", function(){
+    $.mobile.changePage('#todo_nav', { transition: 'slide', reverse: true});
+  });
 
-    $("#doing_nav").bind("swipeleft", function(){
-      $.mobile.changePage('#done_nav', { transition: 'slide', reverse: false});
-    });
+  $("#doing_nav").bind("swipeleft", function(){
+    $.mobile.changePage('#done_nav', { transition: 'slide', reverse: false});
+  });
 
-    $("#done_nav").bind("swiperight", function(){
-      $.mobile.changePage('#doing_nav', { transition: 'slide', reverse: true});
-    });
+  $("#done_nav").bind("swiperight", function(){
+    $.mobile.changePage('#doing_nav', { transition: 'slide', reverse: true});
+  });
 
-    $(".swipe-back").bind("swiperight", function(){
-      history.back();
-    });
+  $(".swipe-back").bind("swiperight", function(){
+    history.back();
+  });
 
+  // changePage()の実行を見張ります。
+  $(document).bind( "pagebeforechange", function( e, data ) {
+    if ( typeof data.toPage === "string" ) {
+      var u = $.mobile.path.parseUrl( data.toPage ),
+          re = /^#setting/;
+      if ( u.hash.search(re) !== -1 ) {
+        var taskAction = KanbanList.taskAction;
+        var $page = taskAction.get_setting_page(u.hash);
+        $page.page();
+        $.mobile.changePage( $page, data.options );
 
-    return;
+        e.preventDefault();
+      }
+    }
+  });
+
+  return;
 });
 
 function initNavBooks(){
