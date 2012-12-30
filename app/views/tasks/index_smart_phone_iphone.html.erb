@@ -157,4 +157,42 @@
 <% end %>
 <% end %>
 
+<div data-role="page" id="setting" data-theme="a" data-id="0" class="swipe-back">
+  <div data-role="header"><h1>タスクの編集</h1></div> 
+  <div data-role="content"> 
+    <form id="edit_form" method="post" style="display:inline">
+      <textarea id="edit_msg" maxlength="200"/></textarea>
+      <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+        <a id="update_btn" data-role="button" data-inline="true" data-rel="back">Update</a>
+        <a id="cancel_edit_btn" data-role="button" data-inline="true" data-rel="back">Cancel</a>
+        <a id="delete_btn" data-role="button" data-inline="true" data-rel="back">Delete</a>
+      <span class="task-chars-left"></span>
+      </div>
+    </form>
+  </div>
 
+  <div data-role="header"><h1>状態を変更</h1></div>
+  <div data-role="content">
+    <div class="ui-grid-b">
+      <div class="ui-block-a">
+        <button id="todo_h_btn" class="status-btn" data-corners="false" data-rel="back">High</button>
+      </div>
+      <div class="ui-block-b">
+        <button id="doing_btn" class="status-btn" data-corners="false" data-rel="back">Doing</button>
+      </div>
+      <div class="ui-block-c">
+        <button id="done_btn" class="status-btn" data-corners="false" data-rel="back">Done</button>
+      </div>
+      <div class="ui-block-a">
+        <button id="todo_m_btn" class="status-btn" data-corners="false" data-rel="back">Middle</button>
+      </div>
+      <div class="ui-block-b">
+        <button id="waiting_btn" class="status-btn" data-corners="false" data-rel="back">Wait</button>
+      </div>
+      <div class="ui-block-a">
+        <button id="todo_l_btn" class="status-btn" data-corners="false" data-rel="back">Low</button>
+      </div>
+    </div>
+    <a id="cancel_move_btn" data-role="button" data-rel="back">Cancel</a>
+  </div>
+</div>

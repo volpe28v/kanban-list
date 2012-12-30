@@ -27,18 +27,19 @@ KanbanList.taskAction = (function(){
     return '<span class="msg-body">' + prefixed_text + '</span>';
   }
 
-  function updateToDoMsg(from, to, status) {
-    var msg = sanitize($(from).val());
-    $(from).val(msg);
-    $(to).html(display_filter(msg));
+  function updateToDoMsg(id, status) {
+    var msg = sanitize($('#edit_msg')).val());
+    $('#msg_' + id).html(display_filter(msg));
 
-    var id = to.slice(5);
+    org_msg[id].msg = msg;
+    if ( status != "" ){ org_msg[id].status = status; }
+
     sendCurrentTodo(id, status, msg);
   }
  
-  function deleteTodo( delete_id ) {
-    var msg_id = '#msg_' + delete_id.slice(4);
-    var id = delete_id.slice(4);
+  function deleteTodo( id ) {
+    var msg_id = '#msg_' + id;
+    var delete_id = '#id_' + id
     $.ajax({
       type: "DELETE",
       cache: false,
@@ -53,19 +54,15 @@ KanbanList.taskAction = (function(){
     },500);
   }
 
-  function moveTo(status, move_id){
-    var to_status = status;
-    var id = move_id.slice(4);
-    var target_status = $("#" + to_status);
+  function moveTo(status, id){
+    var move_id = '#id_' + id;
+    var target_status = $("#" + status);
 
-    updateToDoMsg('#edit_msg_' + id, '#msg_' + id, to_status);
+    updateToDoMsg(id, status);
 
-    // 状態遷移ボタンに色付けする
-    $('.status-btn_' + id).buttonMarkup({ theme: 'b' });
-    $('#' + status + '_btn_' + id).buttonMarkup({ theme: 'e' });
     if (target_status.hasClass("ui-li")){
       setTimeout(function(){
-        $(move_id).fadeOut("normal",function(){ $(move_id).insertAfter($("#" + to_status)); });
+        $(move_id).fadeOut("normal",function(){ $(move_id).insertAfter($("#" + status)); });
         $(move_id).fadeIn("normal");
       },500);
     }else{
@@ -84,7 +81,7 @@ KanbanList.taskAction = (function(){
       setTimeout(function(){
         $(move_id).fadeOut(function(){
           $(move_id).remove();
-          $("#" + to_status).after(move_item);
+          $("#" + status).after(move_item);
         });
       },500);
     }
@@ -93,76 +90,76 @@ KanbanList.taskAction = (function(){
   var org_msg = {}; //編集前 msg 退避用ハッシュ
   function initial(id, status, msg_array){
     var msg = msg_array.join('\n');
+    org_msg[id] = { msg: msg, status: status };
     $('#msg_' + id ).html(display_filter(msg));
-
-    $('#edit_task_link_' + id).click(function(){
-      org_msg[id] = $('#edit_msg_' + id).val();
-    });
   }
 
-  function realize(id, status, msg_array){
-    var msg = msg_array.join('\n');
-
-    $('#edit_msg_' + id).val(msg);
-    org_msg[id] = $('#edit_msg_' + id).val();
-
-    // 状態遷移ボタンに色付けする
-    $('.status-btn_' + id).buttonMarkup({ theme: 'b' });
-    $('#' + status + '_btn_' + id).buttonMarkup({ theme: 'e' });
-
+  function initial_setting(){
     $('#edit_msg_' + id).maxlength({
       'feedback' : '.task-chars-left'
     });
 
-    $('#update_btn_' + id).click(function(){
-      updateToDoMsg('#edit_msg_' + id, '#msg_' + id, "");
+    $('#update_btn').click(function(){
+      var id = $('#setting').data('id');
+      updateToDoMsg(id, "");
     });
 
-    $('#cancel_edit_btn_' + id).click(function(){
-      $('#edit_msg_' + id).val(org_msg[id]);
+    $('#delete_btn').click(function(){
+      var id = $('#setting').data('id');
+      deleteTodo(id);
     });
 
-    $('#delete_btn_' + id).click(function(){
-      deleteTodo('#id_' + id);
-    });
-
-    $('#todo_h_btn_' + id).click(function(){
-      moveTo('todo_h','#id_' + id);
+    $('#todo_h_btn').click(function(){
+      var id = $('#setting').data('id');
+      moveTo('todo_h',id);
       history.back();
     });
 
-    $('#todo_m_btn_' + id).click(function(){
-      moveTo('todo_m','#id_' + id);
+    $('#todo_m_btn').click(function(){
+      var id = $('#setting').data('id');
+      moveTo('todo_m',id);
       history.back();
     });
 
-    $('#todo_l_btn_' + id).click(function(){
-      moveTo('todo_l','#id_' + id);
+    $('#todo_l_btn').click(function(){
+      var id = $('#setting').data('id');
+      moveTo('todo_l',id);
       history.back();
     });
 
-    $('#doing_btn_' + id).click(function(){
-      moveTo('doing','#id_' + id);
+    $('#doing_btn').click(function(){
+      var id = $('#setting').data('id');
+      moveTo('doing',id);
       history.back();
     });
 
-    $('#waiting_btn_' + id).click(function(){
-      moveTo('waiting','#id_' + id);
+    $('#waiting_btn').click(function(){
+      var id = $('#setting').data('id');
+      moveTo('waiting',id);
       history.back();
     });
 
-    $('#done_btn_' + id).click(function(){
-      moveTo('done','#id_' + id);
+    $('#done_btn').click(function(){
+      var id = $('#setting').data('id');
+      moveTo('done',id);
       history.back();
     });
+  }
 
-    $('#cancel_move_btn_' + id).click(function(){
-      $('#edit_msg_' + id).val(org_msg[id]);
-    });
+  // タスクリストをクリックしたタイミングで呼ばれる
+  // pagebeforechange イベントで使う
+  function realize(id){
+    $('#setting').data('id') = id;
+    $('#edit_msg').val(org_msg[id].msg);
+
+    // 状態遷移ボタンに色付けする
+    $('.status-btn').buttonMarkup({ theme: 'b' });
+    $('#' + org_msg[id].status + '_btn').buttonMarkup({ theme: 'e' });
   }
 
   return {
     initial: initial,
+    initial_setting: initial_setting,
     realize: realize,
     display_filter: display_filter
   }
