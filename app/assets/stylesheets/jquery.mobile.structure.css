@@ -647,7 +647,7 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 .ui-navbar-expanded li .ui-btn .ui-btn-inner { min-height: 2.5em; }
 .ui-navbar-expanded .ui-navbar-noicons .ui-btn .ui-btn-inner { padding-top: 1.8em; padding-bottom: 1.9em; }
 .ui-btn { display: block; text-align: center; cursor:pointer;  position: relative; margin: .5em 5px; padding: 0; }
-.ui-mini { margin: .25em 5px; }
+.ui-mini { margin: .25em 0px; }
 .ui-btn-inner { padding: .6em 20px; min-width: .75em; display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; position: relative; zoom: 1; }
 .ui-btn input, .ui-btn button { z-index: 2; }
 .ui-btn-left, .ui-btn-right, .ui-btn-inline { display: inline-block; }
@@ -845,7 +845,7 @@ label.ui-select { font-size: 16px; line-height: 1.4;  font-weight: normal; margi
 }	
 .ui-selectmenu .ui-header h1:after { content: '.'; visibility: hidden; }
 label.ui-input-text { font-size: 16px; line-height: 1.4; display: block; font-weight: normal; margin: 0 0 .3em; }
-input.ui-input-text, textarea.ui-input-text { background-image: none; padding: .4em; line-height: 1.4; font-size: 16px; display: block; width: 97%; outline: 0; }
+input.ui-input-text, textarea.ui-input-text { background-image: none; padding: .4em; line-height: 1.4; font-size: 16px; display: block; width: 95%; outline: 0; }
 .ui-header input.ui-input-text,
 .ui-footer input.ui-input-text { margin-left: 1.25%; padding: .4em 1%; width: 95.5% } 
  input.ui-input-text { -webkit-appearance: none; }

@@ -41,11 +41,19 @@ $(document).ready(function(){
     $.mobile.changePage('#doing_nav', { transition: 'slide', reverse: true});
   });
 
+  $("#done_nav").bind("swipeleft", function(){
+    $.mobile.changePage('#option', { transition: 'slide', reverse: false});
+  });
+
+  $("#option").bind("swiperight", function(){
+    $.mobile.changePage('#done_nav', { transition: 'slide', reverse: true});
+  });
+
   $(".swipe-back").bind("swiperight", function(){
     history.back();
   });
 
-  // changePage()の実行を見張ります。
+  // タスク編集画面を出すためにpagechangeを監視
   $(document).bind( "pagebeforechange", function( e, data ) {
     if ( typeof data.toPage === "string" ) {
       var u = $.mobile.path.parseUrl( data.toPage ),

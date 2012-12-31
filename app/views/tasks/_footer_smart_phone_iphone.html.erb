@@ -1,4 +1,29 @@
-<div data-role="footer">
-  © 2011 Naoki KODAMA. 
+<div data-role="footer" data-position="fixed">
+  	<div data-role="navbar">
+      <ul>
+        <% case state %>
+        <% when 'todo' %>
+          <li><a href="#todo_nav" class="ui-btn-active ui-state-persist">Todo</a></li>
+          <li><a href="#doing_nav">Doing</a></li>
+          <li><a href="#done_nav">Done</a></li>
+          <li><a href="#option">Option</a></li>
+        <% when 'doing' %>
+          <li><a href="#todo_nav">Todo</a></li>
+          <li><a href="#doing_nav" class="ui-btn-active ui-state-persist">Doing</a></li>
+          <li><a href="#done_nav">Done</a></li>
+          <li><a href="#option">Option</a></li>
+        <% when 'done' %>
+          <li><a href="#todo_nav">Todo</a></li>
+          <li><a href="#doing_nav">Doing</a></li>
+          <li><a href="#done_nav" class="ui-btn-active ui-state-persist">Done</a></li>
+          <li><a href="#option">Option</a></li>
+        <% when 'option' %>
+          <li><a href="#todo_nav">Todo</a></li>
+          <li><a href="#doing_nav">Doing</a></li>
+          <li><a href="#done_nav">Done</a></li>
+          <li><a href="#option" class="ui-btn-active ui-state-persist">Option</a></li>
+        <% end %>
+      </ul>
+    </div>
 </div>
 

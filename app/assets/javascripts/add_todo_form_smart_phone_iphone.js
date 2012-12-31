@@ -32,27 +32,23 @@ KanbanList.addForm = (function(){
     }
 
     var is_added_task = false;
-    function addTodoAction(){
-      addTodoWithPrefix($('#prefix').val() , sanitize($('#add_todo_form_msg').val()));
-      $('#add_todo_form_msg').val('');
+    function addTodoAction($content){
+      addTodoWithPrefix($content.find('.prefix').val() , sanitize($content.find('.add_todo_form_msg').val()));
+      $content.find('.add_todo_form_msg').val('');
 
       is_added_task = true;
     }
  
-    $("#add_todo_form_msg").maxlength({
+    $(".add_todo_form_msg").maxlength({
       'feedback' : '.task-chars-left-add-form'
     });
 
-    $("#add_todo_form").submit(function(){
-      addTodoAction();
-      return false;
+    $(document).delegate('.add_todo_button', 'click',function(){
+      var $content = $(this).closest("[data-role='content']");
+      addTodoAction($content);
     });
 
-    $('#todo_nav').delegate('#add_todo_button', 'click',function(){
-      addTodoAction();
-    });
-
-    $('#prefix').val(current_book.name);
+    $('.prefix').val(current_book.name);
     $('#return_book').click(function(){
       if ( is_added_task ){
         location.href="tasks?book_id=" + current_book.id;
