@@ -90,7 +90,8 @@ KanbanList.pomodoroTimer = (function(){
     if (isActive() == false){ return };
 
     done_num += 1;
-    $('#pomo_done_num').html(done_num);
+    //TODO: Done num を一旦非表示にしている
+    // $('#pomo_done_num').html(done_num);
   }
 
   return {
