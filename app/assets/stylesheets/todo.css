@@ -92,6 +92,11 @@ li {
   box-shadow: 0px 5px 15px #444;
 }
 
+.task_elem{
+  -webkit-box-shadow: 0px 1px 8px #888;
+  box-shadow: 0px 1px 8px #888;
+}
+
 #doing li ,#waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{ 
   margin: 0px 2px 2px 2px; 
   font-weight: bold; 
