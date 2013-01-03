@@ -103,12 +103,13 @@ KanbanList.taskAction = (function(){
     });
   }
 
-  function updateToDoMsg(from, to) {
-    var msg = sanitize($(from).val());
-    $(from).val(msg);
-    $(to).html(display_filter(msg));
+  function updateToDoMsg(id) {
+    var $from = $('#ms_' + id + '_edit')
+       ,$to = $('#msg_' + id );
+    var msg = sanitize($from.val());
+    $from.val(msg);
+    $to.html(display_filter(msg));
 
-    var id = to.slice(5);
     var status = $("#id_" + id).parent().get(0).id;
     //TODO: グローバルのメソッドを呼んでいるので修正する
     sendCurrentTodo(id, status, msg);
@@ -161,7 +162,7 @@ KanbanList.taskAction = (function(){
     $('#edit_form_' + id ).submit(function(){
       autoLoadingTimer.start();
       draggableTask.startByElem($('#id_' + id ).parent());
-      updateToDoMsg('#ms_' + id + '_edit', '#msg_' + id );
+      updateToDoMsg(id);
       utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
       return false;
     });
