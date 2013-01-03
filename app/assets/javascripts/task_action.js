@@ -107,6 +107,8 @@ KanbanList.taskAction = (function(){
     var $from = $('#ms_' + id + '_edit')
        ,$to = $('#msg_' + id );
     var msg = sanitize($from.val());
+    msg = msg.replace(/'/g,"\"");
+
     $from.val(msg);
     $to.html(display_filter(msg));
 
