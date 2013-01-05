@@ -44,7 +44,7 @@ end
 group :production do
   gem 'pg'
   gem 'execjs'
-  gem 'therubyracer'
+  gem 'therubyracer', '0.9.8'
 end
 
 # Use unicorn as the web server
