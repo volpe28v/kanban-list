@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe Book do
   before do
-    @book = Factory.create(:work_book)
+    @book = FactoryGirl.create(:work_book)
   end
   subject{@book}
 

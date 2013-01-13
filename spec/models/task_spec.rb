@@ -7,7 +7,7 @@ describe Task do
       user.destroy
     end
 
-    @user = Factory.create(:volpe)
+    @user = FactoryGirl.create(:volpe)
   end
 
   describe "初期設定されているタスクを読み出す場合" do
@@ -99,7 +99,7 @@ describe Task do
 
   describe "Doingと名前を指定してタスクを取り出す場合" do
     before do
-      @tasks = @user.tasks.doing
+      @tasks = @user.tasks.by_status(:doing)
     end
     subject{@tasks}
 
