@@ -3,6 +3,14 @@
 
   <div data-role="content">
     <ul data-role="listview" id="todo_ul">
+      <li>
+        <select class="select_book" data-mini="true">
+          <option value="0">All Books</option>
+          <% @books.each do |b| %>
+            <option value="<%= b.id %>"><%= b.name %></option>
+          <% end %>
+        </select>
+      </li>
       <li id="todo_h" data-role="list-divider" style="padding: 0.1em 15px;">High</li>
       <% @tasks[:todo_high_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:t => t} %>
@@ -59,25 +67,9 @@
   <%= render "footer_smart_phone_iphone", {:state => 'done'} %>
 </div>
 
-<div id="option" data-role="page" data-theme="a">
-  <%= render "header_smart_phone_iphone", {:state => 'option'} %>
-
-  <div data-role="content"> 
-    <label for="select_book" class="select">Select Book</label>
-    <select id="select_book" name="select_book" data-mini="true">
-      <option value="0">All Books</option>
-      <% @books.each do |b| %>
-        <option value="<%= b.id %>"><%= b.name %></option>
-      <% end %>
-    </select>
-  </div>
-
-  <%= render "footer_smart_phone_iphone", {:state => 'option'} %>
-</div>
-
 <script>
-  $('#select_book').val('<%= @current_book_id %>');
-  $('#select_book').change(function(){
+  $('.select_book').val('<%= @current_book_id %>');
+  $('.select_book').change(function(){
     location.href="tasks?book_id=" + $(this).val();
   });
 </script>
