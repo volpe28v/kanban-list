@@ -5,6 +5,8 @@ class DashboardController < ApplicationController
     @edit_tasks = @user.tasks.newest_edit
     @done_tasks = @user.tasks.newest_done
     @doing_tasks = @user.tasks.by_status(:doing).limit(10)
+    @today_tasks = @user.tasks.today_touch
     @books = books_count_info_array
+    @task_counts = all_count_info
   end
 end

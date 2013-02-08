@@ -40,6 +40,8 @@ class Task < ActiveRecord::Base
 
   scope :today_done, where("status = ? and updated_at LIKE ?", @@status_table[:done], "#{Time.now.strftime("%Y-%m-%d")}%").order('updated_at DESC' )
 
+  scope :today_touch, where("updated_at LIKE ?", "#{Time.now.strftime("%Y-%m-%d")}%").order('updated_at DESC' )
+
   scope :select_month, lambda {|select_mon|
     where(" updated_at >= ? and updated_at < ? ", select_mon, select_mon + 1.month )
   }

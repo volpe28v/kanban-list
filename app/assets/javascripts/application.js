@@ -11,4 +11,5 @@
 //= require jquery.cookie
 //= require jquery.maxlength
 //= require bootstrap.min
+//= require highcharts
 

@@ -1,7 +1,9 @@
 <div class="container-fluid">
 <div class="row-fluid">
   <div class="span4">
-    <table class="table table-bordered">
+    <div id="task_count_chart"></div>
+
+    <table class="table table-bordered table-striped table-condensed">
       <tr><th>最近追加されたタスク</th></tr>
       <% @add_tasks.each do |t| %>
       <tr>
@@ -9,7 +11,7 @@
       </tr>
       <% end %>
     </table>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped table-condensed">
       <tr><th>最近変更されたタスク</th></tr>
       <% @edit_tasks.each do |t| %>
       <tr>
@@ -17,7 +19,7 @@
       </tr>
       <% end %>
     </table>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped table-condensed">
       <tr><th>最近完了したタスク</th></tr>
       <% @done_tasks.each do |t| %>
       <tr>
@@ -28,7 +30,7 @@
   </div>
 
   <div class="span4">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped table-condensed">
       <tr><th>実行中のタスク</th></tr>
       <% @doing_tasks.each do |t| %>
       <tr>
@@ -36,11 +38,22 @@
       </tr>
       <% end %>
     </table>
- 
-  </div>
 
+    <table class="table table-bordered table-striped table-condensed">
+      <tr><th>本日変更したタスク</th></tr>
+      <% @today_tasks.each do |t| %>
+      <tr>
+        <td><span class="label label-info"><%= t.created_at.strftime("%m-%d") %></span> <%= t.msg %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+ 
+ 
   <div class="span4">
-    <table class="table table-bordered">
+    <div id="container"></div>
+
+    <table class="table table-bordered table-striped table-condensed">
       <tr><th>Books</th></tr>
       <% @books.each do |b| %>
       <tr>
@@ -57,3 +70,45 @@
   </div>
 </div>
 </div>
+
+<script>
+$(document).ready(function() { 
+    var chart_task = new Highcharts.Chart({
+        chart: {
+            renderTo: 'task_count_chart',
+            type: 'pie'
+        },
+        title: {
+            text: 'Tasks'
+        },
+        series: [
+        { name: 'tasks', 
+          data: [
+            { name: 'high', y: <%= @task_counts[:todo_h] %> },
+            { name: 'middle', y: <%= @task_counts[:todo_m] %> },
+            { name: 'low', y: <%= @task_counts[:todo_h] %> },
+            { name: 'doing', y: <%= @task_counts[:doing] %> },
+            { name: 'waiting', y: <%= @task_counts[:waiting] %> },
+          ],
+        }]
+    });
+
+    var chart1 = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container',
+            type: 'pie'
+        },
+        title: {
+            text: 'Active Book tasks'
+        },
+        series: [
+        { name: 'tasks', 
+          data: [
+          <% @books.each do |b| %>
+            { name: '<%= b['name'] %>', y: <%= b['active_task'] %> },
+          <% end %>
+          ],
+        }]
+    });
+});
+</script>
