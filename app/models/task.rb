@@ -40,8 +40,6 @@ class Task < ActiveRecord::Base
 
   scope :today_done, where("status = ? and updated_at LIKE ?", @@status_table[:done], "#{Time.now.strftime("%Y-%m-%d")}%").order('updated_at DESC' )
 
-  scope :today_touch, where("updated_at LIKE ?", "#{Time.now.strftime("%Y-%m-%d")}%").order('updated_at DESC' )
-
   scope :select_month, lambda {|select_mon|
     where(" updated_at >= ? and updated_at < ? ", select_mon, select_mon + 1.month )
   }
@@ -93,6 +91,10 @@ class Task < ActiveRecord::Base
 
   def self.created_today_count
     self.where('created_at >= ? and created_at <= ?', 1.day.ago, Time.now).count
+  end
+
+  def self.today_touch
+    self.where('updated_at >= ? and updated_at <= ?', 1.day.ago, Time.now)
   end
 
   def status_sym
