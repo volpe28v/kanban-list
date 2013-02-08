@@ -25,6 +25,7 @@
         <div class="nav-collapse">
           <ul class="nav pull-left">
             <% if current_user %>
+              <li><%= link_to raw('<i class="icon-eye-open"></i>'), dashboard_index_path, { rel: "tooltip", title: "Go to your dashboard" } %></li>
               <li><%= link_to raw('<i class="icon-home"></i>'), tasks_path, { rel: "tooltip", title: "Go to your kanbanlist" } %></li>
             <% end %>
             <% if params[:controller] == "tasks" and params[:action] == "index" %>
