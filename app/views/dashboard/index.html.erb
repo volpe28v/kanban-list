@@ -1,7 +1,7 @@
 <div class="container-fluid">
 <div class="row-fluid">
   <div class="span4">
-    <div id="task_count_chart"></div>
+    <div id="task_status_chart"></div>
 
     <table class="table table-bordered table-striped table-condensed">
       <tr><th>最近追加されたタスク</th></tr>
@@ -30,6 +30,8 @@
   </div>
 
   <div class="span4">
+    <div id="done_chart"></div>
+
     <table class="table table-bordered table-striped table-condensed">
       <tr><th>実行中のタスク</th></tr>
       <% @doing_tasks.each do |t| %>
@@ -51,7 +53,7 @@
  
  
   <div class="span4">
-    <div id="container"></div>
+    <div id="book_count_chart"></div>
 
     <table class="table table-bordered table-striped table-condensed">
       <tr><th>Books</th></tr>
@@ -75,11 +77,11 @@
 $(document).ready(function() { 
     var chart_task = new Highcharts.Chart({
         chart: {
-            renderTo: 'task_count_chart',
+            renderTo: 'task_status_chart',
             type: 'pie'
         },
         title: {
-            text: 'Tasks'
+            text: 'Task Status'
         },
         series: [
         { name: 'tasks', 
@@ -93,9 +95,34 @@ $(document).ready(function() {
         }]
     });
 
+    var chart_done = new Highcharts.Chart({
+        chart: {
+            renderTo: 'done_chart',
+            type: 'column'
+        },
+        title: {
+            text: 'Done Tasks'
+        },
+        xAxis: {
+          categories: [
+          <% @month_done_list.each do |m| %>
+            '<%= m[:date].strftime("%m") %>',
+          <% end %>
+          ]
+        },
+        series: [
+        { name: 'Done', 
+          data: [
+          <% @month_done_list.each do |m| %>
+            { name: 'done', y: <%= m[:count] %> },
+          <% end %>
+          ],
+        }]
+    });
+
     var chart1 = new Highcharts.Chart({
         chart: {
-            renderTo: 'container',
+            renderTo: 'book_count_chart',
             type: 'pie'
         },
         title: {
