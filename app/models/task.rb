@@ -93,7 +93,7 @@ class Task < ActiveRecord::Base
   end
 
   def self.today_touch
-    self.where('updated_at >= ? and updated_at <= ?', 1.day.ago, Time.now).order("updated_at DESC")
+    self.where('status != ? and updated_at >= ? and updated_at <= ?', @@status_table[:done], 1.day.ago, Time.now).order("updated_at DESC")
   end
 
   def status_sym
