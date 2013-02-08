@@ -45,9 +45,8 @@ class Task < ActiveRecord::Base
   }
 
 
-  scope :newest_add, where("status != ?", @@status_table[:done]).order('created_at DESC' ).limit(5)
-  scope :newest_edit, where("status != ?", @@status_table[:done]).order('updated_at DESC' ).limit(5)
-  scope :newest_done, where("status = ?", @@status_table[:done]).order('updated_at DESC' ).limit(5)
+  scope :newest_add, where("status != ?", @@status_table[:done]).order('created_at DESC' ).limit(10)
+  scope :newest_done, where("status = ?", @@status_table[:done]).order('updated_at DESC' ).limit(10)
 
   def self.all_counts
     counts = {}
@@ -94,7 +93,7 @@ class Task < ActiveRecord::Base
   end
 
   def self.today_touch
-    self.where('updated_at >= ? and updated_at <= ?', 1.day.ago, Time.now)
+    self.where('updated_at >= ? and updated_at <= ?', 1.day.ago, Time.now).order("updated_at DESC")
   end
 
   def status_sym

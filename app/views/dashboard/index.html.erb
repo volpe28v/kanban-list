@@ -7,23 +7,16 @@
       <tr><th>最近追加されたタスク</th></tr>
       <% @add_tasks.each do |t| %>
       <tr>
-        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= t.msg %></td>
+        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= truncate(t.msg) %></td>
       </tr>
       <% end %>
     </table>
-    <table class="table table-bordered table-striped table-condensed">
-      <tr><th>最近変更されたタスク</th></tr>
-      <% @edit_tasks.each do |t| %>
-      <tr>
-        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= t.msg %></td>
-      </tr>
-      <% end %>
-    </table>
+
     <table class="table table-bordered table-striped table-condensed">
       <tr><th>最近完了したタスク</th></tr>
       <% @done_tasks.each do |t| %>
       <tr>
-        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= t.msg %></td>
+        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= truncate(t.msg) %></td>
       </tr>
       <% end %>
     </table>
@@ -36,7 +29,7 @@
       <tr><th>実行中のタスク</th></tr>
       <% @doing_tasks.each do |t| %>
       <tr>
-        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= t.msg %></td>
+        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= truncate(t.msg) %></td>
       </tr>
       <% end %>
     </table>
@@ -45,7 +38,7 @@
       <tr><th>本日変更したタスク</th></tr>
       <% @today_tasks.each do |t| %>
       <tr>
-        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= t.msg %></td>
+        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= truncate(t.msg) %></td>
       </tr>
       <% end %>
     </table>
@@ -109,6 +102,11 @@ $(document).ready(function() {
             '<%= m[:date].strftime("%m") %>',
           <% end %>
           ]
+        },
+        yAxis: {
+          title: {
+            text: 'Done'
+          }
         },
         series: [
         { name: 'Done', 
