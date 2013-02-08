@@ -37,6 +37,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'factory_girl'
   gem 'factory_girl_rails'
+  gem 'quiet_assets'
 #  gem 'rcov'
 #  gem 'ci_reporter'
 end
