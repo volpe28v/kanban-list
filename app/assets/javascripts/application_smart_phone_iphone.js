@@ -6,6 +6,7 @@
 //
 //= require jquery.min
 //= require jquery_ujs
+//= require send_csrf_token
 //= require jquery.cookie
 //= require todo_smart_phone_iphone
 //= require jquery.mobile
