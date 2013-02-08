@@ -1,0 +1,59 @@
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4">
+    <table class="table table-bordered">
+      <tr><th>最近追加されたタスク</th></tr>
+      <% @add_tasks.each do |t| %>
+      <tr>
+        <td><span class="label label-info"><%= t.created_at.strftime("%m-%d") %></span> <%= t.msg %></td>
+      </tr>
+      <% end %>
+    </table>
+    <table class="table table-bordered">
+      <tr><th>最近変更されたタスク</th></tr>
+      <% @edit_tasks.each do |t| %>
+      <tr>
+        <td><span class="label label-info"><%= t.created_at.strftime("%m-%d") %></span> <%= t.msg %></td>
+      </tr>
+      <% end %>
+    </table>
+    <table class="table table-bordered">
+      <tr><th>最近完了したタスク</th></tr>
+      <% @done_tasks.each do |t| %>
+      <tr>
+        <td><span class="label label-info"><%= t.created_at.strftime("%m-%d") %></span> <%= t.msg %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="span4">
+    <table class="table table-bordered">
+      <tr><th>実行中のタスク</th></tr>
+      <% @doing_tasks.each do |t| %>
+      <tr>
+        <td><span class="label label-info"><%= t.created_at.strftime("%m-%d") %></span> <%= t.msg %></td>
+      </tr>
+      <% end %>
+    </table>
+ 
+  </div>
+
+  <div class="span4">
+    <table class="table table-bordered">
+      <tr><th>Books</th></tr>
+      <% @books.each do |b| %>
+      <tr>
+        <td><%= b['name'] %></td>
+        <td class="todo_h"><%= b[:todo_h] %></td>
+        <td class="todo"><%= b[:todo_m] %></td>
+        <td class="todo_l"><%= b[:todo_h] %></td>
+        <td class="doing"><%= b[:doing] %></td>
+        <td class="waiting"><%= b[:waiting] %></td>
+        <td class="done"><%= b[:done] %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+</div>

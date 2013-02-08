@@ -1,4 +1,5 @@
 Todolist::Application.routes.draw do
+
   root :to => "kanbanlist#index"
 
   devise_for :users
@@ -12,6 +13,7 @@ Todolist::Application.routes.draw do
   post "tasks/send_mail"
   get 'tasks/donelist'
 
+  get "dashboard/index"
   resources :books
   resources :tasks
   resources :users

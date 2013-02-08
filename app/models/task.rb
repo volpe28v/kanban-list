@@ -44,6 +44,11 @@ class Task < ActiveRecord::Base
     where(" updated_at >= ? and updated_at < ? ", select_mon, select_mon + 1.month )
   }
 
+
+  scope :newest_add, where("status != ?", @@status_table[:done]).order('created_at DESC' ).limit(5)
+  scope :newest_edit, where("status != ?", @@status_table[:done]).order('updated_at DESC' ).limit(5)
+  scope :newest_done, where("status = ?", @@status_table[:done]).order('updated_at DESC' ).limit(5)
+
   def self.all_counts
     counts = {}
     @@status_table.each_key{|key|
@@ -70,7 +75,7 @@ class Task < ActiveRecord::Base
       from_time = last_task.updated_at
       Time.new(from_time.year, from_time.mon)
     else
-      Time.new
+      Time.now
     end
   end
 
@@ -80,7 +85,7 @@ class Task < ActiveRecord::Base
       to_time = first_task.updated_at
       Time.new(to_time.year, to_time.mon)
     else
-      Time.new
+      Time.now
     end
   end
 
@@ -116,5 +121,13 @@ class Task < ActiveRecord::Base
     }
 
     self.msg
+  end
+
+  def book_name
+    if self.book != nil
+      self.book.name
+    else
+      ""
+    end
   end
 end
