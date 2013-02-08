@@ -50,12 +50,10 @@ KanbanList.ajaxLoader = (function(){
       });
     });
   }
- 
+
   return {
     // public
     start: start,
     stop: stop
   }
 }());
-
-

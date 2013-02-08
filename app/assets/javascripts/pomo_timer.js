@@ -1,7 +1,7 @@
 KanbanList.namespace('pomodoroTimer');
 
 KanbanList.pomodoroTimer = (function(){
-  var Timer1 = null; 
+  var Timer1 = null;
   var DefaultMin = 25;
   var DefaultSec = 0;
   var done_num = 0;
@@ -17,7 +17,7 @@ KanbanList.pomodoroTimer = (function(){
     setTime(next_min, next_sec);
     return remain;
   }
- 
+
   function setTime(min, sec){
     $("#p_min").html(("0" + min).slice(-2));
     $("#p_sec").html(("0" + sec).slice(-2));
@@ -45,7 +45,7 @@ KanbanList.pomodoroTimer = (function(){
   {
     var min = eval($("#p_min").html());
     var sec = eval($("#p_sec").html());
-  
+
     var remain = setDecrementTime(min, sec);
     showPopup(remain);
   }
@@ -65,8 +65,8 @@ KanbanList.pomodoroTimer = (function(){
     clearInterval(Timer1);
     Timer1 = null;
     $('#pomo_done_num').html(0);
-  }  
- 
+  }
+
   function init(){
     setTime(DefaultMin, DefaultSec);
 
@@ -99,5 +99,3 @@ KanbanList.pomodoroTimer = (function(){
     addDone: addDone
   }
 }());
-
-

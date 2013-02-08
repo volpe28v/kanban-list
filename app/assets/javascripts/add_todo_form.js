@@ -1,4 +1,4 @@
-$(document).ready(function(){ 
+$(document).ready(function(){
   function addTodoWithPrefix( prefix, msg ){
     if ( msg == "" ){
       return;
@@ -23,9 +23,9 @@ $(document).ready(function(){
   }
 
   function escapeInvalidChar(msg){
-    var escaped_msg = msg.replace(/&/g,""); 
-    escaped_msg = escaped_msg.replace(/'/g,"\""); 
-    escaped_msg = escaped_msg.replace(/!/g,"|"); 
+    var escaped_msg = msg.replace(/&/g,"");
+    escaped_msg = escaped_msg.replace(/'/g,"\"");
+    escaped_msg = escaped_msg.replace(/!/g,"|");
     return escaped_msg;
   }
 
@@ -33,12 +33,12 @@ $(document).ready(function(){
     addTodoWithPrefix($('#prefix').val() , sanitize($('#add_todo_form_msg').val()));
     $('#add_todo_form_msg').val('');
     $('#add_todo_form_msg').focus();
- 
+
     $("#add_todo_form_msg").maxlength({
       'feedback' : '.task-chars-left-add-form'
     });
   }
- 
+
   $("#add_todo_form_msg").maxlength({
     'feedback' : '.task-chars-left-add-form'
   });

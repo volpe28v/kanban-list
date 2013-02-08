@@ -52,8 +52,7 @@
       <% end %>
     </table>
   </div>
- 
- 
+
   <div class="span4">
     <div id="book_count_chart"></div>
 
@@ -76,7 +75,7 @@
 </div>
 
 <script>
-$(document).ready(function() { 
+$(document).ready(function() {
   // Radialize the colors
   Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
     return {
@@ -111,7 +110,7 @@ $(document).ready(function() {
       }
     },
     series: [
-    { name: 'tasks', 
+    { name: 'tasks',
       data: [
       { name: 'high', y: <%= @task_counts[:todo_h] %> },
       { name: 'middle', y: <%= @task_counts[:todo_m] %> },
@@ -143,7 +142,7 @@ $(document).ready(function() {
       }
     },
     series: [
-    { name: 'Done', 
+    { name: 'Done',
       data: [
       <% @month_done_list.each do |m| %>
         { name: 'done', y: <%= m[:count] %> },
@@ -175,7 +174,7 @@ $(document).ready(function() {
       }
     },
     series: [
-    { name: 'tasks', 
+    { name: 'tasks',
       data: [
       <% @books.each do |b| %>
         { name: '<%= b['name'] %>', y: <%= b['active_task'] %> },

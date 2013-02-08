@@ -16,7 +16,7 @@ $(document).bind("mobileinit", function(){
   });
 });
 
-$(document).ready(function(){ 
+$(document).ready(function(){
   initForTaskList();
   initNavBooks();
   initSendMail();
@@ -156,7 +156,7 @@ var option = {
         },
     stop   : function(event, ui){
         var update_id = ui.item.attr("id").slice(3);
-          //$("#msg_" + update_id).css("color","#222");           
+          //$("#msg_" + update_id).css("color","#222");
         },
 
     receive: function(event, ui){
@@ -239,7 +239,7 @@ function updateCounts( counts_array ){
                       ['#done_num',    counts_array[5]]
                     ];
 
-    for(var i = 0; i < state_ids.length; i++ ){ 
+    for(var i = 0; i < state_ids.length; i++ ){
       var state_name = state_ids[i][0];
       var count_num  = state_ids[i][1];
       if ( $(state_name).html() != count_num ){
@@ -261,7 +261,7 @@ function updateCountsJson( counts_json ){
                     ['#done_num',    counts_json.done]
                   ];
 
-  for(var i = 0; i < state_ids.length; i++ ){ 
+  for(var i = 0; i < state_ids.length; i++ ){
     var state_name = state_ids[i][0];
     var count_num  = state_ids[i][1];
     if ( $(state_name).html() != count_num ){
@@ -282,7 +282,7 @@ function toggleDisplay(id1,id2) {
 
   return false;
 }
- 
+
 function returnToTodo(ret_id){
   var to_status = "todo_m";
   var id = ret_id.slice(4);
@@ -337,9 +337,9 @@ function addTodoWithPrefix( prefix, msg ){
 
 function addTodoAjax(msg) {
 //TODO: エスケープ処理しないとまずい。& ! ' など
-  msg = msg.replace(/&/g,""); 
-  msg = msg.replace(/'/g,"\""); 
-  msg = msg.replace(/!/g,"|"); 
+  msg = msg.replace(/&/g,"");
+  msg = msg.replace(/'/g,"\"");
+  msg = msg.replace(/!/g,"|");
 
   $.ajax({
     type: "POST",
@@ -456,8 +456,5 @@ function showMailResult(data){
   $('#send_mail_result').fadeIn();
   setTimeout(function(){
     $('#send_mail_result').fadeOut();
-    },5000);
-
-
+  },5000);
 }
-

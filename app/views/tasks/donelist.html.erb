@@ -42,7 +42,7 @@
 </div>
 
 <script>
-$(document).ready(function() { 
+$(document).ready(function() {
     // Radialize the colors
     Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
       return {
@@ -53,7 +53,7 @@ $(document).ready(function() {
         ]
       };
     });
-    
+
     var chart_done = new Highcharts.Chart({
       chart: {
         renderTo: 'done_chart',
@@ -75,7 +75,7 @@ $(document).ready(function() {
         }
       },
       series: [
-      { name: 'Done', 
+      { name: 'Done',
         data: [
         <% @month_done_list.each do |m| %>
           { name: 'done', y: <%= m[:count] %> },

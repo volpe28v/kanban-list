@@ -1,30 +1,30 @@
-#doing   { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
-  width: 99%; 
-  min-height: 100px; 
+#doing   { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
+  width: 99%;
+  min-height: 100px;
   height: auto !important;
   height: 100px;
 }
-#waiting { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
-  width: 99%; 
-  min-height: 100px; 
+#waiting { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
+  width: 99%;
+  min-height: 100px;
   height: auto !important;
   height: 100px;
 }
-#todo_m    { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
-  width: 99%; 
-  min-height: 100px; 
+#todo_m    { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
+  width: 99%;
+  min-height: 100px;
   height: auto !important;
   height: 100px;
 }
-#todo_l { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
-  width: 99%; 
-  min-height: 100px; 
+#todo_l { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
+  width: 99%;
+  min-height: 100px;
   height: auto !important;
   height: 100px;
 }
-#todo_h { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
-  width: 99%; 
-  min-height: 100px; 
+#todo_h { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
+  width: 99%;
+  min-height: 100px;
   height: auto !important;
   height: 100px;
 }
@@ -39,7 +39,7 @@
   border-bottom:0px solid #333;
   border-left:0px solid #888;
   color: #111;
-  min-height: 374px; 
+  min-height: 374px;
   height: auto !important;
   height: 374px;
 }
@@ -97,12 +97,12 @@ li {
   box-shadow: 0px 1px 8px #888;
 }
 
-#doing li ,#waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{ 
-  margin: 0px 2px 2px 2px; 
-  font-weight: bold; 
-  font-size: 12px; 
+#doing li ,#waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{
+  margin: 0px 2px 2px 2px;
+  font-weight: bold;
+  font-size: 12px;
   text-decoration:none;
-  padding: 1px; 
+  padding: 1px;
   background-position: center bottom;
   background-repeat:  repeat;
 }
@@ -123,7 +123,7 @@ li {
   cursor: pointer;
 }
 
-#waiting li { 
+#waiting li {
   border-top:1px solid #aa6;
   border-right:2px solid #773;
   border-bottom:2px solid #773;
@@ -139,7 +139,7 @@ li {
   cursor: pointer;
 }
 
-#todo_h li, #todo_m li, #todo_l li{ 
+#todo_h li, #todo_m li, #todo_l li{
   border-top:1px solid #6b7;
   border-right:2px solid #384;
   border-bottom:2px solid #384;
@@ -164,7 +164,7 @@ li {
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#F6F6F6), to(#C2C2C2));
-  /* For Mozilla/Gecko (Firefox etc) */ 
+  /* For Mozilla/Gecko (Firefox etc) */
   background: -moz-linear-gradient(top, #F6F6F6, #C2C2C2);
 
   color: #444;
@@ -180,7 +180,7 @@ li {
   z-index:100;
 }
 
-.doing{ 
+.doing{
   padding: 4px;
   border: #E3E3E3 solid;
   border-width: 0 0 1px 1px;
@@ -302,7 +302,7 @@ h2.waiting{
   padding: 0.3em 0.5em 0.2em 0.5em;
   border-style: solid;
   border-width: 0 0 2px 25px;
-  border-color: #EfEfAb; 
+  border-color: #EfEfAb;
   font-size: 18px;
 }
 
@@ -596,10 +596,10 @@ table#table-01 td {
 
 footer {
   width: 100%;
-  margin-top: 4px;                                                                    
+  margin-top: 4px;
   padding: 20px 0;
   text-align: right;
-  border-top: 1px solid #DDD; 
+  border-top: 1px solid #DDD;
 }
 
 footer span{
