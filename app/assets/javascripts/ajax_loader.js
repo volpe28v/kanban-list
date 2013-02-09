@@ -25,7 +25,7 @@ KanbanList.ajaxLoader = (function(){
     '<i class="icon-envelope"></i> で表示しているリストをメール送信できます',
     '<i class="icon-picture"></i> で背景画像を設定できます',
     '<i class="icon-refresh"></i> で自動更新機能の ON/OFF ができます',
-    'メニュー上の <img src="http://kanban-list.heroku.com/assets/tomato-c104ffb0220a27ca6d487fbb821ba1db.gif" /> をクリックするとポモドーロタイマーが使えます',
+    'メニュー上の <img src="/assets/tomato.gif" /> をクリックするとポモドーロタイマーが使えます',
     'ポモドーロ・テクニックを使ってこまめに作業のふりかえりをしましょう',
     'ポモドーロ・テクニックは 25分のタイムボックスで区切って作業をします'
   ];
