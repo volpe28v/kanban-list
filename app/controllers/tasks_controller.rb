@@ -94,7 +94,7 @@ class TasksController < ApplicationController
     @recent_done_num = 15
     @tasks = get_tasks( params[:filter], @recent_done_num )
 
-    render :json => { task_list_html: get_task_list_html,
+    render :json => { task_list_html: get_task_list_html("", 15),
                       task_counts: get_task_counts,
                       all_books: get_all_book_counts },
            :callback => 'updateSilentJson'
