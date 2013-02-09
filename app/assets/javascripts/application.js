@@ -11,5 +11,5 @@
 //= require jquery.cookie
 //= require jquery.maxlength
 //= require send_csrf_token
-//= require bootstrap.min
+//= require twitter/bootstrap
 //= require highcharts
