@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
     extend ActionView::Helpers::SanitizeHelper::ClassMethods
   end
 
+  private
+
   def helper
     return Helper.instance
   end
