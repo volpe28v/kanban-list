@@ -1,7 +1,5 @@
 # coding: utf-8
 class TasksController < ApplicationController
-  before_filter :authenticate_user!
-
   def index
     if request.smart_phone?
       session[:book_id] = params[:book_id] if params[:book_id] != nil
