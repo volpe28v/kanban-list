@@ -7,6 +7,6 @@ class DashboardController < ApplicationController
     @today_tasks = @user.tasks.today_touch
     @books = books_count_info_array
     @task_counts = all_count_info
-    @month_done_list = current_tasks.done_month_list.sort{|a,b| a[:date] <=> b[:date] }
+    @month_done_list = @user.tasks.done_month_list.sort{|a,b| a[:date] <=> b[:date] }
   end
 end
