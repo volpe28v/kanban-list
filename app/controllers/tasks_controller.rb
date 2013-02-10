@@ -90,9 +90,8 @@ class TasksController < ApplicationController
   def silent_update
     @user_name = current_user.name
     @recent_done_num = 15
-    @tasks = get_tasks( params[:filter], @recent_done_num )
 
-    render :json => { task_list_html: get_task_list_html("", 15),
+    render :json => { task_list_html: get_task_list_html(params[:filter], @recent_done_num),
                       task_counts: get_task_counts,
                       all_books: get_all_book_counts },
            :callback => 'updateSilentJson'
