@@ -606,3 +606,9 @@ footer span{
   margin-right: 20px;
 }
 
+.icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}

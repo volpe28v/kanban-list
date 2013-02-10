@@ -106,6 +106,7 @@ class TasksController < ApplicationController
     @tasks = @tasks.paginate(:page => params[:page], :per_page => 100)
 
     @month_list = current_tasks.done_month_list
+    @month_done_list = current_tasks.done_month_list.sort{|a,b| a[:date] <=> b[:date] }
   end
 
   def send_mail
