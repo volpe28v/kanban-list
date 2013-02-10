@@ -21,6 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '~> 2.1.4'
+gem 'jquery_mobile_rails'
 gem 'twitter-bootstrap-rails'
 
 gem 'will_paginate'
