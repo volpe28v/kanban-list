@@ -284,6 +284,10 @@ li {
   background: -moz-linear-gradient(top, #cdc, #00FF00);
 }
 
+td.todo_h, td.todo, td.todo_l, td.doing, td.waiting, td.done{
+  text-align: right;
+}
+
 h2.doing{
   margin: 0.5em 2% 0.0em 5px;
   padding: 0.3em 0.5em 0.2em 0.5em;
