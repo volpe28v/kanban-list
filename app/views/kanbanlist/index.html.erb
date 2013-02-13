@@ -33,6 +33,6 @@
     <%= link_to 'ユーザー登録', [ :new, :user_registration ] ,:class => 'btn btn-primary btn-large' %>
     <%= link_to 'ログイン', [ :new, :user_session ],:class => 'btn btn-primary btn-large'  %>
   </p>
-  There are <%= @all_user_count %> users and <span id="today_tasks"><%= @today_task_count %></span>/<span id="all_tasks"><%= @all_task_count %></span> [today/all] tasks in かんばんりすと.
+  There are <span id="user_count"><%= @all_user_count %></span> users and <span id="today_tasks"><%= @today_task_count %></span>/<span id="all_tasks"><%= @all_task_count %></span> [today/all] tasks in かんばんりすと.
 </div>
 </div>
