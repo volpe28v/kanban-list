@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
     @user = current_user
     @add_tasks  = @user.tasks.newest_add
     @done_tasks = @user.tasks.newest_done
+    @oldest_tasks = @user.tasks.oldest_update
     @doing_tasks = @user.tasks.by_status(:doing)
     @today_tasks = @user.tasks.today_touch
     @books = books_count_info_array

@@ -20,6 +20,15 @@
       </tr>
       <% end %>
     </table>
+
+    <table class="table table-bordered table-striped table-condensed">
+      <tr><th>古いタスク(忘れてない？)</th></tr>
+      <% @oldest_tasks.each do |t| %>
+      <tr>
+        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= truncate(t.msg) %></td>
+      </tr>
+      <% end %>
+    </table>
   </div>
 
   <div class="span4">

@@ -47,6 +47,7 @@ class Task < ActiveRecord::Base
 
   scope :newest_add, where("status != ?", @@status_table[:done]).order('created_at DESC' ).limit(10)
   scope :newest_done, where("status = ?", @@status_table[:done]).order('updated_at DESC' ).limit(10)
+  scope :oldest_update, where("status != ?", @@status_table[:done]).order('updated_at ASC' ).limit(10)
 
   def self.all_counts
     counts = {}
