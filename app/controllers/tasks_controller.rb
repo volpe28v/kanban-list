@@ -1,9 +1,9 @@
 # coding: utf-8
 class TasksController < ApplicationController
   def index
-    if request.smart_phone?
-      session[:book_id] = params[:book_id] if params[:book_id] != nil
+    session[:book_id] = params[:book_id] if params[:book_id] != nil
 
+    if request.smart_phone?
       @user_name = current_user.name
       @counts = get_task_counts
       @book_name = get_book_name
