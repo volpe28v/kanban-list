@@ -23,7 +23,7 @@ end
 gem 'jquery-rails'
 
 gem 'will_paginate'
-gem 'devise', '1.5.4'
+gem 'devise'
 gem 'rails_autolink'
 gem 'rake'
 
