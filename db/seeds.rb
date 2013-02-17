@@ -1,34 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
-#
-#  create_table "tasks", :force => true do |t|
-#    t.string   "name"
-#    t.string   "msg"
-#    t.date     "doing_at"
-#    t.datetime "created_at"
-#    t.datetime "updated_at"
-#    t.integer  "status"
-#  end
-#
-#  create_table "users", :force => true do |t|
-#    t.string   "name"
-#    t.string   "pass"
-#    t.string   "bg_img"
-#    t.string   "layout"
-#    t.integer  "pomo"
-#    t.datetime "created_at"
-#    t.datetime "updated_at"
-#  end
+# coding: utf-8
 
-[0,1,2,3,4,5].each{|num|
-  Task.create(:name => "baggio",:msg => "hello kanban#{num}", :status => num)
-}
+sample = User.find_or_create_by_email(:name => "サンプルアカウント",
+                             :email => "sample@kanban.list",
+                             :password => "sample",
+                             :password_confirmation => "sample")
+p "add sample user"
+sample.tasks.build(:msg => "JavaScript", :status => 0 )
+sample.tasks.build(:msg => "Perl", :status => 1 )
+sample.tasks.build(:msg => "C++", :status => 2 )
+sample.tasks.build(:msg => "Node.js", :status => 3 )
+sample.tasks.build(:msg => "Ruby on Rails", :status => 4 )
+sample.tasks.build(:msg => "done task", :status => 5 )
 
-[0,1,2,3,4,5].each{|num|
-  Task.create(:name => "naoki",:msg => "日本語タスク　#{num}", :status => num)
-}
+sample.save
+p "add tasks for sample user"
