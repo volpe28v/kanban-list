@@ -612,3 +612,7 @@ footer span{
   margin-right: -6px;
   opacity: .25;
 }
+
+.zero {
+  color: #aaa;
+}
