@@ -1,7 +1,7 @@
 <div data-role="page" id="sign-in" data-theme="a">
-  <div data-role="header"><h1>ログイン</h1></div> 
+  <div data-role="header"><h1>ログイン</h1></div>
 
-  <div data-role="content"> 
+  <div data-role="content">
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal"}) do |f| %>
       <fieldset>
         <div class="control-group">
@@ -24,4 +24,3 @@
     <% end %>
   </div>
 </div>
-

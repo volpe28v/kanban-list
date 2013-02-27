@@ -10,7 +10,7 @@ KanbanList.utility = (function(){
       return num;
     }
   }
- 
+
   return {
     //public
     getTodayStr: function(){
@@ -29,5 +29,3 @@ KanbanList.utility = (function(){
     }
   }
 }());
-
-

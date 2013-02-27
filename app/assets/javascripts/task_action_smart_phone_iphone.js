@@ -41,7 +41,7 @@ KanbanList.taskAction = (function(){
 
     sendCurrentTodo(id, status, msg);
   }
- 
+
   function deleteTodo( id ) {
     var msg_id = '#msg_' + id;
     var delete_id = '#id_' + id
@@ -73,13 +73,13 @@ KanbanList.taskAction = (function(){
     }else{
       var display_msg = $("#msg_" + id).html();
       var updated_date = $("#updated_" + id).html();
-      var move_item = 
-        '<li id="id_' + id + '">' + 
-          '<a href="#setting?id=' + id + '">' + 
-            '<table><tr>' + 
-              '<td><span class="label label-important" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span></td>' + 
-              '<td><span id="msg_' + id + '">' + display_msg + '</span></td>' + 
-            '</tr></table>' + 
+      var move_item =
+        '<li id="id_' + id + '">' +
+          '<a href="#setting?id=' + id + '">' +
+            '<table><tr>' +
+              '<td><span class="label label-important" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span></td>' +
+              '<td><span id="msg_' + id + '">' + display_msg + '</span></td>' +
+            '</tr></table>' +
           '</a>' +
         '</li>';
 
@@ -165,5 +165,3 @@ KanbanList.taskAction = (function(){
     display_filter: display_filter
   }
 }());
-
-

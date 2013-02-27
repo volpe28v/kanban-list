@@ -25,9 +25,9 @@ KanbanList.addForm = (function(){
     }
 
     function escapeInvalidChar(msg){
-      var escaped_msg = msg.replace(/&/g,""); 
-      escaped_msg = escaped_msg.replace(/'/g,"\""); 
-      escaped_msg = escaped_msg.replace(/!/g,"|"); 
+      var escaped_msg = msg.replace(/&/g,"");
+      escaped_msg = escaped_msg.replace(/'/g,"\"");
+      escaped_msg = escaped_msg.replace(/!/g,"|");
       return escaped_msg;
     }
 
@@ -38,7 +38,7 @@ KanbanList.addForm = (function(){
 
       is_added_task = true;
     }
- 
+
     $(".add_todo_form_msg").maxlength({
       'feedback' : '.task-chars-left-add-form'
     });

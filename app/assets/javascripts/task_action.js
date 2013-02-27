@@ -116,7 +116,7 @@ KanbanList.taskAction = (function(){
     //TODO: グローバルのメソッドを呼んでいるので修正する
     sendCurrentTodo(id, status, msg);
   }
- 
+
   var edit_before_msg = {};
   function realize_task(id, msg_array){
     var msg = msg_array.join('\n');
@@ -179,11 +179,8 @@ KanbanList.taskAction = (function(){
     });
   }
 
-
   return {
     realize: realize_task,
     display_filter: display_filter
   }
 }());
-
-

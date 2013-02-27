@@ -10,6 +10,6 @@
 //= require jquery.alerts
 //= require jquery.cookie
 //= require jquery.maxlength
-//= require bootstrap.min
+//= require send_csrf_token
+//= require twitter/bootstrap
 //= require highcharts
-

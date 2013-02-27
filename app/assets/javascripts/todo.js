@@ -3,7 +3,7 @@
  * created by Naoki Kodama
  */
 
-// dependent modules 
+// dependent modules
 var autoLoadingTimer = KanbanList.autoLoadingTimer;
 var utility = KanbanList.utility;
 var ajaxLoader = KanbanList.ajaxLoader;
@@ -59,7 +59,7 @@ function updateCountsJson( counts_json ){
                     ['#done_num',    counts_json.done]
                   ];
 
-  for(var i = 0; i < state_ids.length; i++ ){ 
+  for(var i = 0; i < state_ids.length; i++ ){
     var state_name = state_ids[i][0];
     var count_num  = state_ids[i][1];
     if ( $(state_name).html() != count_num ){
@@ -90,7 +90,7 @@ function addTodoResponse(add_task_info){
   todayMarker.markById(add_task_info.id);
   updateCountsJson(add_task_info.task_counts);
   bookNavi.updateByJson( add_task_info.all_books );
-    
+
   if ( add_task_info.move_task_id != 0 ){
     setTimeout(function(){
       $('#id_' + add_task_info.move_task_id).slideUp();
@@ -199,4 +199,3 @@ function selectLayout(layout_name){
     });
   });
 }
-

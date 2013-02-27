@@ -45,4 +45,3 @@ KanbanList.backgroundImage = (function(){
     init: init
   }
 }());
-

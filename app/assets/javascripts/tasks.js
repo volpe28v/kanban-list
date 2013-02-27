@@ -14,7 +14,7 @@
 //= require filter_navi
 //= require todo
 
-// dependent modules 
+// dependent modules
 var autoLoadingTimer = KanbanList.autoLoadingTimer;
 var utility = KanbanList.utility;
 var ajaxLoader = KanbanList.ajaxLoader;
@@ -27,7 +27,7 @@ var draggableTask = KanbanList.draggableTask;
 var filterNavi = KanbanList.filterNavi;
 var pomodoroTimer = KanbanList.pomodoroTimer;
 
-$(document).ready(function(){ 
+$(document).ready(function(){
   // initialize menus
   bookNavi.init();
   sendMail.init();

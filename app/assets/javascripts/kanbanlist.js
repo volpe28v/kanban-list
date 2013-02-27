@@ -16,6 +16,3 @@ var KanbanList = (function(){
     namespace: namespace
   }
 }());
-
-
-

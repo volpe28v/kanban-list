@@ -25,5 +25,3 @@ KanbanList.filterNavi = (function(){
   }
 
 }());
-
-

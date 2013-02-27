@@ -59,5 +59,3 @@ KanbanList.draggableTask = (function(){
     stopByElem:  stopByElem
   }
 }());
-
-

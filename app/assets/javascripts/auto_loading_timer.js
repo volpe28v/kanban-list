@@ -69,11 +69,11 @@ KanbanList.autoLoadingTimer = (function(){
     if ( stack != 0 ){ return; }
     clearInterval(timer_id);
   }
- 
+
   function isActive(){
       return stack >= 1 ;
   }
- 
+
   return {
     //public
     init: init,
@@ -85,5 +85,3 @@ KanbanList.autoLoadingTimer = (function(){
     isActive: isActive
   }
 }());
-
-

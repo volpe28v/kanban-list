@@ -61,4 +61,3 @@ KanbanList.sendMail = (function(){
     init: init
   }
 }());
-

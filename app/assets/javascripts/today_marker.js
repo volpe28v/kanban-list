@@ -21,5 +21,3 @@ KanbanList.todayMarker = (function(){
     markById: markById
   }
 }());
-
-
