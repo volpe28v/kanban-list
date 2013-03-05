@@ -3,29 +3,38 @@
   <div class="span4">
     <div id="task_status_chart"></div>
 
-    <table class="table table-bordered table-striped table-condensed">
+    <table class="task-table table table-bordered table-striped table-condensed">
       <tr><th>最近追加されたタスク</th></tr>
       <% @add_tasks.each do |t| %>
       <tr>
-        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= truncate(t.msg) %></td>
+        <td>
+          <span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> 
+          <a href="#" data-id="<%= t.book_id %>"><%= truncate(t.msg) %></a>
+        </td>
       </tr>
       <% end %>
     </table>
 
-    <table class="table table-bordered table-striped table-condensed">
+    <table class="task-table table table-bordered table-striped table-condensed">
       <tr><th>最近完了したタスク</th></tr>
       <% @done_tasks.each do |t| %>
       <tr>
-        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= truncate(t.msg) %></td>
+        <td>
+          <span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span>
+          <a href="#" data-id="<%= t.book_id %>"><%= truncate(t.msg) %></a>
+        </td>
       </tr>
       <% end %>
     </table>
 
-    <table class="table table-bordered table-striped table-condensed">
+    <table class="task-table table table-bordered table-striped table-condensed">
       <tr><th>古いタスク(忘れてない？)</th></tr>
       <% @oldest_tasks.each do |t| %>
       <tr>
-        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= truncate(t.msg) %></td>
+        <td>
+          <span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span>
+          <a href="#" data-id="<%= t.book_id %>"><%= truncate(t.msg) %></a>
+        </td>
       </tr>
       <% end %>
     </table>
@@ -34,20 +43,26 @@
   <div class="span4">
     <div id="done_chart"></div>
 
-    <table class="table table-bordered table-striped table-condensed">
+    <table class="task-table table table-bordered table-striped table-condensed">
       <tr><th>実行中のタスク</th></tr>
       <% @doing_tasks.each do |t| %>
       <tr>
-        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= truncate(t.msg) %></td>
+        <td>
+          <span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span>
+          <a href="#" data-id="<%= t.book_id %>"><%= truncate(t.msg) %></a>
+        </td>
       </tr>
       <% end %>
     </table>
 
-    <table class="table table-bordered table-striped table-condensed">
+    <table class="task-table table table-bordered table-striped table-condensed">
       <tr><th>本日変更したタスク</th></tr>
       <% @today_tasks.each do |t| %>
       <tr>
-        <td><span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span> <%= truncate(t.msg) %></td>
+        <td>
+          <span class="label label-info"><%= t.updated_at.strftime("%m-%d") %></span>
+          <a href="#" data-id="<%= t.book_id %>"><%= truncate(t.msg) %></a>
+        </td>
       </tr>
       <% end %>
     </table>
@@ -55,7 +70,6 @@
 
   <div class="span4">
     <div id="book_count_chart"></div>
-
     <table id="book_table" class="table table-bordered table-striped table-condensed">
       <tr><th colspan="7">Books</th></tr>
       <% @books.each do |b| %>
@@ -184,6 +198,11 @@ $(document).ready(function() {
   });
 
   $('#book_table').delegate('a', 'click',function(){
+    var book_id = $(this).data('id');
+    location.href = "/tasks?book_id=" + book_id
+    return false;
+  });
+  $('.task-table').delegate('a', 'click',function(){
     var book_id = $(this).data('id');
     location.href = "/tasks?book_id=" + book_id
     return false;
