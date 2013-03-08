@@ -4,7 +4,7 @@
 
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal"}) do |f| %>
       <fieldset>
-        <legend>Sign in</legend>
+        <legend>ログイン</legend>
         <div class="control-group">
           <%= f.label :email, :class => "control-label" %>
           <div class="controls">
@@ -19,18 +19,9 @@
         </div>
 
         <div class="control-group">
-          <% if devise_mapping.rememberable? -%>
-            <div class="controls">
-              <label class="checkbox">
-                <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-              </label>
-            </div>
-          <% end -%>
-        </div>
-
-        <div class="control-group">
           <div class="controls">
-            <%= f.submit "Sign in", :class => "btn btn-primary" %>
+            <%= f.submit "ログイン", :class => "btn btn-primary" %>
+            <button id="login_with_sample" class="btn btn-inverse">サンプルアカウントでログイン</button>
           </div>
         </div>
       </fieldset>
@@ -38,3 +29,13 @@
     </div>
   </div>
 </div>
+<script>
+$(document).ready(function() {
+  $("#login_with_sample").click(function(){
+    $("#user_email").val("sample@kanban.list");
+    $("#user_password").val("sample");
+    submit();
+  });
+});
+</script>
+
