@@ -13,15 +13,15 @@
       </li>
       <li id="todo_h" data-role="list-divider" style="padding: 0.1em 15px;">High</li>
       <% @tasks[:todo_high_tasks].each do |t| %>
-        <%= render "task_smart_phone_iphone", {:t => t} %>
+        <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
       <li id="todo_m" data-role="list-divider" style="padding: 0.1em 15px;">Middle</li>
       <% @tasks[:todo_mid_tasks].each do |t| %>
-        <%= render "task_smart_phone_iphone", {:t => t} %>
+        <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
       <li id="todo_l" data-role="list-divider" style="padding: 0.1em 15px;">Low</li>
       <% @tasks[:todo_low_tasks].each do |t| %>
-        <%= render "task_smart_phone_iphone", {:t => t} %>
+        <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
       <li data-role="list-divider" style="padding: 4px;"></li>
     </ul>
@@ -37,12 +37,12 @@
     <ul data-role="listview">
       <li id="doing" data-role="list-divider" style="padding: 0.1em 15px;">Doing</li>
       <% @tasks[:doing_tasks].each do |t| %>
-        <%= render "task_smart_phone_iphone", {:t => t} %>
+        <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
 
       <li id="waiting" data-role="list-divider" style="padding: 0.1em 15px;">Waiting</li>
       <% @tasks[:waiting_tasks].each do |t| %>
-        <%= render "task_smart_phone_iphone", {:t => t} %>
+        <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
       <li data-role="list-divider" style="padding: 4px;"></li>
     </ul>
@@ -58,7 +58,7 @@
     <ul data-role="listview">
       <li id="done" data-role="list-divider">Done</li>
       <% @tasks[:done_tasks].each do |t| %>
-        <%= render "task_smart_phone_iphone", {:t => t} %>
+        <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
       <li data-role="list-divider" style="padding: 4px;"></li>
     </ul>
