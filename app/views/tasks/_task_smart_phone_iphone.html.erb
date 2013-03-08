@@ -1,9 +1,9 @@
-<li id="id_<%= t.id %>">
-  <a href="#setting?id=<%= t.id %>" id="edit_task_link_<%= t.id %>" data-transition="slidefade">
+<li id="id_<%= task.id %>">
+  <a href="#setting?id=<%= task.id %>" id="edit_task_link_<%= task.id %>" data-transition="slidefade">
     <p>
     <table><tr>
-        <td><span class="label label-info" id="updated_<%= t.id %>" style="display:inline;"><%= t.updated_at.strftime("%m/%d") %></span></td>
-        <td><span id="msg_<%= t.id %>"></span></td>
+        <td><span class="label label-info" id="updated_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></td>
+        <td><span id="msg_<%= task.id %>"></span></td>
     </tr></table>
     </p>
   </a>
@@ -12,7 +12,7 @@
 <script>
 (function(){
   var taskAction = KanbanList.taskAction;
-  var msg_array = <%= to_js_array(t.msg) %>;
-  taskAction.initial(<%= t.id %>, "<%= t.status_sym %>", msg_array);
+  var msg_array = <%= to_js_array(task.msg) %>;
+  taskAction.initial(<%= task.id %>, "<%= task.status_sym %>", msg_array);
 }());
 </script>

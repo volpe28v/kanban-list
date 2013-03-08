@@ -11,25 +11,20 @@ class TasksController < ApplicationController
       @prefix = get_prefix
       @recent_done_num = 10
       @books = current_user.books
-
       @tasks = get_tasks( "", @recent_done_num )
     end
   end
 
   def create
     task = Task.new(:msg => params[:msg],
-                     :name => current_user.name,
-                     :user => current_user)
+                    :name => current_user.name,
+                    :user => current_user)
     task.update_status(:todo_m)
     task.book = task.get_book_id_in_msg_by_user(current_user)
     task.save
 
     move_id = is_moved_from_book?(task) ? task.id : 0
-    if request.smart_phone?
-      task_html = render_to_string :partial => 'task', :locals => {:t => task }
-    else
-      task_html = render_to_string :partial => 'task', :locals => {:task => task, :display => "none" }
-    end
+    task_html = render_to_string :partial => 'task', :locals => {:task => task, :display => "none" }
 
     render :json => { id: task.id,
                       li_html: task_html,
