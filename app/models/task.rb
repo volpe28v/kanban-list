@@ -33,7 +33,7 @@ class Task < ActiveRecord::Base
     where("name = ? and msg LIKE ?", name ,"%#{URI.encode(filter)}%").order('order_no ASC, updated_at DESC')
   }
 
-  scope :done, where(:status => @@status_table[:done]).order('updated_at DESC')
+  scope :done, lambda { where(:status => @@status_table[:done]).order('updated_at DESC') }
   scope :done_and_filter, lambda {|filter|
     where("status = ? and msg LIKE ?", @@status_table[:done] , "%#{URI.decode(filter)}%").order('updated_at DESC')
   }
