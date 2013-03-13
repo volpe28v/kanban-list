@@ -2,7 +2,7 @@ KanbanList.namespace('todayMarker');
 KanbanList.todayMarker = (function(){
   // 本日の編集した要素にマーカーをつける
   function markAll(){
-    markWithElem( $('ul li span[id*="_time_"]:contains(' + utility.getTodayStr() + ')') );
+    markWithElem( $('span[id*="_time_"]:contains(' + utility.getTodayStr() + ')') );
   }
 
   function markById( id ){
