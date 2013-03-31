@@ -75,7 +75,7 @@ GEM
     jquery_mobile_rails (1.1.1.1)
       rails (>= 3.1.0)
     json (1.7.7)
-    libv8 (3.3.10.4)
+    libv8 (3.11.8.17)
     listen (0.7.3)
     lumberjack (1.0.2)
     mail (2.5.3)
@@ -121,6 +121,7 @@ GEM
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
+    ref (1.0.4)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -149,8 +150,9 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
     terminal-table (1.4.5)
-    therubyracer (0.9.8)
-      libv8 (~> 3.3.10)
+    therubyracer (0.11.4)
+      libv8 (~> 3.11.8.12)
+      ref
     thor (0.18.1)
     tilt (1.3.6)
     treetop (1.4.12)
@@ -194,7 +196,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   sqlite3
-  therubyracer (= 0.9.8)
+  therubyracer
   turn
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)

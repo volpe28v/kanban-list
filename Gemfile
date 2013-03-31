@@ -1,4 +1,4 @@
-if RUBY_VERSION =~ /1.9/
+if RUBY_VERSION =~ /^1\.9|^2\.0/
   Encoding.default_external = Encoding::UTF_8
   Encoding.default_internal = Encoding::UTF_8
 end
@@ -9,8 +9,6 @@ gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -33,6 +31,7 @@ gem 'jpmobile'
 gem 'jpmobile-terminfo'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'growl'
@@ -40,14 +39,12 @@ group :development, :test do
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'quiet_assets'
-#  gem 'rcov'
-#  gem 'ci_reporter'
 end
 
 group :production do
   gem 'pg'
   gem 'execjs'
-  gem 'therubyracer', '0.9.8'
+  gem 'therubyracer'
 end
 
 # Use unicorn as the web server
