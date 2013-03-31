@@ -1,11 +1,11 @@
-if RUBY_VERSION =~ /1.9/
+if RUBY_VERSION =~ /^1\.9|^2\.0/
   Encoding.default_external = Encoding::UTF_8
   Encoding.default_internal = Encoding::UTF_8
 end
 
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
