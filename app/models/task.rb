@@ -51,8 +51,10 @@ class Task < ActiveRecord::Base
 
   def self.all_counts
     counts = {}
-    @@status_table.each_key{|key|
-      counts[key.to_sym] = self.by_status(key.to_sym).count
+    @@status_table.each_key {|status| counts[status] = 0 }
+
+    self.group(:status).count(:status).each {|status_value, count|
+      counts[@@status_table.key(status_value)] = count
     }
     counts
   end
