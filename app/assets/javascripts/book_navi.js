@@ -41,18 +41,14 @@ KanbanList.bookNavi = (function(){
     });
   }
 
-  function setAction(book_infos){
+  function setAction(){
     initNewBookAction();
     initRemoveBookAction();
 
-    for(var i = 0; i < book_infos.length; i++ ){
-      $('#book_list_' + book_infos[i].id + ' a').click(function(){
-        var book_id = book_infos[i].id;
-        return function(){
-          selectBookAction( book_id );
-        }
-      }());
-    }
+    $('.book_item a').click(function(){
+      var book_id = $(this).data('book_id');
+      selectBookAction( book_id );
+    });
   }
 
   function initNewBookAction(){
@@ -111,6 +107,32 @@ KanbanList.bookNavi = (function(){
     $('#remove_book_cancel_button').click(function(){
       $('#remove_book_in').modal('hide');
     });
+
+    // Cancel other click event handler
+    $(document).on('click', '#search-books', function() {
+      return false;
+    });
+
+    // Seach book
+    $(document).on('keyup', '#search-books', function() {
+      var text = $(this).val();
+
+      if (!text) {
+        $('#book_list .book_item').show();
+        return;
+      }
+
+      var query = new RegExp(text, 'i');
+
+      $('#book_list .book_item').each(function() {
+        var book_name = $(this).data('book_name');
+        if (query.test(book_name)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
   }
 
   function updateByJson( book_infos ){
@@ -120,10 +142,12 @@ KanbanList.bookNavi = (function(){
                '<li class="divider"></li>';
 
     var lists = '';
+    lists += '<li><a><input id="search-books" class="search-query span3" placeholder="Search..."/></a></li>';
+
     for(var i = 0; i < book_infos.length; i++ ){
       var active_todo_counts = book_infos[i].todo_h + book_infos[i].todo_m + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
-      lists += '<li id="book_list_' + book_infos[i].id + '">' +
-                 '<a href="#">' + book_infos[i].name +
+      lists += '<li class="book_item" data-book_name="' + book_infos[i].name + '">' +
+                 '<a href="#" data-book_id="' + book_infos[i].id + '">' + book_infos[i].name +
                    '<table style="float:right" class="book-counts">' +
                      '<tr>' +
                        '<td><div class="counts-active" >' + active_todo_counts   + '</div></td>' +
@@ -142,7 +166,7 @@ KanbanList.bookNavi = (function(){
     $('#book_list').empty();
     $('#book_list').append(header + lists);
 
-    setAction(book_infos);
+    setAction();
   }
 
   return {
