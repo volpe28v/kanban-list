@@ -9,7 +9,7 @@ Todolist::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = true 
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS
   config.assets.compress = false
@@ -56,6 +56,7 @@ Todolist::Application.configure do
     :port => 587,
     :domain => 'gmail.com',
     :user_name => "kanbanlist.info@gmail.com",
+    :user_name => ENV['MAIL_ADDR'],
     :password => ENV['MAIL_PASSWORD'],
     :authentication => 'plain',
     :enable_starttls_auto => true,

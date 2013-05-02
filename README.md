@@ -14,6 +14,18 @@ $ rake db:migrate
 $ rails s
 ```
 
+## Mail Setting
+
+メール機能を利用する場合はメールアドレスとパスワードを環境変数に設定します。(Gmailのみ対応)
+### 開発環境
+```bash
+$ MAIL_ADDR=xxxxxxx@gmail.com MAIL_PASSWORD=yyyyy rails s
+```
+
+### heroku
+```bash
+$ heroku config:add MAIL_ADDR=xxxxxxx@gmail.com MAIL_PASSWORD=yyyyy
+```
 ## Demo
 http://kanban-list.heroku.com/
 
