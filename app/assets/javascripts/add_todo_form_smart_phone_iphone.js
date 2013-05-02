@@ -19,7 +19,9 @@ KanbanList.addForm = (function(){
         type: "POST",
         cache: false,
         url: "tasks",
-        data: "msg=" + escapeInvalidChar(msg),
+        data: {
+          msg: escapeInvalidChar(msg)
+        },
         dataType: "jsonp"
      });
     }

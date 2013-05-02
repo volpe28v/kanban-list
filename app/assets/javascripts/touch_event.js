@@ -60,7 +60,7 @@ KanbanList.touchEvent = (function(){
   }
 
   function init(target_class_name){
-    var label_elems = document.getElementsByClassName(target_class_name);
+    var label_elems = $(target_class_name);
     setEvent(label_elems);
   }
 

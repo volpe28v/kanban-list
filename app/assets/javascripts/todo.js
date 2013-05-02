@@ -29,18 +29,20 @@ function sendCurrentTodo(id, status, msg) {
 
   todayMarker.markById( id );
 
-  var request_str = "status=" + status + "&msg=" + sanitize(msg);
   $.ajax({
     type: "PUT",
     cache: false,
     url: "tasks/" + id,
-    data: request_str,
+    data: {
+      status: status,
+      msg: sanitize(msg)
+    },
     dataType: "jsonp"
   });
 }
 
 function sendTaskOrder(status, order){
-  var request_str = "status=" + status + "&" + order;
+  var request_str = "status=" + status + "&" + order; //TODO hash で渡したいが、バラすのが面倒なので後回し
   $.ajax({
     type: "POST",
     cache: false,
@@ -105,14 +107,15 @@ function addTodoResponse(add_task_info){
 
 function filterTask(filter_str){
   autoLoadingTimer.stop();
-  var request_str = "filter=" + filter_str;
 
   ajaxLoader.start(function(){
     $.ajax({
       type: "POST",
       cache: false,
       url: "tasks/filter_or_update",
-      data: request_str,
+      data: {
+        filter: filter_str
+      },
       dataType: "jsonp"
     });
   });
@@ -186,16 +189,17 @@ function task_display_filter(text){
 
 function selectLayout(layout_name){
   autoLoadingTimer.stop();
-  var request_str = "filter=" + $('#filter_str').get(0).value;
-  request_str += "&layout=" + layout_name;
 
   ajaxLoader.start(function(){
     $.ajax({
-       type: "POST",
-       cache: false,
-       url: "tasks/filter_or_update",
-       data: request_str,
-       dataType: "jsonp"
+      type: "POST",
+      cache: false,
+      url: "tasks/filter_or_update",
+      data: {
+        filter: $('#filter_str').get(0).value,
+        layout: layout_name
+      },
+      dataType: "jsonp"
     });
   });
 }

@@ -133,14 +133,14 @@ function initSendMail(){
 }
 
 function sendMail(addr){
-  var request_str = "mail_addr=" + addr;
-
   $.ajax({
-     type: "POST",
-     cache: false,
-     url: "tasks/send_mail",
-     data: request_str,
-     dataType: "jsonp"
+    type: "POST",
+    cache: false,
+    url: "tasks/send_mail",
+    data: {
+      mail_addr: addr
+    },
+    dataType: "jsonp"
   });
 }
 
@@ -212,16 +212,16 @@ function sendCurrentTodo(id, status, msg) {
 
   markTodayEditById( id );
 
-  var request_str = "status=" + status + "&msg=" + msg;
-
-   $.ajax({
-     type: "PUT",
-     cache: false,
-     url: "tasks/" + id,
-     data: request_str,
-     dataType: "jsonp"
-   });
-
+  $.ajax({
+    type: "PUT",
+    cache: false,
+    url: "tasks/" + id,
+    data: {
+      status: status,
+      msg: msg
+    },
+    dataType: "jsonp"
+  });
 }
 
 // Todo数表示を更新する
@@ -345,7 +345,9 @@ function addTodoAjax(msg) {
     type: "POST",
     cache: false,
     url: "tasks",
-    data: "msg=" + msg
+    data: {
+      msg: msg
+    }
  });
 }
 
@@ -355,84 +357,45 @@ function addTodoResponse(add_task_info){
   markTodayEditById( add_task_info.id );
 }
 
-function changeBgImg(img_name) {
-  document.body.style.backgroundImage = 'url(/bg_img/' + img_name + ')';
-
-  $.ajax({
-    type: "POST",
-    cache: false,
-    url: "todo.cgi",
-    data: "mode=setbgurl&name=" + CurrentUser + "&bg_url=" + img_name,
-    success: function(result){
-       $('#viewSortlist').html(result );
-//     alert( "bg_changed");
-    }
- });
-
-}
-
-function changeLayout(layout) {
-
-  $.ajax({
-    type: "POST",
-    cache: false,
-    url: "todo.cgi",
-    data: "mode=setlayout&name=" + CurrentUser + "&layout=" + layout,
-    success: function(result){
-       $('#viewSortlist').html(result );
-       filterTask( $('#filter_str').get(0).value );
-    }
- });
-
-}
-
-function newUser( url_name , user_name ) {
-  if ( user_name != "" ){
-    location.href = url_name + '/todo.cgi?mode=new&name=' + user_name;
-  }else{
-    alert("Please input new user name!");
-  }
-}
-
 function filterTask(filter_str){
-  var request_str = "filter=" + filter_str;
-
   $('#task_list').fadeOut();
 
   $.ajax({
-     type: "POST",
-     cache: false,
-     url: "tasks/filter_or_update",
-     data: request_str,
-     dataType: "jsonp"
+    type: "POST",
+    cache: false,
+    url: "tasks/filter_or_update",
+    data: {
+      filter: filter_str
+    },
+    dataType: "jsonp"
   });
 }
 
 function newBook(book_name){
-  var request_str = "book_name=" + book_name;
-
   $('#task_list').fadeOut();
 
   $.ajax({
-     type: "POST",
-     cache: false,
-     url: "tasks/new_book",
-     data: request_str,
-     dataType: "jsonp"
+    type: "POST",
+    cache: false,
+    url: "tasks/new_book",
+    data: {
+      book_name: book_name
+    },
+    dataType: "jsonp"
   });
 }
 
 function selectBook(book_id){
-  var request_str = "book_id=" + book_id;
-
   $('#task_list').fadeOut();
 
   $.ajax({
-     type: "GET",
-     cache: false,
-     url: "tasks/select_book",
-     data: request_str,
-     dataType: "jsonp"
+    type: "GET",
+    cache: false,
+    url: "tasks/select_book",
+    data: {
+      book_id: book_id
+    },
+    dataType: "jsonp"
   });
 }
 

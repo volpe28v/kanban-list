@@ -46,14 +46,15 @@ KanbanList.sendMail = (function(){
   }
 
   function send_mail(addr, comment){
-    var request_str = "mail_addr=" + addr + "&comment=" + comment;
-
     $.ajax({
-       type: "POST",
-       cache: false,
-       url: "tasks/send_mail",
-       data: request_str,
-       dataType: "jsonp"
+      type: "POST",
+      cache: false,
+      url: "tasks/send_mail",
+      data: {
+        mail_addr: addr,
+        comment: comment
+      },
+      dataType: "jsonp"
     });
   }
 
