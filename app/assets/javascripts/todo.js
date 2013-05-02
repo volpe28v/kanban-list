@@ -97,7 +97,7 @@ function addTodoResponse(add_task_info){
     },700);
   }
 
-  var label_elems = $(id_str).get(0).getElementsByClassName("taskLabel");
+  var label_elems = $(id_str).first().find(".taskLabel");
   touchEvent.setEvent(label_elems);
 
   $(id_str).fadeIn();
