@@ -577,14 +577,22 @@ table#table-01 td {
   background-color: white;
 }
 
+#p_timer_clock {
+  margin: 0 10px;
+}
+
 #p_min, #p_sec, #p_delim {
-  font-size: 30px;
   color: tomato;
   text-shadow: 1px 1px 2px gray;
 }
 
 #p_min {
+  font-size: 36px;
   margin-left: 10px;
+}
+
+#p_sec, #p_delim {
+  font-size: 12px;
 }
 
 #pomo_done_num {
