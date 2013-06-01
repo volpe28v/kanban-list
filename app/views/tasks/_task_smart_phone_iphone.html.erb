@@ -3,7 +3,7 @@
     <p>
     <table><tr>
         <td><span class="label label-info" id="updated_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></td>
-        <td><span id="msg_<%= task.id %>"></span></td>
+        <td><span id="msg_<%= task.id %>" style="word-break:break-all;"></span></td>
     </tr></table>
     </p>
   </a>
