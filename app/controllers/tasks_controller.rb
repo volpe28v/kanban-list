@@ -19,7 +19,7 @@ class TasksController < ApplicationController
     task = Task.new(:msg => params[:msg],
                     :name => current_user.name,
                     :user => current_user)
-    task.update_status(:todo_m)
+    task.update_status(params[:priority])
     task.book = task.get_book_id_in_msg_by_user(current_user)
     task.save
 
@@ -27,6 +27,7 @@ class TasksController < ApplicationController
     task_html = render_to_string :partial => 'task', :locals => {:task => task, :display => "none" }
 
     render :json => { id: task.id,
+                      status: task.status_sym,
                       li_html: task_html,
                       move_task_id: move_id,
                       task_counts: get_task_counts,

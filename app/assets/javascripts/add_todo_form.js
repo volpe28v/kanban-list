@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  function addTodoWithPrefix( prefix, msg ){
+  function addTodoWithPrefix( prefix, msg, priority ){
     if ( msg == "" ){
       return;
     }
@@ -9,16 +9,18 @@ $(document).ready(function(){
       prefix_text = "[" + prefix + "]";
     }
 
-    addTodoAjax( prefix_text + " " + msg );
+    addTodoAjax( prefix_text + " " + msg, priority );
   }
 
-  function addTodoAjax(msg) {
+  function addTodoAjax(msg, priority) {
+    priority = priority == null ? "todo_m" : priority;
     $.ajax({
       type: "POST",
       cache: false,
       url: "tasks",
       data: {
-        msg: escapeInvalidChar(msg)
+        msg: escapeInvalidChar(msg),
+        priority: priority
       },
       dataType: "jsonp"
    });
@@ -32,7 +34,11 @@ $(document).ready(function(){
   }
 
   function addTodoAction(){
-    addTodoWithPrefix($('#prefix').val() , sanitize($('#add_todo_form_msg').val()));
+    addTodoWithPrefix(
+      $('#prefix').val() , sanitize($('#add_todo_form_msg').val()),
+      $('input[name="add_to"]:checked').val()
+    );
+
     $('#add_todo_form_msg').val('');
     $('#add_todo_form_msg').focus();
 

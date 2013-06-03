@@ -87,7 +87,7 @@ function updateTaskJson( update_task ){
 function addTodoResponse(add_task_info){
   var id_str = '#id_' + add_task_info.id;
 
-  $('#todo_m').prepend(add_task_info.li_html);
+  $('#' + add_task_info.status).prepend(add_task_info.li_html);
 
   todayMarker.markById(add_task_info.id);
   updateCountsJson(add_task_info.task_counts);
