@@ -19,7 +19,7 @@ class TasksController < ApplicationController
     task = Task.new(:msg => params[:msg],
                     :name => current_user.name,
                     :user => current_user)
-    task.update_status(params[:priority])
+    task.update_status(params[:priority] || :todo_m)
     task.book = task.get_book_id_in_msg_by_user(current_user)
     task.save
 
