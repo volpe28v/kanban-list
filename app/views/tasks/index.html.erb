@@ -6,27 +6,24 @@
     <div class="span8">
   <form method="post" id="add_todo_form" class="form-inline">
     <span class="label label-info">Book: <span id="book_name_label"></span></span> <span class="task-chars-left-add-form"></span>
-    <span id="add_to_radio">
-      <label class="radio inline">
-        <input type="radio" name="add_to" id="add_to_hight" value="todo_h" >
-        Hight
-      </label>
-      <label class="radio inline">
-        <input type="radio" name="add_to" id="add_to_middle" value="todo_m" checked>
-        Middle
-      </label>
-      <label class="radio inline">
-        <input type="radio" name="add_to" id="add_to_low" value="todo_l" >
-        Low
-      </label>
-    </span>
 
-    </br>
-    <input type="text" id="prefix" class="span2" name="prefix" value="" placeholder="Book Name" maxlength="50"/>
-    <input type="text" id="add_todo_form_msg" class="span6" value="" placeholder="Task Name" maxlength="200"/>
-    <button class="btn btn-success" id="add_todo_button"/><i class="icon-plus icon-white"></i></button>
+    <div class="btn-toolbar" style="margin: 0;">
+      <input type="text" id="prefix" class="span2" name="prefix" value="" placeholder="Book Name" maxlength="50"/>
+      <input type="text" id="add_todo_form_msg" class="span6" value="" placeholder="Task Name" maxlength="200"/>
 
- </form>
+      <span class="btn-group" id="add_todo_btn_group" style="margin-bottom: 0;">
+        <button class="btn btn-success" id="add_todo_button" data-state="todo_m"><i class="icon-plus icon-white"></i> <span id="add_todo_label">Middle</span></button>
+        <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a data-state="todo_h">High</a></li>
+          <li><a data-state="todo_m">Middle</a></li>
+          <li><a data-state="todo_l">Low</a></li>
+        </ul>
+      </span>
+    </div>
+  </form>
 
     </div>
 

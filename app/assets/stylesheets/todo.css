@@ -624,3 +624,9 @@ footer span{
 .zero {
   color: #aaa;
 }
+
+.btn-group .btn {
+  float: none;
+  margin-left: -5px;
+}
+

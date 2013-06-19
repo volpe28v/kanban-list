@@ -36,7 +36,7 @@ $(document).ready(function(){
   function addTodoAction(){
     addTodoWithPrefix(
       $('#prefix').val() , sanitize($('#add_todo_form_msg').val()),
-      $('input[name="add_to"]:checked').val()
+      $('#add_todo_button').data('state')
     );
 
     $('#add_todo_form_msg').val('');
@@ -58,6 +58,11 @@ $(document).ready(function(){
 
   $("#add_todo_button").click(function(){
     addTodoAction();
+  });
+
+  $('#add_todo_btn_group').delegate('a', 'click',function(){
+    $('#add_todo_button').data('state', $(this).data('state'));
+    $('#add_todo_label').html($(this).html());
   });
 
   filterTask("");
