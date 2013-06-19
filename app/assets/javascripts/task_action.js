@@ -16,7 +16,7 @@ KanbanList.taskAction = (function(){
         if ( matched_link.match(/(\.jpg|\.gif|\.png|\.bmp)$/)){
           return '<img src="' + matched_link + '"/>';
         }else{
-          return '<a href="' + matched_link + '" target="_blank" ><i class="icon-share"></i></a>';
+          return '<a class="btn btn-mini btn-inverse" href="' + matched_link + '" target="_blank">URL</a>';
         }
       });
 
