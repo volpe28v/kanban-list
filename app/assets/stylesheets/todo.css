@@ -577,6 +577,10 @@ table#table-01 td {
   background-color: white;
 }
 
+#p_timer_body {
+  margin-top: 20px;
+}
+
 #p_timer_clock {
   margin: 0 10px;
 }

@@ -12,8 +12,8 @@
       <input type="text" id="add_todo_form_msg" class="span6" value="" placeholder="Task Name" maxlength="200"/>
 
       <span class="btn-group" id="add_todo_btn_group" style="margin-bottom: 0;">
-        <button class="btn btn-success" id="add_todo_button" data-state="todo_m"><i class="icon-plus icon-white"></i> <span id="add_todo_label">Middle</span></button>
-        <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+        <button class="btn" id="add_todo_button" data-state="todo_m"><i class="icon-plus"></i> <span id="add_todo_label">Middle</span></button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
@@ -28,7 +28,7 @@
     </div>
 
     <div class="span4">
-      <div id="p_timer_body" class="well" style="display:none">
+      <div id="p_timer_body" style="display:none">
         <center>
           <span id="p_timer_clock">
             <span id="p_min">00</span><span id="p_delim">.</span><span id="p_sec">00</span>
