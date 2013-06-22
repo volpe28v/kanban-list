@@ -54,7 +54,7 @@ function sendTaskOrder(status, order){
 function updateCountsJson( counts_json ){
   var state_ids = [
                     ['#todo_h_num',  counts_json.todo_h],
-                    ['#todo_num',    counts_json.todo_m],
+                    ['#todo_m_num',  counts_json.todo_m],
                     ['#todo_l_num',  counts_json.todo_l],
                     ['#doing_num',   counts_json.doing],
                     ['#waiting_num', counts_json.waiting],

@@ -1,92 +1,27 @@
-#doing   { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
+$active-state-height: 100px;
+$done-state-height: $active-state-height * 3 + 74;
+#doing, #waiting, #todo_m, #todo_l, #todo_h, #done {
+  list-style-type: none;
+  margin: 0 10px 0 0;
+  padding: 2px;
+  border : 0px solid #aaaaaa;
   width: 99%;
-  min-height: 100px;
+  min-height: $active-state-height;
   height: auto !important;
-  height: 100px;
-}
-#waiting { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
-  width: 99%;
-  min-height: 100px;
-  height: auto !important;
-  height: 100px;
-}
-#todo_m    { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
-  width: 99%;
-  min-height: 100px;
-  height: auto !important;
-  height: 100px;
-}
-#todo_l { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
-  width: 99%;
-  min-height: 100px;
-  height: auto !important;
-  height: 100px;
-}
-#todo_h { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
-  width: 99%;
-  min-height: 100px;
-  height: auto !important;
-  height: 100px;
+  height: $active-state-height;
 }
 #done    {
-  list-style-type: none;
-  margin: 0px 0px 0px 0px;
-  padding: 2px;
-  border : 0px solid #aaaaaa;
-  width:  99%;
-  border-top:0px solid #888;
-  border-right:0px solid #333;
-  border-bottom:0px solid #333;
-  border-left:0px solid #888;
-  color: #111;
-  min-height: 374px;
-  height: auto !important;
-  height: 374px;
+  min-height: $done-state-height;
+  height: $done-state-height;
 }
 
-.doinglist   { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; width: 98%; }
-.donelist    {
-  list-style-type: none;
-  margin: 2px 20px 0px 4px;
-  padding: 2px;
-  border : 0px solid #aaaaaa;
-  width:  96%;
-  border-top:1px solid #888;
-  border-right:2px solid #333;
-  border-bottom:2px solid #333;
-  border-left:1px solid #888;
-  background: #ddd;
-  color: #111;
-}
-
-#donelist    {
-  list-style-type: none;
-  margin: 2px 20px 0px 4px;
-  padding: 2px;
-  border : 0px solid #aaaaaa;
-  width:  96%;
-  border-top:1px solid #888;
-  border-right:2px solid #333;
-  border-bottom:2px solid #333;
-  border-left:1px solid #888;
-  background: #ddd;
-  color: #111;
-}
-
-li {
-  /* firefox specific markup */
-  -moz-border-radius-topleft: 6px;
-  -moz-border-radius-topright: 6px;
-  -moz-border-radius-bottomleft: 6px;
-  -moz-border-radius-bottomright: 6px;
-  /* webkit specific markup */
-  -webkit-border-top-left-radius: 6px;
-  -webkit-border-top-right-radius: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-}
-
+$task-li-radius: 6px;
 #doing li ,#waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{
+  /* firefox specific markup */
+  -moz-border-radius: $task-li-radius;
+  /* webkit specific markup */
+  -webkit-border-radius: $task-li-radius;
+
   margin: 0px 2px 2px 2px;
   font-weight: bold;
   font-size: 12px;
@@ -94,6 +29,9 @@ li {
   padding: 1px;
   background-position: center bottom;
   background-repeat:  repeat;
+
+  cursor: pointer;
+  color: #333;
 }
 
 #doing li{
@@ -107,9 +45,6 @@ li {
   background: -webkit-gradient(linear, left top, left bottom, from(#E0F0F6), to(#90C0C6));
   /* For Mozilla/Gecko (Firefox etc) */
   background: -moz-linear-gradient(top, #E0F0F6, #90C0C6);
-
-  color: #333;
-  cursor: pointer;
 }
 
 #waiting li {
@@ -123,9 +58,6 @@ li {
   background: -webkit-gradient(linear, left top, left bottom, from(#eec), to(#ee5));
   /* For Mozilla/Gecko (Firefox etc) */
   background: -moz-linear-gradient(top, #eec, #ee5);
-
-  color: #333;
-  cursor: pointer;
 }
 
 #todo_h li, #todo_m li, #todo_l li{
@@ -139,9 +71,6 @@ li {
   background: -webkit-gradient(linear, left top, left bottom, from(#D5FED5), to(#80DE80));
   /* For Mozilla/Gecko (Firefox etc) */
   background: -moz-linear-gradient(top, #D5FED5, #80DE80);
-
-  color: #333;
-  cursor: pointer;
 }
 
 #done li {
@@ -156,19 +85,23 @@ li {
   /* For Mozilla/Gecko (Firefox etc) */
   background: -moz-linear-gradient(top, #F6F6F6, #C2C2C2);
 
-  color: #444;
+  cursor: no-drop;
 }
 
-.doing{
+/* for status count */
+.doing ,.waiting ,.doing ,.todo_h ,.todo_m ,.todo_l ,.done {
   padding: 4px;
   border: #E3E3E3 solid;
-  border-width: 0 0 1px 1px;
   font-weight: bold;
   line-height: 100%;
   text-align: center;
-  background-color: #90d6d6;
+  border-width: 0 0 1px 1px;
   background-position: center bottom;
   background-repeat:  repeat;
+}
+
+.doing{
+  background-color: #90d6d6;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#E0F0F6), to(#90C0C6));
@@ -177,33 +110,16 @@ li {
 }
 
 .todo_h{
-  padding: 4px;
-  border: #E3E3E3 solid;
-  border-width: 0 0 1px 1px;
-  font-weight: bold;
-  line-height: 100%;
-  text-align: center;
   background-color: #88de88;
-  background-position: center bottom;
-  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#cec), to(#40cF40));
   /* For Mozilla/Gecko (Firefox etc) */
   background: -moz-linear-gradient(top, #cec, #40cF40);
-
 }
 
-.todo{
-  padding: 4px;
-  border: #E3E3E3 solid;
-  border-width: 0 0 1px 1px;
-  font-weight: bold;
-  line-height: 100%;
-  text-align: center;
+.todo_m{
   background-color: #88de88;
-  background-position: center bottom;
-  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#beb), to(#7CFC00));
@@ -212,15 +128,7 @@ li {
 }
 
 .todo_l{
-  padding: 4px;
-  border: #E3E3E3 solid;
-  border-width: 0 0 1px 1px;
-  font-weight: bold;
-  line-height: 100%;
-  text-align: center;
   background-color: #88de88;
-  background-position: center bottom;
-  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#df7), to(#ADFF2F));
@@ -229,15 +137,7 @@ li {
 }
 
 .waiting{
-  padding: 4px;
-  border: #E3E3E3 solid;
-  border-width: 0 0 1px 1px;
-  font-weight: bold;
-  line-height: 100%;
-  text-align: center;
   background-color: #ee5;
-  background-position: center bottom;
-  background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#eec), to(#ee5));
@@ -247,15 +147,7 @@ li {
 }
 
 .done{
-  padding: 4px;
-  border: #E3E3E3 solid;
-  border-width: 0 0 1px 1px;
-  font-weight: bold;
-  line-height: 100%;
-  text-align: center;
-  background-image: url("done_gra.jpg");
-  background-position: center bottom;
-  background-repeat:  repeat;
+  background-color: #d8d8d8;
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#aaa));
@@ -263,64 +155,12 @@ li {
   background: -moz-linear-gradient(top, #cdc, #00FF00);
 }
 
-td.todo_h, td.todo, td.todo_l, td.doing, td.waiting, td.done{
+/* dashboard task count */
+td.todo_h, td.todo_m, td.todo_l, td.doing, td.waiting, td.done{
   text-align: right;
 }
 
-h2.doing{
-  margin: 0.5em 2% 0.0em 5px;
-  padding: 0.3em 0.5em 0.2em 0.5em;
-  border-style: solid;
-  border-width: 0 0 2px 25px;
-  border-color: #BFEFDF;
-  font-size: 18px;
-}
-
-h2.waiting{
-  margin: 0.5em 2% 0.0em 5px;
-  padding: 0.3em 0.5em 0.2em 0.5em;
-  border-style: solid;
-  border-width: 0 0 2px 25px;
-  border-color: #EfEfAb;
-  font-size: 18px;
-}
-
-h2.todo_m{
-  margin: 0.5em 2% 0.0em 5px;
-  padding: 0.3em 0.5em 0.2em 0.5em;
-  border-style: solid;
-  border-width: 0 0 2px 25px;
-  border-color: #9DE0AD;
-  font-size: 18px;
-}
-
-h2.todo_l{
-  margin: 0.5em 2% 0.0em 5px;
-  padding: 0.3em 0.5em 0.2em 0.5em;
-  border-style: solid;
-  border-width: 0 0 2px 25px;
-  border-color: #E5FCC2;
-  font-size: 18px;
-}
-
-h2.todo_h{
-  margin: 0.5em 2% 0.0em 5px;
-  padding: 0.3em 0.5em 0.2em 0.5em;
-  border-style: solid;
-  border-width: 0 0 2px 25px;
-  border-color: #75dDd8;
-  font-size: 18px;
-}
-
-h2.done{
-  margin: 0.5em 2% 0.0em 5px;
-  padding: 0.3em 0.5em 0.2em 0.5em;
-  border-style: solid;
-  border-width: 0 0 2px 25px;
-  border-color: #dfdfdf;
-  font-size: 18px;
-}
-
+/* task status base */
 .memitem {
   padding: 0;
   margin-right:  2px;
@@ -334,10 +174,7 @@ h2.done{
   /* webkit specific markup */
   -webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.70);
 
-  -webkit-border-top-right-radius: 8px;
-  -webkit-border-top-left-radius: 8px;
-  -webkit-border-bottom-right-radius: 8px;
-  -webkit-border-bottom-left-radius: 8px;
+  -webkit-border-radius: 8px;
 }
 
 .memname {
@@ -346,98 +183,38 @@ h2.done{
   margin-left: 15px;
 }
 
-.memname_doing {
-  color: #000066;
-}
+.memname_doing    { color: #000066; font-size: 12pt;}
+.memname_todo     { color: #006600; font-size: 12pt;}
+.memname_todo_sub { color: #224422; font-size: 8pt; }
+.memname_waiting  { color: #888800; font-size: 12pt;}
+.memname_done     { color: #555;    font-size: 12pt;}
 
-.memdoc_doing {
-  border-bottom: 1px solid #A8B8D9;
+.memdoc_doing, .memdoc_todo, .memdoc_todo_bottom, .memdoc_waiting, .memdoc_done {
   border-left: 1px solid #A8B8D9;
   border-right: 1px solid #A8B8D9;
   padding: 2px 0px;
   border-top-width: 0;
+}
+
+.memdoc_doing, .memdoc_todo_bottom, .memdoc_waiting, .memdoc_done {
   -webkit-border-bottom-right-radius: 8px;
   -webkit-border-bottom-left-radius: 8px;
 }
 
-.memname_todo_h {
-  color: #006600;
-}
-
-.memdoc_todo_h {
-  border-bottom: 0px solid #A8B8D9;
+.memproto, .memproto_todo {
+  border-top: 1px solid #A8B8D9;
   border-left: 1px solid #A8B8D9;
   border-right: 1px solid #A8B8D9;
-  padding: 2px 0px;
-  border-top-width: 0;
+  font-weight: bold;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+  background-image: url('nav_f.png');
+  background-repeat:repeat-x;
+  background-color: #E2E8F2;
 }
 
 .memproto {
-  border-top: 1px solid #A8B8D9;
-  border-left: 1px solid #A8B8D9;
-  border-right: 1px solid #A8B8D9;
-  font-size: 12pt;
-  font-weight: bold;
-  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
-  background-image: url('nav_f.png');
-  background-repeat:repeat-x;
-  background-color: #E2E8F2;
   -webkit-border-top-right-radius: 8px;
   -webkit-border-top-left-radius: 8px;
-}
-
-.memname_todo_m {
-  color: #224422;
-}
-
-.memproto_todo_m {
-  border-top: 1px solid #A8B8D9;
-  border-left: 1px solid #A8B8D9;
-  border-right: 1px solid #A8B8D9;
-  font-size: 8pt;
-  font-weight: bold;
-  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
-  background-image: url('nav_f.png');
-  background-repeat:repeat-x;
-  background-color: #E2E8F2;
-}
-
-.memdoc_todo_l {
-  border-bottom: 1px solid #A8B8D9;
-  border-left: 1px solid #A8B8D9;
-  border-right: 1px solid #A8B8D9;
-  padding: 2px 0px;
-  border-top-width: 0;
-  -webkit-border-bottom-right-radius: 8px;
-  -webkit-border-bottom-left-radius: 8px;
-}
-
-.memname_waiting {
-  color: #888800;
-}
-
-.memdoc_waiting {
-  border-bottom: 1px solid #A8B8D9;
-  border-left: 1px solid #A8B8D9;
-  border-right: 1px solid #A8B8D9;
-  padding: 2px 0px;
-  border-top-width: 0;
-  -webkit-border-bottom-right-radius: 8px;
-  -webkit-border-bottom-left-radius: 8px;
-}
-
-.memname_done {
-  color: #555;
-}
-
-.memdoc_done {
-  border-bottom: 1px solid #A8B8D9;
-  border-left: 1px solid #A8B8D9;
-  border-right: 1px solid #A8B8D9;
-  padding: 2px 0px;
-  border-top-width: 0;
-  -webkit-border-bottom-right-radius: 8px;
-  -webkit-border-bottom-left-radius: 8px;
 }
 
 .task_elem:hover {

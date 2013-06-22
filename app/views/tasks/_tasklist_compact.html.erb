@@ -2,32 +2,32 @@
   <div class="span6">
     <div class="memitem">
       <div class="memproto">
-        <div class="memname_todo_h"><center>Todo</center></div>
+        <div class="memname_todo"><center>Todo</center></div>
       </div>
-      <div class="memproto_todo_m">
-        <div class="memname_todo_m"><center>High</center></div>
+      <div class="memproto_todo">
+        <div class="memname_todo_sub"><center>High</center></div>
       </div>
-      <div class="memdoc_todo_h">
+      <div class="memdoc_todo">
         <ul id="todo_h" class="droptrue">
         <% @tasks[:todo_high_tasks].each do |task| %>
           <%= render "tasks/task", {:task => task, :display => "block" } %>
         <% end %>
         </ul>
       </div>
-      <div class="memproto_todo_m">
-        <div class="memname_todo_m"><center>Middle</center></div>
+      <div class="memproto_todo">
+        <div class="memname_todo_sub"><center>Middle</center></div>
       </div>
-      <div class="memdoc_todo_h">
+      <div class="memdoc_todo">
         <ul id="todo_m" class="droptrue">
         <% @tasks[:todo_mid_tasks].each do |task| %>
           <%= render "tasks/task", {:task => task, :display => "block" } %>
         <% end %>
         </ul>
       </div>
-      <div class="memproto_todo_m">
-        <div class="memname_todo_m"><center>Low</center></div>
+      <div class="memproto_todo">
+        <div class="memname_todo_sub"><center>Low</center></div>
       </div>
-      <div class="memdoc_todo_l">
+      <div class="memdoc_todo_bottom">
         <ul id="todo_l" class="droptrue">
         <% @tasks[:todo_low_tasks].each do |task| %>
           <%= render "tasks/task", {:task => task, :display => "block" } %>
