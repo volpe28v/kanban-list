@@ -14,6 +14,7 @@ var sendMail = KanbanList.sendMail;
 var todayMarker = KanbanList.todayMarker;
 var draggableTask = KanbanList.draggableTask;
 var filterNavi = KanbanList.filterNavi;
+var taskTheme = KanbanList.taskTheme;
 
 // global
 var last_task_list_html = "";
@@ -202,4 +203,9 @@ function selectLayout(layout_name){
       dataType: "jsonp"
     });
   });
+}
+
+function selectTheme(theme_name){
+  taskTheme.setTheme(theme_name);
+
 }

@@ -6,7 +6,7 @@
 
   <title>かんばんりすと</title>
   <%= stylesheet_link_tag :application %>
-  <%= stylesheet_link_tag "task_default" , id: "task_style" %>
+  <%= stylesheet_link_tag "task_default" , id: "task_theme" %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
 
@@ -32,6 +32,7 @@
             <% if params[:controller] == "tasks" and params[:action] == "index" %>
               <%= render "layouts/book_list_dropdown_li" %>
               <%= render "layouts/layout_dropdown_li" %>
+              <%= render "layouts/theme_dropdown_li" %>
             <% end %>
           </ul>
 

@@ -12,6 +12,7 @@
 //= require pomo_timer
 //= require task_action
 //= require filter_navi
+//= require task_theme
 //= require todo
 
 // dependent modules
@@ -26,6 +27,7 @@ var todayMarker = KanbanList.todayMarker;
 var draggableTask = KanbanList.draggableTask;
 var filterNavi = KanbanList.filterNavi;
 var pomodoroTimer = KanbanList.pomodoroTimer;
+var taskTheme = KanbanList.taskTheme;
 
 $(document).ready(function(){
   // initialize menus
@@ -35,6 +37,7 @@ $(document).ready(function(){
   backgroundImage.init();
   filterNavi.init({submit: filterTask});
   pomodoroTimer.init();
+  taskTheme.init();
 
   // initialize modules
   draggableTask.setHandlers({receive: sendCurrentTodo,
