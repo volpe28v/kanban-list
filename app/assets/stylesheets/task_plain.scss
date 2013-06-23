@@ -92,10 +92,10 @@ $border-color: #f4f4f4;
 }
 
 .row-fluid>.span4 {
-  width: 33%;
+  width: 32.6%;
 }
 
 .row-fluid>[class*="span"] {
   float: left;
-  margin-left: 0;
+  margin-left: 10px;
 }
