@@ -7,7 +7,11 @@ KanbanList.backgroundImage = (function(){
   var COOKIE_BG_IMAGE = 'kanbanlist_bg_image_url';
 
   function setBgImage(image_url){
-    $("#body_core").css('background-image','url(' + image_url + ')');
+    if ( image_url ){
+      $("#body_core").css('background-image','url(' + image_url + ')');
+    }else{
+      $("#body_core").css('background-image','');
+    }
   }
 
   // public
