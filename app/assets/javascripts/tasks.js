@@ -13,6 +13,7 @@
 //= require task_action
 //= require filter_navi
 //= require task_theme
+//= require jquery.icheck
 //= require todo
 
 // dependent modules

@@ -129,13 +129,23 @@ KanbanList.taskAction = (function(){
       'feedback' : '.task-chars-left'
     });
 
-    $('#check_done_' + id).click(function(){
+    $('#check_done_' + id).iCheck({
+      checkboxClass: 'icheckbox_minimal-grey'
+    });
+
+    $('#check_done_' + id).on('ifClicked', function(){
       moveToDone('#id_' + id);
+      $('#check_return_' + id).iCheck('check');
       return false;
     });
 
-    $('#check_return_' + id).click(function(){
+    $('#check_return_' + id).iCheck({
+      checkboxClass: 'icheckbox_minimal-grey'
+    });
+
+    $('#check_return_' + id).on('ifClicked', function(){
       returnToTodo('#id_' + id);
+      $('#check_done_' + id).iCheck('uncheck');
       return false;
     });
 
