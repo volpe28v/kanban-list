@@ -4,7 +4,7 @@
 <div class="sorttime" alt="<%= task.updated_at %>" id="ms_notyet_<%= task.id %>">
     <div class="citem_editable">
       <div id="edit_link_ms_<%= task.id %>" style="display:<%= done == false ? "block" : "none" %>">
-        <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="center" width="16px">
+        <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="center" width="22px">
           <input type="checkbox" id="check_done_<%= task.id %>"/>
         </td><td class="taskLabel" align="left" width="10px">
           <font color="#00008B" style="font-size:10px;font-weight:normal;" ><span class="label" id="edit_link_time_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></font>&nbsp;
@@ -30,7 +30,7 @@
         </form>
       </div>
       <div id="fixed_<%= task.id %>" style="display:<%= done == false ? "none" : "block" %>">
-        <table width="100%"><tr><td align="left" width="10px">
+        <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="center" width="22px">
           <input type="checkbox" id="check_return_<%= task.id %>" checked="checked"/>
         </td><td align="left" width="10px">
         <font color="#00008B" style="font-size:10px;font-weight:normal;"><span class="label" id="fixed_time_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></font>&nbsp;

@@ -27,6 +27,8 @@ $done-state-height: $active-state-height * 3 + 74;
   border: 1px solid #ccc;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   -webkit-border-radius: 3px;
+
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 
 #done li {
