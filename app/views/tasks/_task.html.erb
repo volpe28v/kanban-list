@@ -21,8 +21,8 @@
               <td align="right" width="40px">
                 <div id="ms_<%= task.id %>_menu" style="display:inline;">
                   <span class="task-tool" style="display: none">
-                    <input id="edit_button_<%= task.id %>" type="image" src="<%= image_path 'pencil.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'pencil_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'pencil.gif' %>'" />
-                    <input id="delete_button_<%= task.id %>" type="image" src="<%= image_path 'cross.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'cross_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'cross.gif' %>'" />
+                    <i id="edit_button_<%= task.id %>" class="icon-pencil"></i>
+                    <i id="delete_button_<%= task.id %>" class="icon-trash"></i>
                   </span>
                 </div>
               </td>
@@ -66,7 +66,7 @@
               </td>
               <td align="right" width="40px">
                 <span class="task-tool" style="display: none">
-                  <input type="image" id="fixed_delete_button_<%= task.id %>" src="<%= image_path 'cross.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'cross_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'cross.gif' %>'"/>
+                  <i id="fixed_delete_button_<%= task.id %>" class="icon-trash"></i>
                 </span>
               </td>
             </tr>
