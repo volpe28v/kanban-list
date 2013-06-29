@@ -47,8 +47,11 @@ KanbanList.taskAction = (function(){
     $("#edit_link_ms_" + id ).css("display","none");
     $("#edit_form_ms_" + id ).css("display","none");
     $("#fixed_" + id ).css("display","block");
+    $("#id_" + id ).find(".task-tool").css("display","none");
 
-    $(move_id).fadeOut("normal",function(){ $(move_id).prependTo($("#" + to_status)); });
+    $(move_id).fadeOut("normal",function(){
+      $(move_id).prependTo($("#" + to_status));
+    });
     $(move_id).fadeIn("normal");
 
     $('#viewSortlist').html("moveToDone " + move_id);
@@ -65,6 +68,7 @@ KanbanList.taskAction = (function(){
     $("#edit_link_ms_" + id ).css("display","block");
     $("#edit_form_ms_" + id ).css("display","none");
     $("#fixed_" + id ).css("display","none");
+    $("#id_" + id ).find(".task-tool").css("display","none");
 
     $(ret_id).fadeOut("normal",function(){ $(ret_id).prependTo($("#" + to_status)); });
     $(ret_id).fadeIn("normal");
@@ -120,6 +124,15 @@ KanbanList.taskAction = (function(){
   var edit_before_msg = {};
   function realize_task(id, msg_array){
     var msg = msg_array.join('\n');
+
+    $(".task-tool-active-area").hover(
+      function(){
+        $(this).find(".task-tool").css("display","block");
+      },
+      function(){
+        $(this).find(".task-tool").css("display","none");
+      }
+    );
 
     $('#ms_' + id + '_edit').val(msg);
     $('#msg_' + id ).html(display_filter(msg));

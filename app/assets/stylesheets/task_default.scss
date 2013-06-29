@@ -15,6 +15,10 @@ $done-state-height: $active-state-height * 3 + 74;
   height: $done-state-height;
 }
 
+.taskLabel{
+  height: 22px;
+}
+
 $task-li-radius: 6px;
 #doing li ,#waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{
   /* firefox specific markup */
@@ -226,5 +230,3 @@ td.todo_h, td.todo_m, td.todo_l, td.doing, td.waiting, td.done{
   -webkit-box-shadow: 0px 1px 8px #888;
   box-shadow: 0px 1px 8px #888;
 }
-
-

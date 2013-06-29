@@ -15,6 +15,10 @@ $done-state-height: $active-state-height * 3 + 74;
   height: $done-state-height;
 }
 
+.taskLabel{
+  height: 22px;
+}
+
 #doing li ,#waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{
   font-weight: bold;
   font-size: 12px;

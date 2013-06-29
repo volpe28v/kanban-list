@@ -2,46 +2,81 @@
 <% done ||= false %>
 <li id="id_<%= task.id %>" class="task_elem" style="display:<%= display %>">
 <div class="sorttime" alt="<%= task.updated_at %>" id="ms_notyet_<%= task.id %>">
-    <div class="citem_editable">
-      <div id="edit_link_ms_<%= task.id %>" style="display:<%= done == false ? "block" : "none" %>">
-        <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="center" width="22px">
+  <%# for active display %>
+  <div id="edit_link_ms_<%= task.id %>" style="display:<%= done == false ? "block" : "none" %>">
+    <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%">
+      <tr>
+        <td align="center" width="22px">
           <input type="checkbox" id="check_done_<%= task.id %>"/>
-        </td><td class="taskLabel" align="left" width="10px">
-          <font color="#00008B" style="font-size:10px;font-weight:normal;" ><span class="label" id="edit_link_time_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></font>&nbsp;
-        </td><td class="taskLabel" align="left">
-          <div id="msg_<%= task.id %>" style="display:inline;word-break:break-all;"></div>&nbsp;
-        </td><td align="right" width="40px">
-        <div id="ms_<%= task.id %>_menu" style="display:inline;">
-          <span class="s12">
-            <input id="edit_button_<%= task.id %>" type="image" src="<%= image_path 'pencil.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'pencil_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'pencil.gif' %>'" />
-            <input id="delete_button_<%= task.id %>" type="image" src="<%= image_path 'cross.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'cross_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'cross.gif' %>'" />
-          </span>
-        </div>
-        </td></tr></table>
-      </div>
-      <div id="edit_form_ms_<%= task.id %>" style="display:none">
-        <form id="edit_form_<%= task.id %>" method="post" style="display:inline">
-          <textarea id="ms_<%= task.id %>_edit" rows="4" style="font-weight:normal;padding:2px;overflow:auto; width: 98%;" onfocus="this.style.background='#ffc';" maxlength="200"/></textarea>
-          <input type="submit" class="btn btn-primary" value="Update" style="font-size:10px" />
-          <span class="s12">
-            <a href="#" id="edit_cancel_<%= task.id %>">[cancel]</a>
-          </span>
-          <span class="task-chars-left"></span>
-        </form>
-      </div>
-      <div id="fixed_<%= task.id %>" style="display:<%= done == false ? "none" : "block" %>">
-        <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="center" width="22px">
-          <input type="checkbox" id="check_return_<%= task.id %>" checked="checked"/>
-        </td><td align="left" width="10px">
-        <font color="#00008B" style="font-size:10px;font-weight:normal;"><span class="label" id="fixed_time_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></font>&nbsp;
-        </td><td class="taskLabel" align="left">
-              <div id="fixed_msg_<%= task.id %>" style="display:inline;word-break:break-all;"></div>
-        </td><td align="right" width="40px">
-        <input type="image" id="fixed_delete_button_<%= task.id %>" src="<%= image_path 'cross.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'cross_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'cross.gif' %>'"/>
-        </td></tr></table>
-      </div>
-    </div>
+        </td>
+        <td>
+          <table class="task-tool-active-area" cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%">
+            <tr>
+              <td class="taskLabel" align="left" width="10px">
+                <font color="#00008B" style="font-size:10px;font-weight:normal;" ><span class="label" id="edit_link_time_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></font>&nbsp;
+              </td>
+              <td class="taskLabel" align="left">
+                <div id="msg_<%= task.id %>" class="task-text" style="display:inline;word-break:break-all;"></div>&nbsp;
+              </td>
+              <td align="right" width="40px">
+                <div id="ms_<%= task.id %>_menu" style="display:inline;">
+                  <span class="task-tool" style="display: none">
+                    <input id="edit_button_<%= task.id %>" type="image" src="<%= image_path 'pencil.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'pencil_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'pencil.gif' %>'" />
+                    <input id="delete_button_<%= task.id %>" type="image" src="<%= image_path 'cross.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'cross_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'cross.gif' %>'" />
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </div>
+
+  <%# for editing %>
+  <div id="edit_form_ms_<%= task.id %>" style="display:none">
+    <form id="edit_form_<%= task.id %>" method="post" style="display:inline">
+      <textarea id="ms_<%= task.id %>_edit" rows="4" style="font-weight:normal;padding:2px;overflow:auto; width: 98%;" onfocus="this.style.background='#ffc';" maxlength="200"/></textarea>
+      <input type="submit" class="btn btn-primary" value="Update" style="font-size:10px" />
+      <span class="s12">
+        <a href="#" id="edit_cancel_<%= task.id %>">[cancel]</a>
+      </span>
+      <span class="task-chars-left"></span>
+    </form>
+  </div>
+
+  <%# for done display %>
+  <div id="fixed_<%= task.id %>" style="display:<%= done == false ? "none" : "block" %>">
+    <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%">
+      <tr>
+        <td align="center" width="22px">
+          <input type="checkbox" id="check_return_<%= task.id %>" checked="checked"/>
+        </td>
+        <td>
+          <table class="task-tool-active-area" cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%">
+            <tr>
+              <td align="center" width="22px">
+                <input type="checkbox" id="check_return_<%= task.id %>" checked="checked"/>
+              </td>
+              <td align="left" width="10px">
+                <font color="#00008B" style="font-size:10px;font-weight:normal;"><span class="label" id="fixed_time_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></font>&nbsp;
+              </td>
+              <td class="taskLabel" align="left">
+                <div id="fixed_msg_<%= task.id %>" style="display:inline;word-break:break-all;"></div>
+              </td>
+              <td align="right" width="40px">
+                <span class="task-tool" style="display: none">
+                  <input type="image" id="fixed_delete_button_<%= task.id %>" src="<%= image_path 'cross.gif' %>" OnMouseOver="$(this).get(0).src = '<%= image_path 'cross_over.gif' %>'" OnMouseOut="$(this).get(0).src = '<%= image_path 'cross.gif' %>'"/>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>
 </li>
 
 <script>
