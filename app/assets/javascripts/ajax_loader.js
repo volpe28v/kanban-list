@@ -4,6 +4,7 @@ KanbanList.namespace('ajaxLoader');
 KanbanList.ajaxLoader = (function(){
   // private
   var LoadingMsg = [
+    "ショートカットキー： タスク編集画面から Ctrl - Enter で編集確定",
     "タスクの[xxx]を既存の Book名に変更することで Book間の移動ができます",
     "タスクの[xxx]を新しい Book名に変更することで新しい Book が追加されます",
     "タスク内容では簡単な html タグが使用できます",
