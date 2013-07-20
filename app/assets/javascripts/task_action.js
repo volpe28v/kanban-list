@@ -119,6 +119,11 @@ KanbanList.taskAction = (function(){
     var status = $("#id_" + id).parent().get(0).id;
     //TODO: グローバルのメソッドを呼んでいるので修正する
     sendCurrentTodo(id, status, msg);
+    edit_before_msg[id] = $('#ms_' + id + '_edit').val();
+  }
+
+  function isChangedMsg(id){
+    return $('#ms_' + id + '_edit').val() != edit_before_msg[id];
   }
 
   var edit_before_msg = {};
@@ -180,8 +185,24 @@ KanbanList.taskAction = (function(){
 
       utility.toggleDisplay('edit_link_ms_' + id ,'edit_form_ms_' + id );
       $('#ms_' + id + '_edit').get(0).focus();
+      $('#edit_apply_' + id).addClass('disabled');
 
       return false;
+    });
+
+    $('#edit_form_' + id ).on('keydown', function(event){
+      if( event.ctrlKey === true && event.which === 13 ){
+        $(this).submit();
+        return false;
+      }
+      return true;
+    });
+
+    $('#edit_form_' + id ).on('keyup', function(event){
+      if (isChangedMsg(id)){
+        $('#edit_apply_' + id).removeClass('disabled');
+      }
+      return true;
     });
 
     $('#edit_form_' + id ).submit(function(){
@@ -189,6 +210,12 @@ KanbanList.taskAction = (function(){
       draggableTask.startByElem($('#id_' + id ).parent());
       updateToDoMsg(id);
       utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
+      return false;
+    });
+
+    $('#edit_apply_' + id ).click(function(){
+      updateToDoMsg(id);
+      $(this).addClass('disabled');
       return false;
     });
 

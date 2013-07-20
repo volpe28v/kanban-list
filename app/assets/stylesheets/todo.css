@@ -76,9 +76,13 @@ table#task_count_table td {
   background-color: #ff9;
 }
 
+.edit-footer {
+  height: 32px;
+}
+
 .task-chars-left {
-  float: right;
-  margin-right: 10px;
+  float: left;
+  margin-left: 10px;
   font-weight: bold;
   color: #777;
 }
@@ -87,6 +91,11 @@ table#task_count_table td {
   margin-left: 5px;
   font-weight: bold;
   color: #777;
+}
+
+.edit-control {
+  float: right;
+  margin-right: 5px;
 }
 
 .sign {
