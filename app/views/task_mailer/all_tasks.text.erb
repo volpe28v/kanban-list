@@ -4,25 +4,25 @@
 <% end %>
 = Doing ===============
 <% @tasks[:doing_tasks].each do |t| %>
-- <%= strip_tags t.msg_without_book_name(@book) %>
+- <%= strip_tags t.msg_without_book_name %>
 <% end %>
 
 = TodoHigh ===========
 <% @tasks[:todo_high_tasks].each do |t| %>
-- <%= strip_tags t.msg_without_book_name(@book) %>
+- <%= strip_tags t.msg_without_book_name %>
 <% end %>
 
 = TodoMid ============
 <% @tasks[:todo_mid_tasks].each do |t| %>
-- <%= strip_tags t.msg_without_book_name(@book) %>
+- <%= strip_tags t.msg_without_book_name %>
 <% end %>
 
 = TodoLow ============
 <% @tasks[:todo_low_tasks].each do |t| %>
-- <%= strip_tags t.msg_without_book_name(@book) %>
+- <%= strip_tags t.msg_without_book_name %>
 <% end %>
 
 = Waiting ============
 <% @tasks[:waiting_tasks].each do |t| %>
-- <%= strip_tags t.msg_without_book_name(@book) %>
+- <%= strip_tags t.msg_without_book_name %>
 <% end %>

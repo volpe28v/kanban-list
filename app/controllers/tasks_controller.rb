@@ -13,6 +13,13 @@ class TasksController < ApplicationController
       @recent_done_num = 10
       @books = current_user.books
       @tasks = get_tasks( "", @recent_done_num )
+    else
+      @tasks = current_tasks
+      respond_to do |format|
+        format.html
+        format.csv { send_data(current_tasks.csv) }
+        format.xls
+      end
     end
   end
 

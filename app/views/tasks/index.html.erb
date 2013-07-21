@@ -48,7 +48,12 @@
   <div id="task_list">
     <!-- タスクリストは動的に表示する -->
   </div>
-</div>
 
+  <div id="download_link">
+    Download:
+    <%= link_to "CSV", tasks_path(format: "csv") %> |
+    <%= link_to "Excel", tasks_path(format: "xls") %>
+  </div>
+</div>
 <%= javascript_include_tag 'tasks' %>
 <%= javascript_include_tag 'add_todo_form' %>

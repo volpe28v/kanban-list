@@ -99,6 +99,17 @@ class Task < ActiveRecord::Base
     self.where('status != ? and updated_at >= ? and updated_at <= ?', @@status_table[:done], 1.day.ago, Time.now).order("updated_at DESC")
   end
 
+  def self.csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << ["Book", "Task", "Status", "UpdatedAt"]
+      [:doing,:todo_h,:todo_m, :todo_l, :waiting, :done].each do |st|
+        self.by_status(st).each do |t|
+          csv << [t.book_name, t.msg_without_book_name, t.status_sym, t.updated_at]
+        end
+      end
+    end
+  end
+
   def status_sym
     @@status_table.key(status)
   end
@@ -117,8 +128,8 @@ class Task < ActiveRecord::Base
     nil
   end
 
-  def msg_without_book_name(book)
-    return self.msg if book == nil
+  def msg_without_book_name
+    return self.msg if self.book == nil
 
     @@book_name_patterns.each{|pattern|
       if pattern =~ self.msg
