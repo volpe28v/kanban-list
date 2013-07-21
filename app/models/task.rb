@@ -102,10 +102,13 @@ class Task < ActiveRecord::Base
   def self.csv(options = {})
     CSV.generate(options) do |csv|
       csv << ["Book", "Task", "Status", "UpdatedAt"]
-      [:doing,:todo_h,:todo_m, :todo_l, :waiting, :done].each do |st|
+      [:doing,:todo_h,:todo_m, :todo_l, :waiting].each do |st|
         self.by_status(st).each do |t|
           csv << [t.book_name, t.msg_without_book_name, t.status_sym, t.updated_at]
         end
+      end
+      self.done.each do |t|
+        csv << [t.book_name, t.msg_without_book_name, t.status_sym, t.updated_at]
       end
     end
   end
