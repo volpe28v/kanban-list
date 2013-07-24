@@ -2,6 +2,8 @@
 
 ソフトウェアかんばん風のタスク管理アプリです。
 
+![スクリーンショット](https://dl.dropboxusercontent.com/u/1215986/kanban-list.png)
+
 ## Installation
 
 Ruby ver 1.9.2
