@@ -100,7 +100,7 @@ class Task < ActiveRecord::Base
   end
 
   def self.csv(options = {})
-    CSV.generate(options) do |csv|
+    csv_data = CSV.generate(options) do |csv|
       csv << ["Book", "Task", "Status", "UpdatedAt"]
       [:doing,:todo_h,:todo_m, :todo_l, :waiting].each do |st|
         self.by_status(st).each do |t|
@@ -111,6 +111,8 @@ class Task < ActiveRecord::Base
         csv << [t.book_name, t.msg_without_book_name, t.status_sym, t.updated_at]
       end
     end
+    #SJISに変換するかどうか悩む
+    #csv_data.encode(Encoding::SJIS)
   end
 
   def status_sym
