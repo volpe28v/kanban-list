@@ -1,4 +1,7 @@
 $(document).ready(function(){
+  var COOKIE_EXPIRES = 365;
+  var COOKIE_PRIORITY = 'kanbanlist_priority';
+
   function addTodoWithPrefix( prefix, msg, priority ){
     if ( msg == "" ){
       return;
@@ -61,9 +64,14 @@ $(document).ready(function(){
   });
 
   $('#add_todo_btn_group').delegate('a', 'click',function(){
-    $('#add_todo_button').data('state', $(this).data('state'));
+    var priority = $(this).data('state');
+    $('#add_todo_button').data('state', priority);
     $('#add_todo_label').html($(this).html());
+    $.cookie(COOKIE_PRIORITY,priority,{ expires: COOKIE_EXPIRES });
   });
+
+  var priority = $.cookie(COOKIE_PRIORITY);
+  $("a[data-state='" + priority + "']").click();
 
   filterTask("");
 });
