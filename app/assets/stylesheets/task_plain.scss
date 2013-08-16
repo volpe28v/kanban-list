@@ -60,6 +60,7 @@ td.todo_h, td.todo_m, td.todo_l, td.doing, td.waiting, td.done{
 .memitem {
   padding: 0;
   margin:  0px;
+  margin-bottom: 12px;
 }
 
 .memname {
@@ -80,6 +81,11 @@ $border-color: #f4f4f4;
   background-color: #fdfdfd;
 }
 
+.memdoc_doing, .memdoc_todo_bottom, .memdoc_waiting, .memdoc_done {
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+}
+
 .memdoc_todo {
   border-bottom: 0px solid $border-color;
 }
@@ -93,9 +99,15 @@ $border-color: #f4f4f4;
   background-color: #fdfdfd;
 }
 
+.memproto {
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+}
+
 .task_elem:hover {
   -webkit-box-shadow: 0px 5px 15px #444;
   box-shadow: 0px 5px 15px #444;
+  background-color: beige !important;
 }
 
 .row-fluid>.span4 {
