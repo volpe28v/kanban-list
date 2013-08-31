@@ -194,7 +194,7 @@ KanbanList.taskAction = (function(){
       return goToEditMode(id);
     });
 
-    $('#id_' + id ).delegate('.task-tool-active-area','dblclick', function(){
+    $('#id_' + id ).dblclick( function(){
       return goToEditMode(id);
     });
 
