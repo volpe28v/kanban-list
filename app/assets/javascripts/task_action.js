@@ -177,7 +177,7 @@ KanbanList.taskAction = (function(){
       return false;
     });
 
-    $('#edit_button_' + id ).click(function(){
+    function goToEditMode(id){
       autoLoadingTimer.stop();
       draggableTask.stopByElem($('#id_' + id ).parent());
 
@@ -188,6 +188,14 @@ KanbanList.taskAction = (function(){
       $('#edit_apply_' + id).addClass('disabled');
 
       return false;
+    }
+
+    $('#edit_button_' + id ).click(function(){
+      return goToEditMode(id);
+    });
+
+    $('#id_' + id ).delegate('.task-tool-active-area','dblclick', function(){
+      return goToEditMode(id);
     });
 
     $('#edit_form_' + id ).on('keydown', function(event){
