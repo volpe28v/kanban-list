@@ -4,6 +4,8 @@ KanbanList.namespace('ajaxLoader');
 KanbanList.ajaxLoader = (function(){
   // private
   var LoadingMsg = [
+    '右下の Download: から Excel 出力できます',
+    'タスクをダブルクリックで編集モードに入れます',
     "ショートカットキー： タスク編集画面から Ctrl - Enter で編集確定",
     "タスクの[xxx]を既存の Book名に変更することで Book間の移動ができます",
     "タスクの[xxx]を新しい Book名に変更することで新しい Book が追加されます",
