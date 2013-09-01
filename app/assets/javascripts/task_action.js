@@ -195,7 +195,6 @@ KanbanList.taskAction = (function(){
           arguments.callee(el);
         }
       }
-      console.log("end: " + parseInt(el.style.height));
     }
 
     var edit_mode = false;
