@@ -178,7 +178,8 @@ KanbanList.taskAction = (function(){
       return false;
     });
 
-    var edit_mode = false;
+    $('#ms_' + id + '_edit').autofit({min_height: MIN_HEIGHT});
+
     function goToEditMode(id){
       autoLoadingTimer.stop();
       draggableTask.stopByElem($('#id_' + id ).parent());
@@ -188,8 +189,7 @@ KanbanList.taskAction = (function(){
       utility.toggleDisplay('edit_link_ms_' + id ,'edit_form_ms_' + id );
       $('#ms_' + id + '_edit').get(0).focus();
       $('#edit_apply_' + id).addClass('disabled');
-      $('#ms_' + id + '_edit').autofit({'min_height': MIN_HEIGHT});
-      edit_mode = true;
+      $('#ms_' + id + '_edit').trigger('keyup'); //call autofit
 
       return false;
     }
@@ -200,13 +200,6 @@ KanbanList.taskAction = (function(){
 
     $('#id_' + id ).dblclick( function(){
       return goToEditMode(id);
-    });
-
-    $('#ms_' + id + '_edit').on('keyup', function(){
-      if (edit_mode){
-        $(this).autofit({'min_height': MIN_HEIGHT});
-        return;
-      }
     });
 
     $('#edit_form_' + id ).on('keydown', function(event){
@@ -229,7 +222,6 @@ KanbanList.taskAction = (function(){
       draggableTask.startByElem($('#id_' + id ).parent());
       updateToDoMsg(id);
       utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
-      edit_mode = false;
       return false;
     });
 
@@ -245,7 +237,6 @@ KanbanList.taskAction = (function(){
 
       $('#ms_' + id + '_edit').val(edit_before_msg[id]);
       utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
-      edit_mode = false;
       return false;
     });
   }
