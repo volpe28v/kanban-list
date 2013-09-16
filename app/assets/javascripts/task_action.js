@@ -5,38 +5,10 @@ KanbanList.taskAction = (function(){
   var utility = KanbanList.utility;
   var pomodoroTimer = KanbanList.pomodoroTimer;
   var MIN_HEIGHT = 100;
+  var edit_before_msg = {};
 
   function display_filter(text){
-    // for sanitize
-    var filtered_text = sanitize(text);
-
-    // for url
-    filtered_text = filtered_text.replace(/((https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+))/g,
-      function(){
-        var matched_link = arguments[1];
-        if ( matched_link.match(/(\.jpg|\.gif|\.png|\.bmp)$/)){
-          return '<img src="' + matched_link + '"/>';
-        }else{
-          return '<a class="btn btn-mini btn-inverse" href="' + matched_link + '" target="_blank">URL</a>';
-        }
-      });
-
-    // for prefix
-    filtered_text = filtered_text.replace(/^(\[.+?\])/,
-      function(){
-        var matched_prefix = arguments[1];
-        return '<span class="book-name">' + matched_prefix + '</span>';
-      });
-    filtered_text = filtered_text.replace(/^【(.+?)】/,
-      function(){
-        var matched_prefix = arguments[1];
-        return '<span class="book-name">[' + matched_prefix + ']</span> ';
-      });
-
-    // for new line
-    filtered_text = filtered_text.replace(/\n+$/g,'');
-    filtered_text = filtered_text.replace(/\n/g,'<br>');
-    return filtered_text;
+    return $.decora.to_html(text);
   }
 
   function moveToDone(move_id) {
@@ -127,7 +99,6 @@ KanbanList.taskAction = (function(){
     return $('#ms_' + id + '_edit').val() != edit_before_msg[id];
   }
 
-  var edit_before_msg = {};
   function realize_task(id, msg_array){
     var msg = msg_array.join('\n');
 
@@ -201,6 +172,11 @@ KanbanList.taskAction = (function(){
     $('#id_' + id ).dblclick( function(){
       return goToEditMode(id);
     });
+
+    $('#id_' + id ).find('.taskBody').decora({ checkbox_callback: function(that, updateCheckboxStatus){
+      $('#ms_' + id + '_edit').val(updateCheckboxStatus($('#ms_' + id + '_edit').val()));
+      updateToDoMsg(id);
+    }});
 
     $('#edit_form_' + id ).on('keydown', function(event){
       if( event.ctrlKey === true && event.which === 13 ){
