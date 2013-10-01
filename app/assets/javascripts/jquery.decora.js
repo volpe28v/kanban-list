@@ -7,8 +7,8 @@
 
 (function($) {
   var REG_CHECKBOX = /-[ ]?\[[ ]?\]|-[ ]?\[x\]/g,
-      SYM_CHECKED = "- [x]",
-      SYM_UNCHECKED = "- [ ]";
+      SYM_CHECKED = "-[x]",
+      SYM_UNCHECKED = "-[ ]";
 
   $.fn.decora = function( options ){
     var defaults = {

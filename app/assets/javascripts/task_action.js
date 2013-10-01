@@ -173,10 +173,12 @@ KanbanList.taskAction = (function(){
       return goToEditMode(id);
     });
 
-    $('#id_' + id ).find('.taskBody').decora({ checkbox_callback: function(that, updateCheckboxStatus){
-      $('#ms_' + id + '_edit').val(updateCheckboxStatus($('#ms_' + id + '_edit').val()));
-      updateToDoMsg(id);
-    }});
+    $('#id_' + id ).find('.taskBody').decora({
+      checkbox_callback: function(that, updateCheckboxStatus){
+        $('#ms_' + id + '_edit').val(updateCheckboxStatus($('#ms_' + id + '_edit').val()));
+        updateToDoMsg(id);
+      }
+    });
 
     $('#edit_form_' + id ).on('keydown', function(event){
       if( event.ctrlKey === true && event.which === 13 ){
