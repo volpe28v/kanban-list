@@ -147,16 +147,23 @@ KanbanList.bookNavi = (function(){
     for(var i = 0; i < book_infos.length; i++ ){
       var active_todo_counts = book_infos[i].todo_h + book_infos[i].todo_m + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
       lists += '<li class="book_item" data-book_name="' + book_infos[i].name + '">' +
-                 '<a href="#" data-book_id="' + book_infos[i].id + '">' + book_infos[i].name +
-                   '<table style="float:right" class="book-counts">' +
+                 '<a href="#" data-book_id="' + book_infos[i].id + '">' +
+                   '<table width="100%">' +
                      '<tr>' +
-                       '<td><div class="counts-active" >' + active_todo_counts   + '</div></td>' +
-                       '<td><div class="counts todo_h '  + (book_infos[i].todo_h == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_h  + '</div></td>' +
-                       '<td><div class="counts todo_m '  + (book_infos[i].todo_m == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_m  + '</div></td>' +
-                       '<td><div class="counts todo_l '  + (book_infos[i].todo_l == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_l  + '</div></td>' +
-                       '<td><div class="counts doing '   + (book_infos[i].doing == 0 ? 'zero' : '')   + '" >' + book_infos[i].doing   + '</div></td>' +
-                       '<td><div class="counts waiting ' + (book_infos[i].waiting == 0 ? 'zero' : '') + '" >' + book_infos[i].waiting + '</div></td>' +
-                       '<td><div class="counts done '    + (book_infos[i].done == 0 ? 'zero' : '')    + '" >' + book_infos[i].done    + '</div></td>' +
+                       '<td style="text-align: left">' + book_infos[i].name + '</td>' +
+                       '<td style="text-align: right">' +
+                         '<table style="float:right" class="book-counts">' +
+                           '<tr>' +
+                             '<td><div class="counts-active" >' + active_todo_counts   + '</div></td>' +
+                             '<td><div class="counts todo_h '  + (book_infos[i].todo_h == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_h  + '</div></td>' +
+                             '<td><div class="counts todo_m '  + (book_infos[i].todo_m == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_m  + '</div></td>' +
+                             '<td><div class="counts todo_l '  + (book_infos[i].todo_l == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_l  + '</div></td>' +
+                             '<td><div class="counts doing '   + (book_infos[i].doing == 0 ? 'zero' : '')   + '" >' + book_infos[i].doing   + '</div></td>' +
+                             '<td><div class="counts waiting ' + (book_infos[i].waiting == 0 ? 'zero' : '') + '" >' + book_infos[i].waiting + '</div></td>' +
+                             '<td><div class="counts done '    + (book_infos[i].done == 0 ? 'zero' : '')    + '" >' + book_infos[i].done    + '</div></td>' +
+                           '</tr>' +
+                         '</table>' +
+                       '</td>' +
                      '</tr>' +
                    '</table>' +
                  '</a>' +
