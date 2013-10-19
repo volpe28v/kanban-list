@@ -6,12 +6,10 @@ KanbanList.draggableTask = (function(){
   var option = {
     start  : function(event, ui){
       autoLoadingTimer.stop();
-      var update_id = ui.item.attr("id").slice(3);
-      },
+    },
     stop   : function(event, ui){
       autoLoadingTimer.start();
-      var update_id = ui.item.attr("id").slice(3);
-      },
+    },
 
     receive: function(event, ui){
       if (handlers.receive == undefined){ return; }
