@@ -42,6 +42,10 @@ KanbanList.taskAction = (function(){
     sendCurrentTodo(id, status, msg);
   }
 
+  function get_org_msg(id){
+    return org_msg[id].msg;
+  }
+
   function deleteTodo( id ) {
     var msg_id = '#msg_' + id;
     var delete_id = '#id_' + id
@@ -162,6 +166,7 @@ KanbanList.taskAction = (function(){
     initial: initial,
     initial_setting: initial_setting,
     get_setting_page: get_setting_page,
-    display_filter: display_filter
+    display_filter: display_filter,
+    get_org_msg: get_org_msg
   }
 }());

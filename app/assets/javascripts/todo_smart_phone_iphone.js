@@ -1,6 +1,7 @@
 //= require kanbanlist
 //= require task_action_smart_phone_iphone
 //= require add_todo_form_smart_phone_iphone
+//= require draggable_task_smart_phone_iphone
 
 /*
  * todo.js
@@ -8,6 +9,9 @@
  */
 var COOKIE_EXPIRES = 365;
 var COOKIE_MAIL_ADDR = 'kanbanlist_mail_addr';
+
+var draggableTask = KanbanList.draggableTask;
+var taskAction = KanbanList.taskAction;
 
 // for jQuery mobile initialize
 $(document).bind("mobileinit", function(){
@@ -20,6 +24,13 @@ $(document).ready(function(){
   initForTaskList();
   initNavBooks();
   initSendMail();
+
+  // initialize modules
+  draggableTask.setHandlers({receive: sendCurrentTodoMoving,
+                             update_order: sendTaskOrder
+                            });
+
+  draggableTask.startAll();
 
   // この数値以上、横スワイプしたときにイベントを発生
   $.event.special.swipe.horizontalDistanceThreshold = 60;
@@ -59,7 +70,6 @@ $(document).ready(function(){
       var u = $.mobile.path.parseUrl( data.toPage ),
           re = /^#setting/;
       if ( u.hash.search(re) !== -1 ) {
-        var taskAction = KanbanList.taskAction;
         var $page = taskAction.get_setting_page(u.hash);
         $page.page();
         $.mobile.changePage( $page, data.options );
@@ -149,32 +159,6 @@ function initForTaskList(){
     markTodayEdit();
 }
 
-var option = {
-    start  : function(event, ui){
-        var update_id = ui.item.attr("id").slice(3);
-          //$("#msg_" + update_id).css("color","red");
-        },
-    stop   : function(event, ui){
-        var update_id = ui.item.attr("id").slice(3);
-          //$("#msg_" + update_id).css("color","#222");
-        },
-
-    receive: function(event, ui){
-        var update_id = ui.item.attr("id").slice(3);
-
-        sendCurrentTodo( update_id,
-                         $(this).get(0).id,
-                         $("#msg_" + update_id).html());
-        },
-
-    connectWith: 'ul',
-    placeholder: 'ui-state-highlight',
-    cancel: "#cancel",
-    scroll: true,
-    tolerance: 'pointer',
-    revert: true
-};
-
 // 本日の編集した要素にマーカーをつける
 function markTodayEdit(){
   markTodayEditWithElem( $('ul li span[id*="updated_"]:contains(' + getTodayStr() + ')') );
@@ -207,6 +191,10 @@ function getTodayFullStr(){
   return year + "-" + month + "-" + day;
 }
 
+function sendCurrentTodoMoving(id, status) {
+  sendCurrentTodo(id, status, taskAction.get_org_msg(id));
+}
+
 function sendCurrentTodo(id, status, msg) {
   $("#updated_" + id ).html(getTodayStr());
 
@@ -222,6 +210,16 @@ function sendCurrentTodo(id, status, msg) {
     },
     dataType: "jsonp"
   });
+}
+
+function sendTaskOrder(status, order){
+    var request_str = "status=" + status + "&" + order; //TODO hash で渡したいが、バラすのが面倒なので後回し
+      $.ajax({
+            type: "POST",
+            cache: false,
+            url: "tasks/update_order",
+            data: request_str
+          }); 
 }
 
 // Todo数表示を更新する

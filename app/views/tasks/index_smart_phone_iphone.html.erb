@@ -2,28 +2,30 @@
   <%= render "header_smart_phone_iphone", {:state => 'todo'} %>
 
   <div data-role="content">
-    <ul data-role="listview" id="todo_ul">
-      <li>
-        <select class="select_book" data-mini="true">
-          <option value="0">All Books</option>
-          <% @books.each do |b| %>
-            <option value="<%= b.id %>"><%= b.name %></option>
-          <% end %>
-        </select>
-      </li>
+    <select class="select_book" data-mini="true">
+      <option value="0">All Books</option>
+      <% @books.each do |b| %>
+        <option value="<%= b.id %>"><%= b.name %></option>
+      <% end %>
+    </select>
+
+    <ul data-role="listview" id="todo_h" data-inset="true" class="sortable">
       <li id="todo_h" data-role="list-divider" style="padding: 0.1em 15px;">High</li>
       <% @tasks[:todo_high_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
+    </ul>
+    <ul data-role="listview" id="todo_m" data-inset="true" class="sortable">
       <li id="todo_m" data-role="list-divider" style="padding: 0.1em 15px;">Middle</li>
       <% @tasks[:todo_mid_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
+    </ul>
+    <ul data-role="listview" id="todo_l" data-inset="true" class="sortable">
       <li id="todo_l" data-role="list-divider" style="padding: 0.1em 15px;">Low</li>
       <% @tasks[:todo_low_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
-      <li data-role="list-divider" style="padding: 4px;"></li>
     </ul>
   </div>
 
@@ -34,7 +36,7 @@
   <%= render "header_smart_phone_iphone", {:state => 'doing'} %>
 
   <div data-role="content">
-    <ul data-role="listview">
+    <ul data-role="listview" data-inset="true">
       <li id="doing" data-role="list-divider" style="padding: 0.1em 15px;">Doing</li>
       <% @tasks[:doing_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
@@ -55,7 +57,7 @@
   <%= render "header_smart_phone_iphone", {:state => 'done'} %>
 
   <div data-role="content">
-    <ul data-role="listview">
+    <ul data-role="listview" data-inset="true">
       <li id="done" data-role="list-divider">Done</li>
       <% @tasks[:done_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>

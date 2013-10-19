@@ -4,11 +4,13 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require jquery.min
+//= #require jquery.min
+//= require jquery.mobile
+//= require jquery.mobile.actionsheet
 //= require jquery_ujs
+//= #require jquery-ui
 //= require send_csrf_token
 //= require jquery.cookie
 //= require todo_smart_phone_iphone
-//= require jquery.mobile
-//= require jquery.mobile.actionsheet
 //= require jquery.maxlength
+//= require jquery.ui.touch-punch
