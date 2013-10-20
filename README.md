@@ -2,7 +2,10 @@
 
 ソフトウェアかんばん風のタスク管理アプリです。
 
+#### for Web
 ![スクリーンショット](https://dl.dropboxusercontent.com/u/1215986/kanban-list.png)
+#### for iPhone
+![スクリーンショット](https://dl.dropboxusercontent.com/u/1215986/kanban-list_iphone.png)
 
 ## Installation
 
