@@ -36,17 +36,17 @@
   <%= render "header_smart_phone_iphone", {:state => 'doing'} %>
 
   <div data-role="content">
-    <ul data-role="listview" data-inset="true">
-      <li id="doing" data-role="list-divider" style="padding: 0.1em 15px;">Doing</li>
+    <ul data-role="listview" id="doing" data-inset="true">
+      <span id="doing_label" class="cancel">Doing</span>
       <% @tasks[:doing_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
-
-      <li id="waiting" data-role="list-divider" style="padding: 0.1em 15px;">Waiting</li>
+    </ul>
+    <ul data-role="listview" id="waiting" data-inset="true">
+      <span id="waiting_label" class="cancel">Waiting</span>
       <% @tasks[:waiting_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
-      <li data-role="list-divider" style="padding: 4px;"></li>
     </ul>
   </div>
 
@@ -57,12 +57,11 @@
   <%= render "header_smart_phone_iphone", {:state => 'done'} %>
 
   <div data-role="content">
-    <ul data-role="listview" data-inset="true">
-      <li id="done" data-role="list-divider">Done</li>
+    <ul data-role="listview" id="done" data-inset="true">
+      <span id="done_label" class="cancel">Done</span>
       <% @tasks[:done_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
-      <li data-role="list-divider" style="padding: 4px;"></li>
     </ul>
   </div>
 
