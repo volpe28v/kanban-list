@@ -64,7 +64,7 @@ $(document).ready(function(){
     history.back();
   });
 
-  // タスク編集画面を出すためにpagechangeを監視
+  // タスク編集画面を出すためにpagebeforechangeを監視
   $(document).bind( "pagebeforechange", function( e, data ) {
     if ( typeof data.toPage === "string" ) {
       var u = $.mobile.path.parseUrl( data.toPage ),
@@ -75,6 +75,28 @@ $(document).ready(function(){
         $.mobile.changePage( $page, data.options );
 
         e.preventDefault();
+      }
+      return true;
+    }
+  });
+
+  // リストのスタイル更新を呼ぶためにpagechangeを監視
+  $(document).bind( "pagechange", function( e, data ) {
+    if ( typeof data.toPage.context.URL === "string" ) {
+      var u = $.mobile.path.parseUrl( data.toPage.context.URL ),
+          todo_re = /^#todo_nav/,
+          doing_re = /^#doing_nav/,
+          done_re = /^#done_nav/;
+
+      if ( u.hash.search(todo_re) !== -1 || u.hash == "") {
+        $("#todo_h").listview('refresh');
+        $("#todo_m").listview('refresh');
+        $("#todo_l").listview('refresh');
+      }else if ( u.hash.search(doing_re) !== -1 ) {
+        $("#doing").listview('refresh');
+        $("#waiting").listview('refresh');
+      }else if ( u.hash.search(done_re) !== -1 ) {
+        $("#done").listview('refresh');
       }
     }
   });

@@ -10,19 +10,19 @@
     </select>
 
     <ul data-role="listview" id="todo_h" data-inset="true" class="sortable">
-      <span id="todo_h_label" class="cancel">High</span>
+      <span id="todo_h_label" class="cancel"><div class="task-label">High</div></span>
       <% @tasks[:todo_high_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
     </ul>
     <ul data-role="listview" id="todo_m" data-inset="true" class="sortable">
-      <span id="todo_m_label" class="cancel">Middle</span>
+      <span id="todo_m_label" class="cancel"><div class="task-label">Middle</div></span>
       <% @tasks[:todo_mid_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
     </ul>
     <ul data-role="listview" id="todo_l" data-inset="true" class="sortable">
-      <span id="todo_l_label" class="cancel">Low</span>
+      <span id="todo_l_label" class="cancel"><div class="task-label">Low</div></span>
       <% @tasks[:todo_low_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
@@ -37,13 +37,13 @@
 
   <div data-role="content">
     <ul data-role="listview" id="doing" data-inset="true">
-      <span id="doing_label" class="cancel">Doing</span>
+      <span id="doing_label" class="cancel"><div class="task-label">Doing</div></span>
       <% @tasks[:doing_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
     </ul>
     <ul data-role="listview" id="waiting" data-inset="true">
-      <span id="waiting_label" class="cancel">Waiting</span>
+      <span id="waiting_label" class="cancel"><div class="task-label">Waiting</div></span>
       <% @tasks[:waiting_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
@@ -58,7 +58,7 @@
 
   <div data-role="content">
     <ul data-role="listview" id="done" data-inset="true">
-      <span id="done_label" class="cancel">Done</span>
+      <span id="done_label" class="cancel"><div class="task-label">Done</div></span>
       <% @tasks[:done_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>

@@ -47,3 +47,8 @@
   color: #777;
 }
 
+.task-label {
+  padding: 5px 10px;
+  text-align: center;
+}
+
