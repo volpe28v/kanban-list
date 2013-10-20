@@ -14,7 +14,7 @@
 .label-important{background-color:#BD2C00;}
 
 .book-name{
-  color: yellow;
+  color: gray;
   font-size: 11px;
   font-style: normal;
   font-weight: normal;
@@ -48,7 +48,7 @@
 }
 
 .task-label {
-  padding: 5px 10px;
+  padding: 2px 10px;
   text-align: center;
 }
 
