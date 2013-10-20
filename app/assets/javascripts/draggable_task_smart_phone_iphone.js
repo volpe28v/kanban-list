@@ -12,14 +12,15 @@ KanbanList.draggableTask = (function(){
     receive: function(event, ui){
       if (handlers.receive == undefined){ return; }
       var update_id = ui.item.attr("id").slice(3);
+      var from_id = ui.sender.attr("id");
+      var to_id = $(this).get(0).id;
 
-      handlers.receive( update_id, $(this).get(0).id);
-      },
+      handlers.receive( update_id, from_id, to_id);
+    },
     update: function(event, ui){
       handlers.update_order($(this).get(0).id,
                             $(this).sortable("serialize"));
-      },
-
+    },
 
     connectWith: 'ul',
     forcePlaceholderSize: true,

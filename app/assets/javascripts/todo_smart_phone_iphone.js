@@ -27,7 +27,7 @@ $(document).ready(function(){
 
   // initialize modules
   draggableTask.setHandlers({receive: sendCurrentTodoMoving,
-                             update_order: sendTaskOrder
+                             update_order: sendCurrentOrder
                             });
 
   draggableTask.startAll();
@@ -191,8 +191,12 @@ function getTodayFullStr(){
   return year + "-" + month + "-" + day;
 }
 
-function sendCurrentTodoMoving(id, status) {
-  sendCurrentTodo(id, status, taskAction.get_org_msg(id));
+function sendCurrentTodoMoving(id, from_id, to_id) {
+  taskAction.changeStatus(id, from_id, to_id);
+}
+
+function sendCurrentOrder(status, order) {
+  taskAction.changeOrder(status, order);
 }
 
 function sendCurrentTodo(id, status, msg) {

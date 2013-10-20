@@ -42,8 +42,23 @@ KanbanList.taskAction = (function(){
     sendCurrentTodo(id, status, msg);
   }
 
-  function get_org_msg(id){
-    return org_msg[id].msg;
+  function changeStatus(id, from_id, to_id) {
+    var $task = $('#id_' + id);
+    var $from = $('#' + from_id);
+    var $to = $('#' + to_id);
+
+    $from.listview('refresh');
+    $to.listview('refresh');
+ 
+    org_msg[id].status = to_id;
+    sendCurrentTodo(id, to_id, org_msg[id].msg);
+  }
+
+  function changeOrder(status, order) {
+    var $to = $('#' + status);
+
+    $to.listview('refresh');
+    sendTaskOrder(status, order);
   }
 
   function deleteTodo( id ) {
@@ -71,7 +86,7 @@ KanbanList.taskAction = (function(){
 
     updateToDoMsg(id, status);
 
-    // 既にスタイルが更新されているかチェック
+    // 既に移動先にスタイルが適用されているかチェック
     if ($to.hasClass("ui-listview")){
       setTimeout(function(){
         $(move_id).fadeOut("normal",function(){
@@ -177,6 +192,7 @@ KanbanList.taskAction = (function(){
     initial_setting: initial_setting,
     get_setting_page: get_setting_page,
     display_filter: display_filter,
-    get_org_msg: get_org_msg
+    changeStatus: changeStatus,
+    changeOrder: changeOrder
   }
 }());
