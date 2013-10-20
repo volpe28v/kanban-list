@@ -65,15 +65,22 @@ KanbanList.taskAction = (function(){
 
   function moveTo(status, id){
     var move_id = '#id_' + id;
+    var $from = $('#' + $(move_id).closest('ul').attr("id"));
+    var $to = $('#' + status);
+    var $target = $('#' + status + "_label");
 
     updateToDoMsg(id, status);
 
-    if ($(move_id).hasClass("ui-li")){
+    // 既にスタイルが更新されているかチェック
+    if ($to.hasClass("ui-listview")){
       setTimeout(function(){
         $(move_id).fadeOut("normal",function(){
-          $("#" + status).append($(move_id));
+          $target.after($(move_id));
         });
-        $(move_id).fadeIn("normal");
+        $(move_id).fadeIn("normal", function(){
+          $from.listview('refresh');
+          $to.listview('refresh');
+        });
       },500);
     }else{
       var display_msg = $("#msg_" + id).html();
@@ -91,7 +98,9 @@ KanbanList.taskAction = (function(){
       setTimeout(function(){
         $(move_id).fadeOut(function(){
           $(move_id).remove();
-          $("#" + status).append(move_item);
+          $target.after(move_item);
+          $from.listview('refresh');
+          $to.listview('refresh');
         });
       },500);
     }
