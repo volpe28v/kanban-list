@@ -350,8 +350,8 @@ function addTodoAjax(msg) {
 }
 
 function addTodoResponse(add_task_info){
-  $("#todo_m").after(add_task_info.li_html);
-  $('#todo_ul').listview('refresh');
+  $("#todo_m_label").after(add_task_info.li_html);
+  $('#todo_m').listview('refresh');
   markTodayEditById( add_task_info.id );
 }
 
