@@ -28,7 +28,7 @@ KanbanList.draggableTask = (function(){
     cancel: ".cancel",
     scroll: true,
     tolerance: 'pointer',
-    revert: true
+    revert: false
   };
 
   function setHandlers(handlers_hash){
