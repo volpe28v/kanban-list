@@ -38,6 +38,8 @@
   white-space: normal;
 }
 
+.ui-mini { margin: 0px; }
+
 .task-chars-left,
 .task-chars-left-add-form
 {
