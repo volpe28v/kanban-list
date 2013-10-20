@@ -22,8 +22,9 @@ KanbanList.draggableTask = (function(){
 
 
     connectWith: 'ul',
-    placeholder: 'ui-state-highlight',
-    cancel: "#cancel",
+    forcePlaceholderSize: true,
+    axis: "y",
+    cancel: ".cancel",
     scroll: true,
     tolerance: 'pointer',
     revert: true

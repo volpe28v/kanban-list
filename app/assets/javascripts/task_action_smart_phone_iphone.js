@@ -65,13 +65,14 @@ KanbanList.taskAction = (function(){
 
   function moveTo(status, id){
     var move_id = '#id_' + id;
-    var target_status = $("#" + status);
 
     updateToDoMsg(id, status);
 
-    if (target_status.hasClass("ui-li")){
+    if ($(move_id).hasClass("ui-li")){
       setTimeout(function(){
-        $(move_id).fadeOut("normal",function(){ $(move_id).insertAfter($("#" + status)); });
+        $(move_id).fadeOut("normal",function(){
+          $("#" + status).append($(move_id));
+        });
         $(move_id).fadeIn("normal");
       },500);
     }else{
@@ -90,7 +91,7 @@ KanbanList.taskAction = (function(){
       setTimeout(function(){
         $(move_id).fadeOut(function(){
           $(move_id).remove();
-          $("#" + status).after(move_item);
+          $("#" + status).append(move_item);
         });
       },500);
     }

@@ -10,19 +10,19 @@
     </select>
 
     <ul data-role="listview" id="todo_h" data-inset="true" class="sortable">
-      <li id="todo_h" data-role="list-divider" style="padding: 0.1em 15px;">High</li>
+      <span id="todo_label" class="cancel">High</span>
       <% @tasks[:todo_high_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
     </ul>
     <ul data-role="listview" id="todo_m" data-inset="true" class="sortable">
-      <li id="todo_m" data-role="list-divider" style="padding: 0.1em 15px;">Middle</li>
+      <span id="todo_label" class="cancel">Middle</span>
       <% @tasks[:todo_mid_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
     </ul>
     <ul data-role="listview" id="todo_l" data-inset="true" class="sortable">
-      <li id="todo_l" data-role="list-divider" style="padding: 0.1em 15px;">Low</li>
+      <span id="todo_label" class="cancel">Low</span>
       <% @tasks[:todo_low_tasks].each do |t| %>
         <%= render "task_smart_phone_iphone", {:task => t} %>
       <% end %>
