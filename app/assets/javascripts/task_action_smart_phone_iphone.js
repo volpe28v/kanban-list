@@ -103,9 +103,9 @@ KanbanList.taskAction = (function(){
       var move_item =
         '<li id="id_' + id + '">' +
           '<a href="#setting?id=' + id + '">' +
-            '<table><tr>' +
-              '<td><span class="label label-important" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span></td>' +
-              '<td><span id="msg_' + id + '">' + display_msg + '</span></td>' +
+            '<table style="width: 100%;"><tr>' +
+              '<td style="width: 40px"><span class="label label-important" id="updated_' + id + '" style="display:inline;">' + updated_date + '</span></td>' +
+              '<td class="task-body"><span id="msg_' + id + '">' + display_msg + '</span></td>' +
             '</tr></table>' +
           '</a>' +
         '</li>';

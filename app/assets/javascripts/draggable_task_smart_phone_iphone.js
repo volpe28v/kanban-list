@@ -28,6 +28,7 @@ KanbanList.draggableTask = (function(){
     cancel: ".cancel",
     scroll: true,
     tolerance: 'pointer',
+    handle: ".task-body",
     revert: false
   };
 
