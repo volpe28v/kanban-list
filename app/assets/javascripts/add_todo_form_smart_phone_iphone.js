@@ -45,6 +45,12 @@ KanbanList.addForm = (function(){
       'feedback' : '.task-chars-left-add-form'
     });
 
+    $(document).delegate('#show_add_todo_form', 'click',function(){
+      setTimeout(function(){
+        $('.add_todo_form_msg').focus();
+      },500);
+    });
+
     $(document).delegate('.add_todo_button', 'click',function(){
       var $content = $(this).closest("[data-role='content']");
       addTodoAction($content);
