@@ -1,17 +1,8 @@
   <div data-role="header" data-position="fixed">
-    <a data-role="actionsheet" data-icon="plus" class="ui-btn-left">Add</a>
-
-    <div data-role="content">
-      <form method="post" class="add_todo_form form-inline">
-        <input type="text" class="prefix" data-mini="true" width="8" value="" placeholder="Book Name"/>
-        <textarea class="add_todo_form_msg" data-mini="true" maxlength="200" placeholder="Task Name"></textarea>
-      </form>
-
-      <div class="ui-grid-a">
-        <div class="ui-block-a"><a class="add_todo_button" href="#" data-theme="b" data-role="button">Add</a></div>
-        <div class="ui-block-b"><a href="#" data-rel="close" data-role="button">Cancel</a></div>
-      </div>
-    </div>
+    <% case state %>
+    <% when 'todo','doing','done'%>
+      <a href="#add_todo_page" data-icon="plus" class="ui-btn-left">Add</a>
+    <% end %>
 
     <h3>かんばんりすと</h3>
     <%= link_to 'Logout', [ :destroy, :user_session ], :class => 'ui-btn-right', 'rel' => 'external' %>

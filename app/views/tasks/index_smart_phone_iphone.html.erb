@@ -113,6 +113,23 @@
     <a id="cancel_move_btn" data-role="button" data-rel="back">Cancel</a>
   </div>
 </div>
+
+<div data-role="page" id="add_todo_page" data-theme="d">
+  <%= render "header_smart_phone_iphone", {:state => 'add'} %>
+
+  <div data-role="content">
+    <form method="post" class="add_todo_form form-inline">
+      <input type="text" class="prefix" data-mini="true" width="8" value="" placeholder="Book Name"/>
+      <textarea class="add_todo_form_msg" data-mini="true" maxlength="200" placeholder="Task Name"></textarea>
+    </form>
+
+    <div class="ui-grid-a">
+      <div class="ui-block-a"><a class="add_todo_button" href="#todo_nav" data-theme="b" data-role="button">Add</a></div>
+      <div class="ui-block-b"><a href="#" data-rel="back" data-role="button">Cancel</a></div>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   var taskAction = KanbanList.taskAction;
