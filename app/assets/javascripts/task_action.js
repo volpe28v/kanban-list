@@ -209,6 +209,14 @@ KanbanList.taskAction = (function(){
       return false;
     });
 
+    $('#edit_form_' + id ).on('keydown', function(event){
+      if( event.which === 27 ){
+        $('#edit_cancel_' + id ).click();
+        return false;
+      }
+      return true;
+    });
+
     $('#edit_cancel_' + id ).click(function(){
       autoLoadingTimer.start();
       draggableTask.startByElem($('#id_' + id ).parent());
