@@ -87,8 +87,9 @@ class TasksController < ApplicationController
   end
 
   def filter_or_update
+    @recent_done_num = 15
     set_layout(params[:layout])
-    render_json_for_updateBookJson(params[:filter], 15)
+    render_json_for_updateBookJson(params[:filter], @recent_done_num)
   end
 
   def silent_update
