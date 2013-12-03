@@ -60,7 +60,7 @@ class Task < ActiveRecord::Base
   end
 
   def self.done_month_list
-    from_month = self.from_done_month
+    from_month = Time.now - 1.year
     to_month   = self.to_done_month
 
     month_list = []
