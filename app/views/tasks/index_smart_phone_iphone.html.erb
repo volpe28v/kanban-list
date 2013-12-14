@@ -2,13 +2,6 @@
   <%= render "header_smart_phone_iphone", {:state => 'todo'} %>
 
   <div data-role="content">
-    <select class="select_book" data-mini="true">
-      <option value="0">All Books</option>
-      <% @books.each do |b| %>
-        <option value="<%= b.id %>"><%= b.name %></option>
-      <% end %>
-    </select>
-
     <ul data-role="listview" id="todo_h" data-inset="true" class="sortable">
       <span id="todo_h_label" class="cancel"><div class="task-label">High</div></span>
       <% @tasks[:todo_high_tasks].each do |t| %>
@@ -68,13 +61,6 @@
   <%= render "footer_smart_phone_iphone", {:state => 'done'} %>
 </div>
 
-<script>
-  $('.select_book').val('<%= @current_book_id %>');
-  $('.select_book').change(function(){
-    location.href="tasks?book_id=" + $(this).val();
-  });
-</script>
-
 <div data-role="page" id="setting" data-theme="c" class="swipe-back">
   <div data-role="header"><h1>タスクの編集</h1></div>
   <div data-role="content">
@@ -130,6 +116,20 @@
   </div>
 </div>
 
+<div data-role="page" id="book_list_page" data-theme="d">
+  <%= render "header_smart_phone_iphone", {:state => 'book'} %>
+  <div data-role="content">
+    <div class="ui-grid-b">
+      <div class="ui-block-a"><div data-id="0" class="book-selector ui-bar ui-bar-d" style="height:50px">All Books</div></div>
+      <% block_name = ["a","b","c"] %>
+      <% @books.each_with_index do |b,i| %>
+        <div class="ui-block-<%= block_name[(i+1) % block_name.length] %>"><div data-id="<%= b.id %>" class="book-selector ui-bar ui-bar-d" style="height:50px"><%= b.name %></div></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
 <script>
 (function(){
   var taskAction = KanbanList.taskAction;
@@ -141,5 +141,10 @@
   }
   var addForm = KanbanList.addForm;
   addForm.initial(current_book);
+
+  $('.book-selector').click(function(){
+    location.href="tasks?book_id=" + $(this).attr("data-id");
+  });
 }());
 </script>
+

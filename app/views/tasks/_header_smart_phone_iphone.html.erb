@@ -2,8 +2,13 @@
     <% case state %>
     <% when 'todo','doing','done'%>
       <a href="#add_todo_page" id="show_add_todo_form" data-icon="plus" class="ui-btn-left">Add</a>
+    <% when 'book'%>
+      <a href="#todo_nav" class="ui-btn-left">Todo</a>
     <% end %>
 
     <h3>かんばんりすと</h3>
-    <%= link_to 'Logout', [ :destroy, :user_session ], :class => 'ui-btn-right', 'rel' => 'external' %>
+    <% case state %>
+    <% when 'todo','doing','done'%>
+      <a href="#book_list_page" class="ui-btn-right">Book</a>
+    <% end %>
   </div>
