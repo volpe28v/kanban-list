@@ -120,10 +120,9 @@
   <%= render "header_smart_phone_iphone", {:state => 'book'} %>
   <div data-role="content">
     <div class="ui-grid-b">
-      <div class="ui-block-a"><div data-id="0" class="book-selector ui-bar ui-bar-d" style="height:50px">All Books</div></div>
       <% block_name = ["a","b","c"] %>
       <% @books.each_with_index do |b,i| %>
-        <div class="ui-block-<%= block_name[(i+1) % block_name.length] %>"><div data-id="<%= b.id %>" class="book-selector ui-bar ui-bar-d" style="height:50px"><%= b.name %></div></div>
+        <div class="ui-block-<%= block_name[i % block_name.length] %>"><div data-id="<%= b["id"] %>" class="book-selector ui-bar ui-bar-d" style="height:50px"><%= b["name"] %></div></div>
       <% end %>
     </div>
   </div>

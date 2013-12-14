@@ -11,7 +11,7 @@ class TasksController < ApplicationController
       @current_book_id = current_book ? current_book.id : 0
       @prefix = get_prefix
       @recent_done_num = 10
-      @books = current_user.books
+      @books = get_all_book_counts
       @tasks = get_tasks( "", @recent_done_num )
     else
       @tasks = current_tasks
