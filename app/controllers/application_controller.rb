@@ -106,6 +106,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_task_list_html(filter_str, done_num)
+    @recent_done_num = done_num
     @tasks = get_tasks( filter_str, done_num )
     session[:layout] ||= 'default'
     render_to_string :partial => 'tasks/tasklist_' + session[:layout]

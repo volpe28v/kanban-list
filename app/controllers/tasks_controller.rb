@@ -87,16 +87,14 @@ class TasksController < ApplicationController
   end
 
   def filter_or_update
-    @recent_done_num = 15
     set_layout(params[:layout])
-    render_json_for_updateBookJson(params[:filter], @recent_done_num)
+    render_json_for_updateBookJson(params[:filter], 15)
   end
 
   def silent_update
     @user_name = current_user.name
-    @recent_done_num = 15
 
-    render :json => { task_list_html: get_task_list_html(params[:filter], @recent_done_num),
+    render :json => { task_list_html: get_task_list_html(params[:filter], 15),
                       task_counts: get_task_counts,
                       all_books: get_all_book_counts },
            :callback => 'updateSilentJson'
@@ -122,7 +120,7 @@ class TasksController < ApplicationController
                          current_book,
                          mail_addr,
                          mail_comment,
-                         get_tasks("", @recent_done_num)
+                         get_tasks("", 15)
                         ).deliver
     render :json => { addr: mail_addr }, :callback => 'showMailResult'
   end

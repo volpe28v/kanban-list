@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
   def create
     @user_name = current_user.name
-    @recent_done_num = 15
 
     new_book_name = params[:book_name]
     filter_str = params[:filter]
