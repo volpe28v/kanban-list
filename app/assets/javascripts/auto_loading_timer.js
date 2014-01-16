@@ -23,16 +23,16 @@ KanbanList.autoLoadingTimer = (function(){
 
   // public
   function init(){
-    $('#auto_loading').html("To ON");
+    $('#auto_loading').html("Turn ON");
     var setAutoLoading = function(){
       if ( isActive() ){
         stop();
         setMode(false);
-        $('#auto_loading').html("To ON");
+        $('#auto_loading').html("Turn ON");
       }else{
         setMode(true);
         start();
-        $('#auto_loading').html("To OFF");
+        $('#auto_loading').html("Turn OFF");
       }
     }
 
