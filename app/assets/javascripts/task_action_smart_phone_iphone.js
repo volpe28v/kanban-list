@@ -49,7 +49,7 @@ KanbanList.taskAction = (function(){
 
     $from.listview('refresh');
     $to.listview('refresh');
- 
+
     org_msg[id].status = to_id;
     sendCurrentTodo(id, to_id, org_msg[id].msg);
   }
@@ -115,7 +115,6 @@ KanbanList.taskAction = (function(){
           $(move_id).remove();
           $target.after(move_item);
           $from.listview('refresh');
-          $to.listview('refresh');
         });
       },500);
     }
