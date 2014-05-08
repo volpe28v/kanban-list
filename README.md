@@ -40,6 +40,10 @@ http://kanban-list.herokuapp.com/
  pass: sample
 ```
 
+## FAQ
+- production 環境で一部の画像が表示されない
+ - app/tmp/cacheを削除し、rake assets:precompileを実行後、ブラウザキャッシュを消してリロードしてみてください。
+
 ## License
 (The MIT License)
 
