@@ -10,4 +10,4 @@ spec/reports/*
 *.swo
 hook_latest
 hooks/update_task_*
-
+.versions.conf

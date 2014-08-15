@@ -1,0 +1,9 @@
+{
+  "name": "kanban-list",
+  "description": "Todo list like a kanban",
+  "repository": "https://github.com/volpe28v/kanban-list",
+  "keywords": ["rails", "kanban", "todo"],
+  "scripts": {
+    "postdeploy": "rake db:migrate"
+  }
+}

@@ -9,7 +9,7 @@
 
 ## Installation
 
-Ruby ver 1.9.2
+Ruby ver 2.1.2
 
 ```bash
 $ git clone git@github.com:volpe28v/kanban-list.git
@@ -18,6 +18,8 @@ $ bundle
 $ rake db:migrate
 $ rails s
 ```
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Mail Setting
 
