@@ -34,7 +34,7 @@ $ MAIL_ADDR=xxxxxxx@gmail.com MAIL_PASSWORD=yyyyy rails s
 $ heroku config:add MAIL_ADDR=xxxxxxx@gmail.com MAIL_PASSWORD=yyyyy
 ```
 ## Demo
-http://kanban-list.herokuapp.com/
+http://kanban-list2.herokuapp.com/
 
 ```
 サンプルアカウント
