@@ -68,6 +68,21 @@ KanbanList.bookNavi = (function(){
   }
 
   function init(){
+    $('#books_toggle_link').click(function(){
+      if ($('#books_side_bar').is(':visible')){
+        $('#books_side_bar').hide();
+        $('#books_side_bar_temp').append($('#books_side_bar'));
+        $('#tasks_side_bar').removeClass('span10');
+        $('#tasks_side_bar').addClass('span12');
+      }else{
+        $('#books_side_bar').addClass('span2');
+        $('#body_row').prepend($('#books_side_bar'));
+        $('#books_side_bar').show();
+        $('#tasks_side_bar').removeClass('span12');
+        $('#tasks_side_bar').addClass('span10');
+      }
+    });
+
     var new_book_action = function(){
       var name = $('#book_name').val();
       if ( name != "" ){
@@ -142,7 +157,7 @@ KanbanList.bookNavi = (function(){
                '<li class="divider"></li>';
 
     var lists = '';
-    lists += '<li><a><input id="search-books" class="search-query span3" placeholder="Search..."/></a></li>';
+    lists += '<li><a><input id="search-books" class="search-query span2" placeholder="Search..."/></a></li>';
 
     for(var i = 0; i < book_infos.length; i++ ){
       var active_todo_counts = book_infos[i].todo_h + book_infos[i].todo_m + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
@@ -151,6 +166,8 @@ KanbanList.bookNavi = (function(){
                    '<table width="100%">' +
                      '<tr>' +
                        '<td style="text-align: left">' + book_infos[i].name + '</td>' +
+                     '</tr>' +
+                     '<tr>' +
                        '<td style="text-align: right">' +
                          '<table style="float:right" class="book-counts">' +
                            '<tr>' +
