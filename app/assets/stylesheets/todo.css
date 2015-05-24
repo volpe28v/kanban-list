@@ -133,6 +133,11 @@ table#task_count_table td {
   margin: 5px 0px;
 }
 
+.books-side-list li:hover {
+  background-color: beige;
+}
+
+
 #loading_msg_area {
   color: #888;
 }
