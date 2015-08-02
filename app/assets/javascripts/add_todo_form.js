@@ -22,18 +22,11 @@ $(document).ready(function(){
       cache: false,
       url: "tasks",
       data: {
-        msg: escapeInvalidChar(msg),
+        msg: msg,
         priority: priority
       },
       dataType: "jsonp"
    });
-  }
-
-  function escapeInvalidChar(msg){
-    var escaped_msg = msg.replace(/&/g,"");
-    escaped_msg = escaped_msg.replace(/'/g,"\"");
-    escaped_msg = escaped_msg.replace(/!/g,"|");
-    return escaped_msg;
   }
 
   function addTodoAction(){
