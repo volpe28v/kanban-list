@@ -14,7 +14,6 @@ KanbanList.draggableTask = (function(){
     receive: function(event, ui){
       if (handlers.receive == undefined){ return; }
       var update_id = ui.item.attr("id").slice(3);
-
       handlers.receive( update_id,
                        $(this).get(0).id,
                        $("#ms_" + update_id + "_edit").val());
@@ -24,9 +23,9 @@ KanbanList.draggableTask = (function(){
                             $(this).sortable("serialize"));
       },
 
-
     connectWith: 'ul',
     placeholder: 'ui-state-highlight',
+    distance: 6,
     cancel: "#cancel",
     scroll: true,
     tolerance: 'pointer',
