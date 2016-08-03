@@ -23,15 +23,16 @@ $ rails s
 
 ## Mail Setting
 
-メール機能を利用する場合はメールアドレスとパスワードを環境変数に設定します。(Gmailのみ対応)
+メール機能は [SendGrid](https://elements.heroku.com/addons/sendgrid) に対応しています。
+送信メールアドレス、ユーザID、パスワードを環境変数に設定します。
 ### 開発環境
 ```bash
-$ MAIL_ADDR=xxxxxxx@gmail.com MAIL_PASSWORD=yyyyy rails s
+$ SENDGRID_USERNAME=xxxx@heroku.com SENDGRID_PASSWORD=xxxx MAIL_ADDR=xxxxx@xxxxx  rails s
 ```
 
 ### heroku
 ```bash
-$ heroku config:add MAIL_ADDR=xxxxxxx@gmail.com MAIL_PASSWORD=yyyyy
+$ heroku config:add MAIL_ADDR=xxxxxxx@gmail.com
 ```
 ## Demo
 http://kanban-list2.herokuapp.com/
