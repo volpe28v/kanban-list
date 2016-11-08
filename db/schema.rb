@@ -16,16 +16,16 @@ ActiveRecord::Schema.define(:version => 20121013140431) do
   create_table "books", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
     t.string   "msg"
     t.date     "doing_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "status"
     t.integer  "pomo",       :default => 0
     t.integer  "user_id"
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(:version => 20121013140431) do
     t.string   "bg_img"
     t.string   "layout"
     t.integer  "pomo"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

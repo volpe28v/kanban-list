@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.2.2'
 
 gem 'rails', '3.2.16'
 
@@ -26,6 +26,7 @@ gem 'rake'
 
 gem 'jpmobile'
 gem 'jpmobile-terminfo'
+gem 'test-unit'
 
 group :development, :test do
   gem 'sqlite3'
