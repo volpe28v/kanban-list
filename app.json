@@ -5,5 +5,9 @@
   "keywords": ["rails", "kanban", "todo"],
   "scripts": {
     "postdeploy": "rake db:migrate"
-  }
+  },
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "sendgrid:starter"
+  ]
 }
